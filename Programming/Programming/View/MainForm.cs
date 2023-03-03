@@ -21,13 +21,13 @@ namespace Programming
         private void MainForm_Load(object sender, EventArgs e)
         {
             DirectoryInfo directory = new DirectoryInfo(@"..\..\Model\Enums");
-            FileInfo[] allfiles = directory.GetFiles("*.cs");
+            FileInfo[] allFiles = directory.GetFiles("*.cs");
             int fileExtensionLength = 3; // .cs
-            foreach (FileInfo file in allfiles)
+            foreach (FileInfo file in allFiles)
             {
                 EnumsListBox.Items.Add(file.Name.Substring(0, file.Name.Length - fileExtensionLength));
             }
-            //EnumsListBox.SelectedIndex = 0;
+            SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
         }
 
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,6 +38,43 @@ namespace Programming
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsListBox.Text), ValuesListBox.Text)).ToString();
+        }
+
+        private void WeekdayParsingButton_Click(object sender, EventArgs e)
+        {
+            if(Enum.IsDefined(typeof(Weekday), WeekdayParsingTextBox.Text))
+            {
+                int weekDayNumber = (int)Enum.Parse(typeof(Weekday),WeekdayParsingTextBox.Text);
+                WeekdayAnswerLable.Text = $"Это день недели ({WeekdayParsingTextBox.Text} = {weekDayNumber+1})";
+            }
+            else
+            {
+                WeekdayAnswerLable.Text = "Нет такого дня недели";
+            }
+        }
+
+        private void SeasonHandleButton_Click(object sender, EventArgs e)
+        {
+            switch (SeasonHandleComboBox.Text)
+            {
+                case "Summer":
+                    MessageBox.Show("Ура! Солнце!", "Лето");
+                    break;
+                case "Autumn":
+                    this.BackColor = ColorTranslator.FromHtml("#e29c45");
+                    TabControl.BackColor = BackColor;
+                    break;
+                case "Winter":
+                    MessageBox.Show("Бррр! Холодно!", "Зима");
+                    break;
+                case "Spring":
+                    this.BackColor = ColorTranslator.FromHtml("#559c45");
+                    TabControl.BackColor = BackColor;
+                    break;
+                default:
+                    MessageBox.Show("Нет такого времени года");
+                    break;
+            }
         }
     }
 }
