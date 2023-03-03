@@ -39,10 +39,5 @@ namespace Programming
         {
             ValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsListBox.Text), ValuesListBox.Text)).ToString();
         }
-
-        private void ValueTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
