@@ -20,13 +20,16 @@ namespace Programming
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DirectoryInfo directory = new DirectoryInfo(@"..\..\Model\Enums");
-            FileInfo[] allFiles = directory.GetFiles("*.cs");
-            int fileExtensionLength = 3; // .cs
-            foreach (FileInfo file in allFiles)
+            object[] _enums = new object[]
             {
-                EnumsListBox.Items.Add(file.Name.Substring(0, file.Name.Length - fileExtensionLength));
-            }
+                typeof(Color),
+                typeof(EducationForm),
+                typeof(Genre),
+                typeof(Manufactures),
+                typeof(Season),
+                typeof(Weekday)
+            };
+            EnumsListBox.Items.AddRange(_enums);
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
         }
 
