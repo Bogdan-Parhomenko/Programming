@@ -34,6 +34,7 @@
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.InsertedTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.WeekdayParsingGroupBox = new System.Windows.Forms.GroupBox();
+            this.WeekdayAnswerLable = new System.Windows.Forms.Label();
             this.WeekdayParsingButton = new System.Windows.Forms.Button();
             this.WeekdayParsingTextBox = new System.Windows.Forms.TextBox();
             this.WeekdayParsingLabel = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.ValueTextBox = new System.Windows.Forms.TextBox();
             this.EnumsListBox = new System.Windows.Forms.ListBox();
             this.ValuesListBox = new System.Windows.Forms.ListBox();
-            this.WeekdayAnswerLable = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.EnumerationsTabPage.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
@@ -73,7 +73,7 @@
             this.EnumerationsTabPage.Controls.Add(this.MainTableLayoutPanel);
             this.EnumerationsTabPage.Location = new System.Drawing.Point(4, 22);
             this.EnumerationsTabPage.Name = "EnumerationsTabPage";
-            this.EnumerationsTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.EnumerationsTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.EnumerationsTabPage.Size = new System.Drawing.Size(792, 424);
             this.EnumerationsTabPage.TabIndex = 0;
             this.EnumerationsTabPage.Text = "Enums";
@@ -108,7 +108,7 @@
             this.InsertedTableLayoutPanel.Name = "InsertedTableLayoutPanel";
             this.InsertedTableLayoutPanel.RowCount = 1;
             this.InsertedTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.InsertedTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.InsertedTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 209F));
             this.InsertedTableLayoutPanel.Size = new System.Drawing.Size(786, 209);
             this.InsertedTableLayoutPanel.TabIndex = 0;
             // 
@@ -125,6 +125,15 @@
             this.WeekdayParsingGroupBox.TabIndex = 0;
             this.WeekdayParsingGroupBox.TabStop = false;
             this.WeekdayParsingGroupBox.Text = "Weekday Parsing";
+            // 
+            // WeekdayAnswerLable
+            // 
+            this.WeekdayAnswerLable.AutoSize = true;
+            this.WeekdayAnswerLable.Location = new System.Drawing.Point(6, 77);
+            this.WeekdayAnswerLable.Name = "WeekdayAnswerLable";
+            this.WeekdayAnswerLable.Size = new System.Drawing.Size(115, 13);
+            this.WeekdayAnswerLable.TabIndex = 3;
+            this.WeekdayAnswerLable.Text = "Введите день недели";
             // 
             // WeekdayParsingButton
             // 
@@ -270,14 +279,6 @@
             this.ValuesListBox.Size = new System.Drawing.Size(120, 165);
             this.ValuesListBox.TabIndex = 0;
             this.ValuesListBox.SelectedIndexChanged += new System.EventHandler(this.ValuesListBox_SelectedIndexChanged);
-            // 
-            // WeekdayAnswerLable
-            // 
-            this.WeekdayAnswerLable.AutoSize = true;
-            this.WeekdayAnswerLable.Location = new System.Drawing.Point(6, 77);
-            this.WeekdayAnswerLable.Name = "WeekdayAnswerLable";
-            this.WeekdayAnswerLable.Size = new System.Drawing.Size(0, 13);
-            this.WeekdayAnswerLable.TabIndex = 3;
             // 
             // MainForm
             // 
