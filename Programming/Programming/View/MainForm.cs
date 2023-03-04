@@ -48,7 +48,7 @@ namespace Programming
             if(Enum.IsDefined(typeof(Weekday), WeekdayParsingTextBox.Text))
             {
                 int weekDayNumber = (int)Enum.Parse(typeof(Weekday),WeekdayParsingTextBox.Text);
-                WeekdayAnswerLable.Text = $"Это день недели ({WeekdayParsingTextBox.Text} = {weekDayNumber+1})";
+                WeekdayAnswerLable.Text = $"Это день недели ({WeekdayParsingTextBox.Text} = {weekDayNumber})";
             }
             else
             {
