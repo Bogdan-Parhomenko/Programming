@@ -20,7 +20,7 @@ namespace Programming
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            object[] _enums = new object[]
+            object[] enums = new object[]
             {
                 typeof(Color),
                 typeof(EducationForm),
@@ -29,7 +29,7 @@ namespace Programming
                 typeof(Season),
                 typeof(Weekday)
             };
-            EnumsListBox.Items.AddRange(_enums);
+            EnumsListBox.Items.AddRange(enums);
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
         }
 
