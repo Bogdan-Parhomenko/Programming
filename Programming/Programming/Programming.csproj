@@ -56,6 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Discipline.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Song.cs" />
+    <Compile Include="Model\Time.cs" />
+    <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\Rectangle.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
