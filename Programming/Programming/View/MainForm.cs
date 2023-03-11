@@ -26,7 +26,7 @@ namespace Programming.View
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Добавление значений в Listbox и ComboBox
-            object[] enums = new object[]
+            var enums = new object[]
             {
                 typeof(Color),
                 typeof(EducationForm),
@@ -35,12 +35,12 @@ namespace Programming.View
                 typeof(Season),
                 typeof(Weekday)
             };
-            EnumsListBox.Items.AddRange(enums);
-            //EnumsListBox.DisplayMember = ;
+            EnumsListBox.DisplayMember = "enums";
+            EnumsListBox.DataSource = enums;
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++)
             {
                 _rectangles[i] = new Rectangle(_random.NextDouble() * 101,
                     _random.NextDouble() * 101,
@@ -66,7 +66,7 @@ namespace Programming.View
         {
             if(Enum.IsDefined(typeof(Weekday), WeekdayParsingTextBox.Text))
             {
-                int weekDayNumber = (int)Enum.Parse(typeof(Weekday),WeekdayParsingTextBox.Text);
+                var weekDayNumber = (int)Enum.Parse(typeof(Weekday),WeekdayParsingTextBox.Text);
                 WeekdayAnswerLable.Text = $"Это день недели ( {WeekdayParsingTextBox.Text} = {weekDayNumber} )";
             }
             else
