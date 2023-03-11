@@ -166,10 +166,10 @@
             // 
             // WeekdayParsingButton
             // 
-            this.WeekdayParsingButton.Location = new System.Drawing.Point(215, 44);
+            this.WeekdayParsingButton.Location = new System.Drawing.Point(215, 41);
             this.WeekdayParsingButton.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.WeekdayParsingButton.Name = "WeekdayParsingButton";
-            this.WeekdayParsingButton.Size = new System.Drawing.Size(75, 20);
+            this.WeekdayParsingButton.Size = new System.Drawing.Size(75, 25);
             this.WeekdayParsingButton.TabIndex = 2;
             this.WeekdayParsingButton.Text = "Parse";
             this.WeekdayParsingButton.UseVisualStyleBackColor = true;
@@ -215,9 +215,9 @@
             // 
             // SeasonHandleButton
             // 
-            this.SeasonHandleButton.Location = new System.Drawing.Point(133, 43);
+            this.SeasonHandleButton.Location = new System.Drawing.Point(133, 41);
             this.SeasonHandleButton.Name = "SeasonHandleButton";
-            this.SeasonHandleButton.Size = new System.Drawing.Size(75, 21);
+            this.SeasonHandleButton.Size = new System.Drawing.Size(75, 25);
             this.SeasonHandleButton.TabIndex = 1;
             this.SeasonHandleButton.Text = "Go!";
             this.SeasonHandleButton.UseVisualStyleBackColor = true;
@@ -356,40 +356,34 @@
             // RectangleButton
             // 
             this.RectangleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleButton.Location = new System.Drawing.Point(132, 389);
+            this.RectangleButton.Location = new System.Drawing.Point(132, 388);
             this.RectangleButton.Name = "RectangleButton";
-            this.RectangleButton.Size = new System.Drawing.Size(75, 23);
+            this.RectangleButton.Size = new System.Drawing.Size(75, 25);
             this.RectangleButton.TabIndex = 7;
             this.RectangleButton.Text = "Find";
             this.RectangleButton.UseVisualStyleBackColor = true;
             // 
             // ColorTextBox
             // 
-            this.ColorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ColorTextBox.Location = new System.Drawing.Point(132, 113);
             this.ColorTextBox.Name = "ColorTextBox";
-            this.ColorTextBox.Size = new System.Drawing.Size(252, 20);
+            this.ColorTextBox.Size = new System.Drawing.Size(150, 20);
             this.ColorTextBox.TabIndex = 6;
             this.ColorTextBox.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
             // 
             // WidthTextBox
             // 
-            this.WidthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.WidthTextBox.Location = new System.Drawing.Point(132, 74);
             this.WidthTextBox.Name = "WidthTextBox";
-            this.WidthTextBox.Size = new System.Drawing.Size(252, 20);
+            this.WidthTextBox.Size = new System.Drawing.Size(150, 20);
             this.WidthTextBox.TabIndex = 5;
             this.WidthTextBox.TextChanged += new System.EventHandler(this.WidthTextBox_TextChanged);
             // 
             // LengthTextBox
             // 
-            this.LengthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.LengthTextBox.Location = new System.Drawing.Point(132, 35);
             this.LengthTextBox.Name = "LengthTextBox";
-            this.LengthTextBox.Size = new System.Drawing.Size(252, 20);
+            this.LengthTextBox.Size = new System.Drawing.Size(150, 20);
             this.LengthTextBox.TabIndex = 4;
             this.LengthTextBox.TextChanged += new System.EventHandler(this.LengthTextBox_TextChanged);
             // 
@@ -457,56 +451,46 @@
             // MovieButton
             // 
             this.MovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieButton.Location = new System.Drawing.Point(132, 389);
+            this.MovieButton.Location = new System.Drawing.Point(132, 388);
             this.MovieButton.Name = "MovieButton";
-            this.MovieButton.Size = new System.Drawing.Size(75, 23);
+            this.MovieButton.Size = new System.Drawing.Size(75, 25);
             this.MovieButton.TabIndex = 11;
             this.MovieButton.Text = "Find";
             this.MovieButton.UseVisualStyleBackColor = true;
             // 
             // RatingTextBox
             // 
-            this.RatingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.RatingTextBox.Location = new System.Drawing.Point(132, 191);
             this.RatingTextBox.Name = "RatingTextBox";
-            this.RatingTextBox.Size = new System.Drawing.Size(252, 20);
+            this.RatingTextBox.Size = new System.Drawing.Size(150, 20);
             this.RatingTextBox.TabIndex = 10;
             // 
             // GenreTextBox
             // 
-            this.GenreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GenreTextBox.Location = new System.Drawing.Point(132, 152);
             this.GenreTextBox.Name = "GenreTextBox";
-            this.GenreTextBox.Size = new System.Drawing.Size(252, 20);
+            this.GenreTextBox.Size = new System.Drawing.Size(150, 20);
             this.GenreTextBox.TabIndex = 9;
             // 
             // ReleaseYearTextBox
             // 
-            this.ReleaseYearTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReleaseYearTextBox.Location = new System.Drawing.Point(132, 113);
             this.ReleaseYearTextBox.Name = "ReleaseYearTextBox";
-            this.ReleaseYearTextBox.Size = new System.Drawing.Size(252, 20);
+            this.ReleaseYearTextBox.Size = new System.Drawing.Size(150, 20);
             this.ReleaseYearTextBox.TabIndex = 8;
             // 
             // DurationTextBox
             // 
-            this.DurationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.DurationTextBox.Location = new System.Drawing.Point(132, 74);
             this.DurationTextBox.Name = "DurationTextBox";
-            this.DurationTextBox.Size = new System.Drawing.Size(252, 20);
+            this.DurationTextBox.Size = new System.Drawing.Size(150, 20);
             this.DurationTextBox.TabIndex = 7;
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Location = new System.Drawing.Point(132, 35);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(252, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(150, 20);
             this.NameTextBox.TabIndex = 6;
             // 
             // RatingLabel
