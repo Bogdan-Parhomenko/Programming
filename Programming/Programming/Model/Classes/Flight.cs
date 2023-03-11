@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Programming.Model
+namespace Programming.Model.Classes
 {
     internal class Flight
     {
@@ -24,13 +24,13 @@ namespace Programming.Model
             }
             set
             {
-                if( value > 0)
+                if(value > 0)
                 {
                     _flightTimeInMinutes = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Продолжительнось полета должна быть больше 0 минут");
+                    throw new ArgumentException("Продолжительность полета должна быть больше 0 минут");
                 }
             }
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model
+namespace Programming.Model.Classes
 {
     internal class Time
     {
@@ -20,7 +20,7 @@ namespace Programming.Model
             }
             set
             {
-                if (value >= 0 || value <= 23)
+                if (value >= 0 && value <= 23)
                 {
                     _hours = value;
                 }
@@ -38,7 +38,7 @@ namespace Programming.Model
             }
             set
             {
-                if (value >= 0 || value <= 59)
+                if (value >= 0 && value <= 59)
                 {
                     _minutes = value;
                 }
@@ -56,7 +56,7 @@ namespace Programming.Model
             }
             set
             {
-                if (value >= 0 || value <=59)
+                if (value >= 0 && value <= 59)
                 {
                     _seconds = value;
                 }

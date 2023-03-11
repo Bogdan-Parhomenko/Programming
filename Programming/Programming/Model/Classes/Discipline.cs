@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model
+namespace Programming.Model.Classes
 {
     internal class Discipline
     {
@@ -24,7 +24,7 @@ namespace Programming.Model
             {
                 int currentYear = DateTime.Now.Year;
 
-                if ( value >= 1900 && value <= currentYear )
+                if (value >= 1900 && value <= currentYear)
                 {
                     _year = value;
                 }
@@ -42,14 +42,13 @@ namespace Programming.Model
             }
             set
             {
-                int remainder = value % 32;
-                if( value >0 || remainder == 0 )
+                if(value > 0)
                 {
                     _hoursCount = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Количество освоенных часов должно быть больше единицы и кратным 32");
+                    throw new ArgumentException("Количество освоенных часов должно быть больше 0");
                 }
             }
         }
@@ -61,7 +60,7 @@ namespace Programming.Model
             }
             set
             {
-                if ( value >= 1 || value <= 5 )
+                if (value >= 1 && value <= 5)
                 {
                     _grade = value;
                 }

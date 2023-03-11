@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model
+namespace Programming.Model.Classes
 {
     internal class Movie
     {
@@ -62,7 +62,7 @@ namespace Programming.Model
             }
             set
             {
-                if( value > 0 && value <= 10)
+                if( value > 0.0 && value <= 10.0)
                 {
                     _rate = value;
                 }

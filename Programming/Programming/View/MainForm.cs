@@ -9,13 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Rectangle = Programming.Model.Rectangle;
+using Rectangle = Programming.Model.Classes.Rectangle;
 
 namespace Programming
 {
     public partial class MainForm : Form
     {
         // Создание массива и переменной класса Rectangle
+        private Random random = new Random();
         private Rectangle[] _rectangles = new Rectangle[5];
         private Rectangle _currentRectangle;
 
@@ -37,10 +38,8 @@ namespace Programming
                 typeof(Weekday)
             };
             EnumsListBox.Items.AddRange(enums);
-            SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
-            Random random = new Random();
             for(int i = 0; i < 5; i++)
             {
                 _rectangles[i] = new Rectangle(random.NextDouble() * 101,
@@ -49,8 +48,6 @@ namespace Programming
                 RectanglesListBox.Items.Add($"Rectangle {i+1}");
             }
         }
-
-        #region Lab2
 
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,10 +100,6 @@ namespace Programming
             }
         }
 
-        #endregion
-
-        #region Lab3
-
         // При обновлении значения RectanglesListBox запоминаем выбранный Rectangle в _currentRectangle
         // и заполняем Принадлежащие ему TextBox
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,7 +130,5 @@ namespace Programming
         {
 
         }
-
-        #endregion
     }
 }
