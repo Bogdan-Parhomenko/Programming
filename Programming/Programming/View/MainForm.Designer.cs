@@ -1,4 +1,4 @@
-﻿namespace Programming
+﻿namespace Programming.View
 {
     partial class MainForm
     {
@@ -286,7 +286,7 @@
             // 
             // EnumsListBox
             // 
-            this.EnumsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.EnumsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.EnumsListBox.FormattingEnabled = true;
             this.EnumsListBox.IntegralHeight = false;
@@ -298,7 +298,7 @@
             // 
             // ValuesListBox
             // 
-            this.ValuesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ValuesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ValuesListBox.FormattingEnabled = true;
             this.ValuesListBox.IntegralHeight = false;
@@ -355,8 +355,7 @@
             // 
             // RectangleButton
             // 
-            this.RectangleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleButton.Location = new System.Drawing.Point(132, 388);
+            this.RectangleButton.Location = new System.Drawing.Point(132, 139);
             this.RectangleButton.Name = "RectangleButton";
             this.RectangleButton.Size = new System.Drawing.Size(75, 25);
             this.RectangleButton.TabIndex = 7;
@@ -416,7 +415,7 @@
             // 
             // RectanglesListBox
             // 
-            this.RectanglesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.RectanglesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.RectanglesListBox.FormattingEnabled = true;
             this.RectanglesListBox.IntegralHeight = false;
@@ -450,8 +449,7 @@
             // 
             // MovieButton
             // 
-            this.MovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieButton.Location = new System.Drawing.Point(132, 388);
+            this.MovieButton.Location = new System.Drawing.Point(132, 217);
             this.MovieButton.Name = "MovieButton";
             this.MovieButton.Size = new System.Drawing.Size(75, 25);
             this.MovieButton.TabIndex = 11;
@@ -540,7 +538,7 @@
             // 
             // ClassesListBox
             // 
-            this.ClassesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ClassesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ClassesListBox.FormattingEnabled = true;
             this.ClassesListBox.IntegralHeight = false;

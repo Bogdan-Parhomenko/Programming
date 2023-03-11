@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Programming.Model.Classes
 {
-    internal class Flight
+    public class Flight
     {
         private string _departurePoint;
         private string _destination;

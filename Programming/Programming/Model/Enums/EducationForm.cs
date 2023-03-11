@@ -1,7 +1,10 @@
-public enum EducationForm
+namespace Programming.Model.Enums
 {
-	Intramural,
-	Extramural,
-	Evening,
-	Distance
+	public enum EducationForm
+	{
+		Intramural,
+		Extramural,
+		Evening,
+		Distance
+	}
 }

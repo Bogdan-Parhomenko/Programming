@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Color = Programming.Model.Enums.Color;
+using EducationForm = Programming.Model.Enums.EducationForm;
+using Genre = Programming.Model.Enums.Genre;
+using Manufactures = Programming.Model.Enums.Manufactures;
+using Season = Programming.Model.Enums.Season;
+using Weekday = Programming.Model.Enums.Weekday;
 using Rectangle = Programming.Model.Classes.Rectangle;
 
-namespace Programming
+namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        // Создание массива и переменной класса Rectangle
-        private Random random = new Random();
+        // Создаем массива и переменной класса Rectangle
+        private Random _random = new Random();
         private Rectangle[] _rectangles = new Rectangle[5];
         private Rectangle _currentRectangle;
 
@@ -38,13 +36,15 @@ namespace Programming
                 typeof(Weekday)
             };
             EnumsListBox.Items.AddRange(enums);
+            //EnumsListBox.DisplayMember = ;
+            SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                _rectangles[i] = new Rectangle(random.NextDouble() * 101,
-                    random.NextDouble() * 101,
-                    Enum.GetNames(typeof(Color))[random.Next(8)]);
+                _rectangles[i] = new Rectangle(_random.NextDouble() * 101,
+                    _random.NextDouble() * 101,
+                    Enum.GetNames(typeof(Color))[_random.Next(8)]);
                 RectanglesListBox.Items.Add($"Rectangle {i+1}");
             }
         }
@@ -111,21 +111,21 @@ namespace Programming
         }
 
         // При изменении значения в LengthTextBox проверяем верность введенных данных
-        // и обновлем данные массива Rectangles[]
+        // и обновляем данные массива Rectangles[]
         private void LengthTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentRectangle.Length = Convert.ToDouble(LengthTextBox.Text);
         }
 
         // При изменении значения в WidthTextBox проверяем верность введенных данных
-        // и обновлем данные массива Rectangles[]
+        // и обновляем данные массива Rectangles[]
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         // При изменении значения в ColorTextBox проверяем верность введенных данных
-        // и обновлем данные массива Rectangles[]
+        // и обновляем данные массива Rectangles[]
         private void ColorTextBox_TextChanged(object sender, EventArgs e)
         {
 
