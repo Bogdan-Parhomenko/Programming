@@ -42,7 +42,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                int currentYear = DateTime.Now.Year;
+                var currentYear = DateTime.Now.Year;
 
                 if (value >= 1900 && value <= currentYear)
                 {
@@ -62,7 +62,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if( value > 0.0 && value <= 10.0)
+                if( value >= 0.0 && value <= 10.0)
                 {
                     _rate = value;
                 }

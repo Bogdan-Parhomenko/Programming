@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Programming.Model.Classes;
 using Color = Programming.Model.Enums.Color;
 using EducationForm = Programming.Model.Enums.EducationForm;
 using Genre = Programming.Model.Enums.Genre;
@@ -13,10 +14,16 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        // Создаем массива и переменной класса Rectangle
         private Random _random = new Random();
+
+        // Создаем массива и переменной класса Rectangle
         private Rectangle[] _rectangles = new Rectangle[5];
         private Rectangle _currentRectangle;
+
+        // Создаем массива и переменной класса Movie
+        private Movie[] _movies = new Movie[5];
+        private Movie _currentMovie;
+
 
         public MainForm()
         {
@@ -35,7 +42,7 @@ namespace Programming.View
                 typeof(Season),
                 typeof(Weekday)
             };
-            EnumsListBox.DisplayMember = "enums";
+            //EnumsListBox.DisplayMember = "enums";
             EnumsListBox.DataSource = enums;
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
@@ -46,6 +53,17 @@ namespace Programming.View
                     _random.NextDouble() * 101,
                     Enum.GetNames(typeof(Color))[_random.Next(8)]);
                 RectanglesListBox.Items.Add($"Rectangle {i+1}");
+            }
+
+            // Инициализация массива _movies
+            for (var i = 0; i < 5; i++)
+            {
+                _movies[i] = new Movie($"Movie { i + 1 }",
+                    Enum.GetNames(typeof(Genre))[_random.Next(6)],
+                    _random.Next(301),
+                    _random.Next(1900, DateTime.Now.Year),
+                    _random.Next(11));
+                MoviesListBox.Items.Add($"Movie {i + 1}");
             }
         }
 
@@ -81,22 +99,32 @@ namespace Programming.View
             switch (SeasonHandleComboBox.Text)
             {
                 case "Summer":
+                {
                     MessageBox.Show("Ура! Солнце!", "Лето");
                     break;
+                }
                 case "Autumn":
+                {
                     this.BackColor = ColorTranslator.FromHtml("#e29c45");
                     TabControl.BackColor = BackColor;
                     break;
+                }
                 case "Winter":
+                {
                     MessageBox.Show("Бррр! Холодно!", "Зима");
                     break;
+                }
                 case "Spring":
+                {
                     this.BackColor = ColorTranslator.FromHtml("#559c45");
                     TabControl.BackColor = BackColor;
                     break;
+                }
                 default:
+                {
                     MessageBox.Show("Нет такого времени года");
                     break;
+                }
             }
         }
 
@@ -110,25 +138,184 @@ namespace Programming.View
             ColorTextBox.Text = _currentRectangle.Color;
         }
 
+        // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie
+        // и заполняем Принадлежащие ему TextBox
+        private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentMovie = _movies[MoviesListBox.SelectedIndex];
+            TitleTextBox.Text = _currentMovie.Title;
+            DurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
+            YearTextBox.Text = _currentMovie.Year.ToString();
+            GenreTextBox.Text = _currentMovie.Genre;
+            RateTextBox.Text = _currentMovie.Rate.ToString();
+        }
+
         // При изменении значения в LengthTextBox проверяем верность введенных данных
         // и обновляем данные массива Rectangles[]
         private void LengthTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentRectangle.Length = Convert.ToDouble(LengthTextBox.Text);
+            try
+            {
+                LengthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Length = Double.Parse(LengthTextBox.Text);
+            }
+            catch
+            {
+                LengthTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
         }
 
         // При изменении значения в WidthTextBox проверяем верность введенных данных
         // и обновляем данные массива Rectangles[]
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                WidthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Width = Double.Parse(WidthTextBox.Text);
+            }
+            catch
+            {
+                WidthTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
         }
 
         // При изменении значения в ColorTextBox проверяем верность введенных данных
         // и обновляем данные массива Rectangles[]
         private void ColorTextBox_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                ColorTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Color = (Enum.Parse(typeof(Color), ColorTextBox.Text)).ToString();
+            }
+            catch
+            {
+                ColorTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
 
+        // При изменении значения в TitleTextBox проверяем верность введенных данных
+        // и обновляем данные массива Movies[]
+        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TitleTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Title = TitleTextBox.Text;
+            }
+            catch
+            {
+                TitleTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        // При изменении значения в DurationInMinutesTextBox проверяем верность введенных данных
+        // и обновляем данные массива Movies[]
+        private void DurationInMinutesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.DurationInMinutes = Int32.Parse(DurationInMinutesTextBox.Text);
+            }
+            catch
+            {
+                DurationInMinutesTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        // При изменении значения в YearTextBox проверяем верность введенных данных
+        // и обновляем данные массива Movies[]
+        private void YearTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                YearTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Year = Int32.Parse(YearTextBox.Text);
+            }
+            catch
+            {
+                YearTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        // При изменении значения в GenreTextBox проверяем верность введенных данных
+        // и обновляем данные массива Movies[]
+        private void GenreTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GenreTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Genre = (Enum.Parse(typeof(Genre), GenreTextBox.Text)).ToString();
+            }
+            catch
+            {
+                GenreTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        // При изменении значения в RateTextBox проверяем верность введенных данных
+        // и обновляем данные массива Movies[]
+        private void RateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                RateTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Rate = Double.Parse(RateTextBox.Text);
+            }
+            catch
+            {
+                RateTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        // Метод, который находит Rectangle с максимальной шириной и возвращает его индекс
+        private int FindRectangleWithMaxWidth()
+        {
+            var maxWidth = _rectangles[0].Width;
+            var i = 0;
+            var maxWidthRectangle = 0;
+            foreach (var rectangle in _rectangles)
+            {
+                if (rectangle.Width > maxWidth)
+                {
+                    maxWidth = rectangle.Width;
+                    maxWidthRectangle = i;
+                }
+                i++;
+            }
+            return maxWidthRectangle;
+        }
+
+        // Метод, который находит Movie с максимальным рейтингом и возвращает его индекс
+        private int FindMovieWithMaxRate()
+        {
+            var maxRate = _movies[0].Rate;
+            var i = 0;
+            var maxRateMovie = 0;
+            foreach (var movie in _movies)
+            {
+                if (movie.Rate > maxRate)
+                {
+                    maxRate = movie.Rate;
+                    maxRateMovie = i;
+                }
+                i++;
+            }
+            return maxRateMovie;
+        }
+
+        // Находим Rectangle с максимальной шириной и выделяем его в ListBox
+        private void RectangleButton_Click(object sender, EventArgs e)
+        {
+            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();
+        }
+
+        // Находим Movie с максимальным рейтингом и выделяем его в ListBox
+        private void MovieButton_Click(object sender, EventArgs e)
+        {
+            MoviesListBox.SelectedIndex = FindMovieWithMaxRate();
         }
     }
 }
