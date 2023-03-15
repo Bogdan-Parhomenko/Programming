@@ -24,6 +24,43 @@ namespace Programming.View
         private Movie[] _movies = new Movie[5];
         private Movie _currentMovie;
 
+        // Метод, который находит Rectangle с максимальной шириной и возвращает его индекс
+        private int FindRectangleWithMaxWidth()
+        {
+            var maxWidth = _rectangles[0].Width;
+            var i = 0;
+            var maxWidthRectangle = 0;
+            foreach (var rectangle in _rectangles)
+            {
+                if (rectangle.Width > maxWidth)
+                {
+                    maxWidth = rectangle.Width;
+                    maxWidthRectangle = i;
+                }
+                i++;
+            }
+            return maxWidthRectangle;
+        }
+
+        // Метод, который находит Movie с максимальным рейтингом и возвращает его индекс
+        private int FindMovieWithMaxRate()
+        {
+            var maxRate = _movies[0].Rate;
+            var i = 0;
+            var maxRateMovie = 0;
+            foreach (var movie in _movies)
+            {
+                if (movie.Rate > maxRate)
+                {
+                    maxRate = movie.Rate;
+                    maxRateMovie = i;
+                }
+
+                i++;
+            }
+
+            return maxRateMovie;
+        }
 
         public MainForm()
         {
@@ -268,42 +305,6 @@ namespace Programming.View
             {
                 RateTextBox.BackColor = System.Drawing.Color.LightPink;
             }
-        }
-
-        // Метод, который находит Rectangle с максимальной шириной и возвращает его индекс
-        private int FindRectangleWithMaxWidth()
-        {
-            var maxWidth = _rectangles[0].Width;
-            var i = 0;
-            var maxWidthRectangle = 0;
-            foreach (var rectangle in _rectangles)
-            {
-                if (rectangle.Width > maxWidth)
-                {
-                    maxWidth = rectangle.Width;
-                    maxWidthRectangle = i;
-                }
-                i++;
-            }
-            return maxWidthRectangle;
-        }
-
-        // Метод, который находит Movie с максимальным рейтингом и возвращает его индекс
-        private int FindMovieWithMaxRate()
-        {
-            var maxRate = _movies[0].Rate;
-            var i = 0;
-            var maxRateMovie = 0;
-            foreach (var movie in _movies)
-            {
-                if (movie.Rate > maxRate)
-                {
-                    maxRate = movie.Rate;
-                    maxRateMovie = i;
-                }
-                i++;
-            }
-            return maxRateMovie;
         }
 
         // Находим Rectangle с максимальной шириной и выделяем его в ListBox
