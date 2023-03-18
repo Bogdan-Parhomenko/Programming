@@ -79,8 +79,9 @@ namespace Programming.View
                 typeof(Season),
                 typeof(Weekday)
             };
-            //EnumsListBox.DisplayMember = "enums";
-            EnumsListBox.DataSource = enums;
+            EnumsListBox.DisplayMember = "Name";
+            EnumsListBox.Items.AddRange(enums);
+            //EnumsListBox.DataSource = enums;
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
