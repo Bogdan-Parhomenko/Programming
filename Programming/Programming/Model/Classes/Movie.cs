@@ -14,7 +14,24 @@ namespace Programming.Model.Classes
         private int _year;
         private double _rate;
 
-        public string Title { get; set; }
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Это поле не может быть пустым или пробелом");
+                }
+                else
+                {
+                    _title = value;
+                }
+            }
+        }
         public string Genre { get; set; }
         public int DurationInMinutes
         {

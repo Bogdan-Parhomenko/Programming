@@ -79,9 +79,10 @@ namespace Programming.View
                 typeof(Season),
                 typeof(Weekday)
             };
-            EnumsListBox.DisplayMember = "Name";
-            EnumsListBox.Items.AddRange(enums);
             //EnumsListBox.DataSource = enums;
+            //EnumsListBox.DisplayMember = "Name";
+            //EnumsListBox.ValueMember = "FullName";
+            EnumsListBox.Items.AddRange(enums);
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
@@ -108,7 +109,8 @@ namespace Programming.View
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
+            //ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
+            ValuesListBox.Items.AddRange(Enum.GetNames(Type.GetType(EnumsListBox.Text)));
         }
 
         // При обновлении значения в ValueListBox выводим номер этого значения в ValueTextBox
