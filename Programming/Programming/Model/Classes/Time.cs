@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Time
     {
@@ -20,14 +14,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value >= 0 && value <= 23)
-                {
-                    _hours = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Количество часов не может быть отрицательным и больше 23");
-                }
+                Validator.AssertValueInRange(value, 0, 23);
+                _hours = value;
             }
         }
         public int Minutes
@@ -38,14 +26,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value >= 0 && value <= 59)
-                {
-                    _minutes = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Количество минут не может быть отрицательным и больше 59");
-                }
+                Validator.AssertValueInRange(value, 0, 59);
+                _minutes = value;
             }
         }
         public int Seconds
@@ -56,14 +38,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value >= 0 && value <= 59)
-                {
-                    _seconds = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Количество секунд не может быть отрицательным и больше 59");
-                }
+                Validator.AssertValueInRange(value, 0, 59);
+                _seconds = value;
             }
         }
     }

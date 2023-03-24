@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Programming.Model.Classes
 {
@@ -14,24 +10,7 @@ namespace Programming.Model.Classes
         private int _year;
         private double _rate;
 
-        public string Title
-        {
-            get
-            {
-                return _title;
-            }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Это поле не может быть пустым или пробелом");
-                }
-                else
-                {
-                    _title = value;
-                }
-            }
-        }
+        public string Title { get; set; }
         public string Genre { get; set; }
         public int DurationInMinutes
         {
@@ -41,14 +20,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value > 0)
-                {
-                    _durationInMinutes = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Продолжительность фильма должна быть больше 0 минут");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _durationInMinutes = value;
             }
         }
         public int Year
@@ -60,15 +33,8 @@ namespace Programming.Model.Classes
             set
             {
                 var currentYear = DateTime.Now.Year;
-
-                if (value >= 1900 && value <= currentYear)
-                {
-                    _year = value;
-                }
-                else
-                {
-                    throw new ArgumentException($"Укажите значение от 1900 до {currentYear}");
-                }
+                Validator.AssertValueInRange(value, 1900, currentYear);
+                _year = value;
             }
         }
         public double Rate
@@ -79,14 +45,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if( value >= 0.0 && value <= 10.0)
-                {
-                    _rate = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Рейтинг должен быть от 0 до 10");
-                }
+                Validator.AssertValueInRange(value, 0.0, 10.0);
+                _rate = value;
             }
         }
 

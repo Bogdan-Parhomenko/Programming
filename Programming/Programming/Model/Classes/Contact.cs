@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Programming.Model.Classes
 {
@@ -43,13 +40,17 @@ namespace Programming.Model.Classes
 
         private static void AssertStringContainsOnlyLetters(string value)
         {
+            var stackTrace = new StackTrace();
+            var stackFrame = stackTrace.GetFrame(1);
+
             if (Regex.IsMatch(value, "^[a-zA-Z]+$"))
             {
             }
             else
             {
-                //TODO: вместо value должно стоять свойство поля откуда вызывается этот метод
-                throw new ArgumentException($"Поле {value} должно содержать только буквы английского алфавита");
+                throw new ArgumentException($"Поле {stackFrame.GetMethod().Name}" +
+                                            $" класса {stackFrame.GetMethod().DeclaringType.Name}" +
+                                            $" должно содержать только буквы английского алфавита");
             }
         }
 

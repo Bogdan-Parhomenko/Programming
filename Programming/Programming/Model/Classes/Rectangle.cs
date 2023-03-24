@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Rectangle
     {
         private double _length;
         private double _width;
         private string _color;
+        private Point2D _center;
 
         public double Length
         {
@@ -20,14 +15,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value > 0)
-                {
-                    _length = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Длинна не может быть отрицательной или равной 0");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _length = value;
             }
         }
         public double Width
@@ -38,28 +27,35 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value > 0)
-                {
-                    _width = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Ширина не может быть отрицательной или равной 0");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _width = value;
             }
         }
         public string Color { get; set; }
+
+        public Point2D Center
+        {
+            get
+            {
+                return _center;
+            }
+            set
+            {
+                _center = value;
+            }
+        }
 
         public Rectangle()
         {
 
         }
 
-        public Rectangle(double length, double width, string color)
+        public Rectangle(double length, double width, string color, Point2D center)
         {
             Length = length;
             Width = width;
             Color = color;
+            Center = center;
         }
     }
 }

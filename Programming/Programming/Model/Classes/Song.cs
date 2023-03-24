@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Song
     {
@@ -24,14 +18,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value > 0)
-                {
-                    _durationInMinutes = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Продолжительность песни должна быть больше 0 минут");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _durationInMinutes = value;
             }
         }
 

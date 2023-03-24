@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Flight
     {
@@ -24,14 +16,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value > 0)
-                {
-                    _flightTimeInMinutes = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Продолжительность полета должна быть больше 0 минут");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _flightTimeInMinutes = value;
             }
         }
 
