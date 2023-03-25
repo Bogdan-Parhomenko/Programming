@@ -79,6 +79,8 @@ namespace Programming.View
                 typeof(Season),
                 typeof(Weekday)
             };
+
+            // Заполнение EnumListBox и SeasonHandleComboBox элементами
             EnumsListBox.DataSource = enums;
             EnumsListBox.SelectedIndex = 0;
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
