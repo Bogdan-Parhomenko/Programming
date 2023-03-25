@@ -79,10 +79,8 @@ namespace Programming.View
                 typeof(Season),
                 typeof(Weekday)
             };
-            //EnumsListBox.DataSource = enums;
-            //EnumsListBox.DisplayMember = "Name";
-            //EnumsListBox.ValueMember = "FullName";
-            EnumsListBox.Items.AddRange(enums);
+            EnumsListBox.DataSource = enums;
+            EnumsListBox.SelectedIndex = 0;
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
@@ -90,7 +88,8 @@ namespace Programming.View
             {
                 _rectangles[i] = new Rectangle(_random.NextDouble() * 101,
                     _random.NextDouble() * 101,
-                    Enum.GetNames(typeof(Color))[_random.Next(8)]);
+                    Enum.GetNames(typeof(Color))[_random.Next(8)],
+                    new Point2D(_random.NextDouble()*101, _random.NextDouble() * 101));
                 RectanglesListBox.Items.Add($"Rectangle {i+1}");
             }
 
@@ -109,8 +108,8 @@ namespace Programming.View
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
-            ValuesListBox.Items.AddRange(Enum.GetNames(Type.GetType(EnumsListBox.Text)));
+            ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
+            ValuesListBox.SelectedIndex = 0;
         }
 
         // При обновлении значения в ValueListBox выводим номер этого значения в ValueTextBox
@@ -176,6 +175,8 @@ namespace Programming.View
             LengthTextBox.Text = _currentRectangle.Length.ToString();
             WidthTextBox.Text = _currentRectangle.Width.ToString();
             ColorTextBox.Text = _currentRectangle.Color;
+            XTextBox.Text = _currentRectangle.Center.X.ToString();
+            YTextBox.Text = _currentRectangle.Center.Y.ToString();
         }
 
         // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie
