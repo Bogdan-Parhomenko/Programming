@@ -10,6 +10,7 @@ namespace Programming.Model.Classes
         private int _grade;
 
         public string Name { get; set; }
+
         public int Year
         {
             get
@@ -23,6 +24,7 @@ namespace Programming.Model.Classes
                 _year = value;
             }
         }
+
         public int HoursCount
         {
             get
@@ -35,6 +37,7 @@ namespace Programming.Model.Classes
                 _hoursCount = value;
             }
         }
+
         public int Grade
         { 
             get

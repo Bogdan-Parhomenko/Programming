@@ -11,7 +11,9 @@ namespace Programming.Model.Classes
         private double _rate;
 
         public string Title { get; set; }
+
         public string Genre { get; set; }
+
         public int DurationInMinutes
         {
             get
@@ -24,6 +26,7 @@ namespace Programming.Model.Classes
                 _durationInMinutes = value;
             }
         }
+
         public int Year
         {
             get
@@ -37,6 +40,7 @@ namespace Programming.Model.Classes
                 _year = value;
             }
         }
+
         public double Rate
         {
             get

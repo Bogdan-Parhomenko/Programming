@@ -14,6 +14,7 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
+        // Создание переменной _random
         private Random _random = new Random();
 
         // Создаем массива и переменной класса Rectangle
@@ -58,7 +59,6 @@ namespace Programming.View
 
                 i++;
             }
-
             return maxRateMovie;
         }
 
@@ -100,9 +100,9 @@ namespace Programming.View
             {
                 _movies[i] = new Movie($"Movie { i + 1 }",
                     Enum.GetNames(typeof(Genre))[_random.Next(6)],
-                    _random.Next(301),
+                    _random.Next(1, 301),
                     _random.Next(1900, DateTime.Now.Year),
-                    _random.Next(11));
+                    _random.Next(1, 11));
                 MoviesListBox.Items.Add($"Movie {i + 1}");
             }
         }
@@ -177,8 +177,8 @@ namespace Programming.View
             LengthTextBox.Text = _currentRectangle.Length.ToString();
             WidthTextBox.Text = _currentRectangle.Width.ToString();
             ColorTextBox.Text = _currentRectangle.Color;
-            XTextBox.Text = _currentRectangle.Center.X.ToString();
-            YTextBox.Text = _currentRectangle.Center.Y.ToString();
+            XCenterTextBox.Text = _currentRectangle.Center.X.ToString();
+            YCenterTextBox.Text = _currentRectangle.Center.Y.ToString();
         }
 
         // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie

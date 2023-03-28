@@ -52,6 +52,11 @@
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
             this.ClassesMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.CenterGroupBox = new System.Windows.Forms.GroupBox();
+            this.YCenterTextBox = new System.Windows.Forms.TextBox();
+            this.YCenterLabel = new System.Windows.Forms.Label();
+            this.XCenterLabel = new System.Windows.Forms.Label();
+            this.XCenterTextBox = new System.Windows.Forms.TextBox();
             this.RectangleButton = new System.Windows.Forms.Button();
             this.ColorTextBox = new System.Windows.Forms.TextBox();
             this.WidthTextBox = new System.Windows.Forms.TextBox();
@@ -73,11 +78,6 @@
             this.DurationInMinutesLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MoviesListBox = new System.Windows.Forms.ListBox();
-            this.CenterGroupBox = new System.Windows.Forms.GroupBox();
-            this.XTextBox = new System.Windows.Forms.TextBox();
-            this.YTextBox = new System.Windows.Forms.TextBox();
-            this.XLabel = new System.Windows.Forms.Label();
-            this.YLabel = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.EnumerationsTabPage.SuspendLayout();
             this.EnumerationMainTableLayoutPanel.SuspendLayout();
@@ -88,8 +88,8 @@
             this.ClassesTabPage.SuspendLayout();
             this.ClassesMainTableLayoutPanel.SuspendLayout();
             this.RectanglesGroupBox.SuspendLayout();
-            this.MoviesGroupBox.SuspendLayout();
             this.CenterGroupBox.SuspendLayout();
+            this.MoviesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -360,9 +360,56 @@
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
             // 
+            // CenterGroupBox
+            // 
+            this.CenterGroupBox.Controls.Add(this.YCenterTextBox);
+            this.CenterGroupBox.Controls.Add(this.YCenterLabel);
+            this.CenterGroupBox.Controls.Add(this.XCenterLabel);
+            this.CenterGroupBox.Controls.Add(this.XCenterTextBox);
+            this.CenterGroupBox.Location = new System.Drawing.Point(132, 139);
+            this.CenterGroupBox.Name = "CenterGroupBox";
+            this.CenterGroupBox.Size = new System.Drawing.Size(150, 103);
+            this.CenterGroupBox.TabIndex = 8;
+            this.CenterGroupBox.TabStop = false;
+            this.CenterGroupBox.Text = "Center";
+            // 
+            // YCenterTextBox
+            // 
+            this.YCenterTextBox.Location = new System.Drawing.Point(9, 71);
+            this.YCenterTextBox.Name = "YCenterTextBox";
+            this.YCenterTextBox.ReadOnly = true;
+            this.YCenterTextBox.Size = new System.Drawing.Size(100, 20);
+            this.YCenterTextBox.TabIndex = 10;
+            // 
+            // YCenterLabel
+            // 
+            this.YCenterLabel.AutoSize = true;
+            this.YCenterLabel.Location = new System.Drawing.Point(6, 55);
+            this.YCenterLabel.Name = "YCenterLabel";
+            this.YCenterLabel.Size = new System.Drawing.Size(17, 13);
+            this.YCenterLabel.TabIndex = 12;
+            this.YCenterLabel.Text = "Y:";
+            // 
+            // XCenterLabel
+            // 
+            this.XCenterLabel.AutoSize = true;
+            this.XCenterLabel.Location = new System.Drawing.Point(6, 16);
+            this.XCenterLabel.Name = "XCenterLabel";
+            this.XCenterLabel.Size = new System.Drawing.Size(17, 13);
+            this.XCenterLabel.TabIndex = 11;
+            this.XCenterLabel.Text = "X:";
+            // 
+            // XCenterTextBox
+            // 
+            this.XCenterTextBox.Location = new System.Drawing.Point(9, 32);
+            this.XCenterTextBox.Name = "XCenterTextBox";
+            this.XCenterTextBox.ReadOnly = true;
+            this.XCenterTextBox.Size = new System.Drawing.Size(100, 20);
+            this.XCenterTextBox.TabIndex = 9;
+            // 
             // RectangleButton
             // 
-            this.RectangleButton.Location = new System.Drawing.Point(132, 353);
+            this.RectangleButton.Location = new System.Drawing.Point(132, 248);
             this.RectangleButton.Name = "RectangleButton";
             this.RectangleButton.Size = new System.Drawing.Size(75, 25);
             this.RectangleButton.TabIndex = 7;
@@ -457,7 +504,7 @@
             // 
             // MovieButton
             // 
-            this.MovieButton.Location = new System.Drawing.Point(132, 353);
+            this.MovieButton.Location = new System.Drawing.Point(132, 217);
             this.MovieButton.Name = "MovieButton";
             this.MovieButton.Size = new System.Drawing.Size(75, 25);
             this.MovieButton.TabIndex = 11;
@@ -562,51 +609,6 @@
             this.MoviesListBox.TabIndex = 0;
             this.MoviesListBox.SelectedIndexChanged += new System.EventHandler(this.MoviesListBox_SelectedIndexChanged);
             // 
-            // CenterGroupBox
-            // 
-            this.CenterGroupBox.Controls.Add(this.YTextBox);
-            this.CenterGroupBox.Controls.Add(this.YLabel);
-            this.CenterGroupBox.Controls.Add(this.XLabel);
-            this.CenterGroupBox.Controls.Add(this.XTextBox);
-            this.CenterGroupBox.Location = new System.Drawing.Point(132, 139);
-            this.CenterGroupBox.Name = "CenterGroupBox";
-            this.CenterGroupBox.Size = new System.Drawing.Size(150, 129);
-            this.CenterGroupBox.TabIndex = 8;
-            this.CenterGroupBox.TabStop = false;
-            this.CenterGroupBox.Text = "Center";
-            // 
-            // XTextBox
-            // 
-            this.XTextBox.Location = new System.Drawing.Point(9, 32);
-            this.XTextBox.Name = "XTextBox";
-            this.XTextBox.Size = new System.Drawing.Size(100, 20);
-            this.XTextBox.TabIndex = 9;
-            // 
-            // YTextBox
-            // 
-            this.YTextBox.Location = new System.Drawing.Point(9, 71);
-            this.YTextBox.Name = "YTextBox";
-            this.YTextBox.Size = new System.Drawing.Size(100, 20);
-            this.YTextBox.TabIndex = 10;
-            // 
-            // XLabel
-            // 
-            this.XLabel.AutoSize = true;
-            this.XLabel.Location = new System.Drawing.Point(6, 16);
-            this.XLabel.Name = "XLabel";
-            this.XLabel.Size = new System.Drawing.Size(17, 13);
-            this.XLabel.TabIndex = 11;
-            this.XLabel.Text = "X:";
-            // 
-            // YLabel
-            // 
-            this.YLabel.AutoSize = true;
-            this.YLabel.Location = new System.Drawing.Point(6, 55);
-            this.YLabel.Name = "YLabel";
-            this.YLabel.Size = new System.Drawing.Size(17, 13);
-            this.YLabel.TabIndex = 12;
-            this.YLabel.Text = "Y:";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,10 +633,10 @@
             this.ClassesMainTableLayoutPanel.ResumeLayout(false);
             this.RectanglesGroupBox.ResumeLayout(false);
             this.RectanglesGroupBox.PerformLayout();
-            this.MoviesGroupBox.ResumeLayout(false);
-            this.MoviesGroupBox.PerformLayout();
             this.CenterGroupBox.ResumeLayout(false);
             this.CenterGroupBox.PerformLayout();
+            this.MoviesGroupBox.ResumeLayout(false);
+            this.MoviesGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -686,10 +688,10 @@
         private System.Windows.Forms.TextBox DurationInMinutesTextBox;
         private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.GroupBox CenterGroupBox;
-        private System.Windows.Forms.TextBox YTextBox;
-        private System.Windows.Forms.Label YLabel;
-        private System.Windows.Forms.Label XLabel;
-        private System.Windows.Forms.TextBox XTextBox;
+        private System.Windows.Forms.TextBox YCenterTextBox;
+        private System.Windows.Forms.Label YCenterLabel;
+        private System.Windows.Forms.Label XCenterLabel;
+        private System.Windows.Forms.TextBox XCenterTextBox;
     }
 }
 

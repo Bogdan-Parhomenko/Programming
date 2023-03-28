@@ -1,6 +1,4 @@
-﻿using System.Drawing.Text;
-
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Point2D
     {
@@ -19,6 +17,7 @@ namespace Programming.Model.Classes
                 _x = value;
             }
         }
+
         public double Y
         {
             get
@@ -30,6 +29,11 @@ namespace Programming.Model.Classes
                 Validator.AssertOnPositiveValue(value);
                 _y = value;
             }
+        }
+
+        public Point2D()
+        {
+
         }
 
         public Point2D(double x, double y)

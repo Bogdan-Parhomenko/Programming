@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Classes\Point2D.cs" />
+    <Compile Include="Model\Classes\Ring.cs" />
     <Compile Include="Model\Classes\Validator.cs" />
     <Compile Include="Model\Classes\Discipline.cs" />
     <Compile Include="Model\Classes\Contact.cs" />

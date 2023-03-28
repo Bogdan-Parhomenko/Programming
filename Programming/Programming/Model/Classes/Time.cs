@@ -1,4 +1,6 @@
-﻿namespace Programming.Model.Classes
+﻿using System.Windows.Forms;
+
+namespace Programming.Model.Classes
 {
     public class Time
     {
@@ -18,6 +20,7 @@
                 _hours = value;
             }
         }
+
         public int Minutes
         {
             get
@@ -30,6 +33,7 @@
                 _minutes = value;
             }
         }
+
         public int Seconds
         {
             get
@@ -41,6 +45,18 @@
                 Validator.AssertValueInRange(value, 0, 59);
                 _seconds = value;
             }
+        }
+
+        public Time()
+        {
+
+        }
+
+        public Time(int hours, int minutes, int seconds)
+        {
+            Hours = hours;
+            Minutes = minutes;
+            Seconds = seconds;
         }
     }
 }

@@ -8,8 +8,11 @@
         private int _durationInMinutes;
 
         public string Name { get; set; }
+
         public string Singer { get; set; }
+
         public string Genre { get; set; }
+
         public int DurationInMinutes
         {
             get

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Programming.Model.Classes
@@ -10,7 +9,8 @@ namespace Programming.Model.Classes
         {
             if (value <= 0)
             {
-                throw new ArgumentException($"В свойство {propertyName} нельзя присвоить отрицательное значение");
+                throw new ArgumentException($"В свойство {propertyName}" +
+                                            $" нельзя присвоить отрицательное значение");
             }
         }
 
@@ -18,7 +18,8 @@ namespace Programming.Model.Classes
         {
             if (value <= 0.0)
             {
-                throw new ArgumentException($"В свойство {propertyName} нельзя присвоить отрицательное значение");
+                throw new ArgumentException($"В свойство {propertyName}" +
+                                            $" нельзя присвоить отрицательное значение");
             }
         }
 
@@ -26,7 +27,8 @@ namespace Programming.Model.Classes
         {
             if (value < min || value > max)
             {
-                throw new ArgumentException($"В свойство {propertyName} нельзя присвоить значение которое меньше {min} или больше {max}");
+                throw new ArgumentException($"В свойство {propertyName}" +
+                                            $" нельзя присвоить значение которое меньше {min} или больше {max}");
             }
         }
 
@@ -34,7 +36,8 @@ namespace Programming.Model.Classes
         {
             if (value < min || value > max)
             {
-                throw new ArgumentException($"В свойство {propertyName} нельзя присвоить значение которое меньше {min} или больше {max}");
+                throw new ArgumentException($"В свойство {propertyName}" +
+                                            $" нельзя присвоить значение которое меньше {min} или больше {max}");
             }
         }
     }

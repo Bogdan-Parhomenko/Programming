@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Programming.Model.Classes
 {
@@ -38,19 +38,11 @@ namespace Programming.Model.Classes
 
         public string PhoneNumber { get; set; }
 
-        private static void AssertStringContainsOnlyLetters(string value)
+        private static void AssertStringContainsOnlyLetters(string value, [CallerMemberName] string propertyName = "")
         {
-            var stackTrace = new StackTrace();
-            var stackFrame = stackTrace.GetFrame(1);
-
-            if (Regex.IsMatch(value, "^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(value, "^[a-zA-Z]+$"))
             {
-            }
-            else
-            {
-                throw new ArgumentException($"Поле {stackFrame.GetMethod().Name}" +
-                                            $" класса {stackFrame.GetMethod().DeclaringType.Name}" +
-                                            $" должно содержать только буквы английского алфавита");
+                throw new ArgumentException($"Поле {propertyName} должно содержать только буквы английского алфавита");
             }
         }
 

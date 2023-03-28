@@ -19,6 +19,7 @@
                 _length = value;
             }
         }
+
         public double Width
         {
             get
@@ -31,19 +32,10 @@
                 _width = value;
             }
         }
+
         public string Color { get; set; }
 
-        public Point2D Center
-        {
-            get
-            {
-                return _center;
-            }
-            set
-            {
-                _center = value;
-            }
-        }
+        public Point2D Center { get; set; }
 
         public Rectangle()
         {
