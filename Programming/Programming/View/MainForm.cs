@@ -65,6 +65,7 @@ namespace Programming.View
         public MainForm()
         {
             InitializeComponent();
+            Flight rf = new Flight("ae", "aef", -2);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
