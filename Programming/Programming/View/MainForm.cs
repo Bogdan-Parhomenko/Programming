@@ -179,6 +179,7 @@ namespace Programming.View
             ColorTextBox.Text = _currentRectangle.Color;
             XCenterTextBox.Text = _currentRectangle.Center.X.ToString();
             YCenterTextBox.Text = _currentRectangle.Center.Y.ToString();
+            IdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie

@@ -78,6 +78,8 @@
             this.DurationInMinutesLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MoviesListBox = new System.Windows.Forms.ListBox();
+            this.IdLabel = new System.Windows.Forms.Label();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
             this.TabControl.SuspendLayout();
             this.EnumerationsTabPage.SuspendLayout();
             this.EnumerationMainTableLayoutPanel.SuspendLayout();
@@ -343,6 +345,8 @@
             // 
             // RectanglesGroupBox
             // 
+            this.RectanglesGroupBox.Controls.Add(this.IdTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.IdLabel);
             this.RectanglesGroupBox.Controls.Add(this.CenterGroupBox);
             this.RectanglesGroupBox.Controls.Add(this.RectangleButton);
             this.RectanglesGroupBox.Controls.Add(this.ColorTextBox);
@@ -409,7 +413,7 @@
             // 
             // RectangleButton
             // 
-            this.RectangleButton.Location = new System.Drawing.Point(132, 248);
+            this.RectangleButton.Location = new System.Drawing.Point(132, 287);
             this.RectangleButton.Name = "RectangleButton";
             this.RectangleButton.Size = new System.Drawing.Size(75, 25);
             this.RectangleButton.TabIndex = 7;
@@ -609,6 +613,23 @@
             this.MoviesListBox.TabIndex = 0;
             this.MoviesListBox.SelectedIndexChanged += new System.EventHandler(this.MoviesListBox_SelectedIndexChanged);
             // 
+            // IdLabel
+            // 
+            this.IdLabel.AutoSize = true;
+            this.IdLabel.Location = new System.Drawing.Point(129, 245);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(19, 13);
+            this.IdLabel.TabIndex = 9;
+            this.IdLabel.Text = "Id:";
+            // 
+            // IdTextBox
+            // 
+            this.IdTextBox.Location = new System.Drawing.Point(132, 261);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
+            this.IdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdTextBox.TabIndex = 10;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,6 +713,8 @@
         private System.Windows.Forms.Label YCenterLabel;
         private System.Windows.Forms.Label XCenterLabel;
         private System.Windows.Forms.TextBox XCenterTextBox;
+        private System.Windows.Forms.TextBox IdTextBox;
+        private System.Windows.Forms.Label IdLabel;
     }
 }
 
