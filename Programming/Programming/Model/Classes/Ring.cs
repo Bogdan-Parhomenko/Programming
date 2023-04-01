@@ -44,11 +44,7 @@ namespace Programming.Model.Classes
 
         public double Area
         {
-            get
-            {
-                _area = Math.PI * (Math.Pow(_outerRadius, 2) - Math.Pow(_innerRadius, 2));
-                return _area;
-            }
+            get => Math.PI * (Math.Pow(_outerRadius, 2) - Math.Pow(_innerRadius, 2));
             private set
             {
                 Validator.AssertOnPositiveValue(value);
