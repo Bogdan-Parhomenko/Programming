@@ -8,14 +8,10 @@ namespace Programming.Model.Classes
     {
         private string _name;
         private string _surname;
-        private string _phoneNumber;
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
             set
             {
                 AssertStringContainsOnlyLetters(value);
@@ -25,10 +21,7 @@ namespace Programming.Model.Classes
 
         public string Surname
         {
-            get
-            {
-                return _surname;
-            }
+            get => _surname;
             set
             {
                 AssertStringContainsOnlyLetters(value);

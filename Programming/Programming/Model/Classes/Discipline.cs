@@ -4,7 +4,6 @@ namespace Programming.Model.Classes
 {
     public class Discipline
     {
-        private string _name;
         private int _year;
         private int _hoursCount;
         private int _grade;
@@ -13,10 +12,7 @@ namespace Programming.Model.Classes
 
         public int Year
         {
-            get
-            {
-                return _year;
-            }
+            get => _year;
             set
             {
                 var currentYear = DateTime.Now.Year;
@@ -27,10 +23,7 @@ namespace Programming.Model.Classes
 
         public int HoursCount
         {
-            get
-            {
-                return _hoursCount;
-            }
+            get => _hoursCount;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -40,10 +33,7 @@ namespace Programming.Model.Classes
 
         public int Grade
         { 
-            get
-            {
-                return _grade;
-            }
+            get => _grade;
             set
             {
                 Validator.AssertValueInRange(value, 1, 5);

@@ -4,15 +4,10 @@
     {
         private double _length;
         private double _width;
-        private string _color;
-        private Point2D _center;
 
         public double Length
         {
-            get
-            {
-                return _length;
-            }
+            get => _length;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -22,10 +17,7 @@
 
         public double Width
         {
-            get
-            {
-                return _width;
-            }
+            get => _width;
             set
             {
                 Validator.AssertOnPositiveValue(value);

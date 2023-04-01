@@ -7,10 +7,7 @@
 
         public double X
         {
-            get
-            {
-                return _x;
-            }
+            get => _x;
             private set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -20,10 +17,7 @@
 
         public double Y
         {
-            get
-            {
-                return _y;
-            }
+            get => _y;
             private set
             {
                 Validator.AssertOnPositiveValue(value);

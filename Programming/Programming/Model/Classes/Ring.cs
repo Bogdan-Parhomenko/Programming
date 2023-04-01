@@ -4,7 +4,6 @@ namespace Programming.Model.Classes
 {
     public class Ring
     {
-        private Point2D _center;
         private double _outerRadius;
         private double _innerRadius;
         private double _area;
@@ -13,16 +12,15 @@ namespace Programming.Model.Classes
 
         public double OuterRadius
         {
-            get
-            {
-                return _outerRadius;
-            }
+            get => _outerRadius;
             set
             {
                 Validator.AssertOnPositiveValue(value);
                 if (value < _innerRadius)
                 {
-                    throw new ArgumentException("Значение внешнего радиуса не может быть меньше значения внутреннего радиуса");
+                    var message = "Значение внешнего радиуса не может быть" +
+                                  " меньше значения внутреннего радиуса";
+                    throw new ArgumentException(message);
                 }
                 _outerRadius = value;
             }
@@ -30,16 +28,15 @@ namespace Programming.Model.Classes
 
         public double InnerRadius
         {
-            get
-            {
-                return _innerRadius;
-            }
+            get => _innerRadius;
             set
             {
                 Validator.AssertOnPositiveValue(value);
                 if (value > _outerRadius)
                 {
-                    throw new ArgumentException("Значение внутреннего радиуса не может быть больше значения внешнего радиуса");
+                    var message = "Значение внутреннего радиуса не может быть" +
+                                  " больше значения внешнего радиуса";
+                    throw new ArgumentException(message);
                 }
                 _innerRadius = value;
             }

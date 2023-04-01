@@ -10,10 +10,7 @@ namespace Programming.Model.Classes
 
         public int Hours
         {
-            get
-            {
-                return _hours;
-            }
+            get => _hours;
             set
             {
                 Validator.AssertValueInRange(value, 0, 23);
@@ -23,10 +20,7 @@ namespace Programming.Model.Classes
 
         public int Minutes
         {
-            get
-            {
-                return _minutes;
-            }
+            get => _minutes;
             set
             {
                 Validator.AssertValueInRange(value, 0, 59);
@@ -36,10 +30,7 @@ namespace Programming.Model.Classes
 
         public int Seconds
         {
-            get
-            {
-                return _seconds;
-            }
+            get => _seconds;
             set
             {
                 Validator.AssertValueInRange(value, 0, 59);

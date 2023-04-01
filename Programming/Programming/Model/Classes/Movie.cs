@@ -4,8 +4,6 @@ namespace Programming.Model.Classes
 {
     public class Movie
     {
-        private string _title;
-        private string _genre;
         private int _durationInMinutes;
         private int _year;
         private double _rate;
@@ -16,10 +14,7 @@ namespace Programming.Model.Classes
 
         public int DurationInMinutes
         {
-            get
-            {
-                return _durationInMinutes;
-            }
+            get => _durationInMinutes;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -29,10 +24,7 @@ namespace Programming.Model.Classes
 
         public int Year
         {
-            get
-            {
-                return _year;
-            }
+            get => _year;
             set
             {
                 var currentYear = DateTime.Now.Year;
@@ -43,10 +35,7 @@ namespace Programming.Model.Classes
 
         public double Rate
         {
-            get
-            {
-                return _rate;
-            }
+            get => _rate;
             set
             {
                 Validator.AssertValueInRange(value, 0.0, 10.0);

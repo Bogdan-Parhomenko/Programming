@@ -2,8 +2,6 @@
 {
     public class Flight
     {
-        private string _departurePoint;
-        private string _destination;
         private int _flightTimeInMinutes;
 
         public string DeparturePoint { get; set; }
@@ -12,10 +10,7 @@
 
         public int FlightTimeInMinutes
         {
-            get
-            {
-                return _flightTimeInMinutes;
-            }
+            get => _flightTimeInMinutes;
             set
             {
                 Validator.AssertOnPositiveValue(value);

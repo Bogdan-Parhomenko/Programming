@@ -2,9 +2,6 @@
 {
     public class Song
     {
-        private string _name;
-        private string _singer;
-        private string _genre;
         private int _durationInMinutes;
 
         public string Name { get; set; }
@@ -15,10 +12,7 @@
 
         public int DurationInMinutes
         {
-            get
-            {
-                return _durationInMinutes;
-            }
+            get => _durationInMinutes;
             set
             {
                 Validator.AssertOnPositiveValue(value);
