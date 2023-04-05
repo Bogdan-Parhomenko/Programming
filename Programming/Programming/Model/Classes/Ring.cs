@@ -6,7 +6,6 @@ namespace Programming.Model.Classes
     {
         private double _outerRadius;
         private double _innerRadius;
-        private double _area;
 
         public Point2D Center { get; set; }
 
@@ -45,11 +44,6 @@ namespace Programming.Model.Classes
         public double Area
         {
             get => Math.PI * (Math.Pow(_outerRadius, 2) - Math.Pow(_innerRadius, 2));
-            private set
-            {
-                Validator.AssertOnPositiveValue(value);
-                _area = value;
-            }
         }
 
         public Ring()

@@ -31,7 +31,7 @@
 
         public static int AllRectanglesCount { get; private set; }
 
-        public int Id { get; private set; }
+        public int Id { get; }
 
         public Rectangle()
         {
