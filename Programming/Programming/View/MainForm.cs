@@ -169,7 +169,7 @@ namespace Programming.View
             }
         }
 
-        // При обновлении значения RectanglesListBox запоминаем выбранный Rectangle в _currentRectangle
+        // При обновлении значения RectanglesListBox запоминаем выбранный Rectangle в _currentRectangle 
         // и заполняем Принадлежащие ему TextBox
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
