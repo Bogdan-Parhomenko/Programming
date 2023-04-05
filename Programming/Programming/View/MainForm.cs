@@ -81,9 +81,9 @@ namespace Programming.View
             };
 
             // Заполнение EnumListBox и SeasonHandleComboBox элементами
-            EnumsListBox.DataSource = enums;
-            EnumsListBox.SelectedIndex = 0;
-            SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
+            EnumsEnumsListBox.DataSource = enums;
+            EnumsEnumsListBox.SelectedIndex = 0;
+            EnumsSeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             // Инициализация массива _rectangles
             for (var i = 0; i < 5; i++)
@@ -92,7 +92,7 @@ namespace Programming.View
                     _random.NextDouble() * 101,
                     Enum.GetNames(typeof(Color))[_random.Next(8)],
                     new Point2D(_random.NextDouble()*101, _random.NextDouble() * 101));
-                RectanglesListBox.Items.Add($"Rectangle {i+1}");
+                ClassesRectanglesListBox.Items.Add($"Rectangle {i+1}");
             }
 
             // Инициализация массива _movies
@@ -103,41 +103,41 @@ namespace Programming.View
                     _random.Next(1, 301),
                     _random.Next(1900, DateTime.Now.Year),
                     _random.Next(1, 11));
-                MoviesListBox.Items.Add($"Movie {i + 1}");
+                ClassesMoviesListBox.Items.Add($"Movie {i + 1}");
             }
         }
 
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
-            ValuesListBox.SelectedIndex = 0;
+            EnumsValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsEnumsListBox.Text));
+            EnumsValuesListBox.SelectedIndex = 0;
         }
 
         // При обновлении значения в ValueListBox выводим номер этого значения в ValueTextBox
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsListBox.Text), ValuesListBox.Text)).ToString();
+            EnumsIntValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsEnumsListBox.Text), EnumsValuesListBox.Text)).ToString();
         }
 
         // Вводим текст и выводим день недели с его номером при совпадении
         private void WeekdayParsingButton_Click(object sender, EventArgs e)
         {
-            if(Enum.IsDefined(typeof(Weekday), WeekdayParsingTextBox.Text))
+            if(Enum.IsDefined(typeof(Weekday), EnumsWeekdayParsingTextBox.Text))
             {
-                var weekDayNumber = (int)Enum.Parse(typeof(Weekday),WeekdayParsingTextBox.Text);
-                WeekdayAnswerLable.Text = $"Это день недели ( {WeekdayParsingTextBox.Text} = {weekDayNumber} )";
+                var weekDayNumber = (int)Enum.Parse(typeof(Weekday),EnumsWeekdayParsingTextBox.Text);
+                EnumsWeekdayAnswerLable.Text = $"Это день недели ( {EnumsWeekdayParsingTextBox.Text} = {weekDayNumber} )";
             }
             else
             {
-                WeekdayAnswerLable.Text = "Нет такого дня недели";
+                EnumsWeekdayAnswerLable.Text = "Нет такого дня недели";
             }
         }
 
         // В зависимости от выбранного времени года выполняем определенное действие
         private void SeasonHandleButton_Click(object sender, EventArgs e)
         {
-            switch (SeasonHandleComboBox.Text)
+            switch (EnumsSeasonHandleComboBox.Text)
             {
                 case "Summer":
                 {
@@ -173,25 +173,25 @@ namespace Programming.View
         // и заполняем Принадлежащие ему TextBox
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
-            LengthTextBox.Text = _currentRectangle.Length.ToString();
-            WidthTextBox.Text = _currentRectangle.Width.ToString();
-            ColorTextBox.Text = _currentRectangle.Color;
-            XCenterTextBox.Text = _currentRectangle.Center.X.ToString();
-            YCenterTextBox.Text = _currentRectangle.Center.Y.ToString();
-            IdTextBox.Text = _currentRectangle.Id.ToString();
+            _currentRectangle = _rectangles[ClassesRectanglesListBox.SelectedIndex];
+            ClassesLengthTextBox.Text = _currentRectangle.Length.ToString();
+            ClassesWidthTextBox.Text = _currentRectangle.Width.ToString();
+            ClassesColorTextBox.Text = _currentRectangle.Color;
+            ClassesXCenterTextBox.Text = _currentRectangle.Center.X.ToString();
+            ClassesYCenterTextBox.Text = _currentRectangle.Center.Y.ToString();
+            ClassesIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie
         // и заполняем Принадлежащие ему TextBox
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentMovie = _movies[MoviesListBox.SelectedIndex];
-            TitleTextBox.Text = _currentMovie.Title;
-            DurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
-            YearTextBox.Text = _currentMovie.Year.ToString();
-            GenreTextBox.Text = _currentMovie.Genre;
-            RateTextBox.Text = _currentMovie.Rate.ToString();
+            _currentMovie = _movies[ClassesMoviesListBox.SelectedIndex];
+            ClassesTitleTextBox.Text = _currentMovie.Title;
+            ClassesDurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
+            ClassesYearTextBox.Text = _currentMovie.Year.ToString();
+            ClassesGenreTextBox.Text = _currentMovie.Genre;
+            ClassesRateTextBox.Text = _currentMovie.Rate.ToString();
         }
 
         // При изменении значения в LengthTextBox проверяем верность введенных данных
@@ -200,12 +200,12 @@ namespace Programming.View
         {
             try
             {
-                LengthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Length = Double.Parse(LengthTextBox.Text);
+                ClassesLengthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Length = Double.Parse(ClassesLengthTextBox.Text);
             }
             catch
             {
-                LengthTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesLengthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -215,12 +215,12 @@ namespace Programming.View
         {
             try
             {
-                WidthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Width = Double.Parse(WidthTextBox.Text);
+                ClassesWidthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Width = Double.Parse(ClassesWidthTextBox.Text);
             }
             catch
             {
-                WidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesWidthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -230,12 +230,12 @@ namespace Programming.View
         {
             try
             {
-                ColorTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Color = (Enum.Parse(typeof(Color), ColorTextBox.Text)).ToString();
+                ClassesColorTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Color = (Enum.Parse(typeof(Color), ClassesColorTextBox.Text)).ToString();
             }
             catch
             {
-                ColorTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesColorTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -245,12 +245,12 @@ namespace Programming.View
         {
             try
             {
-                TitleTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Title = TitleTextBox.Text;
+                ClassesTitleTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Title = ClassesTitleTextBox.Text;
             }
             catch
             {
-                TitleTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesTitleTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -260,12 +260,12 @@ namespace Programming.View
         {
             try
             {
-                DurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.DurationInMinutes = Int32.Parse(DurationInMinutesTextBox.Text);
+                ClassesDurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.DurationInMinutes = Int32.Parse(ClassesDurationInMinutesTextBox.Text);
             }
             catch
             {
-                DurationInMinutesTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesDurationInMinutesTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -275,12 +275,12 @@ namespace Programming.View
         {
             try
             {
-                YearTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Year = Int32.Parse(YearTextBox.Text);
+                ClassesYearTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Year = Int32.Parse(ClassesYearTextBox.Text);
             }
             catch
             {
-                YearTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesYearTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -290,12 +290,12 @@ namespace Programming.View
         {
             try
             {
-                GenreTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Genre = (Enum.Parse(typeof(Genre), GenreTextBox.Text)).ToString();
+                ClassesGenreTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Genre = (Enum.Parse(typeof(Genre), ClassesGenreTextBox.Text)).ToString();
             }
             catch
             {
-                GenreTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesGenreTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -305,25 +305,25 @@ namespace Programming.View
         {
             try
             {
-                RateTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Rate = Double.Parse(RateTextBox.Text);
+                ClassesRateTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.Rate = Double.Parse(ClassesRateTextBox.Text);
             }
             catch
             {
-                RateTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesRateTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
         // Находим Rectangle с максимальной шириной и выделяем его в ListBox
         private void RectangleButton_Click(object sender, EventArgs e)
         {
-            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();
+            ClassesRectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();
         }
 
         // Находим Movie с максимальным рейтингом и выделяем его в ListBox
         private void MovieButton_Click(object sender, EventArgs e)
         {
-            MoviesListBox.SelectedIndex = FindMovieWithMaxRate();
+            ClassesMoviesListBox.SelectedIndex = FindMovieWithMaxRate();
         }
     }
 }
