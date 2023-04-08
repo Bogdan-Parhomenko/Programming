@@ -33,6 +33,14 @@
 
         public int Id { get; }
 
+        public string Info
+        {
+            get
+            {
+                return $"{Id}: (X = {Center.X}; Y = {Center.Y}; W = {(int)Width}; H = {(int)Length})";
+            }
+        }
+
         public Rectangle()
         {
             AllRectanglesCount++;

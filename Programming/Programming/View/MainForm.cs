@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Programming.Model.Classes;
@@ -18,7 +19,7 @@ namespace Programming.View
         private Random _random = new Random();
 
         // Создаем массива и переменной класса Rectangle
-        private Rectangle[] _rectangles = new Rectangle[5];
+        private List<Rectangle> _rectangles = new List<Rectangle>();
         private Rectangle _currentRectangle;
 
         // Создаем массива и переменной класса Movie
@@ -88,11 +89,11 @@ namespace Programming.View
             // Инициализация массива _rectangles
             for (var i = 0; i < 5; i++)
             {
-                _rectangles[i] = new Rectangle(_random.NextDouble() * 101,
+                _rectangles.Add(new Rectangle(_random.NextDouble() * 101,
                     _random.NextDouble() * 101,
                     Enum.GetNames(typeof(Color))[_random.Next(8)],
-                    new Point2D(_random.NextDouble()*101, _random.NextDouble() * 101));
-                ClassesRectanglesListBox.Items.Add($"Rectangle {i+1}");
+                    new Point2D(_random.Next(1, 401), _random.Next(1, 401))));
+                ClassesRectanglesListBox.Items.Add($"Rectangle {_rectangles[i].Id}");
             }
 
             // Инициализация массива _movies
@@ -105,6 +106,9 @@ namespace Programming.View
                     _random.Next(1, 11));
                 ClassesMoviesListBox.Items.Add($"Movie {i + 1}");
             }
+
+            RectanglesAddingListBox.DisplayMember = nameof(Rectangle.Info);
+            RectanglesAddingListBox.DataSource = _rectangles;
         }
 
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
@@ -324,6 +328,15 @@ namespace Programming.View
         private void MovieButton_Click(object sender, EventArgs e)
         {
             ClassesMoviesListBox.SelectedIndex = FindMovieWithMaxRate();
+        }
+
+        private void RectanglesAddingButton_Click(object sender, EventArgs e)
+        {
+            _rectangles.Add(new Rectangle(Math.Round(_random.NextDouble() * 101),
+                Math.Round(_random.NextDouble() * 101),
+                Enum.GetNames(typeof(Color))[_random.Next(8)],
+                new Point2D(_random.Next(1, 401), _random.Next(1, 401))));
+            RectanglesAddingListBox.DataSource = _rectangles;
         }
     }
 }
