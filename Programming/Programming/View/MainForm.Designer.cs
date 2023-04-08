@@ -96,7 +96,7 @@
             this.RectanglesIdLabel = new System.Windows.Forms.Label();
             this.RectanglesAddingButton = new System.Windows.Forms.Button();
             this.SelectedRectangleLabel = new System.Windows.Forms.Label();
-            this.RectanglesDeleteingButton = new System.Windows.Forms.Button();
+            this.RectanglesDeletingButton = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.EnumsMainTableLayoutPanel.SuspendLayout();
@@ -666,7 +666,7 @@
             this.RectanglesTabPage.Controls.Add(this.RectanglesIdLabel);
             this.RectanglesTabPage.Controls.Add(this.RectanglesAddingButton);
             this.RectanglesTabPage.Controls.Add(this.SelectedRectangleLabel);
-            this.RectanglesTabPage.Controls.Add(this.RectanglesDeleteingButton);
+            this.RectanglesTabPage.Controls.Add(this.RectanglesDeletingButton);
             this.RectanglesTabPage.Location = new System.Drawing.Point(4, 22);
             this.RectanglesTabPage.Name = "RectanglesTabPage";
             this.RectanglesTabPage.Size = new System.Drawing.Size(792, 424);
@@ -701,6 +701,7 @@
             this.RectanglesXTextBox.Name = "RectanglesXTextBox";
             this.RectanglesXTextBox.Size = new System.Drawing.Size(100, 20);
             this.RectanglesXTextBox.TabIndex = 11;
+            this.RectanglesXTextBox.TextChanged += new System.EventHandler(this.RectanglesXTextBox_TextChanged);
             // 
             // RectanglesIdTextBox
             // 
@@ -773,6 +774,7 @@
             this.RectanglesAddingListBox.Name = "RectanglesAddingListBox";
             this.RectanglesAddingListBox.Size = new System.Drawing.Size(298, 186);
             this.RectanglesAddingListBox.TabIndex = 1;
+            this.RectanglesAddingListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesAddingListBox_SelectedIndexChanged);
             // 
             // RectanglesIdLabel
             // 
@@ -803,14 +805,15 @@
             this.SelectedRectangleLabel.TabIndex = 4;
             this.SelectedRectangleLabel.Text = "Selected Rectangle:";
             // 
-            // RectanglesDeleteingButton
+            // RectanglesDeletingButton
             // 
-            this.RectanglesDeleteingButton.Location = new System.Drawing.Point(107, 211);
-            this.RectanglesDeleteingButton.Name = "RectanglesDeleteingButton";
-            this.RectanglesDeleteingButton.Size = new System.Drawing.Size(75, 23);
-            this.RectanglesDeleteingButton.TabIndex = 3;
-            this.RectanglesDeleteingButton.Text = "Delete";
-            this.RectanglesDeleteingButton.UseVisualStyleBackColor = true;
+            this.RectanglesDeletingButton.Location = new System.Drawing.Point(107, 211);
+            this.RectanglesDeletingButton.Name = "RectanglesDeletingButton";
+            this.RectanglesDeletingButton.Size = new System.Drawing.Size(75, 23);
+            this.RectanglesDeletingButton.TabIndex = 3;
+            this.RectanglesDeletingButton.Text = "Delete";
+            this.RectanglesDeletingButton.UseVisualStyleBackColor = true;
+            this.RectanglesDeletingButton.Click += new System.EventHandler(this.RectanglesDeletingButton_Click);
             // 
             // MainForm
             // 
@@ -910,7 +913,7 @@
         private System.Windows.Forms.ListBox RectanglesAddingListBox;
         private System.Windows.Forms.Label SelectedRectangleLabel;
         private System.Windows.Forms.Button RectanglesAddingButton;
-        private System.Windows.Forms.Button RectanglesDeleteingButton;
+        private System.Windows.Forms.Button RectanglesDeletingButton;
         private System.Windows.Forms.TextBox RectanglesHeightTextBox;
         private System.Windows.Forms.TextBox RectanglesWidthTextBox;
         private System.Windows.Forms.TextBox RectanglesYTextBox;

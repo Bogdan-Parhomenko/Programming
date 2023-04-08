@@ -19,6 +19,8 @@ namespace Programming.View
         private Random _random = new Random();
 
         // Создаем массива и переменной класса Rectangle
+        private Rectangle[] _classesRectangles = new Rectangle[5];
+        private Rectangle _currentClassesRectangle;
         private List<Rectangle> _rectangles = new List<Rectangle>();
         private Rectangle _currentRectangle;
 
@@ -29,10 +31,10 @@ namespace Programming.View
         // Метод, который находит Rectangle с максимальной шириной и возвращает его индекс
         private int FindRectangleWithMaxWidth()
         {
-            var maxWidth = _rectangles[0].Width;
+            var maxWidth = _classesRectangles[0].Width;
             var i = 0;
             var maxWidthRectangle = 0;
-            foreach (var rectangle in _rectangles)
+            foreach (var rectangle in _classesRectangles)
             {
                 if (rectangle.Width > maxWidth)
                 {
@@ -89,11 +91,8 @@ namespace Programming.View
             // Инициализация массива _rectangles
             for (var i = 0; i < 5; i++)
             {
-                _rectangles.Add(new Rectangle(_random.NextDouble() * 101,
-                    _random.NextDouble() * 101,
-                    Enum.GetNames(typeof(Color))[_random.Next(8)],
-                    new Point2D(_random.Next(1, 401), _random.Next(1, 401))));
-                ClassesRectanglesListBox.Items.Add($"Rectangle {_rectangles[i].Id}");
+                _classesRectangles[i] = RectangleFactory.Randomize();
+                ClassesRectanglesListBox.Items.Add($"Rectangle {_classesRectangles[i].Id}");
             }
 
             // Инициализация массива _movies
@@ -108,7 +107,6 @@ namespace Programming.View
             }
 
             RectanglesAddingListBox.DisplayMember = nameof(Rectangle.Info);
-            RectanglesAddingListBox.DataSource = _rectangles;
         }
 
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
@@ -177,13 +175,13 @@ namespace Programming.View
         // и заполняем Принадлежащие ему TextBox
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentRectangle = _rectangles[ClassesRectanglesListBox.SelectedIndex];
-            ClassesLengthTextBox.Text = _currentRectangle.Length.ToString();
-            ClassesWidthTextBox.Text = _currentRectangle.Width.ToString();
-            ClassesColorTextBox.Text = _currentRectangle.Color;
-            ClassesXCenterTextBox.Text = _currentRectangle.Center.X.ToString();
-            ClassesYCenterTextBox.Text = _currentRectangle.Center.Y.ToString();
-            ClassesIdTextBox.Text = _currentRectangle.Id.ToString();
+            _currentClassesRectangle = _classesRectangles[ClassesRectanglesListBox.SelectedIndex];
+            ClassesLengthTextBox.Text = _currentClassesRectangle.Length.ToString();
+            ClassesWidthTextBox.Text = _currentClassesRectangle.Width.ToString();
+            ClassesColorTextBox.Text = _currentClassesRectangle.Color;
+            ClassesXCenterTextBox.Text = _currentClassesRectangle.Center.X.ToString();
+            ClassesYCenterTextBox.Text = _currentClassesRectangle.Center.Y.ToString();
+            ClassesIdTextBox.Text = _currentClassesRectangle.Id.ToString();
         }
 
         // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie
@@ -205,7 +203,7 @@ namespace Programming.View
             try
             {
                 ClassesLengthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Length = Double.Parse(ClassesLengthTextBox.Text);
+                _currentClassesRectangle.Length = Double.Parse(ClassesLengthTextBox.Text);
             }
             catch
             {
@@ -220,7 +218,7 @@ namespace Programming.View
             try
             {
                 ClassesWidthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Width = Double.Parse(ClassesWidthTextBox.Text);
+                _currentClassesRectangle.Width = Double.Parse(ClassesWidthTextBox.Text);
             }
             catch
             {
@@ -235,7 +233,7 @@ namespace Programming.View
             try
             {
                 ClassesColorTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Color = (Enum.Parse(typeof(Color), ClassesColorTextBox.Text)).ToString();
+                _currentClassesRectangle.Color = (Enum.Parse(typeof(Color), ClassesColorTextBox.Text)).ToString();
             }
             catch
             {
@@ -332,11 +330,43 @@ namespace Programming.View
 
         private void RectanglesAddingButton_Click(object sender, EventArgs e)
         {
-            _rectangles.Add(new Rectangle(Math.Round(_random.NextDouble() * 101),
-                Math.Round(_random.NextDouble() * 101),
-                Enum.GetNames(typeof(Color))[_random.Next(8)],
-                new Point2D(_random.Next(1, 401), _random.Next(1, 401))));
-            RectanglesAddingListBox.DataSource = _rectangles;
+            _rectangles.Add(RectangleFactory.Randomize());
+            RectanglesAddingListBox.Items.Add(_rectangles[_rectangles.Count - 1]);
+        }
+
+        private void RectanglesDeletingButton_Click(object sender, EventArgs e)
+        {
+            if (RectanglesAddingListBox.SelectedIndex != -1)
+            {
+                _rectangles.RemoveAt(RectanglesAddingListBox.SelectedIndex);
+                RectanglesAddingListBox.Items.RemoveAt(RectanglesAddingListBox.SelectedIndex);
+            }
+        }
+
+        private void RectanglesAddingListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RectanglesAddingListBox.SelectedIndex != -1)
+            {
+                _currentRectangle = _rectangles[RectanglesAddingListBox.SelectedIndex];
+                RectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
+                RectanglesXTextBox.Text = _currentRectangle.Center.X.ToString();
+                RectanglesYTextBox.Text = _currentRectangle.Center.Y.ToString();
+                RectanglesWidthTextBox.Text = _currentRectangle.Width.ToString();
+                RectanglesHeightTextBox.Text = _currentRectangle.Length.ToString();
+            }
+            else
+            {
+                RectanglesIdTextBox.Clear();
+                RectanglesXTextBox.Clear();
+                RectanglesYTextBox.Clear();
+                RectanglesWidthTextBox.Clear();
+                RectanglesHeightTextBox.Clear();
+            }
+        }
+
+        private void RectanglesXTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
