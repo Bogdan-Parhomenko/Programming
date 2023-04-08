@@ -9,7 +9,7 @@ namespace Programming.Model.Classes
             var dX = Math.Abs(rectangle1.Center.X - rectangle2.Center.X);
             var sumWidth = (rectangle1.Width + rectangle2.Width) / 2.0;
             var dY = Math.Abs(rectangle1.Center.Y - rectangle2.Center.Y);
-            var sumLength = (rectangle1.Length + rectangle2.Length) / 2.0;
+            var sumLength = (rectangle1.Height + rectangle2.Height) / 2.0;
 
             return dX < sumWidth && dY < sumLength;
         }

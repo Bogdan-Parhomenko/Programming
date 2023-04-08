@@ -25,8 +25,8 @@ namespace Programming.View
         private Rectangle _currentRectangle;
 
         // Создаем массива и переменной класса Movie
-        private Movie[] _movies = new Movie[5];
-        private Movie _currentMovie;
+        private Movie[] _classesMovies = new Movie[5];
+        private Movie _currentClassesMovie;
 
         // Метод, который находит Rectangle с максимальной шириной и возвращает его индекс
         private int FindRectangleWithMaxWidth()
@@ -49,10 +49,10 @@ namespace Programming.View
         // Метод, который находит Movie с максимальным рейтингом и возвращает его индекс
         private int FindMovieWithMaxRate()
         {
-            var maxRate = _movies[0].Rate;
+            var maxRate = _classesMovies[0].Rate;
             var i = 0;
             var maxRateMovie = 0;
-            foreach (var movie in _movies)
+            foreach (var movie in _classesMovies)
             {
                 if (movie.Rate > maxRate)
                 {
@@ -95,10 +95,10 @@ namespace Programming.View
                 ClassesRectanglesListBox.Items.Add($"Rectangle {_classesRectangles[i].Id}");
             }
 
-            // Инициализация массива _movies
+            // Инициализация массива _classesMovies
             for (var i = 0; i < 5; i++)
             {
-                _movies[i] = new Movie($"Movie { i + 1 }",
+                _classesMovies[i] = new Movie($"Movie { i + 1 }",
                     Enum.GetNames(typeof(Genre))[_random.Next(6)],
                     _random.Next(1, 301),
                     _random.Next(1900, DateTime.Now.Year),
@@ -110,20 +110,20 @@ namespace Programming.View
         }
 
         // При обновлении значения в EnumListBox обновляем значение в ValueListBox
-        private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnumsEnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             EnumsValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsEnumsListBox.Text));
             EnumsValuesListBox.SelectedIndex = 0;
         }
 
         // При обновлении значения в ValueListBox выводим номер этого значения в ValueTextBox
-        private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnumsValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             EnumsIntValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsEnumsListBox.Text), EnumsValuesListBox.Text)).ToString();
         }
 
         // Вводим текст и выводим день недели с его номером при совпадении
-        private void WeekdayParsingButton_Click(object sender, EventArgs e)
+        private void EnumsWeekdayParsingButton_Click(object sender, EventArgs e)
         {
             if(Enum.IsDefined(typeof(Weekday), EnumsWeekdayParsingTextBox.Text))
             {
@@ -137,7 +137,7 @@ namespace Programming.View
         }
 
         // В зависимости от выбранного времени года выполняем определенное действие
-        private void SeasonHandleButton_Click(object sender, EventArgs e)
+        private void EnumsSeasonHandleButton_Click(object sender, EventArgs e)
         {
             switch (EnumsSeasonHandleComboBox.Text)
             {
@@ -173,10 +173,10 @@ namespace Programming.View
 
         // При обновлении значения RectanglesListBox запоминаем выбранный Rectangle в _currentRectangle 
         // и заполняем Принадлежащие ему TextBox
-        private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CLassesRectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentClassesRectangle = _classesRectangles[ClassesRectanglesListBox.SelectedIndex];
-            ClassesLengthTextBox.Text = _currentClassesRectangle.Length.ToString();
+            ClassesHeightTextBox.Text = _currentClassesRectangle.Height.ToString();
             ClassesWidthTextBox.Text = _currentClassesRectangle.Width.ToString();
             ClassesColorTextBox.Text = _currentClassesRectangle.Color;
             ClassesXCenterTextBox.Text = _currentClassesRectangle.Center.X.ToString();
@@ -184,36 +184,36 @@ namespace Programming.View
             ClassesIdTextBox.Text = _currentClassesRectangle.Id.ToString();
         }
 
-        // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentMovie
+        // При обновлении значения MoviesListBox запоминаем выбранный Movie в _currentClassesMovie
         // и заполняем Принадлежащие ему TextBox
-        private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClassesMoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentMovie = _movies[ClassesMoviesListBox.SelectedIndex];
-            ClassesTitleTextBox.Text = _currentMovie.Title;
-            ClassesDurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
-            ClassesYearTextBox.Text = _currentMovie.Year.ToString();
-            ClassesGenreTextBox.Text = _currentMovie.Genre;
-            ClassesRateTextBox.Text = _currentMovie.Rate.ToString();
+            _currentClassesMovie = _classesMovies[ClassesMoviesListBox.SelectedIndex];
+            ClassesTitleTextBox.Text = _currentClassesMovie.Title;
+            ClassesDurationInMinutesTextBox.Text = _currentClassesMovie.DurationInMinutes.ToString();
+            ClassesYearTextBox.Text = _currentClassesMovie.Year.ToString();
+            ClassesGenreTextBox.Text = _currentClassesMovie.Genre;
+            ClassesRateTextBox.Text = _currentClassesMovie.Rate.ToString();
         }
 
         // При изменении значения в LengthTextBox проверяем верность введенных данных
         // и обновляем данные массива Rectangles[]
-        private void LengthTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesHeightTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                ClassesLengthTextBox.BackColor = System.Drawing.Color.White;
-                _currentClassesRectangle.Length = Double.Parse(ClassesLengthTextBox.Text);
+                ClassesHeightTextBox.BackColor = System.Drawing.Color.White;
+                _currentClassesRectangle.Height = Double.Parse(ClassesHeightTextBox.Text);
             }
             catch
             {
-                ClassesLengthTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesHeightTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
         // При изменении значения в WidthTextBox проверяем верность введенных данных
         // и обновляем данные массива Rectangles[]
-        private void WidthTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -228,7 +228,7 @@ namespace Programming.View
 
         // При изменении значения в ColorTextBox проверяем верность введенных данных
         // и обновляем данные массива Rectangles[]
-        private void ColorTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesColorTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -243,12 +243,12 @@ namespace Programming.View
 
         // При изменении значения в TitleTextBox проверяем верность введенных данных
         // и обновляем данные массива Movies[]
-        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesTitleTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 ClassesTitleTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Title = ClassesTitleTextBox.Text;
+                _currentClassesMovie.Title = ClassesTitleTextBox.Text;
             }
             catch
             {
@@ -258,12 +258,12 @@ namespace Programming.View
 
         // При изменении значения в DurationInMinutesTextBox проверяем верность введенных данных
         // и обновляем данные массива Movies[]
-        private void DurationInMinutesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesDurationInMinutesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 ClassesDurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.DurationInMinutes = Int32.Parse(ClassesDurationInMinutesTextBox.Text);
+                _currentClassesMovie.DurationInMinutes = Int32.Parse(ClassesDurationInMinutesTextBox.Text);
             }
             catch
             {
@@ -273,12 +273,12 @@ namespace Programming.View
 
         // При изменении значения в YearTextBox проверяем верность введенных данных
         // и обновляем данные массива Movies[]
-        private void YearTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesYearTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 ClassesYearTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Year = Int32.Parse(ClassesYearTextBox.Text);
+                _currentClassesMovie.Year = Int32.Parse(ClassesYearTextBox.Text);
             }
             catch
             {
@@ -288,12 +288,12 @@ namespace Programming.View
 
         // При изменении значения в GenreTextBox проверяем верность введенных данных
         // и обновляем данные массива Movies[]
-        private void GenreTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesGenreTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 ClassesGenreTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Genre = (Enum.Parse(typeof(Genre), ClassesGenreTextBox.Text)).ToString();
+                _currentClassesMovie.Genre = (Enum.Parse(typeof(Genre), ClassesGenreTextBox.Text)).ToString();
             }
             catch
             {
@@ -303,12 +303,12 @@ namespace Programming.View
 
         // При изменении значения в RateTextBox проверяем верность введенных данных
         // и обновляем данные массива Movies[]
-        private void RateTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesRateTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 ClassesRateTextBox.BackColor = System.Drawing.Color.White;
-                _currentMovie.Rate = Double.Parse(ClassesRateTextBox.Text);
+                _currentClassesMovie.Rate = Double.Parse(ClassesRateTextBox.Text);
             }
             catch
             {
@@ -317,13 +317,13 @@ namespace Programming.View
         }
 
         // Находим Rectangle с максимальной шириной и выделяем его в ListBox
-        private void RectangleButton_Click(object sender, EventArgs e)
+        private void ClassesRectangleButton_Click(object sender, EventArgs e)
         {
             ClassesRectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();
         }
 
         // Находим Movie с максимальным рейтингом и выделяем его в ListBox
-        private void MovieButton_Click(object sender, EventArgs e)
+        private void ClassesMovieButton_Click(object sender, EventArgs e)
         {
             ClassesMoviesListBox.SelectedIndex = FindMovieWithMaxRate();
         }
@@ -352,7 +352,7 @@ namespace Programming.View
                 RectanglesXTextBox.Text = _currentRectangle.Center.X.ToString();
                 RectanglesYTextBox.Text = _currentRectangle.Center.Y.ToString();
                 RectanglesWidthTextBox.Text = _currentRectangle.Width.ToString();
-                RectanglesHeightTextBox.Text = _currentRectangle.Length.ToString();
+                RectanglesHeightTextBox.Text = _currentRectangle.Height.ToString();
             }
             else
             {

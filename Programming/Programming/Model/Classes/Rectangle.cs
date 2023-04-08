@@ -2,16 +2,18 @@
 {
     public class Rectangle
     {
-        private double _length;
+        private double _height;
         private double _width;
+        private double _x;
+        private double _y;
 
-        public double Length
+        public double Height
         {
-            get => _length;
+            get => _height;
             set
             {
                 Validator.AssertOnPositiveValue(value);
-                _length = value;
+                _height = value;
             }
         }
 
@@ -22,6 +24,26 @@
             {
                 Validator.AssertOnPositiveValue(value);
                 _width = value;
+            }
+        }
+
+        public double X
+        {
+            get => _x;
+            set
+            {
+                Validator.AssertOnPositiveValue(value);
+                _x = value;
+            }
+        }
+
+        public double Y
+        {
+            get => _y;
+            set
+            {
+                Validator.AssertOnPositiveValue(value);
+                _y = value;
             }
         }
 
@@ -37,7 +59,7 @@
         {
             get
             {
-                return $"{Id}: (X = {Center.X}; Y = {Center.Y}; W = {(int)Width}; H = {(int)Length})";
+                return $"{Id}: (X = {Center.X}; Y = {Center.Y}; W = {(int)Width}; H = {(int)Height})";
             }
         }
 
@@ -46,9 +68,9 @@
             AllRectanglesCount++;
         }
 
-        public Rectangle(double length, double width, string color, Point2D center)
+        public Rectangle(double height, double width, string color, Point2D center)
         {
-            Length = length;
+            Height = height;
             Width = width;
             Color = color;
             Center = center;

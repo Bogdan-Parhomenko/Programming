@@ -62,10 +62,10 @@
             this.ClassesRectangleButton = new System.Windows.Forms.Button();
             this.ClassesColorTextBox = new System.Windows.Forms.TextBox();
             this.ClassesWidthTextBox = new System.Windows.Forms.TextBox();
-            this.ClassesLengthTextBox = new System.Windows.Forms.TextBox();
+            this.ClassesHeightTextBox = new System.Windows.Forms.TextBox();
             this.ClassesColorLabel = new System.Windows.Forms.Label();
             this.ClassesWidthLabel = new System.Windows.Forms.Label();
-            this.ClassesLengthLabel = new System.Windows.Forms.Label();
+            this.ClassesHeightLabel = new System.Windows.Forms.Label();
             this.ClassesRectanglesListBox = new System.Windows.Forms.ListBox();
             this.ClassesMoviesGroupBox = new System.Windows.Forms.GroupBox();
             this.ClassesMovieButton = new System.Windows.Forms.Button();
@@ -200,7 +200,7 @@
             this.EnumsWeekdayParsingButton.TabIndex = 2;
             this.EnumsWeekdayParsingButton.Text = "Parse";
             this.EnumsWeekdayParsingButton.UseVisualStyleBackColor = true;
-            this.EnumsWeekdayParsingButton.Click += new System.EventHandler(this.WeekdayParsingButton_Click);
+            this.EnumsWeekdayParsingButton.Click += new System.EventHandler(this.EnumsWeekdayParsingButton_Click);
             // 
             // EnumsWeekdayParsingTextBox
             // 
@@ -248,7 +248,7 @@
             this.EnumsSeasonHandleButton.TabIndex = 1;
             this.EnumsSeasonHandleButton.Text = "Go!";
             this.EnumsSeasonHandleButton.UseVisualStyleBackColor = true;
-            this.EnumsSeasonHandleButton.Click += new System.EventHandler(this.SeasonHandleButton_Click);
+            this.EnumsSeasonHandleButton.Click += new System.EventHandler(this.EnumsSeasonHandleButton_Click);
             // 
             // EnumsSeasonHandleComboBox
             // 
@@ -321,7 +321,7 @@
             this.EnumsEnumsListBox.Name = "EnumsEnumsListBox";
             this.EnumsEnumsListBox.Size = new System.Drawing.Size(120, 165);
             this.EnumsEnumsListBox.TabIndex = 1;
-            this.EnumsEnumsListBox.SelectedIndexChanged += new System.EventHandler(this.EnumsListBox_SelectedIndexChanged);
+            this.EnumsEnumsListBox.SelectedIndexChanged += new System.EventHandler(this.EnumsEnumsListBox_SelectedIndexChanged);
             // 
             // EnumsValuesListBox
             // 
@@ -334,7 +334,7 @@
             this.EnumsValuesListBox.Name = "EnumsValuesListBox";
             this.EnumsValuesListBox.Size = new System.Drawing.Size(120, 165);
             this.EnumsValuesListBox.TabIndex = 0;
-            this.EnumsValuesListBox.SelectedIndexChanged += new System.EventHandler(this.ValuesListBox_SelectedIndexChanged);
+            this.EnumsValuesListBox.SelectedIndexChanged += new System.EventHandler(this.EnumsValuesListBox_SelectedIndexChanged);
             // 
             // ClassesTabPage
             // 
@@ -370,10 +370,10 @@
             this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesRectangleButton);
             this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesColorTextBox);
             this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesWidthTextBox);
-            this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesLengthTextBox);
+            this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesHeightTextBox);
             this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesColorLabel);
             this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesWidthLabel);
-            this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesLengthLabel);
+            this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesHeightLabel);
             this.ClassesRectanglesGroupBox.Controls.Add(this.ClassesRectanglesListBox);
             this.ClassesRectanglesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ClassesRectanglesGroupBox.Location = new System.Drawing.Point(3, 3);
@@ -455,7 +455,7 @@
             this.ClassesRectangleButton.TabIndex = 7;
             this.ClassesRectangleButton.Text = "Find";
             this.ClassesRectangleButton.UseVisualStyleBackColor = true;
-            this.ClassesRectangleButton.Click += new System.EventHandler(this.RectangleButton_Click);
+            this.ClassesRectangleButton.Click += new System.EventHandler(this.ClassesRectangleButton_Click);
             // 
             // ClassesColorTextBox
             // 
@@ -463,7 +463,7 @@
             this.ClassesColorTextBox.Name = "ClassesColorTextBox";
             this.ClassesColorTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesColorTextBox.TabIndex = 6;
-            this.ClassesColorTextBox.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            this.ClassesColorTextBox.TextChanged += new System.EventHandler(this.ClassesColorTextBox_TextChanged);
             // 
             // ClassesWidthTextBox
             // 
@@ -471,15 +471,15 @@
             this.ClassesWidthTextBox.Name = "ClassesWidthTextBox";
             this.ClassesWidthTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesWidthTextBox.TabIndex = 5;
-            this.ClassesWidthTextBox.TextChanged += new System.EventHandler(this.WidthTextBox_TextChanged);
+            this.ClassesWidthTextBox.TextChanged += new System.EventHandler(this.ClassesWidthTextBox_TextChanged);
             // 
-            // ClassesLengthTextBox
+            // ClassesHeightTextBox
             // 
-            this.ClassesLengthTextBox.Location = new System.Drawing.Point(132, 35);
-            this.ClassesLengthTextBox.Name = "ClassesLengthTextBox";
-            this.ClassesLengthTextBox.Size = new System.Drawing.Size(150, 20);
-            this.ClassesLengthTextBox.TabIndex = 4;
-            this.ClassesLengthTextBox.TextChanged += new System.EventHandler(this.LengthTextBox_TextChanged);
+            this.ClassesHeightTextBox.Location = new System.Drawing.Point(132, 35);
+            this.ClassesHeightTextBox.Name = "ClassesHeightTextBox";
+            this.ClassesHeightTextBox.Size = new System.Drawing.Size(150, 20);
+            this.ClassesHeightTextBox.TabIndex = 4;
+            this.ClassesHeightTextBox.TextChanged += new System.EventHandler(this.ClassesHeightTextBox_TextChanged);
             // 
             // ClassesColorLabel
             // 
@@ -499,14 +499,14 @@
             this.ClassesWidthLabel.TabIndex = 2;
             this.ClassesWidthLabel.Text = "Width:";
             // 
-            // ClassesLengthLabel
+            // ClassesHeightLabel
             // 
-            this.ClassesLengthLabel.AutoSize = true;
-            this.ClassesLengthLabel.Location = new System.Drawing.Point(129, 19);
-            this.ClassesLengthLabel.Name = "ClassesLengthLabel";
-            this.ClassesLengthLabel.Size = new System.Drawing.Size(43, 13);
-            this.ClassesLengthLabel.TabIndex = 1;
-            this.ClassesLengthLabel.Text = "Length:";
+            this.ClassesHeightLabel.AutoSize = true;
+            this.ClassesHeightLabel.Location = new System.Drawing.Point(129, 19);
+            this.ClassesHeightLabel.Name = "ClassesHeightLabel";
+            this.ClassesHeightLabel.Size = new System.Drawing.Size(41, 13);
+            this.ClassesHeightLabel.TabIndex = 1;
+            this.ClassesHeightLabel.Text = "Height:";
             // 
             // ClassesRectanglesListBox
             // 
@@ -518,7 +518,7 @@
             this.ClassesRectanglesListBox.Name = "ClassesRectanglesListBox";
             this.ClassesRectanglesListBox.Size = new System.Drawing.Size(120, 393);
             this.ClassesRectanglesListBox.TabIndex = 0;
-            this.ClassesRectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
+            this.ClassesRectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.CLassesRectanglesListBox_SelectedIndexChanged);
             // 
             // ClassesMoviesGroupBox
             // 
@@ -550,7 +550,7 @@
             this.ClassesMovieButton.TabIndex = 11;
             this.ClassesMovieButton.Text = "Find";
             this.ClassesMovieButton.UseVisualStyleBackColor = true;
-            this.ClassesMovieButton.Click += new System.EventHandler(this.MovieButton_Click);
+            this.ClassesMovieButton.Click += new System.EventHandler(this.ClassesMovieButton_Click);
             // 
             // ClassesRateTextBox
             // 
@@ -558,7 +558,7 @@
             this.ClassesRateTextBox.Name = "ClassesRateTextBox";
             this.ClassesRateTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesRateTextBox.TabIndex = 10;
-            this.ClassesRateTextBox.TextChanged += new System.EventHandler(this.RateTextBox_TextChanged);
+            this.ClassesRateTextBox.TextChanged += new System.EventHandler(this.ClassesRateTextBox_TextChanged);
             // 
             // ClassesGenreTextBox
             // 
@@ -566,7 +566,7 @@
             this.ClassesGenreTextBox.Name = "ClassesGenreTextBox";
             this.ClassesGenreTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesGenreTextBox.TabIndex = 9;
-            this.ClassesGenreTextBox.TextChanged += new System.EventHandler(this.GenreTextBox_TextChanged);
+            this.ClassesGenreTextBox.TextChanged += new System.EventHandler(this.ClassesGenreTextBox_TextChanged);
             // 
             // ClassesYearTextBox
             // 
@@ -574,7 +574,7 @@
             this.ClassesYearTextBox.Name = "ClassesYearTextBox";
             this.ClassesYearTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesYearTextBox.TabIndex = 8;
-            this.ClassesYearTextBox.TextChanged += new System.EventHandler(this.YearTextBox_TextChanged);
+            this.ClassesYearTextBox.TextChanged += new System.EventHandler(this.ClassesYearTextBox_TextChanged);
             // 
             // ClassesDurationInMinutesTextBox
             // 
@@ -582,7 +582,7 @@
             this.ClassesDurationInMinutesTextBox.Name = "ClassesDurationInMinutesTextBox";
             this.ClassesDurationInMinutesTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesDurationInMinutesTextBox.TabIndex = 7;
-            this.ClassesDurationInMinutesTextBox.TextChanged += new System.EventHandler(this.DurationInMinutesTextBox_TextChanged);
+            this.ClassesDurationInMinutesTextBox.TextChanged += new System.EventHandler(this.ClassesDurationInMinutesTextBox_TextChanged);
             // 
             // ClassesTitleTextBox
             // 
@@ -590,7 +590,7 @@
             this.ClassesTitleTextBox.Name = "ClassesTitleTextBox";
             this.ClassesTitleTextBox.Size = new System.Drawing.Size(150, 20);
             this.ClassesTitleTextBox.TabIndex = 6;
-            this.ClassesTitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
+            this.ClassesTitleTextBox.TextChanged += new System.EventHandler(this.ClassesTitleTextBox_TextChanged);
             // 
             // ClassesRateLabel
             // 
@@ -647,7 +647,7 @@
             this.ClassesMoviesListBox.Name = "ClassesMoviesListBox";
             this.ClassesMoviesListBox.Size = new System.Drawing.Size(120, 393);
             this.ClassesMoviesListBox.TabIndex = 0;
-            this.ClassesMoviesListBox.SelectedIndexChanged += new System.EventHandler(this.MoviesListBox_SelectedIndexChanged);
+            this.ClassesMoviesListBox.SelectedIndexChanged += new System.EventHandler(this.ClassesMoviesListBox_SelectedIndexChanged);
             // 
             // RectanglesTabPage
             // 
@@ -878,10 +878,10 @@
         private System.Windows.Forms.GroupBox ClassesMoviesGroupBox;
         private System.Windows.Forms.TextBox ClassesColorTextBox;
         private System.Windows.Forms.TextBox ClassesWidthTextBox;
-        private System.Windows.Forms.TextBox ClassesLengthTextBox;
+        private System.Windows.Forms.TextBox ClassesHeightTextBox;
         private System.Windows.Forms.Label ClassesColorLabel;
         private System.Windows.Forms.Label ClassesWidthLabel;
-        private System.Windows.Forms.Label ClassesLengthLabel;
+        private System.Windows.Forms.Label ClassesHeightLabel;
         private System.Windows.Forms.Button ClassesRectangleButton;
         private System.Windows.Forms.Label ClassesRateLabel;
         private System.Windows.Forms.Label ClassesGenreLabel;
