@@ -1,7 +1,7 @@
 ﻿using System;
 using Programming.Model.Enums;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public static class RectangleFactory
     {

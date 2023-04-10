@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Programming.Model.Classes;
+using Programming.Model.Geometry;
 using Color = Programming.Model.Enums.Color;
 using EducationForm = Programming.Model.Enums.EducationForm;
 using Genre = Programming.Model.Enums.Genre;
 using Manufactures = Programming.Model.Enums.Manufactures;
 using Season = Programming.Model.Enums.Season;
 using Weekday = Programming.Model.Enums.Weekday;
-using Rectangle = Programming.Model.Classes.Rectangle;
+using Rectangle = Programming.Model.Geometry.Rectangle;
 
 namespace Programming.View
 {
@@ -65,6 +65,27 @@ namespace Programming.View
                 i++;
             }
             return maxRateMovie;
+        }
+
+        private void FindCollisions()
+        {
+            foreach (var panel in _rectanglePanels)
+            {
+                panel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
+            }
+
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                for (int j = i + 1; j < _rectangles.Count; j++)
+                {
+                    if (CollisionManager.IsCollision(_rectangles[i], _rectangles[j]))
+                    {
+                        _rectanglePanels[i].BackColor = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[j].BackColor = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+
+                    }
+                }
+            }
         }
 
         public MainForm()
@@ -342,6 +363,7 @@ namespace Programming.View
             panel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
             _rectanglePanels.Add(panel);
             CanvasPanel.Controls.Add(panel);
+            FindCollisions();
     }
 
         private void RectanglesDeletingButton_Click(object sender, EventArgs e)
@@ -353,6 +375,7 @@ namespace Programming.View
                 CanvasPanel.Controls.RemoveAt(selectedIndex);
                 _rectangles.RemoveAt(selectedIndex);
                 RectanglesAddingListBox.Items.RemoveAt(selectedIndex);
+                FindCollisions();
             }
         }
 

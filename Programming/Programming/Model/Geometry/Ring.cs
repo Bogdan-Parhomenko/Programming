@@ -1,6 +1,7 @@
 ﻿using System;
+using Programming.Model.Classes;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public class Ring
     {

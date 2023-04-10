@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Programming.Model.Classes;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public class Rectangle
     {
