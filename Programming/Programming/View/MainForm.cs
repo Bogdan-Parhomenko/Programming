@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Programming.Model.Classes;
@@ -23,6 +24,7 @@ namespace Programming.View
         private Rectangle _currentClassesRectangle;
         private List<Rectangle> _rectangles = new List<Rectangle>();
         private Rectangle _currentRectangle;
+        private List<Panel> _rectanglePanels = new List<Panel>();
 
         // Создаем массива и переменной класса Movie
         private Movie[] _classesMovies = new Movie[5];
@@ -330,16 +332,27 @@ namespace Programming.View
 
         private void RectanglesAddingButton_Click(object sender, EventArgs e)
         {
+            var addedRectangleId = _rectangles.Count;
             _rectangles.Add(RectangleFactory.Randomize());
-            RectanglesAddingListBox.Items.Add(_rectangles[_rectangles.Count - 1]);
-        }
+            RectanglesAddingListBox.Items.Add(_rectangles[addedRectangleId]);
+            var panel = new Panel();
+            panel.Location = new Point((int)_rectangles[addedRectangleId].X, (int)_rectangles[addedRectangleId].Y);
+            panel.Width = (int)_rectangles[addedRectangleId].Width;
+            panel.Height = (int)_rectangles[addedRectangleId].Height;
+            panel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
+            _rectanglePanels.Add(panel);
+            CanvasPanel.Controls.Add(panel);
+    }
 
         private void RectanglesDeletingButton_Click(object sender, EventArgs e)
         {
-            if (RectanglesAddingListBox.SelectedIndex != -1)
+            var selectedIndex = RectanglesAddingListBox.SelectedIndex;
+            if (selectedIndex != -1)
             {
-                _rectangles.RemoveAt(RectanglesAddingListBox.SelectedIndex);
-                RectanglesAddingListBox.Items.RemoveAt(RectanglesAddingListBox.SelectedIndex);
+                _rectanglePanels.RemoveAt(selectedIndex);
+                CanvasPanel.Controls.RemoveAt(selectedIndex);
+                _rectangles.RemoveAt(selectedIndex);
+                RectanglesAddingListBox.Items.RemoveAt(selectedIndex);
             }
         }
 
@@ -349,8 +362,8 @@ namespace Programming.View
             {
                 _currentRectangle = _rectangles[RectanglesAddingListBox.SelectedIndex];
                 RectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
-                RectanglesXTextBox.Text = _currentRectangle.Center.X.ToString();
-                RectanglesYTextBox.Text = _currentRectangle.Center.Y.ToString();
+                RectanglesXTextBox.Text = _currentRectangle.X.ToString();
+                RectanglesYTextBox.Text = _currentRectangle.Y.ToString();
                 RectanglesWidthTextBox.Text = _currentRectangle.Width.ToString();
                 RectanglesHeightTextBox.Text = _currentRectangle.Height.ToString();
             }
@@ -358,15 +371,66 @@ namespace Programming.View
             {
                 RectanglesIdTextBox.Clear();
                 RectanglesXTextBox.Clear();
+                RectanglesXTextBox.BackColor = System.Drawing.Color.White;
                 RectanglesYTextBox.Clear();
+                RectanglesYTextBox.BackColor = System.Drawing.Color.White;
                 RectanglesWidthTextBox.Clear();
+                RectanglesWidthTextBox.BackColor = System.Drawing.Color.White;
                 RectanglesHeightTextBox.Clear();
+                RectanglesHeightTextBox.BackColor = System.Drawing.Color.White;
             }
         }
 
         private void RectanglesXTextBox_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                RectanglesXTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.X = Double.Parse(RectanglesXTextBox.Text);
+            }
+            catch
+            {
+                RectanglesXTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
 
+        private void RectanglesYTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                RectanglesYTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Y = Double.Parse(RectanglesYTextBox.Text);
+            }
+            catch
+            {
+                RectanglesYTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        private void RectanglesWidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                RectanglesWidthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Width = Double.Parse(RectanglesWidthTextBox.Text);
+            }
+            catch
+            {
+                RectanglesWidthTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        private void RectanglesHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                RectanglesHeightTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Height = Double.Parse(RectanglesHeightTextBox.Text);
+            }
+            catch
+            {
+                RectanglesHeightTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
         }
     }
 }

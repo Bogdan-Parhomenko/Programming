@@ -91,7 +91,7 @@
             this.RectanglesAddingLabel = new System.Windows.Forms.Label();
             this.RectanglesXLabel = new System.Windows.Forms.Label();
             this.RectanglesYLabel = new System.Windows.Forms.Label();
-            this.RectanglesAddingPanel = new System.Windows.Forms.Panel();
+            this.CanvasPanel = new System.Windows.Forms.Panel();
             this.RectanglesAddingListBox = new System.Windows.Forms.ListBox();
             this.RectanglesIdLabel = new System.Windows.Forms.Label();
             this.RectanglesAddingButton = new System.Windows.Forms.Button();
@@ -661,7 +661,7 @@
             this.RectanglesTabPage.Controls.Add(this.RectanglesAddingLabel);
             this.RectanglesTabPage.Controls.Add(this.RectanglesXLabel);
             this.RectanglesTabPage.Controls.Add(this.RectanglesYLabel);
-            this.RectanglesTabPage.Controls.Add(this.RectanglesAddingPanel);
+            this.RectanglesTabPage.Controls.Add(this.CanvasPanel);
             this.RectanglesTabPage.Controls.Add(this.RectanglesAddingListBox);
             this.RectanglesTabPage.Controls.Add(this.RectanglesIdLabel);
             this.RectanglesTabPage.Controls.Add(this.RectanglesAddingButton);
@@ -680,6 +680,7 @@
             this.RectanglesHeightTextBox.Name = "RectanglesHeightTextBox";
             this.RectanglesHeightTextBox.Size = new System.Drawing.Size(100, 20);
             this.RectanglesHeightTextBox.TabIndex = 14;
+            this.RectanglesHeightTextBox.TextChanged += new System.EventHandler(this.RectanglesHeightTextBox_TextChanged);
             // 
             // RectanglesWidthTextBox
             // 
@@ -687,6 +688,7 @@
             this.RectanglesWidthTextBox.Name = "RectanglesWidthTextBox";
             this.RectanglesWidthTextBox.Size = new System.Drawing.Size(100, 20);
             this.RectanglesWidthTextBox.TabIndex = 13;
+            this.RectanglesWidthTextBox.TextChanged += new System.EventHandler(this.RectanglesWidthTextBox_TextChanged);
             // 
             // RectanglesYTextBox
             // 
@@ -694,6 +696,7 @@
             this.RectanglesYTextBox.Name = "RectanglesYTextBox";
             this.RectanglesYTextBox.Size = new System.Drawing.Size(100, 20);
             this.RectanglesYTextBox.TabIndex = 12;
+            this.RectanglesYTextBox.TextChanged += new System.EventHandler(this.RectanglesYTextBox_TextChanged);
             // 
             // RectanglesXTextBox
             // 
@@ -756,16 +759,16 @@
             this.RectanglesYLabel.TabIndex = 7;
             this.RectanglesYLabel.Text = "Y:";
             // 
-            // RectanglesAddingPanel
+            // CanvasPanel
             // 
-            this.RectanglesAddingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CanvasPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RectanglesAddingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RectanglesAddingPanel.Location = new System.Drawing.Point(315, 3);
-            this.RectanglesAddingPanel.Name = "RectanglesAddingPanel";
-            this.RectanglesAddingPanel.Size = new System.Drawing.Size(474, 418);
-            this.RectanglesAddingPanel.TabIndex = 0;
+            this.CanvasPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CanvasPanel.Location = new System.Drawing.Point(315, 3);
+            this.CanvasPanel.Name = "CanvasPanel";
+            this.CanvasPanel.Size = new System.Drawing.Size(474, 418);
+            this.CanvasPanel.TabIndex = 0;
             // 
             // RectanglesAddingListBox
             // 
@@ -905,7 +908,7 @@
         private System.Windows.Forms.TabPage RectanglesTabPage;
         private System.Windows.Forms.Label RectanglesHeightLabel;
         private System.Windows.Forms.Label RectanglesWidthLabel;
-        private System.Windows.Forms.Panel RectanglesAddingPanel;
+        private System.Windows.Forms.Panel CanvasPanel;
         private System.Windows.Forms.Label RectanglesYLabel;
         private System.Windows.Forms.Label RectanglesXLabel;
         private System.Windows.Forms.Label RectanglesAddingLabel;

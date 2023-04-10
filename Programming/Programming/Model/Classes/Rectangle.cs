@@ -1,4 +1,6 @@
-﻿namespace Programming.Model.Classes
+﻿using System.ComponentModel;
+
+namespace Programming.Model.Classes
 {
     public class Rectangle
     {
@@ -59,7 +61,7 @@
         {
             get
             {
-                return $"{Id}: (X = {Center.X}; Y = {Center.Y}; W = {(int)Width}; H = {(int)Height})";
+                return $"{Id}: (X = {X}; Y = {Y}; W = {(int)Width}; H = {(int)Height})";
             }
         }
 
@@ -68,10 +70,12 @@
             AllRectanglesCount++;
         }
 
-        public Rectangle(double height, double width, string color, Point2D center)
+        public Rectangle(double height, double width, double x, double y, string color, Point2D center)
         {
             Height = height;
             Width = width;
+            X = x;
+            Y = y;
             Color = color;
             Center = center;
             AllRectanglesCount++;
