@@ -5,9 +5,9 @@ namespace Programming.Model.Geometry
 {
     public static class RectangleFactory
     {
-        private static Random random = new Random();
         public static Rectangle Randomize()
         {
+            Random random = new Random();
             var rectangle = new Rectangle(random.Next(1, 101),
             random.Next(1, 101),
             random.Next(1, 401),
