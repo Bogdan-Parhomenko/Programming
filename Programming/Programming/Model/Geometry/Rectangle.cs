@@ -8,6 +8,7 @@ namespace Programming.Model.Geometry
         private double _width;
         private double _x;
         private double _y;
+        private Point2D _center;
 
         public double Height
         {
@@ -51,7 +52,10 @@ namespace Programming.Model.Geometry
 
         public string Color { get; set; }
 
-        public Point2D Center { get; set; }
+        public Point2D Center
+        {
+            get => new Point2D(X + Width/2.0, Y + Height/2.0);
+        }
 
         public static int AllRectanglesCount { get; private set; }
 
@@ -68,16 +72,16 @@ namespace Programming.Model.Geometry
         public Rectangle()
         {
             AllRectanglesCount++;
+            Id = AllRectanglesCount;
         }
 
-        public Rectangle(double height, double width, double x, double y, string color, Point2D center)
+        public Rectangle(double height, double width, double x, double y, string color)
         {
             Height = height;
             Width = width;
             X = x;
             Y = y;
             Color = color;
-            Center = center;
             AllRectanglesCount++;
             Id = AllRectanglesCount;
         }

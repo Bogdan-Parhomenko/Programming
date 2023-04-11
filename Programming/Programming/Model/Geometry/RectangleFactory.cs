@@ -12,8 +12,7 @@ namespace Programming.Model.Geometry
             random.Next(1, 101),
             random.Next(1, 401),
             random.Next(1, 401),
-            Enum.GetNames(typeof(Color))[random.Next(8)],
-            new Point2D(random.Next(1, 401), random.Next(1, 401)));
+            Enum.GetNames(typeof(Color))[random.Next(8)]);
             return rectangle;
         }
     }

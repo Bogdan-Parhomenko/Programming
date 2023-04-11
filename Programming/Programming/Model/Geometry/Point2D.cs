@@ -10,7 +10,7 @@ namespace Programming.Model.Geometry
         public double X
         {
             get => _x;
-            private set
+            set
             {
                 Validator.AssertOnPositiveValue(value);
                 _x = value;
@@ -20,7 +20,7 @@ namespace Programming.Model.Geometry
         public double Y
         {
             get => _y;
-            private set
+            set
             {
                 Validator.AssertOnPositiveValue(value);
                 _y = value;

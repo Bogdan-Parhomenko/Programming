@@ -88,6 +88,19 @@ namespace Programming.View
             }
         }
 
+        private void ClearRectangleInfo()
+        {
+            RectanglesIdTextBox.Clear();
+            RectanglesXTextBox.Clear();
+            RectanglesXTextBox.BackColor = System.Drawing.Color.White;
+            RectanglesYTextBox.Clear();
+            RectanglesYTextBox.BackColor = System.Drawing.Color.White;
+            RectanglesWidthTextBox.Clear();
+            RectanglesWidthTextBox.BackColor = System.Drawing.Color.White;
+            RectanglesHeightTextBox.Clear();
+            RectanglesHeightTextBox.BackColor = System.Drawing.Color.White;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -392,15 +405,7 @@ namespace Programming.View
             }
             else
             {
-                RectanglesIdTextBox.Clear();
-                RectanglesXTextBox.Clear();
-                RectanglesXTextBox.BackColor = System.Drawing.Color.White;
-                RectanglesYTextBox.Clear();
-                RectanglesYTextBox.BackColor = System.Drawing.Color.White;
-                RectanglesWidthTextBox.Clear();
-                RectanglesWidthTextBox.BackColor = System.Drawing.Color.White;
-                RectanglesHeightTextBox.Clear();
-                RectanglesHeightTextBox.BackColor = System.Drawing.Color.White;
+                ClearRectangleInfo();
             }
         }
 
