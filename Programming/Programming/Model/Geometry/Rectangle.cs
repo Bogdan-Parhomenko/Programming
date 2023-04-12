@@ -8,7 +8,6 @@ namespace Programming.Model.Geometry
         private double _width;
         private double _x;
         private double _y;
-        private Point2D _center;
 
         public double Height
         {
