@@ -88,6 +88,15 @@ namespace Programming.View
             }
         }
 
+        private void UpdateRectangleInfo(Rectangle rectangle)
+        {
+            RectanglesIdTextBox.Text = rectangle.Id.ToString();
+            RectanglesXTextBox.Text = rectangle.X.ToString();
+            RectanglesYTextBox.Text = rectangle.Y.ToString();
+            RectanglesWidthTextBox.Text = rectangle.Width.ToString();
+            RectanglesHeightTextBox.Text = rectangle.Height.ToString();
+        }
+
         private void ClearRectangleInfo()
         {
             RectanglesIdTextBox.Clear();
@@ -127,7 +136,11 @@ namespace Programming.View
             // Инициализация массива _rectangles
             for (var i = 0; i < 5; i++)
             {
-                _classesRectangles[i] = RectangleFactory.Randomize();
+                _classesRectangles[i] = new Rectangle(_random.Next(1, 301),
+                    _random.Next(1, 301),
+                    _random.Next(1, 401),
+                    _random.Next(1, 401),
+                    Enum.GetNames(typeof(Color))[_random.Next(8)]);
                 ClassesRectanglesListBox.Items.Add($"Rectangle {_classesRectangles[i].Id}");
             }
 
@@ -367,7 +380,7 @@ namespace Programming.View
         private void RectanglesAddingButton_Click(object sender, EventArgs e)
         {
             var addedRectangleId = _rectangles.Count;
-            _rectangles.Add(RectangleFactory.Randomize());
+            _rectangles.Add(RectangleFactory.Randomize(CanvasPanel));
             RectanglesAddingListBox.Items.Add(_rectangles[addedRectangleId]);
             var panel = new Panel();
             panel.Location = new Point((int)_rectangles[addedRectangleId].X, (int)_rectangles[addedRectangleId].Y);
@@ -397,11 +410,7 @@ namespace Programming.View
             if (RectanglesAddingListBox.SelectedIndex != -1)
             {
                 _currentRectangle = _rectangles[RectanglesAddingListBox.SelectedIndex];
-                RectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
-                RectanglesXTextBox.Text = _currentRectangle.X.ToString();
-                RectanglesYTextBox.Text = _currentRectangle.Y.ToString();
-                RectanglesWidthTextBox.Text = _currentRectangle.Width.ToString();
-                RectanglesHeightTextBox.Text = _currentRectangle.Height.ToString();
+                UpdateRectangleInfo(_currentRectangle);
             }
             else
             {
@@ -415,6 +424,9 @@ namespace Programming.View
             {
                 RectanglesXTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.X = Double.Parse(RectanglesXTextBox.Text);
+                _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Location =
+                    new Point((int)_currentRectangle.X, (int)_currentRectangle.Y);
+                FindCollisions();
             }
             catch
             {
@@ -428,6 +440,9 @@ namespace Programming.View
             {
                 RectanglesYTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Y = Double.Parse(RectanglesYTextBox.Text);
+                _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Location =
+                    new Point((int)_currentRectangle.X, (int)_currentRectangle.Y);
+                FindCollisions();
             }
             catch
             {
@@ -441,6 +456,8 @@ namespace Programming.View
             {
                 RectanglesWidthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Width = Double.Parse(RectanglesWidthTextBox.Text);
+                _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Width = (int)_currentRectangle.Width;
+                FindCollisions();
             }
             catch
             {
@@ -454,6 +471,8 @@ namespace Programming.View
             {
                 RectanglesHeightTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Height = Double.Parse(RectanglesHeightTextBox.Text);
+                _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Height = (int)_currentRectangle.Height;
+                FindCollisions();
             }
             catch
             {

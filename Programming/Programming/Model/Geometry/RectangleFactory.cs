@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Programming.Model.Enums;
 
 namespace Programming.Model.Geometry
@@ -14,6 +15,18 @@ namespace Programming.Model.Geometry
             random.Next(1, 401),
             Enum.GetNames(typeof(Color))[random.Next(8)]);
             return rectangle;
+        }
+
+        public static Rectangle Randomize(Panel canvas)
+        {
+            Random random = new Random();
+            var intend = 15;
+            var x = random.Next(intend, canvas.Width - intend);
+            var y = random.Next(intend, canvas.Height - intend);
+            var height = random.Next(1, canvas.Height - y - intend);
+            var width = random.Next(1, canvas.Width - x - intend);
+            var color = Enum.GetNames(typeof(Color))[random.Next(8)];
+            return new Rectangle(height, width, x, y, color);
         }
     }
 }
