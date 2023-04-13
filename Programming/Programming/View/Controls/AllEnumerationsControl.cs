@@ -21,19 +21,19 @@ namespace Programming.View.Controls
                 typeof(Weekday)
             };
 
-            EnumsEnumsListBox.DataSource = enums;
-            EnumsEnumsListBox.SelectedIndex = 0;
+            EnumsListBox.DataSource = enums;
+            EnumsListBox.SelectedIndex = 0;
         }
 
-        private void EnumsEnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EnumsValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsEnumsListBox.Text));
-            EnumsValuesListBox.SelectedIndex = 0;
+            ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
+            ValuesListBox.SelectedIndex = 0;
         }
 
-        private void EnumsValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EnumsIntValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsEnumsListBox.Text), EnumsValuesListBox.Text)).ToString();
+            IntValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsListBox.Text), ValuesListBox.Text)).ToString();
         }
     }
 }
