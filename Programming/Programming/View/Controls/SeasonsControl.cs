@@ -1,7 +1,6 @@
 ﻿using Programming.Model.Classes;
 using Programming.Model.Enums;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Programming.View.Controls
