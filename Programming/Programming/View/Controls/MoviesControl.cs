@@ -60,12 +60,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                TitleTextBox.BackColor = System.Drawing.Color.White;
+                TitleTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentMovie.Title = TitleTextBox.Text;
             }
             catch
             {
-                TitleTextBox.BackColor = System.Drawing.Color.LightPink;
+                TitleTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -73,12 +73,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                DurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
+                DurationInMinutesTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentMovie.DurationInMinutes = Int32.Parse(DurationInMinutesTextBox.Text);
             }
             catch
             {
-                DurationInMinutesTextBox.BackColor = System.Drawing.Color.LightPink;
+                DurationInMinutesTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -86,12 +86,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                YearTextBox.BackColor = System.Drawing.Color.White;
+                YearTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentMovie.Year = Int32.Parse(YearTextBox.Text);
             }
             catch
             {
-                YearTextBox.BackColor = System.Drawing.Color.LightPink;
+                YearTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -99,12 +99,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                GenreTextBox.BackColor = System.Drawing.Color.White;
+                GenreTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentMovie.Genre = (Enum.Parse(typeof(Genre), GenreTextBox.Text)).ToString();
             }
             catch
             {
-                GenreTextBox.BackColor = System.Drawing.Color.LightPink;
+                GenreTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -112,12 +112,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                RateTextBox.BackColor = System.Drawing.Color.White;
+                RateTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentMovie.Rate = Double.Parse(RateTextBox.Text);
             }
             catch
             {
-                RateTextBox.BackColor = System.Drawing.Color.LightPink;
+                RateTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 

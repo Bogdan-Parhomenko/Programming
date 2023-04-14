@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Programming.Model.Classes;
+using System;
 using System.Windows.Forms;
 using Color = Programming.Model.Enums.Color;
 using Rectangle = Programming.Model.Geometry.Rectangle;
@@ -60,12 +61,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                HeightTextBox.BackColor = System.Drawing.Color.White;
+                HeightTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Height = Double.Parse(HeightTextBox.Text);
             }
             catch
             {
-                HeightTextBox.BackColor = System.Drawing.Color.LightPink;
+                HeightTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -73,12 +74,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                WidthTextBox.BackColor = System.Drawing.Color.White;
+                WidthTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Width = Double.Parse(WidthTextBox.Text);
             }
             catch
             {
-                WidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                WidthTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -86,12 +87,12 @@ namespace Programming.View.Controls
         {
             try
             {
-                ColorTextBox.BackColor = System.Drawing.Color.White;
+                ColorTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Color = (Enum.Parse(typeof(Color), ColorTextBox.Text)).ToString();
             }
             catch
             {
-                ColorTextBox.BackColor = System.Drawing.Color.LightPink;
+                ColorTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 

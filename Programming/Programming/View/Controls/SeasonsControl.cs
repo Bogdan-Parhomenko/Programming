@@ -1,4 +1,5 @@
-﻿using Programming.Model.Enums;
+﻿using Programming.Model.Classes;
+using Programming.Model.Enums;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -25,8 +26,7 @@ namespace Programming.View.Controls
                     }
                 case "Autumn":
                     {
-                        this.BackColor = ColorTranslator.FromHtml("#e29c45");
-                        SeasonHandleComboBox.BackColor = BackColor;
+                        SeasonHandleComboBox.BackColor = AppColors.AutumnColor;
                         break;
                     }
                 case "Winter":
@@ -36,8 +36,7 @@ namespace Programming.View.Controls
                     }
                 case "Spring":
                     {
-                        this.BackColor = ColorTranslator.FromHtml("#559c45");
-                        SeasonHandleComboBox.BackColor = BackColor;
+                        SeasonHandleComboBox.BackColor = AppColors.SpringColor;
                         break;
                     }
                 default:

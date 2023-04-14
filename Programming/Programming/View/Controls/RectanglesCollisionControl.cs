@@ -1,4 +1,5 @@
-﻿using Programming.Model.Geometry;
+﻿using Programming.Model.Classes;
+using Programming.Model.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,7 +27,7 @@ namespace Programming.View.Controls
         {
             foreach (var panel in _rectanglePanels)
             {
-                panel.BackColor = Color.FromArgb(127, 127, 255, 127);
+                panel.BackColor = AppColors.CollisionFalseColor;
             }
 
             for (int i = 0; i < _rectangles.Count; i++)
@@ -35,8 +36,8 @@ namespace Programming.View.Controls
                 {
                     if (CollisionManager.IsCollision(_rectangles[i], _rectangles[j]))
                     {
-                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
-                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[i].BackColor = AppColors.CollisionTrueColor;
+                        _rectanglePanels[j].BackColor = AppColors.CollisionTrueColor;
                     }
                 }
             }
@@ -55,13 +56,13 @@ namespace Programming.View.Controls
         {
             RectanglesIdTextBox.Clear();
             RectanglesXTextBox.Clear();
-            RectanglesXTextBox.BackColor = Color.White;
+            RectanglesXTextBox.BackColor = AppColors.ValidationTrueColor;
             RectanglesYTextBox.Clear();
-            RectanglesYTextBox.BackColor = Color.White;
+            RectanglesYTextBox.BackColor = AppColors.ValidationTrueColor;
             RectanglesWidthTextBox.Clear();
-            RectanglesWidthTextBox.BackColor = Color.White;
+            RectanglesWidthTextBox.BackColor = AppColors.ValidationTrueColor;
             RectanglesHeightTextBox.Clear();
-            RectanglesHeightTextBox.BackColor = Color.White;
+            RectanglesHeightTextBox.BackColor = AppColors.ValidationTrueColor;
         }
 
         private void RectanglesAddingButton_Click(object sender, EventArgs e)
@@ -74,7 +75,7 @@ namespace Programming.View.Controls
                 Location = new Point((int)_rectangles[addedRectangleId].X, (int)_rectangles[addedRectangleId].Y),
                 Width = (int)_rectangles[addedRectangleId].Width,
                 Height = (int)_rectangles[addedRectangleId].Height,
-                BackColor = Color.FromArgb(127, 127, 255, 127)
+                BackColor = AppColors.CollisionFalseColor
             };
             _rectanglePanels.Add(panel);
             CanvasPanel.Controls.Add(panel);
@@ -111,7 +112,7 @@ namespace Programming.View.Controls
         {
             try
             {
-                RectanglesXTextBox.BackColor = Color.White;
+                RectanglesXTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.X = Double.Parse(RectanglesXTextBox.Text);
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Location =
                     new Point((int)_currentRectangle.X, (int)_currentRectangle.Y);
@@ -119,7 +120,7 @@ namespace Programming.View.Controls
             }
             catch
             {
-                RectanglesXTextBox.BackColor = Color.LightPink;
+                RectanglesXTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -127,7 +128,7 @@ namespace Programming.View.Controls
         {
             try
             {
-                RectanglesYTextBox.BackColor = Color.White;
+                RectanglesYTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Y = Double.Parse(RectanglesYTextBox.Text);
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Location =
                     new Point((int)_currentRectangle.X, (int)_currentRectangle.Y);
@@ -135,7 +136,7 @@ namespace Programming.View.Controls
             }
             catch
             {
-                RectanglesYTextBox.BackColor = Color.LightPink;
+                RectanglesYTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -143,14 +144,14 @@ namespace Programming.View.Controls
         {
             try
             {
-                RectanglesWidthTextBox.BackColor = Color.White;
+                RectanglesWidthTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Width = Double.Parse(RectanglesWidthTextBox.Text);
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Width = (int)_currentRectangle.Width;
                 FindCollisions();
             }
             catch
             {
-                RectanglesWidthTextBox.BackColor = Color.LightPink;
+                RectanglesWidthTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
 
@@ -158,14 +159,14 @@ namespace Programming.View.Controls
         {
             try
             {
-                RectanglesHeightTextBox.BackColor = Color.White;
+                RectanglesHeightTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Height = Double.Parse(RectanglesHeightTextBox.Text);
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Height = (int)_currentRectangle.Height;
                 FindCollisions();
             }
             catch
             {
-                RectanglesHeightTextBox.BackColor = Color.LightPink;
+                RectanglesHeightTextBox.BackColor = AppColors.ValidationFalseColor;
             }
         }
     }
