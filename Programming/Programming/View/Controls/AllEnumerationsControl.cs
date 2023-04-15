@@ -22,7 +22,6 @@ namespace Programming.View.Controls
             };
             EnumsListBox.DisplayMember = nameof(Type.Name);
             EnumsListBox.Items.AddRange(enums);
-            //EnumsListBox.DataSource = enums;
             EnumsListBox.SelectedIndex = 0;
         }
 
