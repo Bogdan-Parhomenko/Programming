@@ -33,14 +33,14 @@
             this.EnumsTabPage = new System.Windows.Forms.TabPage();
             this.EnumsMainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.EnumsInsertedTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ClassesTabPage = new System.Windows.Forms.TabPage();
+            this.ClassesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.RectanglesTabPage = new System.Windows.Forms.TabPage();
             this.SeasonsControl = new Programming.View.Controls.SeasonsControl();
             this.WeekdayParsingControl = new Programming.View.Controls.WeekdayParsingControl();
             this.AllEnumerationsControl = new Programming.View.Controls.AllEnumerationsControl();
-            this.ClassesTabPage = new System.Windows.Forms.TabPage();
-            this.ClassesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RectanglesControl = new Programming.View.Controls.RectanglesControl();
             this.MoviesControl = new Programming.View.Controls.MoviesControl();
-            this.RectanglesTabPage = new System.Windows.Forms.TabPage();
             this.RectanglesCollisionControl = new Programming.View.Controls.RectanglesCollisionControl();
             this.TabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
@@ -107,30 +107,6 @@
             this.EnumsInsertedTableLayoutPanel.Size = new System.Drawing.Size(786, 209);
             this.EnumsInsertedTableLayoutPanel.TabIndex = 0;
             // 
-            // SeasonsControl
-            // 
-            this.SeasonsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SeasonsControl.Location = new System.Drawing.Point(396, 3);
-            this.SeasonsControl.Name = "SeasonsControl";
-            this.SeasonsControl.Size = new System.Drawing.Size(387, 203);
-            this.SeasonsControl.TabIndex = 1;
-            // 
-            // WeekdayParsingControl
-            // 
-            this.WeekdayParsingControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WeekdayParsingControl.Location = new System.Drawing.Point(3, 3);
-            this.WeekdayParsingControl.Name = "WeekdayParsingControl";
-            this.WeekdayParsingControl.Size = new System.Drawing.Size(387, 203);
-            this.WeekdayParsingControl.TabIndex = 2;
-            // 
-            // AllEnumerationsControl
-            // 
-            this.AllEnumerationsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AllEnumerationsControl.Location = new System.Drawing.Point(3, 3);
-            this.AllEnumerationsControl.Name = "AllEnumerationsControl";
-            this.AllEnumerationsControl.Size = new System.Drawing.Size(780, 203);
-            this.AllEnumerationsControl.TabIndex = 1;
-            // 
             // ClassesTabPage
             // 
             this.ClassesTabPage.Controls.Add(this.ClassesTableLayoutPanel);
@@ -157,6 +133,40 @@
             this.ClassesTableLayoutPanel.Size = new System.Drawing.Size(792, 424);
             this.ClassesTableLayoutPanel.TabIndex = 0;
             // 
+            // RectanglesTabPage
+            // 
+            this.RectanglesTabPage.Controls.Add(this.RectanglesCollisionControl);
+            this.RectanglesTabPage.Location = new System.Drawing.Point(4, 22);
+            this.RectanglesTabPage.Name = "RectanglesTabPage";
+            this.RectanglesTabPage.Size = new System.Drawing.Size(792, 424);
+            this.RectanglesTabPage.TabIndex = 2;
+            this.RectanglesTabPage.Text = "Rectangles";
+            this.RectanglesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // SeasonsControl
+            // 
+            this.SeasonsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SeasonsControl.Location = new System.Drawing.Point(396, 3);
+            this.SeasonsControl.Name = "SeasonsControl";
+            this.SeasonsControl.Size = new System.Drawing.Size(387, 203);
+            this.SeasonsControl.TabIndex = 1;
+            // 
+            // WeekdayParsingControl
+            // 
+            this.WeekdayParsingControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WeekdayParsingControl.Location = new System.Drawing.Point(3, 3);
+            this.WeekdayParsingControl.Name = "WeekdayParsingControl";
+            this.WeekdayParsingControl.Size = new System.Drawing.Size(387, 203);
+            this.WeekdayParsingControl.TabIndex = 2;
+            // 
+            // AllEnumerationsControl
+            // 
+            this.AllEnumerationsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AllEnumerationsControl.Location = new System.Drawing.Point(3, 3);
+            this.AllEnumerationsControl.Name = "AllEnumerationsControl";
+            this.AllEnumerationsControl.Size = new System.Drawing.Size(780, 203);
+            this.AllEnumerationsControl.TabIndex = 1;
+            // 
             // RectanglesControl
             // 
             this.RectanglesControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -172,16 +182,6 @@
             this.MoviesControl.Name = "MoviesControl";
             this.MoviesControl.Size = new System.Drawing.Size(390, 418);
             this.MoviesControl.TabIndex = 3;
-            // 
-            // RectanglesTabPage
-            // 
-            this.RectanglesTabPage.Controls.Add(this.RectanglesCollisionControl);
-            this.RectanglesTabPage.Location = new System.Drawing.Point(4, 22);
-            this.RectanglesTabPage.Name = "RectanglesTabPage";
-            this.RectanglesTabPage.Size = new System.Drawing.Size(792, 424);
-            this.RectanglesTabPage.TabIndex = 2;
-            this.RectanglesTabPage.Text = "Rectangles";
-            this.RectanglesTabPage.UseVisualStyleBackColor = true;
             // 
             // RectanglesCollisionControl
             // 
@@ -199,7 +199,7 @@
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Programmin Demo";
+            this.Text = "Programming Demo";
             this.TabControl.ResumeLayout(false);
             this.EnumsTabPage.ResumeLayout(false);
             this.EnumsMainTableLayoutPanel.ResumeLayout(false);
