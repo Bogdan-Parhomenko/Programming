@@ -114,9 +114,13 @@ namespace Programming.View.Controls
             {
                 RectanglesXTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.X = Double.Parse(RectanglesXTextBox.Text);
+                RectanglesAddingListBox.SelectedIndexChanged -= RectanglesAddingListBox_SelectedIndexChanged;
+                RectanglesAddingListBox.Items[RectanglesAddingListBox.SelectedIndex] = 
+                _rectangles[RectanglesAddingListBox.SelectedIndex];
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Location =
                     new Point((int)_currentRectangle.X, (int)_currentRectangle.Y);
                 FindCollisions();
+                RectanglesAddingListBox.SelectedIndexChanged += RectanglesAddingListBox_SelectedIndexChanged;
             }
             catch
             {
@@ -130,9 +134,13 @@ namespace Programming.View.Controls
             {
                 RectanglesYTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Y = Double.Parse(RectanglesYTextBox.Text);
+                RectanglesAddingListBox.SelectedIndexChanged -= RectanglesAddingListBox_SelectedIndexChanged;
+                RectanglesAddingListBox.Items[RectanglesAddingListBox.SelectedIndex] =
+                _rectangles[RectanglesAddingListBox.SelectedIndex];
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Location =
                     new Point((int)_currentRectangle.X, (int)_currentRectangle.Y);
                 FindCollisions();
+                RectanglesAddingListBox.SelectedIndexChanged += RectanglesAddingListBox_SelectedIndexChanged;
             }
             catch
             {
@@ -146,8 +154,12 @@ namespace Programming.View.Controls
             {
                 RectanglesWidthTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Width = Double.Parse(RectanglesWidthTextBox.Text);
+                RectanglesAddingListBox.SelectedIndexChanged -= RectanglesAddingListBox_SelectedIndexChanged;
+                RectanglesAddingListBox.Items[RectanglesAddingListBox.SelectedIndex] =
+                _rectangles[RectanglesAddingListBox.SelectedIndex];
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Width = (int)_currentRectangle.Width;
                 FindCollisions();
+                RectanglesAddingListBox.SelectedIndexChanged += RectanglesAddingListBox_SelectedIndexChanged;
             }
             catch
             {
@@ -161,8 +173,12 @@ namespace Programming.View.Controls
             {
                 RectanglesHeightTextBox.BackColor = AppColors.ValidationTrueColor;
                 _currentRectangle.Height = Double.Parse(RectanglesHeightTextBox.Text);
+                RectanglesAddingListBox.SelectedIndexChanged -= RectanglesAddingListBox_SelectedIndexChanged;
+                RectanglesAddingListBox.Items[RectanglesAddingListBox.SelectedIndex] =
+                _rectangles[RectanglesAddingListBox.SelectedIndex];
                 _rectanglePanels[RectanglesAddingListBox.SelectedIndex].Height = (int)_currentRectangle.Height;
                 FindCollisions();
+                RectanglesAddingListBox.SelectedIndexChanged += RectanglesAddingListBox_SelectedIndexChanged;
             }
             catch
             {
