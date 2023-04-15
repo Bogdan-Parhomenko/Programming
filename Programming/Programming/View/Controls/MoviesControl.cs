@@ -21,7 +21,7 @@ namespace Programming.View.Controls
             {
                 _movies[i] = new Movie($"Movie {i + 1}",
                     Enum.GetNames(typeof(Genre))[_random.Next(6)],
-                    _random.Next(1, 301),
+                    _random.Next(1, 201),
                     _random.Next(1900, DateTime.Now.Year),
                     _random.Next(1, 11));
                 MoviesListBox.Items.Add($"Movie {i + 1}");
