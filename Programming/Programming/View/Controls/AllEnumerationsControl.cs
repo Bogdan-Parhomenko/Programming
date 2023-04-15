@@ -20,20 +20,29 @@ namespace Programming.View.Controls
                 typeof(Season),
                 typeof(Weekday)
             };
-
-            EnumsListBox.DataSource = enums;
+            EnumsListBox.DisplayMember = nameof(Type.Name);
+            EnumsListBox.Items.AddRange(enums);
+            //EnumsListBox.DataSource = enums;
             EnumsListBox.SelectedIndex = 0;
         }
 
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValuesListBox.DataSource = Enum.GetValues(Type.GetType(EnumsListBox.Text));
+            var enumValues = Enum.GetValues((Type)EnumsListBox.SelectedItem);
+
+            ValuesListBox.Items.Clear();
+
+            foreach (var enumValue in enumValues)
+            {
+                ValuesListBox.Items.Add(enumValue);
+            }
+
             ValuesListBox.SelectedIndex = 0;
         }
 
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntValueTextBox.Text = ((int)Enum.Parse(Type.GetType(EnumsListBox.Text), ValuesListBox.Text)).ToString();
+            IntValueTextBox.Text = ((int)ValuesListBox.SelectedItem).ToString();
         }
     }
 }
