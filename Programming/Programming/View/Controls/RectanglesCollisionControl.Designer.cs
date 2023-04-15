@@ -163,6 +163,7 @@
             // 
             // RectanglesAddingButton
             // 
+            this.RectanglesAddingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RectanglesAddingButton.Location = new System.Drawing.Point(6, 211);
             this.RectanglesAddingButton.Name = "RectanglesAddingButton";
             this.RectanglesAddingButton.Size = new System.Drawing.Size(75, 23);
@@ -182,6 +183,7 @@
             // 
             // RectanglesDeletingButton
             // 
+            this.RectanglesDeletingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RectanglesDeletingButton.Location = new System.Drawing.Point(102, 211);
             this.RectanglesDeletingButton.Name = "RectanglesDeletingButton";
             this.RectanglesDeletingButton.Size = new System.Drawing.Size(75, 23);

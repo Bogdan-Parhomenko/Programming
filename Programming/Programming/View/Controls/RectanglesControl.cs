@@ -20,7 +20,8 @@ namespace Programming.View.Controls
 
             for (var i = 0; i < 5; i++)
             {
-                _rectangles[i] = new Rectangle(_random.Next(1, 301),
+                _rectangles[i] = new Rectangle(
+                    _random.Next(1, 301),
                     _random.Next(1, 301),
                     _random.Next(1, 401),
                     _random.Next(1, 401),
