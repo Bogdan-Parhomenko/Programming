@@ -43,6 +43,24 @@ namespace Programming.View.Controls
             }
         }
 
+        private void FindCollisions(Rectangle rectangle)
+        {
+            var lastRectangleIndex = _rectangles.Count - 1;
+
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                if (rectangle == _rectangles[i])
+                {
+                    return;
+                }
+                if (CollisionManager.IsCollision(rectangle, _rectangles[i]))
+                {
+                    _rectanglePanels[i].BackColor = AppColors.CollisionTrueColor;
+                    _rectanglePanels[lastRectangleIndex].BackColor = AppColors.CollisionTrueColor;
+                }
+            }
+        }
+
         private void UpdateRectangleInfo(Rectangle rectangle)
         {
             RectanglesIdTextBox.Text = rectangle.Id.ToString();
@@ -79,7 +97,7 @@ namespace Programming.View.Controls
             };
             _rectanglePanels.Add(panel);
             CanvasPanel.Controls.Add(panel);
-            FindCollisions();
+            FindCollisions(_rectangles[addedRectangleId]);
         }
 
         private void RectanglesDeletingButton_Click(object sender, EventArgs e)
