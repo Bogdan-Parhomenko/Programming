@@ -4,8 +4,15 @@ using Programming.Model.Enums;
 
 namespace Programming.Model.Geometry
 {
+    /// <summary>
+    /// Служебный класс, который хранит методы создания прямоугольников.
+    /// </summary>
     public static class RectangleFactory
     {
+        /// <summary>
+        /// Создает прямоугольник со случайными характеристиками.
+        /// </summary>
+        /// <returns>Возвращает экземпляр созданного прямоугольника.</returns>
         public static Rectangle Randomize()
         {
             Random random = new Random();
@@ -18,6 +25,11 @@ namespace Programming.Model.Geometry
             return rectangle;
         }
 
+        /// <summary>
+        /// Создает прямоугольник со случайными характеристиками, не выходящий за границы панели.
+        /// </summary>
+        /// <param name="canvas">Панель, в пределах которой будут создаваться прямугольники.</param>
+        /// <returns>Возвращает экземпляр созданного в пределах панели прямоугольника.</returns>
         public static Rectangle Randomize(Panel canvas)
         {
             Random random = new Random();
