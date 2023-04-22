@@ -7,6 +7,9 @@ namespace Programming.View
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Создает объект типа <see cref="MainForm"/>.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();

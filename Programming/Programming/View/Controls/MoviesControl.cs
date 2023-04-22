@@ -25,6 +25,10 @@ namespace Programming.View.Controls
         /// </summary>
         private Movie _currentMovie;
 
+        /// <summary>
+        /// Создает объект типа <see cref="MoviesControl"/>.
+        /// Инициализирует список фильмов дефолтными значениями.
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();
@@ -62,6 +66,11 @@ namespace Programming.View.Controls
             return maxRateMovie;
         }
 
+        /// <summary>
+        /// При изменении индекса выбранного элемента MoviesListBox
+        /// присваивает _currentMovie выбранный элемент
+        /// и заполняет все текстовые поля значениями _currentMovie.
+        /// </summary>
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentMovie = _movies[MoviesListBox.SelectedIndex];
@@ -72,6 +81,10 @@ namespace Programming.View.Controls
             RateTextBox.Text = _currentMovie.Rate.ToString();
         }
 
+        /// <summary>
+        /// При изменении текста TitleTextBox пытается присвоить этот текст в свойство Title элемента
+        /// _currentMovie и красит TitleTextBox в соответствии с валидацией.
+        /// </summary>
         private void TitleTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -85,6 +98,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста DurationInMinutesTextBox пытается присвоить этот текст в свойство DurationInMinutes элемента
+        /// _currentMovie и красит DurationInMinutesTextBox в соответствии с валидацией.
+        /// </summary>
         private void DurationInMinutesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -98,6 +115,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста YearTextBox пытается присвоить этот текст в свойство Year элемента
+        /// _currentMovie и красит YearTextBox в соответствии с валидацией.
+        /// </summary>
         private void YearTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -111,6 +132,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста GenreTextBox пытается присвоить этот текст в свойство Genre элемента
+        /// _currentMovie и красит GenreTextBox в соответствии с валидацией.
+        /// </summary>
         private void GenreTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -124,6 +149,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста RateTextBox пытается присвоить этот текст в свойство Rate элемента
+        /// _currentMovie и красит RateTextBox в соответствии с валидацией.
+        /// </summary>
         private void RateTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -137,6 +166,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При нажатии на MovieButton выбирает элемент в MoviesListBox
+        /// у которого наибольшая пользовательская оценка.
+        /// </summary>
         private void MovieButton_Click(object sender, EventArgs e)
         {
             MoviesListBox.SelectedIndex = FindMovieWithMaxRate();

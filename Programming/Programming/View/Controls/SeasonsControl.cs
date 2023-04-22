@@ -10,6 +10,10 @@ namespace Programming.View.Controls
     /// </summary>
     public partial class SeasonsControl : UserControl
     {
+        /// <summary>
+        /// Создает объект типа <see cref="SeasonsControl"/>.
+        /// Заполняет SeasonHandleComboBox константами перечисления Season.
+        /// </summary>
         public SeasonsControl()
         {
             InitializeComponent();
@@ -17,6 +21,10 @@ namespace Programming.View.Controls
             SeasonHandleComboBox.DataSource = Enum.GetValues(typeof(Season));
         }
 
+        /// <summary>
+        /// При нажатии на SeasonHandleButton выполняет определенное действие
+        /// в соответствии с выбранным значением в SeasonHandleComboBox.
+        /// </summary>
         private void SeasonHandleButton_Click(object sender, EventArgs e)
         {
             switch (SeasonHandleComboBox.Text)

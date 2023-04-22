@@ -26,6 +26,10 @@ namespace Programming.View.Controls
         /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Создает объект типа <see cref="RectanglesControl"/>.
+        /// Инициализирует список фильмов дефолтными значениями.
+        /// </summary>
         public RectanglesControl()
         {
             InitializeComponent();
@@ -63,6 +67,11 @@ namespace Programming.View.Controls
             return maxWidthRectangle;
         }
 
+        /// <summary>
+        /// При изменении индекса выбранного элемента RectanglesListBox
+        /// присваивает _currentRectangle выбранный элемент
+        /// и заполняет все текстовые поля значениями _currentRectangles.
+        /// </summary>
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
@@ -74,6 +83,10 @@ namespace Programming.View.Controls
             IdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
+        /// <summary>
+        /// При изменении текста HeightTextBox пытается присвоить этот текст в свойство Height элемента
+        /// _currentRectangle и красит HeightTextBox в соответствии с валидацией.
+        /// </summary>
         private void HeightTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -87,6 +100,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста WidthTextBox пытается присвоить этот текст в свойство Width элемента
+        /// _currentRectangle и красит WidthTextBox в соответствии с валидацией.
+        /// </summary>
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -100,6 +117,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста ColorTextBox пытается присвоить этот текст в свойство Color элемента
+        /// _currentRectangle и красит ColorTextBox в соответствии с валидацией.
+        /// </summary>
         private void ColorTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -113,6 +134,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При нажатии на RectangleButton выбирает элемент в RectanglesListBox
+        /// у которого наибольшее значение ширины.
+        /// </summary>
         private void RectangleButton_Click(object sender, EventArgs e)
         {
             RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();

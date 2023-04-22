@@ -10,6 +10,11 @@ namespace Programming.View.Controls
     /// </summary>
     public partial class AllEnumerationsControl : UserControl
     {
+        /// <summary>
+        /// Создает объект типа <see cref="AllEnumerationsControl"/>.
+        /// Инициализирует массив перечислеий enums и заполняет EnumsListBox названиями этих перечислений.
+        /// Выбирает первый элемент EnumsListBox.
+        /// </summary>
         public AllEnumerationsControl()
         {
             InitializeComponent();
@@ -28,6 +33,11 @@ namespace Programming.View.Controls
             EnumsListBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// При изменении индекса выбранного элемента EnumsListBox
+        /// запоняет ValuesListBox константами выбранного перечисления.
+        /// Выбирает первый элемент ValuesListBox.
+        /// </summary>
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var enumValues = Enum.GetValues((Type)EnumsListBox.SelectedItem);
@@ -42,6 +52,10 @@ namespace Programming.View.Controls
             ValuesListBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// При изменении индекса выбранного элемента ValuesListBox
+        /// Преобразует элемент в числовой вид и записывает его в IntValueTextBox.
+        /// </summary>
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             IntValueTextBox.Text = ((int)ValuesListBox.SelectedItem).ToString();

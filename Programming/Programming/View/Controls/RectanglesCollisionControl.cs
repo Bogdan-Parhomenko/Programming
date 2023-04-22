@@ -28,6 +28,10 @@ namespace Programming.View.Controls
         /// </summary>
         private List<Panel> _rectanglePanels = new List<Panel>();
 
+        /// <summary>
+        /// Создает объект типа <see cref="RectanglesCollisionControl"/>.
+        /// В RectanglesAddingListBox будет отображаться свойство прямоугольника Info.
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();
@@ -109,6 +113,14 @@ namespace Programming.View.Controls
             RectanglesHeightTextBox.BackColor = AppColors.ValidationTrueColor;
         }
 
+        /// <summary>
+        /// При нажатии на RectanglesAddingButton добавляет в список _rectangles новый
+        /// прямоугольник со случайными значениями.
+        /// Добавляет на RectanglesAddingListBox этот прямоугольник.
+        /// Добавляет в список _rectanglePanels новую панель со случайными значениями.
+        /// Добавляет на CanvasPanel эту панель.
+        /// Проверяет пересечение добавленного прямоугольника с остальными.
+        /// </summary>
         private void RectanglesAddingButton_Click(object sender, EventArgs e)
         {
             var addedRectangleId = _rectangles.Count;
@@ -126,6 +138,14 @@ namespace Programming.View.Controls
             FindCollisions(_rectangles[addedRectangleId]);
         }
 
+        /// <summary>
+        /// При нажатии на RectanglesDeletingButton удаляет выбранный прямоугольник из _rectangles.
+        /// Удаляет соответсвующую этому прямоугольнику панель.
+        /// Удаляет с RectanglesAddingListBox этот прямоугольник.
+        /// Удаляет с CanvasPanel эту панель.
+        /// Проверяет пересечение всех прямоугольников.
+        /// Если прямоугольник не выбран, то ничего не происходит.
+        /// </summary>
         private void RectanglesDeletingButton_Click(object sender, EventArgs e)
         {
             var selectedIndex = RectanglesAddingListBox.SelectedIndex;
@@ -139,6 +159,12 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении выбранного элемента RectanglesAddingListBox
+        /// присваивает _currentRectangle выбранный элемент
+        /// и заполняет все текстовые поля значениями _currentRectangle.
+        /// Если прямоугольник не выбран, то очищает все текстовые поля.
+        /// </summary>
         private void RectanglesAddingListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RectanglesAddingListBox.SelectedIndex != -1)
@@ -152,6 +178,14 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста RectanglesXTextBox пытается присвоить этот текст в свойство X элемента
+        /// _currentRectangle и красит RectangleXTextBox в соответствии с валидацией.
+        /// При изменении текстовых полей обновляет информацию в RectanglesAddingListBox
+        /// в соответствии с этими значениями.
+        /// Перерисовывает соответствующую этому прямоугольнику панель в соответствии с новыми значениями.
+        /// Проверяет пересечение прямоугольников.
+        /// </summary>
         private void RectanglesXTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -172,6 +206,14 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста RectanglesYTextBox пытается присвоить этот текст в свойство Y элемента
+        /// _currentRectangle и красит RectangleYTextBox в соответствии с валидацией.
+        /// При изменении текстовых полей обновляет информацию в RectanglesAddingListBox
+        /// в соответствии с этими значениями.
+        /// Перерисовывает соответствующую этому прямоугольнику панель в соответствии с новыми значениями.
+        /// Проверяет пересечение прямоугольников.
+        /// </summary>
         private void RectanglesYTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -192,6 +234,14 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста RectanglesWidthTextBox пытается присвоить этот текст в свойство Width элемента
+        /// _currentRectangle и красит RectangleWidthTextBox в соответствии с валидацией.
+        /// При изменении текстовых полей обновляет информацию в RectanglesAddingListBox
+        /// в соответствии с этими значениями.
+        /// Перерисовывает соответствующую этому прямоугольнику панель в соответствии с новыми значениями.
+        /// Проверяет пересечение прямоугольников.
+        /// </summary>
         private void RectanglesWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -211,6 +261,14 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// При изменении текста RectanglesWidthTextBox пытается присвоить этот текст в свойство Width элемента
+        /// _currentRectangle и красит RectangleWidthTextBox в соответствии с валидацией.
+        /// При изменении текстовых полей обновляет информацию в RectanglesAddingListBox
+        /// в соответствии с этими значениями.
+        /// Перерисовывает соответствующую этому прямоугольнику панель в соответствии с новыми значениями.
+        /// Проверяет пересечение прямоугольников.
+        /// </summary>
         private void RectanglesHeightTextBox_TextChanged(object sender, EventArgs e)
         {
             try
