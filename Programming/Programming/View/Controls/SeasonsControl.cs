@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Содержит логику выбора сезонов вкладки Enums.
+    /// </summary>
     public partial class SeasonsControl : UserControl
     {
         public SeasonsControl()

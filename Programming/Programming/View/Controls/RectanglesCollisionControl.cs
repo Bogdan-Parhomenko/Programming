@@ -8,12 +8,24 @@ using Rectangle = Programming.Model.Geometry.Rectangle;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Содержит логику вкладки Rectangles.
+    /// </summary>
     public partial class RectanglesCollisionControl : UserControl
     {
+        /// <summary>
+        /// Список элементов класса Rectangle.
+        /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
 
+        /// <summary>
+        /// экземпляр класса Rectangle.
+        /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Список элементов класса Panel.
+        /// </summary>
         private List<Panel> _rectanglePanels = new List<Panel>();
 
         public RectanglesCollisionControl()
@@ -23,6 +35,9 @@ namespace Programming.View.Controls
             RectanglesAddingListBox.DisplayMember = nameof(Rectangle.Info);
         }
 
+        /// <summary>
+        /// Находит пересекающиеся прямоугольники и перекрашивает их.
+        /// </summary>
         private void FindCollisions()
         {
             foreach (var panel in _rectanglePanels)
@@ -43,6 +58,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Сравнивает переданный прямоугольник с остальными и если они пересекаются, перекрашивает их.
+        /// </summary>
+        /// <param name="rectangle">Сравниваемый прямоугольник.</param>
         private void FindCollisions(Rectangle rectangle)
         {
             var lastRectangleIndex = _rectangles.Count - 1;
@@ -61,6 +80,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Обновляет текстовые поля выбранного прямоугольника.
+        /// </summary>
+        /// <param name="rectangle">прямоугольник, текстовые поля которого необходимо обновить.</param>
         private void UpdateRectangleInfo(Rectangle rectangle)
         {
             RectanglesIdTextBox.Text = rectangle.Id.ToString();
@@ -70,6 +93,9 @@ namespace Programming.View.Controls
             RectanglesHeightTextBox.Text = rectangle.Height.ToString();
         }
 
+        /// <summary>
+        /// Очищает все текстовые поля и перекрашивает их в исходный цвет.
+        /// </summary>
         private void ClearRectangleInfo()
         {
             RectanglesIdTextBox.Clear();

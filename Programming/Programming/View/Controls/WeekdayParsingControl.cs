@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Содержит логику пользовательского ввода дней недели вкладки Enums.
+    /// </summary>
     public partial class WeekdayParsingControl : UserControl
     {
         public WeekdayParsingControl()

@@ -3,7 +3,7 @@
 namespace Programming.View
 {
     /// <summary>
-    /// Класс, содержащий логику главного окна.
+    /// Содержит логику главного окна.
     /// </summary>
     public partial class MainForm : Form
     {

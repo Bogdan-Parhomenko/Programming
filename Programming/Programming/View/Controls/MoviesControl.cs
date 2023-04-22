@@ -5,12 +5,24 @@ using Genre = Programming.Model.Enums.Genre;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Содержит логику выбора фильмов вкладки Classes.
+    /// </summary>
     public partial class MoviesControl : UserControl
     {
+        /// <summary>
+        /// Экземпляр класса Random, необходимый для доступа к методам этого класса.
+        /// </summary>
         private Random _random = new Random();
 
+        /// <summary>
+        /// Массив из 5 экземпляров класса Movie.
+        /// </summary>
         private Movie[] _movies = new Movie[5];
 
+        /// <summary>
+        /// Экземпляр класса Movie.
+        /// </summary>
         private Movie _currentMovie;
 
         public MoviesControl()
@@ -28,6 +40,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Находит экземпляр класса Movie с самой высокой пользовательской оценкой.
+        /// </summary>
+        /// <returns>Возвращает индекс экземпляра.</returns>
         private int FindMovieWithMaxRate()
         {
             var maxRate = _movies[0].Rate;

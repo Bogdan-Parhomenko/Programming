@@ -5,6 +5,9 @@ using Color = Programming.Model.Enums.Color;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Содержит логику выбора перечислений вкладки Enums.
+    /// </summary>
     public partial class AllEnumerationsControl : UserControl
     {
         public AllEnumerationsControl()

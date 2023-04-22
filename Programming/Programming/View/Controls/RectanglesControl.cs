@@ -6,12 +6,24 @@ using Rectangle = Programming.Model.Geometry.Rectangle;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Содержит логику выбора прямоугольников вкладки Classes.
+    /// </summary>
     public partial class RectanglesControl : UserControl
     {
+        /// <summary>
+        /// Экземпляр класса Random, необходимый для доступа к методам этого класса.
+        /// </summary>
         private Random _random = new Random();
 
+        /// <summary>
+        /// Массив из 5 экземпляров класса Rectangle.
+        /// </summary>
         private Rectangle[] _rectangles = new Rectangle[5];
 
+        /// <summary>
+        /// Экземпляр класса Rectangle.
+        /// </summary>
         private Rectangle _currentRectangle;
 
         public RectanglesControl()
@@ -30,6 +42,10 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Находит экземпляр класса Rectangle с самым высоким значением ширины.
+        /// </summary>
+        /// <returns>Возвращает индекс экземпляра.</returns>
         private int FindRectangleWithMaxWidth()
         {
             var maxWidth = _rectangles[0].Width;
