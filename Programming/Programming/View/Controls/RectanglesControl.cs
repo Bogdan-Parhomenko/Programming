@@ -28,8 +28,7 @@ namespace Programming.View.Controls
 
         /// <summary>
         /// Создает объект типа <see cref="RectanglesControl"/>.
-        /// Инициализирует список фильмов дефолтными значениями.
-        /// </summary>
+        /// Инициализирует массив прямоугольников дефолтными значениями и заполняет ими RectanglesListBox.
         public RectanglesControl()
         {
             InitializeComponent();

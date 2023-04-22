@@ -42,8 +42,8 @@ namespace Programming.Model.Classes
         /// Проверяет, что целочисленное значение находится в заданном целочисленном пределе.
         /// </summary>
         /// <param name="value">Проверяемое значение.</param>
-        /// <param name="min">Минимальное допустимое значение.</param>
-        /// <param name="max">Максимальное допустимое значение.</param>
+        /// <param name="min">Минимальное допустимое целочисленное значение.</param>
+        /// <param name="max">Максимальное допустимое целочисленное значение.</param>
         /// <param name="propertyName">Имя свойства, вызвавшего данный метод.</param>
         /// <exception cref="ArgumentException">Выбрасывается, если вводимое значение не находится в заданном пределе.</exception>
         public static void AssertValueInRange(int value, int min, int max, [CallerMemberName] string propertyName = "")
@@ -59,8 +59,8 @@ namespace Programming.Model.Classes
         /// Проверяет, что вещественное значение находится в заданном вещественном пределе.
         /// </summary>
         /// <param name="value">Проверяемое значение.</param>
-        /// <param name="min"></param>
-        /// <param name="max"></param>
+        /// <param name="min">Минимальное допустимое вещественное значение.</param>
+        /// <param name="max">Максимальное допустимое вещественное значение.</param>
         /// <param name="propertyName">Имя свойства, вызвавшего данный метод.</param>
         /// <exception cref="ArgumentException">Выбрасывается, если вводимое значение не находится в заданном пределе.</exception>
         public static void AssertValueInRange(double value, double min, double max, [CallerMemberName] string propertyName = "")

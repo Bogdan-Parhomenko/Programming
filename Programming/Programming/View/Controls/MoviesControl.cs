@@ -27,7 +27,7 @@ namespace Programming.View.Controls
 
         /// <summary>
         /// Создает объект типа <see cref="MoviesControl"/>.
-        /// Инициализирует список фильмов дефолтными значениями.
+        /// Инициализирует массив фильмов дефолтными значениями и заполняет ими MoviesListBox.
         /// </summary>
         public MoviesControl()
         {
