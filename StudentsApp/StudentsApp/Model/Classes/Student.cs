@@ -30,6 +30,7 @@ namespace StudentsApp.Model.Classes
                 {
                     throw new ArgumentException("Номер зачетки должен состоять из 6 цифр.");
                 }
+                _allStudentsCount = value;
             }
         }
 
