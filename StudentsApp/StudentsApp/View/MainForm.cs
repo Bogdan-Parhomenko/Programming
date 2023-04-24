@@ -112,31 +112,5 @@ namespace StudentsApp.View
                 GroupTextBox.BackColor = Color.LightPink;
             }
         }
-
-        private void FacultyComboBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                FacultyComboBox.BackColor = Color.White;
-                _currentStudent.Faculty = Enum.Parse(typeof(Faculty), FacultyComboBox.Text).ToString();
-            }
-            catch
-            {
-                FacultyComboBox.BackColor = Color.LightPink;
-            }
-        }
-
-        private void FormOfEducationComboBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                FormOfEducationComboBox.BackColor = Color.White;
-                _currentStudent.FormOfEducation = Enum.Parse(typeof(FormOfEducation), FormOfEducationComboBox.Text).ToString();
-            }
-            catch
-            {
-                FormOfEducationComboBox.BackColor = Color.LightPink;
-            }
-        }
     }
 }

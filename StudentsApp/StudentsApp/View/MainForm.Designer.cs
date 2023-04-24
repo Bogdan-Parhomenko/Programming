@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StudentsListBox = new System.Windows.Forms.ListBox();
             this.SelectedStudentGroupBox = new System.Windows.Forms.GroupBox();
+            this.FormOfEducationComboBox = new System.Windows.Forms.ComboBox();
+            this.FacultyComboBox = new System.Windows.Forms.ComboBox();
             this.GroupTextBox = new System.Windows.Forms.TextBox();
             this.RecordNumberTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.StudentsAddPictureBox = new System.Windows.Forms.PictureBox();
             this.StudentsEditPictureBox = new System.Windows.Forms.PictureBox();
             this.StudentsDeletePictureBox = new System.Windows.Forms.PictureBox();
-            this.FacultyComboBox = new System.Windows.Forms.ComboBox();
-            this.FormOfEducationComboBox = new System.Windows.Forms.ComboBox();
             this.SelectedStudentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsAddPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsEditPictureBox)).BeginInit();
@@ -82,6 +82,24 @@
             this.SelectedStudentGroupBox.TabIndex = 1;
             this.SelectedStudentGroupBox.TabStop = false;
             this.SelectedStudentGroupBox.Text = "Selected Student";
+            // 
+            // FormOfEducationComboBox
+            // 
+            this.FormOfEducationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FormOfEducationComboBox.FormattingEnabled = true;
+            this.FormOfEducationComboBox.Location = new System.Drawing.Point(110, 124);
+            this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
+            this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
+            this.FormOfEducationComboBox.TabIndex = 9;
+            // 
+            // FacultyComboBox
+            // 
+            this.FacultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FacultyComboBox.FormattingEnabled = true;
+            this.FacultyComboBox.Location = new System.Drawing.Point(110, 97);
+            this.FacultyComboBox.Name = "FacultyComboBox";
+            this.FacultyComboBox.Size = new System.Drawing.Size(184, 21);
+            this.FacultyComboBox.TabIndex = 8;
             // 
             // GroupTextBox
             // 
@@ -189,26 +207,6 @@
             this.StudentsDeletePictureBox.TabIndex = 4;
             this.StudentsDeletePictureBox.TabStop = false;
             this.StudentsDeletePictureBox.Click += new System.EventHandler(this.StudentsDeletePictureBox_Click);
-            // 
-            // FacultyComboBox
-            // 
-            this.FacultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FacultyComboBox.FormattingEnabled = true;
-            this.FacultyComboBox.Location = new System.Drawing.Point(110, 97);
-            this.FacultyComboBox.Name = "FacultyComboBox";
-            this.FacultyComboBox.Size = new System.Drawing.Size(184, 21);
-            this.FacultyComboBox.TabIndex = 8;
-            this.FacultyComboBox.TextChanged += new System.EventHandler(this.FacultyComboBox_TextChanged);
-            // 
-            // FormOfEducationComboBox
-            // 
-            this.FormOfEducationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FormOfEducationComboBox.FormattingEnabled = true;
-            this.FormOfEducationComboBox.Location = new System.Drawing.Point(110, 124);
-            this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
-            this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
-            this.FormOfEducationComboBox.TabIndex = 9;
-            this.FormOfEducationComboBox.TextChanged += new System.EventHandler(this.FormOfEducationComboBox_TextChanged);
             // 
             // MainForm
             // 
