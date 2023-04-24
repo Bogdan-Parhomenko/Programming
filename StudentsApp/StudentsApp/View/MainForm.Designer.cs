@@ -86,6 +86,7 @@
             // FormOfEducationComboBox
             // 
             this.FormOfEducationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FormOfEducationComboBox.Enabled = false;
             this.FormOfEducationComboBox.FormattingEnabled = true;
             this.FormOfEducationComboBox.Location = new System.Drawing.Point(110, 124);
             this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
@@ -96,6 +97,7 @@
             // FacultyComboBox
             // 
             this.FacultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FacultyComboBox.Enabled = false;
             this.FacultyComboBox.FormattingEnabled = true;
             this.FacultyComboBox.Location = new System.Drawing.Point(110, 97);
             this.FacultyComboBox.Name = "FacultyComboBox";
@@ -105,6 +107,7 @@
             // 
             // GroupTextBox
             // 
+            this.GroupTextBox.Enabled = false;
             this.GroupTextBox.Location = new System.Drawing.Point(110, 71);
             this.GroupTextBox.Name = "GroupTextBox";
             this.GroupTextBox.Size = new System.Drawing.Size(184, 20);
@@ -113,6 +116,7 @@
             // 
             // RecordNumberTextBox
             // 
+            this.RecordNumberTextBox.Enabled = false;
             this.RecordNumberTextBox.Location = new System.Drawing.Point(110, 45);
             this.RecordNumberTextBox.Name = "RecordNumberTextBox";
             this.RecordNumberTextBox.ReadOnly = true;
@@ -121,6 +125,7 @@
             // 
             // FullNameTextBox
             // 
+            this.FullNameTextBox.Enabled = false;
             this.FullNameTextBox.Location = new System.Drawing.Point(110, 19);
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(416, 20);
@@ -192,6 +197,7 @@
             this.StudentsEditPictureBox.Size = new System.Drawing.Size(50, 50);
             this.StudentsEditPictureBox.TabIndex = 3;
             this.StudentsEditPictureBox.TabStop = false;
+            this.StudentsEditPictureBox.Click += new System.EventHandler(this.StudentsEditPictureBox_Click);
             // 
             // StudentsDeletePictureBox
             // 

@@ -16,6 +16,8 @@ namespace StudentsApp.View
 
         private Student _currentStudent;
 
+        private bool isEditButtonPressed = false;
+
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
         /// </summary>
@@ -42,8 +44,10 @@ namespace StudentsApp.View
         private void ClearStudentsInfo()
         {
             FullNameTextBox.Clear();
+            FullNameTextBox.BackColor = Color.White;
             RecordNumberTextBox.Clear();
             GroupTextBox.Clear();
+            GroupTextBox.BackColor = Color.White;
             FacultyComboBox.Items.Clear();
             FormOfEducationComboBox.Items.Clear();
         }
@@ -85,11 +89,37 @@ namespace StudentsApp.View
                 StudentsListBox.Items.RemoveAt(selectedIndex);
             }
         }
+        private void StudentsEditPictureBox_Click(object sender, EventArgs e)
+        {
+            if (isEditButtonPressed)
+            {
+                FullNameTextBox.Enabled = false;
+                RecordNumberTextBox.Enabled = false;
+                GroupTextBox.Enabled = false;
+                FacultyComboBox.Enabled = false;
+                FormOfEducationComboBox.Enabled = false;
+                isEditButtonPressed = false;
+            }
+            else
+            {
+                FullNameTextBox.Enabled = true;
+                RecordNumberTextBox.Enabled = true;
+                GroupTextBox.Enabled = true;
+                FacultyComboBox.Enabled = true;
+                FormOfEducationComboBox.Enabled = true;
+                isEditButtonPressed = true;
+            }
+
+        }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                if (FullNameTextBox.Text == "")
+                {
+                    return;
+                }
                 FullNameTextBox.BackColor = Color.White;
                 _currentStudent.FullName = FullNameTextBox.Text;
                 UpdateListBoxInfo();
@@ -104,6 +134,10 @@ namespace StudentsApp.View
         {
             try
             {
+                if (GroupTextBox.Text == "")
+                {
+                    return;
+                }
                 GroupTextBox.BackColor = Color.White;
                 _currentStudent.Group = GroupTextBox.Text;
                 UpdateListBoxInfo();
