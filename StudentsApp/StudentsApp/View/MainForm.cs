@@ -24,10 +24,6 @@ namespace StudentsApp.View
             InitializeComponent();
 
             StudentsListBox.DisplayMember = nameof(Student.Info);
-
-            //FacultyComboBox.DataSource = Enum.GetValues(typeof(Faculty));
-
-            //FormOfEducationComboBox.DataSource = Enum.GetValues(typeof(FormOfEducation));
         }
 
         private void UpdateStudentsInfo(Student student)
@@ -36,11 +32,9 @@ namespace StudentsApp.View
             RecordNumberTextBox.Text = student.RecordNumber.ToString();
             GroupTextBox.Text = student.Group;
             FacultyComboBox.Items.Clear();
-            FacultyComboBox.Text = "";
-            FormOfEducationComboBox.Items.Clear();
-            FormOfEducationComboBox.Text = "";
             FacultyComboBox.Items.AddRange(Enum.GetNames(typeof(Faculty)));
             FacultyComboBox.Text = student.Faculty;
+            FormOfEducationComboBox.Items.Clear();
             FormOfEducationComboBox.Items.AddRange(Enum.GetNames(typeof(FormOfEducation)));
             FormOfEducationComboBox.Text = student.FormOfEducation;
         }
@@ -51,9 +45,14 @@ namespace StudentsApp.View
             RecordNumberTextBox.Clear();
             GroupTextBox.Clear();
             FacultyComboBox.Items.Clear();
-            FacultyComboBox.Text = "";
             FormOfEducationComboBox.Items.Clear();
-            FormOfEducationComboBox.Text = "";
+        }
+
+        private void UpdateListBoxInfo()
+        {
+            StudentsListBox.SelectedIndexChanged -= StudentsListBox_SelectedIndexChanged;
+            StudentsListBox.Items[StudentsListBox.SelectedIndex] = _students[StudentsListBox.SelectedIndex];
+            StudentsListBox.SelectedIndexChanged += StudentsListBox_SelectedIndexChanged;
         }
 
         private void StudentsListBox_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -93,6 +92,7 @@ namespace StudentsApp.View
             {
                 FullNameTextBox.BackColor = Color.White;
                 _currentStudent.FullName = FullNameTextBox.Text;
+                UpdateListBoxInfo();
             }
             catch
             {
@@ -106,11 +106,23 @@ namespace StudentsApp.View
             {
                 GroupTextBox.BackColor = Color.White;
                 _currentStudent.Group = GroupTextBox.Text;
+                UpdateListBoxInfo();
             }
             catch
             {
                 GroupTextBox.BackColor = Color.LightPink;
             }
+        }
+
+        private void FacultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentStudent.Faculty = FacultyComboBox.Text;
+            UpdateListBoxInfo();
+        }
+
+        private void FormOfEducationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentStudent.FormOfEducation = FormOfEducationComboBox.Text;
         }
     }
 }

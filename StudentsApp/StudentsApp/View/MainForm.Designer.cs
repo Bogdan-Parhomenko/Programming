@@ -52,8 +52,9 @@
             // 
             // StudentsListBox
             // 
-            this.StudentsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.StudentsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentsListBox.FormattingEnabled = true;
             this.StudentsListBox.IntegralHeight = false;
             this.StudentsListBox.Location = new System.Drawing.Point(13, 13);
@@ -64,8 +65,7 @@
             // 
             // SelectedStudentGroupBox
             // 
-            this.SelectedStudentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectedStudentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedStudentGroupBox.Controls.Add(this.FormOfEducationComboBox);
             this.SelectedStudentGroupBox.Controls.Add(this.FacultyComboBox);
             this.SelectedStudentGroupBox.Controls.Add(this.GroupTextBox);
@@ -91,6 +91,7 @@
             this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
             this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
             this.FormOfEducationComboBox.TabIndex = 9;
+            this.FormOfEducationComboBox.SelectedIndexChanged += new System.EventHandler(this.FormOfEducationComboBox_SelectedIndexChanged);
             // 
             // FacultyComboBox
             // 
@@ -100,11 +101,10 @@
             this.FacultyComboBox.Name = "FacultyComboBox";
             this.FacultyComboBox.Size = new System.Drawing.Size(184, 21);
             this.FacultyComboBox.TabIndex = 8;
+            this.FacultyComboBox.SelectedIndexChanged += new System.EventHandler(this.FacultyComboBox_SelectedIndexChanged);
             // 
             // GroupTextBox
             // 
-            this.GroupTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupTextBox.Location = new System.Drawing.Point(110, 71);
             this.GroupTextBox.Name = "GroupTextBox";
             this.GroupTextBox.Size = new System.Drawing.Size(184, 20);
@@ -113,8 +113,6 @@
             // 
             // RecordNumberTextBox
             // 
-            this.RecordNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.RecordNumberTextBox.Location = new System.Drawing.Point(110, 45);
             this.RecordNumberTextBox.Name = "RecordNumberTextBox";
             this.RecordNumberTextBox.ReadOnly = true;
@@ -123,8 +121,6 @@
             // 
             // FullNameTextBox
             // 
-            this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(110, 19);
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(416, 20);
