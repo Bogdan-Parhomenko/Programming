@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StudentsListBox = new System.Windows.Forms.ListBox();
             this.SelectedStudentGroupBox = new System.Windows.Forms.GroupBox();
-            this.FormOfEducationTextBox = new System.Windows.Forms.TextBox();
-            this.FacultyTextBox = new System.Windows.Forms.TextBox();
             this.GroupTextBox = new System.Windows.Forms.TextBox();
             this.RecordNumberTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
@@ -44,6 +42,8 @@
             this.StudentsAddPictureBox = new System.Windows.Forms.PictureBox();
             this.StudentsEditPictureBox = new System.Windows.Forms.PictureBox();
             this.StudentsDeletePictureBox = new System.Windows.Forms.PictureBox();
+            this.FacultyComboBox = new System.Windows.Forms.ComboBox();
+            this.FormOfEducationComboBox = new System.Windows.Forms.ComboBox();
             this.SelectedStudentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsAddPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsEditPictureBox)).BeginInit();
@@ -60,13 +60,14 @@
             this.StudentsListBox.Name = "StudentsListBox";
             this.StudentsListBox.Size = new System.Drawing.Size(237, 368);
             this.StudentsListBox.TabIndex = 17;
+            this.StudentsListBox.SelectedIndexChanged += new System.EventHandler(this.StudentsListBox_SelectedIndexChanged);
             // 
             // SelectedStudentGroupBox
             // 
             this.SelectedStudentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectedStudentGroupBox.Controls.Add(this.FormOfEducationTextBox);
-            this.SelectedStudentGroupBox.Controls.Add(this.FacultyTextBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.FormOfEducationComboBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.FacultyComboBox);
             this.SelectedStudentGroupBox.Controls.Add(this.GroupTextBox);
             this.SelectedStudentGroupBox.Controls.Add(this.RecordNumberTextBox);
             this.SelectedStudentGroupBox.Controls.Add(this.FullNameTextBox);
@@ -82,24 +83,6 @@
             this.SelectedStudentGroupBox.TabStop = false;
             this.SelectedStudentGroupBox.Text = "Selected Student";
             // 
-            // FormOfEducationTextBox
-            // 
-            this.FormOfEducationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FormOfEducationTextBox.Location = new System.Drawing.Point(110, 123);
-            this.FormOfEducationTextBox.Name = "FormOfEducationTextBox";
-            this.FormOfEducationTextBox.Size = new System.Drawing.Size(184, 20);
-            this.FormOfEducationTextBox.TabIndex = 9;
-            // 
-            // FacultyTextBox
-            // 
-            this.FacultyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FacultyTextBox.Location = new System.Drawing.Point(110, 97);
-            this.FacultyTextBox.Name = "FacultyTextBox";
-            this.FacultyTextBox.Size = new System.Drawing.Size(184, 20);
-            this.FacultyTextBox.TabIndex = 8;
-            // 
             // GroupTextBox
             // 
             this.GroupTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -108,6 +91,7 @@
             this.GroupTextBox.Name = "GroupTextBox";
             this.GroupTextBox.Size = new System.Drawing.Size(184, 20);
             this.GroupTextBox.TabIndex = 7;
+            this.GroupTextBox.TextChanged += new System.EventHandler(this.GroupTextBox_TextChanged);
             // 
             // RecordNumberTextBox
             // 
@@ -115,6 +99,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RecordNumberTextBox.Location = new System.Drawing.Point(110, 45);
             this.RecordNumberTextBox.Name = "RecordNumberTextBox";
+            this.RecordNumberTextBox.ReadOnly = true;
             this.RecordNumberTextBox.Size = new System.Drawing.Size(184, 20);
             this.RecordNumberTextBox.TabIndex = 6;
             // 
@@ -126,11 +111,12 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(416, 20);
             this.FullNameTextBox.TabIndex = 5;
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FormOfEducationLabel
             // 
             this.FormOfEducationLabel.AutoSize = true;
-            this.FormOfEducationLabel.Location = new System.Drawing.Point(8, 126);
+            this.FormOfEducationLabel.Location = new System.Drawing.Point(8, 127);
             this.FormOfEducationLabel.Name = "FormOfEducationLabel";
             this.FormOfEducationLabel.Size = new System.Drawing.Size(96, 13);
             this.FormOfEducationLabel.TabIndex = 4;
@@ -181,6 +167,7 @@
             this.StudentsAddPictureBox.Size = new System.Drawing.Size(50, 50);
             this.StudentsAddPictureBox.TabIndex = 2;
             this.StudentsAddPictureBox.TabStop = false;
+            this.StudentsAddPictureBox.Click += new System.EventHandler(this.StudentsAddPictureBox_Click);
             // 
             // StudentsEditPictureBox
             // 
@@ -201,6 +188,27 @@
             this.StudentsDeletePictureBox.Size = new System.Drawing.Size(50, 50);
             this.StudentsDeletePictureBox.TabIndex = 4;
             this.StudentsDeletePictureBox.TabStop = false;
+            this.StudentsDeletePictureBox.Click += new System.EventHandler(this.StudentsDeletePictureBox_Click);
+            // 
+            // FacultyComboBox
+            // 
+            this.FacultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FacultyComboBox.FormattingEnabled = true;
+            this.FacultyComboBox.Location = new System.Drawing.Point(110, 97);
+            this.FacultyComboBox.Name = "FacultyComboBox";
+            this.FacultyComboBox.Size = new System.Drawing.Size(184, 21);
+            this.FacultyComboBox.TabIndex = 8;
+            this.FacultyComboBox.TextChanged += new System.EventHandler(this.FacultyComboBox_TextChanged);
+            // 
+            // FormOfEducationComboBox
+            // 
+            this.FormOfEducationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FormOfEducationComboBox.FormattingEnabled = true;
+            this.FormOfEducationComboBox.Location = new System.Drawing.Point(110, 124);
+            this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
+            this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
+            this.FormOfEducationComboBox.TabIndex = 9;
+            this.FormOfEducationComboBox.TextChanged += new System.EventHandler(this.FormOfEducationComboBox_TextChanged);
             // 
             // MainForm
             // 
@@ -228,8 +236,6 @@
 
         private System.Windows.Forms.ListBox StudentsListBox;
         private System.Windows.Forms.GroupBox SelectedStudentGroupBox;
-        private System.Windows.Forms.TextBox FormOfEducationTextBox;
-        private System.Windows.Forms.TextBox FacultyTextBox;
         private System.Windows.Forms.TextBox GroupTextBox;
         private System.Windows.Forms.TextBox RecordNumberTextBox;
         private System.Windows.Forms.TextBox FullNameTextBox;
@@ -241,6 +247,8 @@
         private System.Windows.Forms.PictureBox StudentsAddPictureBox;
         private System.Windows.Forms.PictureBox StudentsEditPictureBox;
         private System.Windows.Forms.PictureBox StudentsDeletePictureBox;
+        private System.Windows.Forms.ComboBox FormOfEducationComboBox;
+        private System.Windows.Forms.ComboBox FacultyComboBox;
     }
 }
 

@@ -125,7 +125,7 @@ namespace Programming.View.Controls
             try
             {
                 ColorTextBox.BackColor = AppColors.ValidationTrueColor;
-                _currentRectangle.Color = (Enum.Parse(typeof(Color), ColorTextBox.Text)).ToString();
+                _currentRectangle.Color = Enum.Parse(typeof(Color), ColorTextBox.Text).ToString();
             }
             catch
             {

@@ -141,7 +141,7 @@ namespace Programming.View.Controls
             try
             {
                 GenreTextBox.BackColor = AppColors.ValidationTrueColor;
-                _currentMovie.Genre = (Enum.Parse(typeof(Genre), GenreTextBox.Text)).ToString();
+                _currentMovie.Genre = Enum.Parse(typeof(Genre), GenreTextBox.Text).ToString();
             }
             catch
             {

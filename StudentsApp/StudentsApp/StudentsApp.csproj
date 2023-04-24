@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Classes\Student.cs" />
+    <Compile Include="Model\Enums\FormOfEducation.cs" />
+    <Compile Include="Model\Enums\Faculty.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,9 +87,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\studentsAdd_50x50.png" />
     <None Include="Resources\studentsDelete_50x50.png" />
