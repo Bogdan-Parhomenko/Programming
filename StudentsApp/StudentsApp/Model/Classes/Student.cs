@@ -7,7 +7,7 @@ namespace StudentsApp.Model.Classes
     {
         private string _fullName;
 
-        private static int _allStudentsCount = 100000;
+        private static int _allStudentsCount = 99999;
 
         private string _group;
 
