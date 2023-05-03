@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using StudentsApp.Model.Enums;
 using System.ComponentModel;
 
 namespace StudentsApp.View

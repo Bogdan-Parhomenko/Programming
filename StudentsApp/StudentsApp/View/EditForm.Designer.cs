@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditForm));
             this.EditingStudentGroupBox = new System.Windows.Forms.GroupBox();
+            this.StudentsDeletePictureBox = new System.Windows.Forms.PictureBox();
             this.FormOfEducationComboBox = new System.Windows.Forms.ComboBox();
+            this.StudentsAddPictureBox = new System.Windows.Forms.PictureBox();
             this.FacultyComboBox = new System.Windows.Forms.ComboBox();
             this.GroupTextBox = new System.Windows.Forms.TextBox();
             this.RecordNumberTextBox = new System.Windows.Forms.TextBox();
@@ -39,8 +42,6 @@
             this.GroupLabel = new System.Windows.Forms.Label();
             this.RecordNumberLabel = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
-            this.StudentsDeletePictureBox = new System.Windows.Forms.PictureBox();
-            this.StudentsAddPictureBox = new System.Windows.Forms.PictureBox();
             this.EditingStudentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsDeletePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsAddPictureBox)).BeginInit();
@@ -68,6 +69,16 @@
             this.EditingStudentGroupBox.TabStop = false;
             this.EditingStudentGroupBox.Text = "Edit Student";
             // 
+            // StudentsDeletePictureBox
+            // 
+            this.StudentsDeletePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StudentsDeletePictureBox.Image = global::StudentsApp.Properties.Resources.studentsDelete_50x50;
+            this.StudentsDeletePictureBox.Location = new System.Drawing.Point(421, 158);
+            this.StudentsDeletePictureBox.Name = "StudentsDeletePictureBox";
+            this.StudentsDeletePictureBox.Size = new System.Drawing.Size(50, 50);
+            this.StudentsDeletePictureBox.TabIndex = 12;
+            this.StudentsDeletePictureBox.TabStop = false;
+            // 
             // FormOfEducationComboBox
             // 
             this.FormOfEducationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -76,6 +87,16 @@
             this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
             this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
             this.FormOfEducationComboBox.TabIndex = 9;
+            // 
+            // StudentsAddPictureBox
+            // 
+            this.StudentsAddPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StudentsAddPictureBox.Image = global::StudentsApp.Properties.Resources.studentsAdd_50x50;
+            this.StudentsAddPictureBox.Location = new System.Drawing.Point(477, 158);
+            this.StudentsAddPictureBox.Name = "StudentsAddPictureBox";
+            this.StudentsAddPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.StudentsAddPictureBox.TabIndex = 11;
+            this.StudentsAddPictureBox.TabStop = false;
             // 
             // FacultyComboBox
             // 
@@ -153,32 +174,13 @@
             this.FullNameLabel.TabIndex = 0;
             this.FullNameLabel.Text = "Full Name:";
             // 
-            // StudentsDeletePictureBox
-            // 
-            this.StudentsDeletePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StudentsDeletePictureBox.Image = global::StudentsApp.Properties.Resources.studentsDelete_50x50;
-            this.StudentsDeletePictureBox.Location = new System.Drawing.Point(421, 158);
-            this.StudentsDeletePictureBox.Name = "StudentsDeletePictureBox";
-            this.StudentsDeletePictureBox.Size = new System.Drawing.Size(50, 50);
-            this.StudentsDeletePictureBox.TabIndex = 12;
-            this.StudentsDeletePictureBox.TabStop = false;
-            // 
-            // StudentsAddPictureBox
-            // 
-            this.StudentsAddPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StudentsAddPictureBox.Image = global::StudentsApp.Properties.Resources.studentsAdd_50x50;
-            this.StudentsAddPictureBox.Location = new System.Drawing.Point(477, 158);
-            this.StudentsAddPictureBox.Name = "StudentsAddPictureBox";
-            this.StudentsAddPictureBox.Size = new System.Drawing.Size(50, 50);
-            this.StudentsAddPictureBox.TabIndex = 11;
-            this.StudentsAddPictureBox.TabStop = false;
-            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 220);
             this.Controls.Add(this.EditingStudentGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditForm";
             this.Text = "Editing";
             this.EditingStudentGroupBox.ResumeLayout(false);
