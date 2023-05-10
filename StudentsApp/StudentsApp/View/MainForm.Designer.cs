@@ -60,6 +60,7 @@
             this.StudentsListBox.Location = new System.Drawing.Point(13, 13);
             this.StudentsListBox.Name = "StudentsListBox";
             this.StudentsListBox.Size = new System.Drawing.Size(237, 368);
+            this.StudentsListBox.Sorted = true;
             this.StudentsListBox.TabIndex = 17;
             this.StudentsListBox.SelectedIndexChanged += new System.EventHandler(this.StudentsListBox_SelectedIndexChanged);
             // 

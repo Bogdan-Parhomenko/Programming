@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Linq;
 
 namespace StudentsApp.View
 {
@@ -12,8 +13,6 @@ namespace StudentsApp.View
     public partial class MainForm : Form
     {
         private BindingList<Student> _students = new BindingList<Student>();
-
-        private Student _currentStudent = new Student();
 
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
@@ -25,9 +24,21 @@ namespace StudentsApp.View
             StudentsListBox.DisplayMember = nameof(Student.Info);
         }
 
-        private void StudentsSort(Student student)
+        private void StudentsSort()
         {
-            ;
+            int size = _students.Count;
+            for (int i = 1; i < size; i++)
+            {
+                for (int j = 0; j < (size - i); j++)
+                {
+                    if (String.Compare(_students.ElementAt(j).FullName, _students.ElementAt(j + 1).FullName) > 0)
+                    {
+                        Student temp = _students.ElementAt(j);
+                        _students[j] = _students.ElementAt(j + 1);
+                        _students[j + 1] = temp;
+                    }
+                }
+            }
         }
 
         private void UpdateStudentsInfo(Student student)
@@ -72,6 +83,7 @@ namespace StudentsApp.View
                 _students.Add(_addForm.AddStudent);
             }
             StudentsListBox.SelectedIndex = -1;
+            StudentsSort();
         }
 
         private void StudentsDeletePictureBox_Click(object sender, EventArgs e)
@@ -94,7 +106,9 @@ namespace StudentsApp.View
                 {
                     _students[selectedIndex] = _editForm.EditStudent;
                 }
-            } 
+            }
+            StudentsListBox.SelectedIndex = -1;
+            StudentsSort();
         }
     }
 }
