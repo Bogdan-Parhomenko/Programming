@@ -85,25 +85,21 @@
             // 
             // FormOfEducationComboBox
             // 
-            this.FormOfEducationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FormOfEducationComboBox.Enabled = false;
             this.FormOfEducationComboBox.FormattingEnabled = true;
             this.FormOfEducationComboBox.Location = new System.Drawing.Point(110, 124);
             this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
             this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
             this.FormOfEducationComboBox.TabIndex = 9;
-            this.FormOfEducationComboBox.SelectedIndexChanged += new System.EventHandler(this.FormOfEducationComboBox_SelectedIndexChanged);
             // 
             // FacultyComboBox
             // 
-            this.FacultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FacultyComboBox.Enabled = false;
             this.FacultyComboBox.FormattingEnabled = true;
             this.FacultyComboBox.Location = new System.Drawing.Point(110, 97);
             this.FacultyComboBox.Name = "FacultyComboBox";
             this.FacultyComboBox.Size = new System.Drawing.Size(184, 21);
             this.FacultyComboBox.TabIndex = 8;
-            this.FacultyComboBox.SelectedIndexChanged += new System.EventHandler(this.FacultyComboBox_SelectedIndexChanged);
             // 
             // GroupTextBox
             // 
@@ -112,7 +108,6 @@
             this.GroupTextBox.Name = "GroupTextBox";
             this.GroupTextBox.Size = new System.Drawing.Size(184, 20);
             this.GroupTextBox.TabIndex = 7;
-            this.GroupTextBox.TextChanged += new System.EventHandler(this.GroupTextBox_TextChanged);
             // 
             // RecordNumberTextBox
             // 
@@ -130,7 +125,6 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(416, 20);
             this.FullNameTextBox.TabIndex = 5;
-            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FormOfEducationLabel
             // 

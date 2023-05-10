@@ -59,7 +59,7 @@ namespace StudentsApp.View
         private void StudentsAddPictureBox_Click(object sender, EventArgs e)
         {
             if (_currentStudent.FullName == null || _currentStudent.Group == null ||
-                _currentStudent.Faculty == null | _currentStudent.FormOfEducation == null)
+                _currentStudent.Faculty == null || _currentStudent.FormOfEducation == null)
             {
                 return;
             }
@@ -70,6 +70,7 @@ namespace StudentsApp.View
 
         private void StudentsDeletePictureBox_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

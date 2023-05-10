@@ -34,7 +34,7 @@ namespace StudentsApp.Model.Classes
             }
         }
 
-        public int RecordNumber { get; }
+        public int RecordNumber { get; set; }
 
         public string Group
         {
@@ -56,6 +56,17 @@ namespace StudentsApp.Model.Classes
             {
                 return $"{FullName} - {Group} / {Faculty}";
             }
+        }
+
+        public static Student CopyStudent(Student student)
+        {
+            Student copiedStudent = new Student();
+            copiedStudent.FullName = student.FullName;
+            copiedStudent.Group = student.Group;
+            copiedStudent.Faculty = student.Faculty;
+            copiedStudent.FormOfEducation = student.FormOfEducation;
+            copiedStudent.RecordNumber = student.RecordNumber;
+            return copiedStudent;
         }
 
         private static void CheckStringLength(string value, int maxLength, [CallerMemberName] string propertyName = "")

@@ -78,6 +78,7 @@
             this.StudentsDeletePictureBox.Size = new System.Drawing.Size(50, 50);
             this.StudentsDeletePictureBox.TabIndex = 12;
             this.StudentsDeletePictureBox.TabStop = false;
+            this.StudentsDeletePictureBox.Click += new System.EventHandler(this.StudentsDeletePictureBox_Click);
             // 
             // FormOfEducationComboBox
             // 
@@ -87,6 +88,7 @@
             this.FormOfEducationComboBox.Name = "FormOfEducationComboBox";
             this.FormOfEducationComboBox.Size = new System.Drawing.Size(184, 21);
             this.FormOfEducationComboBox.TabIndex = 9;
+            this.FormOfEducationComboBox.SelectedIndexChanged += new System.EventHandler(this.FormOfEducationComboBox_SelectedIndexChanged);
             // 
             // StudentsAddPictureBox
             // 
@@ -97,6 +99,7 @@
             this.StudentsAddPictureBox.Size = new System.Drawing.Size(50, 50);
             this.StudentsAddPictureBox.TabIndex = 11;
             this.StudentsAddPictureBox.TabStop = false;
+            this.StudentsAddPictureBox.Click += new System.EventHandler(this.StudentsAddPictureBox_Click);
             // 
             // FacultyComboBox
             // 
@@ -106,6 +109,7 @@
             this.FacultyComboBox.Name = "FacultyComboBox";
             this.FacultyComboBox.Size = new System.Drawing.Size(184, 21);
             this.FacultyComboBox.TabIndex = 8;
+            this.FacultyComboBox.SelectedIndexChanged += new System.EventHandler(this.FacultyComboBox_SelectedIndexChanged);
             // 
             // GroupTextBox
             // 
@@ -113,6 +117,7 @@
             this.GroupTextBox.Name = "GroupTextBox";
             this.GroupTextBox.Size = new System.Drawing.Size(184, 20);
             this.GroupTextBox.TabIndex = 7;
+            this.GroupTextBox.TextChanged += new System.EventHandler(this.GroupTextBox_TextChanged);
             // 
             // RecordNumberTextBox
             // 
@@ -128,6 +133,7 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(416, 20);
             this.FullNameTextBox.TabIndex = 5;
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FormOfEducationLabel
             // 
