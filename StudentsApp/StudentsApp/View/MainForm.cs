@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace StudentsApp.View
 {
@@ -14,12 +16,31 @@ namespace StudentsApp.View
     {
         private BindingList<Student> _students = new BindingList<Student>();
 
+        private string _jsonPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\students.json";
+
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+            if (!File.Exists(_jsonPath))
+            {
+                File.Create(_jsonPath);
+            }
+            JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
+            reader.SupportMultipleContent = true;
+            while (true)
+            {
+                if (!reader.Read())
+                {
+                    break;
+                }
+                JsonSerializer serializer = new JsonSerializer();
+                Student tempStudent = serializer.Deserialize<Student>(reader);
+                _students.Add(tempStudent);
+            }
+            reader.Close();
             StudentsListBox.DataSource = _students;
             StudentsListBox.DisplayMember = nameof(Student.Info);
         }
@@ -61,7 +82,7 @@ namespace StudentsApp.View
             FormOfEducationComboBox.Text = "";
         }
 
-        private void StudentsListBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void StudentsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (StudentsListBox.SelectedIndex != -1)
             {
@@ -74,7 +95,7 @@ namespace StudentsApp.View
             }
         }
 
-        private void StudentsAddPictureBox_Click(object sender, System.EventArgs e)
+        private async void StudentsAddPictureBox_Click(object sender, EventArgs e)
         {
             AddForm _addForm = new AddForm();
             _addForm.ShowDialog();
@@ -84,6 +105,11 @@ namespace StudentsApp.View
             }
             StudentsListBox.SelectedIndex = -1;
             StudentsSort();
+            File.WriteAllText(_jsonPath, string.Empty);
+            for (int i = 0; i < _students.Count; i++)
+            {
+                File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_students[i]));
+            }
         }
 
         private void StudentsDeletePictureBox_Click(object sender, EventArgs e)
@@ -93,6 +119,11 @@ namespace StudentsApp.View
             {
                 _students.RemoveAt(selectedIndex);
                 StudentsListBox.SelectedIndex = -1;
+                File.WriteAllText(_jsonPath, string.Empty);
+                for (int i = 0; i < _students.Count; i++)
+                {
+                    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_students[i]));
+                }
             }
         }
         private void StudentsEditPictureBox_Click(object sender, EventArgs e)
@@ -109,6 +140,11 @@ namespace StudentsApp.View
             }
             StudentsListBox.SelectedIndex = -1;
             StudentsSort();
+            File.WriteAllText(_jsonPath, string.Empty);
+            for (int i = 0; i < _students.Count; i++)
+            {
+                File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_students[i]));
+            }
         }
     }
 }
