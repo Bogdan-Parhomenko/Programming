@@ -6,12 +6,26 @@ using System.Windows.Forms;
 
 namespace StudentsApp.View
 {
+    /// <summary>
+    /// Содержит логику формы изменения студентов.
+    /// </summary>
     public partial class EditForm : Form
     {
+        /// <summary>
+        /// Скопированный изменяемый студент.
+        /// </summary>
         private Student _copiedStudent = new Student();
 
+        /// <summary>
+        /// Возвращает или задает изменяемого студентва.
+        /// </summary>
         public Student EditStudent { get; set; }
 
+        /// <summary>
+        /// Создает объект типа <see cref="EditForm"/>.
+        /// Заполняет все поля формы данными студента, которого нужно изменить и копирует их в новый экземпляр класса.
+        /// </summary>
+        /// <param name="student">Студент, которого нужно изменить.</param>
         public EditForm(Student student)
         {
             InitializeComponent();
@@ -25,6 +39,10 @@ namespace StudentsApp.View
             _copiedStudent = Student.CopyStudent(student);
         }
 
+        /// <summary>
+        /// При изменении текста FullNameTextBox пытается присвоить этот текст в свойство FullName элемента
+        /// _copiedStudent и красит FullNameTextBox в соответствии с валидацией.
+        /// </summary>
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -38,6 +56,10 @@ namespace StudentsApp.View
             }
         }
 
+        /// <summary>
+        /// При изменении текста GroupTextBox пытается присвоить этот текст в свойство Group элемента
+        /// _copiedStudent и красит GroupTextBox в соответствии с валидацией.
+        /// </summary>
         private void GroupTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -51,17 +73,27 @@ namespace StudentsApp.View
             }
         }
 
+        /// <summary>
+        /// При выборе нового значения FacultyComboBox присваивает его в свойство Faculty элемента _copiedStudent.
+        /// </summary>
         private void FacultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _copiedStudent.Faculty = FacultyComboBox.Text;
         }
 
+        /// <summary>
+        /// При выборе нового значения FormOfEducationComboBox присваивает его в свойство FormOfEducation элемента _copiedStudent.
+        /// </summary>
         private void FormOfEducationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _copiedStudent.FormOfEducation = FormOfEducationComboBox.Text;
         }
 
-        private void StudentsAddPictureBox_Click(object sender, EventArgs e)
+        /// <summary>
+        /// При нажатии на кнопку мзменения студента, если все поля экземпляра студента не пустые,
+        /// то передает его в свойство EditStudent и закрывает форму.
+        /// </summary>
+        private void StudentsEditPictureBox_Click(object sender, EventArgs e)
         {
             if (_copiedStudent.FullName == null || _copiedStudent.Group == null ||
                 _copiedStudent.Faculty == null || _copiedStudent.FormOfEducation == null)
@@ -73,6 +105,9 @@ namespace StudentsApp.View
             Close();
         }
 
+        /// <summary>
+        /// При нажатии на кнопку удаления студента удаляет студента и закрывает форму.
+        /// </summary>
         private void StudentsDeletePictureBox_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
