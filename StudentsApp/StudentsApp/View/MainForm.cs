@@ -16,7 +16,9 @@ namespace StudentsApp.View
     {
         private BindingList<Student> _students = new BindingList<Student>();
 
-        private string _jsonPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\students.json";
+        private string _pathToJson = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StudentsApp";
+
+        private string _jsonPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StudentsApp\\students.json";
 
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
@@ -24,9 +26,14 @@ namespace StudentsApp.View
         public MainForm()
         {
             InitializeComponent();
+            if (!Directory.Exists(_pathToJson))
+            {
+                Directory.CreateDirectory(_pathToJson);
+            }
             if (!File.Exists(_jsonPath))
             {
-                File.Create(_jsonPath);
+                FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
+                fileStream.Close();
             }
             JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
             reader.SupportMultipleContent = true;
@@ -95,7 +102,7 @@ namespace StudentsApp.View
             }
         }
 
-        private async void StudentsAddPictureBox_Click(object sender, EventArgs e)
+        private void StudentsAddPictureBox_Click(object sender, EventArgs e)
         {
             AddForm _addForm = new AddForm();
             _addForm.ShowDialog();
