@@ -16,10 +16,10 @@ namespace StudentsApp.Model.Classes
         /// <summary>
         /// Начало отсчета номера зачетной книжки.
         /// </summary>
-        private static int _allStudentsCount = 99999;
+        private static int _studentsFirstNumber = 99999;
 
         /// <summary>
-        /// группа студента.
+        /// Группа студента.
         /// </summary>
         private string _group;
 
@@ -39,16 +39,16 @@ namespace StudentsApp.Model.Classes
         /// <summary>
         /// Возвращает номер зачетной книжки студента. Должен состоять из 6 цифр.
         /// </summary>
-        public static int AllStudentsCount
+        public static int StudentsFirstNumber
         {
-            get => _allStudentsCount;
+            get => _studentsFirstNumber;
             private set
             {
                 if (value.ToString().Length != 6)
                 {
                     throw new ArgumentException("Номер зачетки должен состоять из 6 цифр.");
                 }
-                _allStudentsCount = value;
+                _studentsFirstNumber = value;
             }
         }
 
@@ -127,8 +127,8 @@ namespace StudentsApp.Model.Classes
         /// </summary>
         public Student()
         {
-            AllStudentsCount++;
-            RecordNumber = AllStudentsCount;
+            StudentsFirstNumber++;
+            RecordNumber = StudentsFirstNumber;
         }
 
         /// <summary>
@@ -141,8 +141,8 @@ namespace StudentsApp.Model.Classes
         public Student(string fullName, string group, string faculty, string formOfEducation)
         {
             FullName = fullName;
-            AllStudentsCount++;
-            RecordNumber = AllStudentsCount;
+            StudentsFirstNumber++;
+            RecordNumber = StudentsFirstNumber;
             Group = group;
             Faculty = faculty;
             FormOfEducation = formOfEducation;
