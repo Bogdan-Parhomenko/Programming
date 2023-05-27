@@ -116,6 +116,10 @@ namespace StudentsApp.Model.Classes
         /// <exception cref="ArgumentException">Выбрасывается, если вводимая строка длиннее максимальной длинны.</exception>
         private static void CheckStringLength(string value, int maxLength, [CallerMemberName] string propertyName = "")
         {
+            if (value == null)
+            {
+                return;
+            }
             if (value.Length > maxLength)
             {
                 throw new ArgumentException($"{propertyName} не может содержать больше {maxLength} символов.");

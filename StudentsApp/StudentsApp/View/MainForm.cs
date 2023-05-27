@@ -134,11 +134,11 @@ namespace StudentsApp.View
         /// </summary>
         private void StudentsAddPictureBox_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
-            addForm.ShowDialog();
-            if (addForm.DialogResult == DialogResult.OK)
+            EditForm editForm = new EditForm(new Student());
+            editForm.ShowDialog();
+            if (editForm.DialogResult == DialogResult.OK)
             {
-                _students.Add(addForm.AddStudent);
+                _students.Add(editForm.CurrentStudent);
             }
             StudentsListBox.SelectedIndex = -1;
             StudentsSort();
@@ -182,7 +182,7 @@ namespace StudentsApp.View
                 editForm.ShowDialog();
                 if (editForm.DialogResult == DialogResult.OK)
                 {
-                    _students[selectedIndex] = editForm.EditStudent;
+                    _students[selectedIndex] = editForm.CurrentStudent;
                 }
             }
             StudentsListBox.SelectedIndex = -1;

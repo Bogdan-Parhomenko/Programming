@@ -14,12 +14,12 @@ namespace StudentsApp.View
         /// <summary>
         /// Скопированный изменяемый студент.
         /// </summary>
-        private Student _copiedStudent = new Student();
+        private Student _copiedStudent;
 
         /// <summary>
         /// Возвращает или задает изменяемого студентва.
         /// </summary>
-        public Student EditStudent { get; set; }
+        public Student CurrentStudent { get; set; }
 
         /// <summary>
         /// Создает объект типа <see cref="EditForm"/>.
@@ -29,6 +29,7 @@ namespace StudentsApp.View
         public EditForm(Student student)
         {
             InitializeComponent();
+            _copiedStudent = Student.CopyStudent(student);
             FacultyComboBox.Items.AddRange(Enum.GetNames(typeof(Faculty)));
             FormOfEducationComboBox.Items.AddRange(Enum.GetNames(typeof(FormOfEducation)));
             FullNameTextBox.Text = student.FullName;
@@ -36,7 +37,6 @@ namespace StudentsApp.View
             GroupTextBox.Text = student.Group;
             FacultyComboBox.Text = student.Faculty;
             FormOfEducationComboBox.Text = student.FormOfEducation;
-            _copiedStudent = Student.CopyStudent(student);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace StudentsApp.View
             {
                 return;
             }
-            EditStudent = _copiedStudent;
+            CurrentStudent = _copiedStudent;
             DialogResult = DialogResult.OK;
             Close();
         }
