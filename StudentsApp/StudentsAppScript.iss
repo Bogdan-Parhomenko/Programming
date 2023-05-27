@@ -27,9 +27,9 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\Богдан\source\repos\Programming\StudentsApp
+OutputDir=Installer
 OutputBaseFilename=StudentsAppSetup
-SetupIconFile=C:\Users\Богдан\source\repos\Programming\StudentsApp\StudentsApp\studentsApp_64x64.circ
+SetupIconFile=StudentsApp\studentsApp_64x64.circ
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -42,8 +42,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\Богдан\source\repos\Programming\StudentsApp\StudentsApp\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Богдан\source\repos\Programming\StudentsApp\StudentsApp\bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "StudentsApp\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "StudentsApp\bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
