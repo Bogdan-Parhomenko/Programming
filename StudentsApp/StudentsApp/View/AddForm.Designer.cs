@@ -71,7 +71,7 @@
             // 
             // StudentsDeletePictureBox
             // 
-            this.StudentsDeletePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StudentsDeletePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentsDeletePictureBox.Image = global::StudentsApp.Properties.Resources.studentsDelete_50x50;
             this.StudentsDeletePictureBox.Location = new System.Drawing.Point(421, 158);
             this.StudentsDeletePictureBox.Name = "StudentsDeletePictureBox";
@@ -82,7 +82,7 @@
             // 
             // StudentsAddPictureBox
             // 
-            this.StudentsAddPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StudentsAddPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentsAddPictureBox.Image = global::StudentsApp.Properties.Resources.studentsAdd_50x50;
             this.StudentsAddPictureBox.Location = new System.Drawing.Point(477, 158);
             this.StudentsAddPictureBox.Name = "StudentsAddPictureBox";
