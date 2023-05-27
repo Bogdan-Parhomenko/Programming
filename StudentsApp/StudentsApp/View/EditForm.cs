@@ -100,6 +100,10 @@ namespace StudentsApp.View
             {
                 return;
             }
+            if (FullNameTextBox.Text.Length > 200 || GroupTextBox.Text.Length > 10)
+            {
+                return;
+            }
             EditStudent = _copiedStudent;
             DialogResult = DialogResult.OK;
             Close();

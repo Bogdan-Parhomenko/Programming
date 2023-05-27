@@ -188,7 +188,7 @@
             this.Controls.Add(this.AddingStudentGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddForm";
-            this.Text = "Additing";
+            this.Text = "Adding";
             this.AddingStudentGroupBox.ResumeLayout(false);
             this.AddingStudentGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsDeletePictureBox)).EndInit();
