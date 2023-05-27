@@ -84,7 +84,7 @@ namespace StudentsApp.View
         }
 
         /// <summary>
-        /// При нажатии на кнопку добавления студента, если все поля экземпляра студента не пустые,
+        /// При нажатии на кнопку добавления студента, если все поля экземпляра студента не пустые и значения допустимы,
         /// то передает его в свойство AddStudent и закрывает форму.
         /// </summary>
         private void StudentsAddPictureBox_Click(object sender, EventArgs e)

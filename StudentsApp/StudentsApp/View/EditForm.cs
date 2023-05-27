@@ -90,7 +90,7 @@ namespace StudentsApp.View
         }
 
         /// <summary>
-        /// При нажатии на кнопку мзменения студента, если все поля экземпляра студента не пустые,
+        /// При нажатии на кнопку мзменения студента, если все поля экземпляра студента не пустые и значения допустимы,
         /// то передает его в свойство EditStudent и закрывает форму.
         /// </summary>
         private void StudentsEditPictureBox_Click(object sender, EventArgs e)
