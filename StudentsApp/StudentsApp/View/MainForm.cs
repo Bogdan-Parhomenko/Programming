@@ -22,12 +22,14 @@ namespace StudentsApp.View
         /// <summary>
         /// Относительный путь к папке, где должен лежать файл json.
         /// </summary>
-        private string _pathToJson = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StudentsApp";
+        private string _pathToJson = 
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StudentsApp";
 
         /// <summary>
         /// Относительный путь к файлу json.
         /// </summary>
-        private string _jsonPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StudentsApp\\students.json";
+        private string _jsonPath = 
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StudentsApp\\students.json";
 
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.

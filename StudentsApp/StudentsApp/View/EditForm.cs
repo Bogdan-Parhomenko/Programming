@@ -23,7 +23,8 @@ namespace StudentsApp.View
 
         /// <summary>
         /// Создает объект типа <see cref="EditForm"/>.
-        /// Заполняет все поля формы данными студента, которого нужно изменить и копирует их в новый экземпляр класса.
+        /// Заполняет все поля формы данными студента, которого нужно изменить
+        /// и копирует их в новый экземпляр класса.
         /// </summary>
         /// <param name="student">Студент, которого нужно изменить.</param>
         public EditForm(Student student)
@@ -74,7 +75,8 @@ namespace StudentsApp.View
         }
 
         /// <summary>
-        /// При выборе нового значения FacultyComboBox присваивает его в свойство Faculty элемента _copiedStudent.
+        /// При выборе нового значения FacultyComboBox 
+        /// присваивает его в свойство Faculty элемента _copiedStudent.
         /// </summary>
         private void FacultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -82,7 +84,8 @@ namespace StudentsApp.View
         }
 
         /// <summary>
-        /// При выборе нового значения FormOfEducationComboBox присваивает его в свойство FormOfEducation элемента _copiedStudent.
+        /// При выборе нового значения FormOfEducationComboBox 
+        /// присваивает его в свойство FormOfEducation элемента _copiedStudent.
         /// </summary>
         private void FormOfEducationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,8 +93,8 @@ namespace StudentsApp.View
         }
 
         /// <summary>
-        /// При нажатии на кнопку мзменения студента, если все поля экземпляра студента не пустые и значения допустимы,
-        /// то передает его в свойство EditStudent и закрывает форму.
+        /// При нажатии на кнопку мзменения студента, если все поля экземпляра студента
+        /// не пустые и значения допустимы, то передает его в свойство EditStudent и закрывает форму.
         /// </summary>
         private void StudentsEditPictureBox_Click(object sender, EventArgs e)
         {
