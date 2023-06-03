@@ -55,7 +55,7 @@ namespace StudentsApp.Model.Classes
         /// <summary>
         /// Возвращает или задает уникальный номер зачетной книжки студента.
         /// </summary>
-        public int RecordNumber { get; set; }
+        public int RecordNumber { get; private set; }
 
         /// <summary>
         /// Возвращает или задает группу студента. Должна содержать менее 10 символов.
