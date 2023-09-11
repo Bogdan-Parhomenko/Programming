@@ -60,9 +60,9 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/> без его инициализации.
         /// </summary>
-        public Customer()
+        public Customer(Item item)
         {
-            _id = IdGenerator.GetNextId(); // Сделать сквозные идентификаторы с товаром
+            _id = item.Id;
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullname">Полное имя покупателя. Не должно быть длиннее 200 символов.</param>
         /// <param name="address">Адрес доставки для покупателя. Не должно быть длиннее 500 символов.</param>
-        public Customer(string fullname, string address)
+        public Customer(string fullname, string address, Item item)
         {
-            _id = IdGenerator.GetNextId(); // Аналогично
+            _id = item.Id;
             Fullname = fullname;
             Address = address;
         }
