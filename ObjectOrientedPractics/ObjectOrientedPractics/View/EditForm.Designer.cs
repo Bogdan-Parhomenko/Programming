@@ -37,7 +37,7 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.CostTextBox = new System.Windows.Forms.TextBox();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.AcceptButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameLabel
@@ -126,23 +126,23 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // AcceptButton
+            // EditButton
             // 
-            this.AcceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcceptButton.Location = new System.Drawing.Point(312, 358);
-            this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(76, 23);
-            this.AcceptButton.TabIndex = 9;
-            this.AcceptButton.Text = "Accept";
-            this.AcceptButton.UseVisualStyleBackColor = true;
-            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditButton.Location = new System.Drawing.Point(312, 358);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(76, 23);
+            this.EditButton.TabIndex = 9;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 393);
-            this.Controls.Add(this.AcceptButton);
+            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.CostTextBox);
             this.Controls.Add(this.NameTextBox);
@@ -170,6 +170,6 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.TextBox CostTextBox;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Button AcceptButton;
+        private System.Windows.Forms.Button EditButton;
     }
 }

@@ -69,5 +69,20 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemsListBox.SelectedIndex = -1;
             }
         }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            var selectedIndex = ItemsListBox.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                EditForm editForm = new EditForm(_items[selectedIndex]);
+                editForm.ShowDialog();
+                if (editForm.DialogResult == DialogResult.OK)
+                {
+                    _items[selectedIndex] = editForm.CurrentItem;
+                }
+            }
+            ItemsListBox.SelectedIndex = -1;
+        }
     }
 }

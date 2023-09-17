@@ -60,7 +60,7 @@ namespace ObjectOrientedPractics.View
             }
         }
 
-        private void AcceptButton_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             if (_copiedItem.Name == null   // _copiedItem.Cost == null
                 || _copiedItem.Info == null)

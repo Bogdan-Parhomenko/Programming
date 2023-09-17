@@ -41,6 +41,7 @@
             this.CostTextBox = new System.Windows.Forms.TextBox();
             this.InfoTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.EditButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ItemsLabel
@@ -145,6 +146,7 @@
             // 
             this.CostTextBox.Location = new System.Drawing.Point(382, 57);
             this.CostTextBox.Name = "CostTextBox";
+            this.CostTextBox.ReadOnly = true;
             this.CostTextBox.Size = new System.Drawing.Size(133, 20);
             this.CostTextBox.TabIndex = 10;
             // 
@@ -155,6 +157,7 @@
             this.InfoTextBox.Location = new System.Drawing.Point(348, 247);
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
+            this.InfoTextBox.ReadOnly = true;
             this.InfoTextBox.Size = new System.Drawing.Size(742, 112);
             this.InfoTextBox.TabIndex = 11;
             // 
@@ -165,13 +168,25 @@
             this.NameTextBox.Location = new System.Drawing.Point(345, 105);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(745, 114);
             this.NameTextBox.TabIndex = 12;
+            // 
+            // EditButton
+            // 
+            this.EditButton.Location = new System.Drawing.Point(231, 638);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(108, 40);
+            this.EditButton.TabIndex = 13;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.InfoTextBox);
             this.Controls.Add(this.CostTextBox);
@@ -207,5 +222,6 @@
         private System.Windows.Forms.TextBox CostTextBox;
         private System.Windows.Forms.TextBox InfoTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.Button EditButton;
     }
 }
