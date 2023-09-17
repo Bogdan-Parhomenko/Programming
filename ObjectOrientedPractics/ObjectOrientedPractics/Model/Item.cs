@@ -75,6 +75,14 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        public string DisplayInfo
+        {
+            get
+            {
+                return $"{Name}";
+            }
+        }
+
         /// <summary>
         /// Создает экземпляр класса <see cref="Item"/> без его инициализации.
         /// </summary>

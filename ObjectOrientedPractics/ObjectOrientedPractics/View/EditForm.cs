@@ -52,7 +52,7 @@ namespace ObjectOrientedPractics.View
             try
             {
                 InfoTextBox.BackColor = Color.White;
-                _copiedItem.Name = InfoTextBox.Text;
+                _copiedItem.Info = InfoTextBox.Text;
             }
             catch
             {

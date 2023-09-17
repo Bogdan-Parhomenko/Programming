@@ -1,6 +1,7 @@
 ﻿using ObjectOrientedPractics.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,12 +9,13 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        private List<Item> _items = new List<Item>();
+        private BindingList<Item> _items = new BindingList<Item>();
 
         public ItemsTab()
         {
             InitializeComponent();
             ItemsListBox.DataSource = _items;
+            ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
         }
 
         private void UpdateItemInfo(Item item)
