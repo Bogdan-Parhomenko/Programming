@@ -38,8 +38,8 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.IdTextBox = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.CostTextBox = new System.Windows.Forms.TextBox();
+            this.InfoTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.ItemsListBox.Name = "ItemsListBox";
             this.ItemsListBox.Size = new System.Drawing.Size(336, 612);
             this.ItemsListBox.TabIndex = 1;
+            this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
             // AddButton
             // 
@@ -73,6 +74,7 @@
             this.AddButton.TabIndex = 2;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // RemoveButton
             // 
@@ -83,6 +85,7 @@
             this.RemoveButton.TabIndex = 3;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // SelectedItemLabel
             // 
@@ -134,25 +137,26 @@
             // 
             this.IdTextBox.Location = new System.Drawing.Point(382, 28);
             this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
             this.IdTextBox.Size = new System.Drawing.Size(133, 20);
             this.IdTextBox.TabIndex = 9;
             // 
-            // textBox2
+            // CostTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(382, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 20);
-            this.textBox2.TabIndex = 10;
+            this.CostTextBox.Location = new System.Drawing.Point(382, 57);
+            this.CostTextBox.Name = "CostTextBox";
+            this.CostTextBox.Size = new System.Drawing.Size(133, 20);
+            this.CostTextBox.TabIndex = 10;
             // 
-            // DescriptionTextBox
+            // InfoTextBox
             // 
-            this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.InfoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DescriptionTextBox.Location = new System.Drawing.Point(348, 247);
-            this.DescriptionTextBox.Multiline = true;
-            this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(742, 112);
-            this.DescriptionTextBox.TabIndex = 11;
+            this.InfoTextBox.Location = new System.Drawing.Point(348, 247);
+            this.InfoTextBox.Multiline = true;
+            this.InfoTextBox.Name = "InfoTextBox";
+            this.InfoTextBox.Size = new System.Drawing.Size(742, 112);
+            this.InfoTextBox.TabIndex = 11;
             // 
             // NameTextBox
             // 
@@ -169,8 +173,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.NameTextBox);
-            this.Controls.Add(this.DescriptionTextBox);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.InfoTextBox);
+            this.Controls.Add(this.CostTextBox);
             this.Controls.Add(this.IdTextBox);
             this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.NameLabel);
@@ -200,8 +204,8 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.TextBox IdTextBox;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox DescriptionTextBox;
+        private System.Windows.Forms.TextBox CostTextBox;
+        private System.Windows.Forms.TextBox InfoTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
     }
 }

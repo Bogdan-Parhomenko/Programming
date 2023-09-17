@@ -96,5 +96,14 @@ namespace ObjectOrientedPractics.Model
             Info = info;
             Cost = cost;
         }
+
+        public static Item CopyItem(Item item)
+        {
+            Item copiedItem = new Item();
+            copiedItem.Name = item.Name;
+            copiedItem.Info = item.Info;
+            copiedItem.Cost = item.Cost;
+            return copiedItem;
+        }
     }
 }

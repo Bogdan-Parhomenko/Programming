@@ -17,6 +17,10 @@ namespace ObjectOrientedPractics.Services
         /// <exception cref="ArgumentException">Выбрасывается, если вводимая строка длиннее максимально допустимой длинны.</exception>
         public static void AssertStringOnLength(string value, int maxLength, [CallerMemberName] string propertyName = "")
         {
+            if (value == null)
+            {
+                return;
+            }
             if (value.Length > maxLength)
             {
                 throw new ArgumentException($"{propertyName} не может содержать больше {maxLength} символов.");
