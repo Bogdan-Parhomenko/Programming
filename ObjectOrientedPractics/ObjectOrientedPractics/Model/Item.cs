@@ -75,6 +75,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает строку, отражающую информацию о товаре.
+        /// </summary>
         public string DisplayInfo
         {
             get
@@ -105,6 +108,11 @@ namespace ObjectOrientedPractics.Model
             Cost = cost;
         }
 
+        /// <summary>
+        /// Копирует информацию о товаре.
+        /// </summary>
+        /// <param name="item">Искомый товар, чью информацию необходимо скопировать.</param>
+        /// <returns>Возвращает товар со скопированной информацией.</returns>
         public static Item CopyItem(Item item)
         {
             Item copiedItem = new Item();

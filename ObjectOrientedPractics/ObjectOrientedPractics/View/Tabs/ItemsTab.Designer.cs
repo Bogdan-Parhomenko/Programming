@@ -174,6 +174,7 @@
             // 
             // EditButton
             // 
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EditButton.Location = new System.Drawing.Point(231, 638);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(108, 40);
