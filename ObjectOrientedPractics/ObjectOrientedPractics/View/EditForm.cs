@@ -5,12 +5,25 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class EditForm : Form
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private Item _copiedItem;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Item CurrentItem { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
         public EditForm(Item item)
         {
             InitializeComponent();
@@ -21,6 +34,9 @@ namespace ObjectOrientedPractics.View
             InfoTextBox.Text = item.Info;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -34,6 +50,9 @@ namespace ObjectOrientedPractics.View
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -47,6 +66,9 @@ namespace ObjectOrientedPractics.View
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void InfoTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -60,6 +82,9 @@ namespace ObjectOrientedPractics.View
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void EditButton_Click(object sender, EventArgs e)
         {
             if (_copiedItem.Name == null   // _copiedItem.Cost == null
@@ -78,6 +103,9 @@ namespace ObjectOrientedPractics.View
             Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void CloseButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

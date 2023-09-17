@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class CustomersTab : UserControl
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public CustomersTab()
         {
             InitializeComponent();

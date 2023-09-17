@@ -1,16 +1,24 @@
 ﻿using ObjectOrientedPractics.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class ItemsTab : UserControl
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private BindingList<Item> _items = new BindingList<Item>();
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ItemsTab()
         {
             InitializeComponent();
@@ -18,6 +26,10 @@ namespace ObjectOrientedPractics.View.Tabs
             ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
         private void UpdateItemInfo(Item item)
         {
             IdTextBox.Text = item.Id.ToString();
@@ -26,6 +38,9 @@ namespace ObjectOrientedPractics.View.Tabs
             InfoTextBox.Text = item.Info.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ClearItemInfo()
         {
             IdTextBox.Clear();
@@ -37,6 +52,9 @@ namespace ObjectOrientedPractics.View.Tabs
             InfoTextBox.BackColor = Color.White;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ItemsListBox.SelectedIndex != -1)
@@ -49,6 +67,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
             EditForm editForm = new EditForm(new Item());
@@ -60,6 +81,9 @@ namespace ObjectOrientedPractics.View.Tabs
             ItemsListBox.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             var selectedIndex = ItemsListBox.SelectedIndex;
@@ -70,6 +94,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void EditButton_Click(object sender, EventArgs e)
         {
             var selectedIndex = ItemsListBox.SelectedIndex;
