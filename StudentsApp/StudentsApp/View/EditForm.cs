@@ -17,7 +17,7 @@ namespace StudentsApp.View
         private Student _copiedStudent;
 
         /// <summary>
-        /// Возвращает или задает изменяемого студентва.
+        /// Возвращает или задает изменяемого студента.
         /// </summary>
         public Student CurrentStudent { get; set; }
 
@@ -94,7 +94,7 @@ namespace StudentsApp.View
 
         /// <summary>
         /// При нажатии на кнопку мзменения студента, если все поля экземпляра студента
-        /// не пустые и значения допустимы, то передает его в свойство EditStudent и закрывает форму.
+        /// не пустые и значения допустимы, то передает его в свойство CurrentStudent и закрывает форму.
         /// </summary>
         private void StudentsEditPictureBox_Click(object sender, EventArgs e)
         {

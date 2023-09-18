@@ -15,7 +15,7 @@ namespace StudentsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Список элементов класса Student
+        /// Список элементов класса Student.
         /// </summary>
         private BindingList<Student> _students = new BindingList<Student>();
 

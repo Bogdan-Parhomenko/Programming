@@ -11,12 +11,12 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.View.Tabs
 {
     /// <summary>
-    /// 
+    /// Содержит логику вкладки покупателей.
     /// </summary>
     public partial class CustomersTab : UserControl
     {
         /// <summary>
-        /// 
+        /// Создает объект типа <see cref="CustomersTab"/>.
         /// </summary>
         public CustomersTab()
         {
