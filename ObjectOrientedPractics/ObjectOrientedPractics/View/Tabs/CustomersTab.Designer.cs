@@ -165,6 +165,7 @@
             this.Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Panel.Location = new System.Drawing.Point(348, 186);
             this.Panel.Name = "Panel";
             this.Panel.Size = new System.Drawing.Size(849, 410);
