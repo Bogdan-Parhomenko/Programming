@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsEditForm));
             this.NameLabel = new System.Windows.Forms.Label();
             this.InfoLabel = new System.Windows.Forms.Label();
             this.CostLabel = new System.Windows.Forms.Label();
@@ -152,6 +153,7 @@
             this.Controls.Add(this.CostLabel);
             this.Controls.Add(this.InfoLabel);
             this.Controls.Add(this.NameLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ItemsEditForm";
             this.Text = "Editing";
             this.ResumeLayout(false);

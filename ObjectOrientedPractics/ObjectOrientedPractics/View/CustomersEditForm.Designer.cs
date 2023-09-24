@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomersEditForm));
             this.IdLabel = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.AddressLabel = new System.Windows.Forms.Label();
@@ -130,6 +131,7 @@
             this.Controls.Add(this.AddressLabel);
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.IdLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustomersEditForm";
             this.Text = "CustomersEditForm";
             this.ResumeLayout(false);
