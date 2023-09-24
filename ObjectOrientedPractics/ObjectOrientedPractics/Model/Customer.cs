@@ -1,5 +1,4 @@
 ﻿using ObjectOrientedPractics.Services;
-using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -8,11 +7,6 @@ namespace ObjectOrientedPractics.Model
     /// </summary>
     public class Customer
     {
-        /// <summary>
-        /// Уникальный идентификатор товара.
-        /// </summary>
-        private readonly int _id;
-
         /// <summary>
         /// Полное имя покупателя.
         /// </summary>
@@ -24,12 +18,9 @@ namespace ObjectOrientedPractics.Model
         private string _address;
 
         /// <summary>
-        /// Возвращает уникальный идентификатор товара.
+        /// Возвращает и задает внутри класса уникальный идентификатор покупателя.
         /// </summary>
-        public int Id
-        {
-            get => _id;
-        }
+        public int Id { get; private set; }
 
         /// <summary>
         /// Возвращает или задает полное имя покупателя. Не должно быть длиннее 200 символов.
@@ -73,7 +64,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Customer()
         {
-            _id = IdGenerator.GetNextId();
+            Id = IdGenerator.GetNextId();
         }
 
         /// <summary>
@@ -83,7 +74,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">Адрес доставки для покупателя. Не должно быть длиннее 500 символов.</param>
         public Customer(string fullName, string address)
         {
-            _id = IdGenerator.GetNextId();
+            Id = IdGenerator.GetNextId();
             FullName = fullName;
             Address = address;
         }
@@ -96,6 +87,7 @@ namespace ObjectOrientedPractics.Model
         public static Customer CopyCustomer(Customer customer)
         {
             Customer copiedCustomer = new Customer();
+            copiedCustomer.Id = customer.Id;
             copiedCustomer.FullName = customer.FullName;
             copiedCustomer.Address = customer.Address;
             return copiedCustomer;

@@ -8,11 +8,6 @@ namespace ObjectOrientedPractics.Model
     public class Item
     {
         /// <summary>
-        /// Уникальный идентификатор товара.
-        /// </summary>
-        private readonly int _id;
-
-        /// <summary>
         /// Название товара.
         /// </summary>
         private string _name;
@@ -28,12 +23,9 @@ namespace ObjectOrientedPractics.Model
         private double _cost;
 
         /// <summary>
-        /// Возвращает уникальный идентификатор товара.
+        /// Возвращает и задает внутри класса уникальный идентификатор товара.
         /// </summary>
-        public int Id
-        {
-            get => _id;
-        }
+        public int Id { get; private set; }
 
         /// <summary>
         /// Возвращает и задает название товара. Не должно быть длиннее 200 символов.
@@ -90,7 +82,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Item()
         {
-            _id = IdGenerator.GetNextId();
+            Id = IdGenerator.GetNextId();
         }
 
         /// <summary>
@@ -101,7 +93,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="cost">Стоимость товара. Должна быть больше 0 и меньше 100000.</param>
         public Item(string name, string info, double cost)
         {
-            _id = IdGenerator.GetNextId();
+            Id = IdGenerator.GetNextId();
             Name = name;
             Info = info;
             Cost = cost;
@@ -115,6 +107,7 @@ namespace ObjectOrientedPractics.Model
         public static Item CopyItem(Item item)
         {
             Item copiedItem = new Item();
+            copiedItem.Id = item.Id;
             copiedItem.Name = item.Name;
             copiedItem.Info = item.Info;
             copiedItem.Cost = item.Cost;
