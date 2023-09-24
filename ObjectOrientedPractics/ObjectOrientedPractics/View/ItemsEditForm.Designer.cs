@@ -1,6 +1,6 @@
 ﻿namespace ObjectOrientedPractics.View
 {
-    partial class EditForm
+    partial class ItemsEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -137,7 +137,7 @@
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // EditForm
+            // ItemsEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -152,7 +152,7 @@
             this.Controls.Add(this.CostLabel);
             this.Controls.Add(this.InfoLabel);
             this.Controls.Add(this.NameLabel);
-            this.Name = "EditForm";
+            this.Name = "ItemsEditForm";
             this.Text = "Editing";
             this.ResumeLayout(false);
             this.PerformLayout();

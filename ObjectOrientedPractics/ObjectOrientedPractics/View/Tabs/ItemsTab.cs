@@ -114,7 +114,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            EditForm editForm = new EditForm(new Item());
+            ItemsEditForm editForm = new ItemsEditForm(new Item());
             editForm.ShowDialog();
             if (editForm.DialogResult == DialogResult.OK)
             {
@@ -157,7 +157,7 @@ namespace ObjectOrientedPractics.View.Tabs
             var selectedIndex = ItemsListBox.SelectedIndex;
             if (selectedIndex != -1)
             {
-                EditForm editForm = new EditForm(_items[selectedIndex]);
+                ItemsEditForm editForm = new ItemsEditForm(_items[selectedIndex]);
                 editForm.ShowDialog();
                 if (editForm.DialogResult == DialogResult.OK)
                 {

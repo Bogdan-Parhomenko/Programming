@@ -15,7 +15,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Полное имя покупателя.
         /// </summary>
-        private string _fullname;
+        private string _fullName;
 
         /// <summary>
         /// Адрес доставки для покупателя.
@@ -33,13 +33,13 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает или задает полное имя покупателя. Не должно быть длиннее 200 символов.
         /// </summary>
-        public string Fullname
+        public string FullName
         {
-            get => _fullname;
+            get => _fullName;
             set
             {
                 ValueValidator.AssertStringOnLength(value, 200);
-                _fullname = value;
+                _fullName = value;
             }
         }
 
@@ -67,12 +67,12 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        /// <param name="fullname">Полное имя покупателя. Не должно быть длиннее 200 символов.</param>
+        /// <param name="fullName">Полное имя покупателя. Не должно быть длиннее 200 символов.</param>
         /// <param name="address">Адрес доставки для покупателя. Не должно быть длиннее 500 символов.</param>
-        public Customer(string fullname, string address, Item item)
+        public Customer(string fullName, string address, Item item)
         {
             _id = item.Id;
-            Fullname = fullname;
+            FullName = fullName;
             Address = address;
         }
     }

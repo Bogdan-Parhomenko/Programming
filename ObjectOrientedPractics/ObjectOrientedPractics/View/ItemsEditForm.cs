@@ -8,7 +8,7 @@ namespace ObjectOrientedPractics.View
     /// <summary>
     /// Содержит логику формы изменения товаров.
     /// </summary>
-    public partial class EditForm : Form
+    public partial class ItemsEditForm : Form
     {
         /// <summary>
         /// Скопированный изменяемый товар.
@@ -21,12 +21,12 @@ namespace ObjectOrientedPractics.View
         public Item CurrentItem { get; set; }
 
         /// <summary>
-        /// Создает объект типа <see cref="EditForm"/>.
+        /// Создает объект типа <see cref="ItemsEditForm"/>.
         /// Заполняет все поля формы данными товара, которого нужно изменить
         /// и копирует их в новый экземпляр класса.
         /// </summary>
         /// <param name="item">Товар, который нужно изменить.</param>
-        public EditForm(Item item)
+        public ItemsEditForm(Item item)
         {
             InitializeComponent();
             _copiedItem = Item.CopyItem(item);
