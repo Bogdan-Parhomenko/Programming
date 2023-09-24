@@ -33,7 +33,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Создает объект типа <see cref="ItemsTab"/>.
         /// Если не существует файла json и папки, где он должен лежать, то создаем их.
-        /// Загружаем всех ранее созданных экземпляров класса Item и заполняет их данными ItemsListBox.
+        /// Загружает все ранее созданные экземпляры класса Item и заполняет их данными ItemsListBox.
         /// </summary>
         public ItemsTab()
         {
@@ -73,7 +73,7 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Text = item.Id.ToString();
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
-            InfoTextBox.Text = item.Info.ToString();
+            InfoTextBox.Text = item.Info;
         }
 
         /// <summary>
