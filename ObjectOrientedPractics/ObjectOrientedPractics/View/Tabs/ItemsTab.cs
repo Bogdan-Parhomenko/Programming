@@ -74,6 +74,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             InfoTextBox.Text = item.Info;
+            CategoryComboBox.Text = item.Category.ToString();
         }
 
         /// <summary>
@@ -88,6 +89,7 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.BackColor = Color.White;
             InfoTextBox.Clear();
             InfoTextBox.BackColor = Color.White;
+            CategoryComboBox.Text = "";
         }
 
         /// <summary>

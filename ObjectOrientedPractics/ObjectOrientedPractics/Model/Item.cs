@@ -67,6 +67,11 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задает категорию товара.
+        /// </summary>
+        public Category Category { get; set; }
+
+        /// <summary>
         /// Возвращает строку, отражающую информацию о товаре.
         /// </summary>
         public string DisplayInfo
@@ -91,12 +96,14 @@ namespace ObjectOrientedPractics.Model
         /// <param name="name">Название товара. Не должно быть длиннее 200 символов.</param>
         /// <param name="info">Описание товара. Не должно быть длиннее 1000 символов.</param>
         /// <param name="cost">Стоимость товара. Должна быть больше 0 и меньше 100000.</param>
-        public Item(string name, string info, double cost)
+        /// <param name="category">Категория товара.</param>
+        public Item(string name, string info, double cost, Category category)
         {
             Id = IdGenerator.GetNextId();
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
         /// <summary>

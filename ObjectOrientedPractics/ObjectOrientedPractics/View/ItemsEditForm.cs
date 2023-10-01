@@ -29,11 +29,13 @@ namespace ObjectOrientedPractics.View
         public ItemsEditForm(Item item)
         {
             InitializeComponent();
+            CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Category)));
             _copiedItem = Item.CopyItem(item);
             IdTextBox.Text = item.Id.ToString();
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             InfoTextBox.Text = item.Info;
+            CategoryComboBox.Text = item.Category.ToString();
         }
 
         /// <summary>
@@ -88,6 +90,23 @@ namespace ObjectOrientedPractics.View
         }
 
         /// <summary>
+        /// При изменении текста CategoryComboBox пытается присвоить этот текст в свойство Category элемента
+        /// _copiedItem и красит CategoryComboBox в соответствии с валидацией.
+        /// </summary>
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Enum.IsDefined(typeof(Category), CategoryComboBox.Text))
+            {
+                CategoryComboBox.BackColor = Color.White;
+                _copiedItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
+            }
+            else
+            {
+                CategoryComboBox.BackColor = Color.LightPink;
+            }
+        }
+
+        /// <summary>
         /// При нажатии на кнопку мзменения товара, если все поля экземпляра товара
         /// не пустые и значения допустимы, то передает его в свойство CurrentItem и закрывает форму.
         /// </summary>
@@ -100,7 +119,8 @@ namespace ObjectOrientedPractics.View
             }
             if (CostTextBox.BackColor == Color.LightPink 
                 || NameTextBox.BackColor == Color.LightPink
-                || InfoTextBox.BackColor == Color.LightPink)
+                || InfoTextBox.BackColor == Color.LightPink
+                || CategoryComboBox.BackColor == Color.LightPink)
             {
                 return;
             }
