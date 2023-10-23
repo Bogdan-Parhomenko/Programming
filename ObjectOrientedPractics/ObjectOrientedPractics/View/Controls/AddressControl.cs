@@ -37,7 +37,7 @@ namespace ObjectOrientedPractics.View.Controls
 
         private void FillAllTextBoxes()
         {
-            if (_address == null)
+            if (Address == null)
             {
                 ClearAllTextBoxes();
                 return;
