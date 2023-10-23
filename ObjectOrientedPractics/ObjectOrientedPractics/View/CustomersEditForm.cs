@@ -32,7 +32,7 @@ namespace ObjectOrientedPractics.View
             _copiedCustomer = Customer.CopyCustomer(customer);
             IdTextBox.Text = customer.Id.ToString();
             FullNameTextBox.Text = customer.FullName;
-            AddressTextBox.Text = customer.Address;
+            //AddressTextBox.Text = customer.Address;
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace ObjectOrientedPractics.View
             try
             {
                 AddressTextBox.BackColor = Color.White;
-                _copiedCustomer.Address = AddressTextBox.Text;
+                //_copiedCustomer.Address = AddressTextBox.Text;
             }
             catch
             {

@@ -8,9 +8,17 @@ namespace ObjectOrientedPractics.Services
         public static Customer Randomize()
         {
             Random random = new Random();
-            var customer = new Customer(
+            var address = new Address(
+                random.Next(100000, 1000000),
+                random.Next(101).ToString(),
+                random.Next(101).ToString(),
+                random.Next(101).ToString(),
                 random.Next(101).ToString(),
                 random.Next(101).ToString()
+                );
+            var customer = new Customer(
+                random.Next(101).ToString(),
+                address
                 );
             return customer;
         }

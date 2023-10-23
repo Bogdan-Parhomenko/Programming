@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Tabs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,21 +26,35 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
-        public void ClearAllTextBoxes()
+        public void ClearAllTextBoxes(bool isSelected)
         {
-            IndexTextBox.Clear();
-            CountryTextBox.Clear();
-            CityTextBox.Clear();
-            StreetTextBox.Clear();
-            BuildingTextBox.Clear();
-            ApartmentTextBox.Clear();
+            if (isSelected)
+            {
+                IndexTextBox.TextChanged -= IndexTextBox_TextChanged;
+                IndexTextBox.Clear();
+                IndexTextBox.TextChanged += IndexTextBox_TextChanged;
+                CountryTextBox.Clear();
+                CityTextBox.Clear();
+                StreetTextBox.Clear();
+                BuildingTextBox.Clear();
+                ApartmentTextBox.Clear();
+            }
+            else
+            {
+                IndexTextBox.Clear();
+                CountryTextBox.Clear();
+                CityTextBox.Clear();
+                StreetTextBox.Clear();
+                BuildingTextBox.Clear();
+                ApartmentTextBox.Clear();
+            }
         }
 
         private void FillAllTextBoxes()
         {
             if (Address == null)
             {
-                ClearAllTextBoxes();
+                ClearAllTextBoxes(false);
                 return;
             }
             IndexTextBox.Text = Address.Index.ToString();

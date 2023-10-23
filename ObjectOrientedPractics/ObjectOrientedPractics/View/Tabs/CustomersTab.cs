@@ -75,7 +75,6 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Text = customer.Id.ToString();
             FullNameTextBox.Text = customer.FullName;
-            AddressTextBox.Text = customer.Address;
         }
 
         /// <summary>
@@ -86,8 +85,6 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Clear();
             FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
-            AddressTextBox.Clear();
-            AddressTextBox.BackColor = Color.White;
         }
 
         /// <summary>
@@ -101,10 +98,12 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer = _customers[CustomersListBox.SelectedIndex];
                 UpdateCustomerInfo(_currentCustomer);
+                AddressControl.Address = _currentCustomer.Address;
             }
             else
             {
                 ClearCustomerInfo();
+                AddressControl.ClearAllTextBoxes(true);
             }
         }
 
@@ -162,23 +161,6 @@ namespace ObjectOrientedPractics.View.Tabs
             catch
             {
                 FullNameTextBox.BackColor = Color.LightPink;
-            }
-        }
-
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (CustomersListBox.SelectedIndex == -1)
-            {
-                return;
-            }
-            try
-            {
-                AddressTextBox.BackColor = Color.White;
-                _currentCustomer.Address = AddressTextBox.Text;
-            }
-            catch
-            {
-                AddressTextBox.BackColor = Color.LightPink;
             }
         }
     }

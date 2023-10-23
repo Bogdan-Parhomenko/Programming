@@ -36,9 +36,8 @@
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
-            this.AddressLabel = new System.Windows.Forms.Label();
-            this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
+            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.SuspendLayout();
             // 
             // IdTextBox
@@ -121,26 +120,6 @@
             this.FullNameLabel.TabIndex = 22;
             this.FullNameLabel.Text = "Full Name:";
             // 
-            // AddressLabel
-            // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(345, 89);
-            this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(48, 13);
-            this.AddressLabel.TabIndex = 23;
-            this.AddressLabel.Text = "Address:";
-            // 
-            // AddressTextBox
-            // 
-            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressTextBox.Location = new System.Drawing.Point(407, 86);
-            this.AddressTextBox.Multiline = true;
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(790, 94);
-            this.AddressTextBox.TabIndex = 24;
-            this.AddressTextBox.TextChanged += new System.EventHandler(this.AddressTextBox_TextChanged);
-            // 
             // FullNameTextBox
             // 
             this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -151,13 +130,20 @@
             this.FullNameTextBox.TabIndex = 25;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
+            // AddressControl
+            // 
+            this.AddressControl.Address = null;
+            this.AddressControl.Location = new System.Drawing.Point(348, 83);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(849, 133);
+            this.AddressControl.TabIndex = 26;
+            // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AddressControl);
             this.Controls.Add(this.FullNameTextBox);
-            this.Controls.Add(this.AddressTextBox);
-            this.Controls.Add(this.AddressLabel);
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.IdTextBox);
             this.Controls.Add(this.IdLabel);
@@ -182,8 +168,7 @@
         private System.Windows.Forms.ListBox CustomersListBox;
         private System.Windows.Forms.Label CustomersLabel;
         private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.Label AddressLabel;
-        private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.TextBox FullNameTextBox;
+        private Controls.AddressControl AddressControl;
     }
 }
