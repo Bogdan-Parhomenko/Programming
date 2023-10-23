@@ -36,7 +36,7 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Возвращает или задает адрес доставки для покупателя. Не должно быть длиннее 500 символов.
+        /// Возвращает или задает адрес доставки для покупателя.
         /// </summary>
         public Address Address { get; set; } = new Address();
 
@@ -63,26 +63,12 @@ namespace ObjectOrientedPractics.Model
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя покупателя. Не должно быть длиннее 200 символов.</param>
-        /// <param name="address">Адрес доставки для покупателя. Не должно быть длиннее 500 символов.</param>
+        /// <param name="address">Адрес доставки для покупателя.</param>
         public Customer(string fullName, Address address)
         {
             Id = IdGenerator.GetNextId();
             FullName = fullName;
             Address = address;
-        }
-
-        /// <summary>
-        /// Копирует информацию о покупателе.
-        /// </summary>
-        /// <param name="customer">Искомый покупатель, чью информацию необходимо скопировать.</param>
-        /// <returns>Возвращает покупателя со скопированной информацией.</returns>
-        public static Customer CopyCustomer(Customer customer)
-        {
-            Customer copiedCustomer = new Customer();
-            copiedCustomer.Id = customer.Id;
-            copiedCustomer.FullName = customer.FullName;
-            copiedCustomer.Address = customer.Address;
-            return copiedCustomer;
         }
     }
 }

@@ -1,11 +1,8 @@
-﻿using Newtonsoft.Json;
-using ObjectOrientedPractics.Model;
+﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -20,52 +17,23 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private List<Customer> _customers;
 
+        /// <summary>
+        /// Выбранный покупатель.
+        /// </summary>
         private Customer _currentCustomer;
 
+        /// <summary>
+        /// Возвращает и задает список элементов класса Customer.
+        /// </summary>
         public List<Customer> Customers;
 
         /// <summary>
-        /// Относительный путь к папке, где должен лежать файл json.
-        /// </summary>
-        private string _pathToJson =
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ObjectOrientedPractics";
-
-        /// <summary>
-        /// Относительный путь к файлу json.
-        /// </summary>
-        private string _jsonPath =
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ObjectOrientedPractics\\customers.json";
-
-        /// <summary>
         /// Создает объект типа <see cref="CustomersTab"/>.
-        /// Если не существует файла json и папки, где он должен лежать, то создаем их.
-        /// Загружает все ранее созданные экземпляры класса Customer и заполняет их данными CustomersListBox.
+        /// Выводит в CustomersListBox только имена покупателей.
         /// </summary>
         public CustomersTab()
         {
             InitializeComponent();
-            //if (!Directory.Exists(_pathToJson))
-            //{
-            //    Directory.CreateDirectory(_pathToJson);
-            //}
-            //if (!File.Exists(_jsonPath))
-            //{
-            //    FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
-            //    fileStream.Close();
-            //}
-            //JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
-            //reader.SupportMultipleContent = true;
-            //while (true)
-            //{
-            //    if (!reader.Read())
-            //    {
-            //        break;
-            //    }
-            //    JsonSerializer serializer = new JsonSerializer();
-            //    Customer tempCustomer = serializer.Deserialize<Customer>(reader);
-            //    Customers.Add(tempCustomer);
-            //}
-            //reader.Close();
             CustomersListBox.DisplayMember = nameof(Customer.DisplayInfo);
         }
 
@@ -91,7 +59,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         /// <summary>
         /// При изменении выбранного элемента CustomersListBox
-        /// заполняет все текстовые поля значениями выбранного Customers.
+        /// заполняет все текстовые поля значениями выбранного Customers
+        /// и передает в AddressControl значение поля address выбранного объекта.
         /// Если покупатель не выбран, то очищает все текстовые поля.
         /// </summary>
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,25 +79,18 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// При нажатии на кнопку добавления покупателя открывает соответствующую форму
-        /// и добавляет созданного покупателя в список Customers.
-        /// Записывает нового покупателя в файл json.
+        /// При нажатии на кнопку создает покупателя с рандомными значениями
+        /// и добавляет его в CustomersListBox.
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
             var addedCustomerId = Customers.Count;
             Customers.Add(CustomerFactory.Randomize());
             CustomersListBox.Items.Add(Customers[addedCustomerId]);
-            //File.WriteAllText(_jsonPath, string.Empty);
-            //for (int i = 0; i < Customers.Count; i++)
-            //{
-            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(Customers[i]));
-            //}
         }
 
         /// <summary>
         /// При нажатии на кнопку удаления покупателя удаляет выбранного покупателя из списка и из CustomersListBox.
-        /// Также удаляет выбранного покупателя из файла json.
         /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
@@ -137,14 +99,13 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 Customers.RemoveAt(selectedIndex);
                 CustomersListBox.Items.RemoveAt(selectedIndex);
-                //File.WriteAllText(_jsonPath, string.Empty);
-                //for (int i = 0; i < Customers.Count; i++)
-                //{
-                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(Customers[i]));
-                //}
             }
         }
 
+        /// <summary>
+        /// Присваивает значение из FullNameTextBox в свойство FullName покупателя.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedIndex == -1)

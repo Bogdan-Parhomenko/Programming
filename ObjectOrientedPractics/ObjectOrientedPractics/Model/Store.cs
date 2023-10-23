@@ -1,17 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Хранит данные о всех списках.
+    /// </summary>
     public class Store
     {
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
         private List<Item> _items;
 
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         private List<Customer> _customers;
 
+        /// <summary>
+        /// Возвращает и задает список товаров. Не может быть равен null.
+        /// </summary>
         public List<Item> Items
         {
             get => _items;
@@ -21,6 +29,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает список покупателей. Не может быть равен null.
+        /// </summary>
         public List<Customer> Customers
         {
             get => _customers;
@@ -30,6 +41,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Store"/>.
+        /// </summary>
         public Store()
         {
             Items = new List<Item>();

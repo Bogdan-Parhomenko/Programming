@@ -1,12 +1,4 @@
 ﻿using ObjectOrientedPractics.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics
@@ -19,6 +11,7 @@ namespace ObjectOrientedPractics
         private Store _store = new Store();
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
+        /// Передает списки товаров и покупателей из Store в Items и Customers.
         /// </summary>
         public MainForm()
         {

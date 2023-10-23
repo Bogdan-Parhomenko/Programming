@@ -1,21 +1,23 @@
 ﻿using ObjectOrientedPractics.Model;
-using ObjectOrientedPractics.View.Tabs;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Controls
 {
+    /// <summary>
+    /// Содержит логику интерфейса адреса.
+    /// </summary>
     public partial class AddressControl : UserControl
     {
+        /// <summary>
+        /// Экземпляр адреса покупателя.
+        /// </summary>
         private Address _address;
 
+        /// <summary>
+        /// Возвращает и задает адрес покупателя.
+        /// </summary>
         public Address Address
         {
             get => _address;
@@ -26,6 +28,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Очищает все поля на форме. 
+        /// </summary>
+        /// <param name="isSelected">Определяет выбран ли элемент при очистке.</param>
         public void ClearAllTextBoxes(bool isSelected)
         {
             if (isSelected)
@@ -50,6 +56,9 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Заполняет все поля на форме значениями адреса.
+        /// </summary>
         private void FillAllTextBoxes()
         {
             if (Address == null)
@@ -65,11 +74,18 @@ namespace ObjectOrientedPractics.View.Controls
             ApartmentTextBox.Text = Address.Apartment;
         }
 
+        /// <summary>
+        /// Создает объект типа <see cref="AddressControl"/>.
+        /// </summary>
         public AddressControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Присваивает значение из IndexTextBox в свойство Index адреса.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void IndexTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -83,6 +99,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Присваивает значение из CountryTextBox в свойство Country адреса.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void CountryTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -96,6 +116,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Присваивает значение из CityTextBox в свойство City адреса.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void CityTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -109,6 +133,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Присваивает значение из StreetTextBox в свойство Street адреса.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void StreetTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -122,6 +150,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Присваивает значение из BuildingTextBox в свойство Building адреса.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void BuildingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -135,6 +167,10 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Присваивает значение из ApartmentTextBox в свойство Apartment адреса.
+        /// Если значение не валидное, то красит его в красный цвет.
+        /// </summary>
         private void ApartmentTextBox_TextChanged(object sender, EventArgs e)
         {
             try

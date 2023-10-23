@@ -3,8 +3,15 @@ using System;
 
 namespace ObjectOrientedPractics.Services
 {
+    /// <summary>
+    /// Служебный класс, который содержит методы генерации случайных покупателей.
+    /// </summary>
     public static class CustomerFactory
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Customer"/> и заполняет его случайными значениями.
+        /// </summary>
+        /// <returns>Экземпляр покупателя с заполненными полями.</returns>
         public static Customer Randomize()
         {
             Random random = new Random();

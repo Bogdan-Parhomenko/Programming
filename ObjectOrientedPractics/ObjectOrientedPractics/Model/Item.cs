@@ -105,20 +105,5 @@ namespace ObjectOrientedPractics.Model
             Cost = cost;
             Category = category;
         }
-
-        /// <summary>
-        /// Копирует информацию о товаре.
-        /// </summary>
-        /// <param name="item">Искомый товар, чью информацию необходимо скопировать.</param>
-        /// <returns>Возвращает товар со скопированной информацией.</returns>
-        public static Item CopyItem(Item item)
-        {
-            Item copiedItem = new Item();
-            copiedItem.Id = item.Id;
-            copiedItem.Name = item.Name;
-            copiedItem.Info = item.Info;
-            copiedItem.Cost = item.Cost;
-            return copiedItem;
-        }
     }
 }
