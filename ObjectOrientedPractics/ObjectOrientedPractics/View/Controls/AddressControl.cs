@@ -13,19 +13,46 @@ namespace ObjectOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {
-        private Address _address = new Address();
+        private Address _address;
 
-        public Address Address { get; set; }
+        public Address Address
+        {
+            get => _address;
+            set
+            {
+                _address = value;
+                FillAllTextBoxes();
+            }
+        }
+
+        public void ClearAllTextBoxes()
+        {
+            IndexTextBox.Clear();
+            CountryTextBox.Clear();
+            CityTextBox.Clear();
+            StreetTextBox.Clear();
+            BuildingTextBox.Clear();
+            ApartmentTextBox.Clear();
+        }
+
+        private void FillAllTextBoxes()
+        {
+            if (_address == null)
+            {
+                ClearAllTextBoxes();
+                return;
+            }
+            IndexTextBox.Text = Address.Index.ToString();
+            CountryTextBox.Text = Address.Country;
+            CityTextBox.Text = Address.City;
+            StreetTextBox.Text = Address.Street;
+            BuildingTextBox.Text = Address.Building;
+            ApartmentTextBox.Text = Address.Apartment;
+        }
 
         public AddressControl()
         {
             InitializeComponent();
-            IndexTextBox.Text = Address.Index.ToString();
-            CountryTextBox.Text = Address.Country;
-            CityLabel.Text = Address.City;
-            StreetTextBox.Text = Address.Street;
-            BuildingTextBox.Text = Address.Building;
-            ApartmentTextBox.Text = Address.Apartment;
         }
 
         private void IndexTextBox_TextChanged(object sender, EventArgs e)
