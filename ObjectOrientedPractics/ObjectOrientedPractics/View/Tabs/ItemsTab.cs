@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -17,6 +18,8 @@ namespace ObjectOrientedPractics.View.Tabs
         /// Список элементов класса Item.
         /// </summary>
         private BindingList<Item> _items = new BindingList<Item>();
+
+        private Item _currentItem;
 
         /// <summary>
         /// Относительный путь к папке, где должен лежать файл json.
@@ -38,30 +41,31 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
-            if (!Directory.Exists(_pathToJson))
-            {
-                Directory.CreateDirectory(_pathToJson);
-            }
-            if (!File.Exists(_jsonPath))
-            {
-                FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
-                fileStream.Close();
-            }
-            JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
-            reader.SupportMultipleContent = true;
-            while (true)
-            {
-                if (!reader.Read())
-                {
-                    break;
-                }
-                JsonSerializer serializer = new JsonSerializer();
-                Item tempItem = serializer.Deserialize<Item>(reader);
-                _items.Add(tempItem);
-            }
-            reader.Close();
+            //if (!Directory.Exists(_pathToJson))
+            //{
+            //    Directory.CreateDirectory(_pathToJson);
+            //}
+            //if (!File.Exists(_jsonPath))
+            //{
+            //    FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
+            //    fileStream.Close();
+            //}
+            //JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
+            //reader.SupportMultipleContent = true;
+            //while (true)
+            //{
+            //    if (!reader.Read())
+            //    {
+            //        break;
+            //    }
+            //    JsonSerializer serializer = new JsonSerializer();
+            //    Item tempItem = serializer.Deserialize<Item>(reader);
+            //    _items.Add(tempItem);
+            //}
+            //reader.Close();
             ItemsListBox.DataSource = _items;
             ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
+            CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Category)));
         }
 
         /// <summary>
@@ -101,7 +105,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (ItemsListBox.SelectedIndex != -1)
             {
-                UpdateItemInfo(_items[ItemsListBox.SelectedIndex]);
+                _currentItem = _items[ItemsListBox.SelectedIndex];
+                UpdateItemInfo(_currentItem);
             }
             else
             {
@@ -116,18 +121,19 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            ItemsEditForm editForm = new ItemsEditForm(new Item());
-            editForm.ShowDialog();
-            if (editForm.DialogResult == DialogResult.OK)
-            {
-                _items.Add(editForm.CurrentItem);
-            }
+            _items.Add(ItemFactory.Randomize());
+            //ItemsEditForm editForm = new ItemsEditForm(new Item());
+            //editForm.ShowDialog();
+            //if (editForm.DialogResult == DialogResult.OK)
+            //{
+            //    _items.Add(editForm.CurrentItem);
+            //}
             ItemsListBox.SelectedIndex = -1;
-            File.WriteAllText(_jsonPath, string.Empty);
-            for (int i = 0; i < _items.Count; i++)
-            {
-                File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
-            }
+            //File.WriteAllText(_jsonPath, string.Empty);
+            //for (int i = 0; i < _items.Count; i++)
+            //{
+            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
+            //}
         }
 
         /// <summary>
@@ -141,37 +147,56 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _items.RemoveAt(selectedIndex);
                 ItemsListBox.SelectedIndex = -1;
-                File.WriteAllText(_jsonPath, string.Empty);
-                for (int i = 0; i < _items.Count; i++)
-                {
-                    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
-                }
+                //File.WriteAllText(_jsonPath, string.Empty);
+                //for (int i = 0; i < _items.Count; i++)
+                //{
+                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
+                //}
             }
         }
 
-        /// <summary>
-        /// При нажатии на кнопку изменения товара открывает соответствующую форму
-        /// и изменяет товар в списке _items.
-        /// Записывает измененный товар в файл json.
-        /// </summary>
-        private void EditButton_Click(object sender, EventArgs e)
+        private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
-            var selectedIndex = ItemsListBox.SelectedIndex;
-            if (selectedIndex != -1)
+            try
             {
-                ItemsEditForm editForm = new ItemsEditForm(_items[selectedIndex]);
-                editForm.ShowDialog();
-                if (editForm.DialogResult == DialogResult.OK)
-                {
-                    _items[selectedIndex] = editForm.CurrentItem;
-                }
+                CostTextBox.BackColor = Color.White;
+                _currentItem.Cost = Double.Parse(CostTextBox.Text);
             }
-            ItemsListBox.SelectedIndex = -1;
-            File.WriteAllText(_jsonPath, string.Empty);
-            for (int i = 0; i < _items.Count; i++)
+            catch
             {
-                File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
+                CostTextBox.BackColor = Color.LightPink;
             }
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                NameTextBox.BackColor = Color.White;
+                _currentItem.Name = NameTextBox.Text;
+            }
+            catch
+            {
+                NameTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void InfoTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoTextBox.BackColor = Color.White;
+                _currentItem.Info = InfoTextBox.Text;
+            }
+            catch
+            {
+                InfoTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
         }
     }
 }

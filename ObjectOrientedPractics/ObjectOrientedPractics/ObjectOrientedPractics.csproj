@@ -72,6 +72,7 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Services\IdGenerator.cs" />
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Services\ItemFactory.cs" />
     <Compile Include="Services\ValueValidator.cs" />
     <Compile Include="View\Controls\AddressControl.cs">
       <SubType>UserControl</SubType>
