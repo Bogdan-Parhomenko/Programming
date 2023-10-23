@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EditButton = new System.Windows.Forms.Button();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.IdLabel = new System.Windows.Forms.Label();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
@@ -40,19 +39,7 @@
             this.AddressLabel = new System.Windows.Forms.Label();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
-            this.Panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // EditButton
-            // 
-            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditButton.Location = new System.Drawing.Point(231, 556);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(108, 40);
-            this.EditButton.TabIndex = 21;
-            this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = true;
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // IdTextBox
             // 
@@ -150,9 +137,9 @@
             this.AddressTextBox.Location = new System.Drawing.Point(407, 86);
             this.AddressTextBox.Multiline = true;
             this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.ReadOnly = true;
             this.AddressTextBox.Size = new System.Drawing.Size(790, 94);
             this.AddressTextBox.TabIndex = 24;
+            this.AddressTextBox.TextChanged += new System.EventHandler(this.AddressTextBox_TextChanged);
             // 
             // FullNameTextBox
             // 
@@ -160,31 +147,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(407, 57);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.ReadOnly = true;
             this.FullNameTextBox.Size = new System.Drawing.Size(790, 20);
             this.FullNameTextBox.TabIndex = 25;
-            // 
-            // Panel
-            // 
-            this.Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Panel.Location = new System.Drawing.Point(348, 186);
-            this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(849, 410);
-            this.Panel.TabIndex = 26;
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Panel);
             this.Controls.Add(this.FullNameTextBox);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.AddressLabel);
             this.Controls.Add(this.FullNameLabel);
-            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.IdTextBox);
             this.Controls.Add(this.IdLabel);
             this.Controls.Add(this.SelectedCustomerLabel);
@@ -200,8 +174,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.Label IdLabel;
         private System.Windows.Forms.Label SelectedCustomerLabel;
@@ -213,6 +185,5 @@
         private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.TextBox FullNameTextBox;
-        private System.Windows.Forms.Panel Panel;
     }
 }

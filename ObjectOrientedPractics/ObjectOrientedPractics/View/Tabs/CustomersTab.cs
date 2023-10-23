@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Services;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -16,7 +18,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список элементов класса Customer.
         /// </summary>
-        private BindingList<Customer> _customers = new BindingList<Customer>();
+        private List<Customer> _customers = new List<Customer>();
+
+        private Customer _currentCustomer;
 
         /// <summary>
         /// Относительный путь к папке, где должен лежать файл json.
@@ -38,29 +42,28 @@ namespace ObjectOrientedPractics.View.Tabs
         public CustomersTab()
         {
             InitializeComponent();
-            if (!Directory.Exists(_pathToJson))
-            {
-                Directory.CreateDirectory(_pathToJson);
-            }
-            if (!File.Exists(_jsonPath))
-            {
-                FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
-                fileStream.Close();
-            }
-            JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
-            reader.SupportMultipleContent = true;
-            while (true)
-            {
-                if (!reader.Read())
-                {
-                    break;
-                }
-                JsonSerializer serializer = new JsonSerializer();
-                Customer tempCustomer = serializer.Deserialize<Customer>(reader);
-                _customers.Add(tempCustomer);
-            }
-            reader.Close();
-            CustomersListBox.DataSource = _customers;
+            //if (!Directory.Exists(_pathToJson))
+            //{
+            //    Directory.CreateDirectory(_pathToJson);
+            //}
+            //if (!File.Exists(_jsonPath))
+            //{
+            //    FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
+            //    fileStream.Close();
+            //}
+            //JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
+            //reader.SupportMultipleContent = true;
+            //while (true)
+            //{
+            //    if (!reader.Read())
+            //    {
+            //        break;
+            //    }
+            //    JsonSerializer serializer = new JsonSerializer();
+            //    Customer tempCustomer = serializer.Deserialize<Customer>(reader);
+            //    _customers.Add(tempCustomer);
+            //}
+            //reader.Close();
             CustomersListBox.DisplayMember = nameof(Customer.DisplayInfo);
         }
 
@@ -96,7 +99,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CustomersListBox.SelectedIndex != -1)
             {
-                UpdateCustomerInfo(_customers[CustomersListBox.SelectedIndex]);
+                _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+                UpdateCustomerInfo(_currentCustomer);
             }
             else
             {
@@ -111,18 +115,14 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            CustomersEditForm editForm = new CustomersEditForm(new Customer());
-            editForm.ShowDialog();
-            if (editForm.DialogResult == DialogResult.OK)
-            {
-                _customers.Add(editForm.CurrentCustomer);
-            }
-            CustomersListBox.SelectedIndex = -1;
-            File.WriteAllText(_jsonPath, string.Empty);
-            for (int i = 0; i < _customers.Count; i++)
-            {
-                File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
-            }
+            var addedCustomerId = _customers.Count;
+            _customers.Add(CustomerFactory.Randomize());
+            CustomersListBox.Items.Add(_customers[addedCustomerId]);
+            //File.WriteAllText(_jsonPath, string.Empty);
+            //for (int i = 0; i < _customers.Count; i++)
+            //{
+            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
+            //}
         }
 
         /// <summary>
@@ -135,37 +135,50 @@ namespace ObjectOrientedPractics.View.Tabs
             if (selectedIndex != -1)
             {
                 _customers.RemoveAt(selectedIndex);
-                CustomersListBox.SelectedIndex = -1;
-                File.WriteAllText(_jsonPath, string.Empty);
-                for (int i = 0; i < _customers.Count; i++)
-                {
-                    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
-                }
+                CustomersListBox.Items.RemoveAt(selectedIndex);
+                //File.WriteAllText(_jsonPath, string.Empty);
+                //for (int i = 0; i < _customers.Count; i++)
+                //{
+                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
+                //}
             }
         }
 
-        /// <summary>
-        /// При нажатии на кнопку изменения покупателя открывает соответствующую форму
-        /// и изменяет покупателя в списке _customers.
-        /// Записывает измененного покупателя в файл json.
-        /// </summary>
-        private void EditButton_Click(object sender, EventArgs e)
+        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            var selectedIndex = CustomersListBox.SelectedIndex;
-            if (selectedIndex != -1)
+            if (CustomersListBox.SelectedIndex == -1)
             {
-                CustomersEditForm editForm = new CustomersEditForm(_customers[selectedIndex]);
-                editForm.ShowDialog();
-                if (editForm.DialogResult == DialogResult.OK)
-                {
-                    _customers[selectedIndex] = editForm.CurrentCustomer;
-                }
+                return;
             }
-            CustomersListBox.SelectedIndex = -1;
-            File.WriteAllText(_jsonPath, string.Empty);
-            for (int i = 0; i < _customers.Count; i++)
+            try
             {
-                File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
+                FullNameTextBox.BackColor = Color.White;
+                _currentCustomer.FullName = FullNameTextBox.Text;
+                CustomersListBox.SelectedIndexChanged -= CustomersListBox_SelectedIndexChanged;
+                CustomersListBox.Items[CustomersListBox.SelectedIndex] =
+                    _customers[CustomersListBox.SelectedIndex];
+                CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
+            }
+            catch
+            {
+                FullNameTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            try
+            {
+                AddressTextBox.BackColor = Color.White;
+                _currentCustomer.Address = AddressTextBox.Text;
+            }
+            catch
+            {
+                AddressTextBox.BackColor = Color.LightPink;
             }
         }
     }

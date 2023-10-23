@@ -127,13 +127,6 @@ namespace ObjectOrientedPractics.View.Tabs
             var addedItemId = _items.Count;
             _items.Add(ItemFactory.Randomize());
             ItemsListBox.Items.Add(_items[addedItemId]);
-            //ItemsEditForm editForm = new ItemsEditForm(new Item());
-            //editForm.ShowDialog();
-            //if (editForm.DialogResult == DialogResult.OK)
-            //{
-            //    _items.Add(editForm.CurrentItem);
-            //}
-            //ItemsListBox.SelectedIndex = -1;
             //File.WriteAllText(_jsonPath, string.Empty);
             //for (int i = 0; i < _items.Count; i++)
             //{
@@ -152,7 +145,6 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _items.RemoveAt(selectedIndex);
                 ItemsListBox.Items.RemoveAt(selectedIndex);
-                //ItemsListBox.SelectedIndex = -1;
                 //File.WriteAllText(_jsonPath, string.Empty);
                 //for (int i = 0; i < _items.Count; i++)
                 //{
