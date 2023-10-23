@@ -18,9 +18,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список элементов класса Customer.
         /// </summary>
-        private List<Customer> _customers = new List<Customer>();
+        private List<Customer> _customers;
 
         private Customer _currentCustomer;
+
+        public List<Customer> Customers;
 
         /// <summary>
         /// Относительный путь к папке, где должен лежать файл json.
@@ -61,7 +63,7 @@ namespace ObjectOrientedPractics.View.Tabs
             //    }
             //    JsonSerializer serializer = new JsonSerializer();
             //    Customer tempCustomer = serializer.Deserialize<Customer>(reader);
-            //    _customers.Add(tempCustomer);
+            //    Customers.Add(tempCustomer);
             //}
             //reader.Close();
             CustomersListBox.DisplayMember = nameof(Customer.DisplayInfo);
@@ -89,14 +91,14 @@ namespace ObjectOrientedPractics.View.Tabs
 
         /// <summary>
         /// При изменении выбранного элемента CustomersListBox
-        /// заполняет все текстовые поля значениями выбранного _customers.
+        /// заполняет все текстовые поля значениями выбранного Customers.
         /// Если покупатель не выбран, то очищает все текстовые поля.
         /// </summary>
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedIndex != -1)
             {
-                _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+                _currentCustomer = Customers[CustomersListBox.SelectedIndex];
                 UpdateCustomerInfo(_currentCustomer);
                 AddressControl.Address = _currentCustomer.Address;
             }
@@ -109,18 +111,18 @@ namespace ObjectOrientedPractics.View.Tabs
 
         /// <summary>
         /// При нажатии на кнопку добавления покупателя открывает соответствующую форму
-        /// и добавляет созданного покупателя в список _customers.
+        /// и добавляет созданного покупателя в список Customers.
         /// Записывает нового покупателя в файл json.
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addedCustomerId = _customers.Count;
-            _customers.Add(CustomerFactory.Randomize());
-            CustomersListBox.Items.Add(_customers[addedCustomerId]);
+            var addedCustomerId = Customers.Count;
+            Customers.Add(CustomerFactory.Randomize());
+            CustomersListBox.Items.Add(Customers[addedCustomerId]);
             //File.WriteAllText(_jsonPath, string.Empty);
-            //for (int i = 0; i < _customers.Count; i++)
+            //for (int i = 0; i < Customers.Count; i++)
             //{
-            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
+            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(Customers[i]));
             //}
         }
 
@@ -133,12 +135,12 @@ namespace ObjectOrientedPractics.View.Tabs
             var selectedIndex = CustomersListBox.SelectedIndex;
             if (selectedIndex != -1)
             {
-                _customers.RemoveAt(selectedIndex);
+                Customers.RemoveAt(selectedIndex);
                 CustomersListBox.Items.RemoveAt(selectedIndex);
                 //File.WriteAllText(_jsonPath, string.Empty);
-                //for (int i = 0; i < _customers.Count; i++)
+                //for (int i = 0; i < Customers.Count; i++)
                 //{
-                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_customers[i]));
+                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(Customers[i]));
                 //}
             }
         }
@@ -155,7 +157,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentCustomer.FullName = FullNameTextBox.Text;
                 CustomersListBox.SelectedIndexChanged -= CustomersListBox_SelectedIndexChanged;
                 CustomersListBox.Items[CustomersListBox.SelectedIndex] =
-                    _customers[CustomersListBox.SelectedIndex];
+                    Customers[CustomersListBox.SelectedIndex];
                 CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
             }
             catch

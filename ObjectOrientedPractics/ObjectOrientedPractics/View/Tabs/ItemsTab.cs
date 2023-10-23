@@ -18,9 +18,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список элементов класса Item.
         /// </summary>
-        private List<Item> _items = new List<Item>();
+        private List<Item> _items;
 
         private Item _currentItem;
+
+        public List<Item> Items;
 
         /// <summary>
         /// Относительный путь к папке, где должен лежать файл json.
@@ -61,7 +63,7 @@ namespace ObjectOrientedPractics.View.Tabs
             //    }
             //    JsonSerializer serializer = new JsonSerializer();
             //    Item tempItem = serializer.Deserialize<Item>(reader);
-            //    _items.Add(tempItem);
+            //    Items.Add(tempItem);
             //}
             //reader.Close();
             ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
@@ -107,7 +109,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Category)));
                 }
-                _currentItem = _items[ItemsListBox.SelectedIndex];
+                _currentItem = Items[ItemsListBox.SelectedIndex];
                 UpdateItemInfo(_currentItem);
             }
             else
@@ -119,18 +121,18 @@ namespace ObjectOrientedPractics.View.Tabs
 
         /// <summary>
         /// При нажатии на кнопку добавления товара открывает соответствующую форму
-        /// и добавляет созданный товар в список _items.
+        /// и добавляет созданный товар в список Items.
         /// Записывает новый товар в файл json.
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addedItemId = _items.Count;
-            _items.Add(ItemFactory.Randomize());
-            ItemsListBox.Items.Add(_items[addedItemId]);
+            var addedItemId = Items.Count;
+            Items.Add(ItemFactory.Randomize());
+            ItemsListBox.Items.Add(Items[addedItemId]);
             //File.WriteAllText(_jsonPath, string.Empty);
-            //for (int i = 0; i < _items.Count; i++)
+            //for (int i = 0; i < Items.Count; i++)
             //{
-            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
+            //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(Items[i]));
             //}
         }
 
@@ -143,12 +145,12 @@ namespace ObjectOrientedPractics.View.Tabs
             var selectedIndex = ItemsListBox.SelectedIndex;
             if (selectedIndex != -1)
             {
-                _items.RemoveAt(selectedIndex);
+                Items.RemoveAt(selectedIndex);
                 ItemsListBox.Items.RemoveAt(selectedIndex);
                 //File.WriteAllText(_jsonPath, string.Empty);
-                //for (int i = 0; i < _items.Count; i++)
+                //for (int i = 0; i < Items.Count; i++)
                 //{
-                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(_items[i]));
+                //    File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(Items[i]));
                 //}
             }
         }
@@ -182,7 +184,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentItem.Name = NameTextBox.Text;
                 ItemsListBox.SelectedIndexChanged -= ItemsListBox_SelectedIndexChanged;
                 ItemsListBox.Items[ItemsListBox.SelectedIndex] =
-                    _items[ItemsListBox.SelectedIndex];
+                    Items[ItemsListBox.SelectedIndex];
                 ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             }
             catch

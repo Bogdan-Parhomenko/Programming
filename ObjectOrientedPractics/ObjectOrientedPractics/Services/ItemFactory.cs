@@ -9,9 +9,9 @@ namespace ObjectOrientedPractics.Services
         {
             Random random = new Random();
             var item = new Item(
-                random.Next(101).ToString(),
-                random.Next(101).ToString(),
-                random.Next(100000),
+                random.Next(1, 101).ToString(),
+                random.Next(1, 101).ToString(),
+                random.Next(1, 100000),
                 (Category)Enum.Parse(typeof(Category), random.Next(7).ToString())
                 );
             return item;

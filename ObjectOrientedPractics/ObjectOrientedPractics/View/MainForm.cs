@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,12 +16,16 @@ namespace ObjectOrientedPractics
     /// </summary>
     public partial class MainForm : Form
     {
+        private Store _store = new Store();
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+            ItemsTab.Items = _store.Items;
+            CustomersTab.Customers = _store.Customers;
         }
+
     }
 }
