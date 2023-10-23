@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using ObjectOrientedPractics.Services;
+using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -17,7 +18,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список элементов класса Item.
         /// </summary>
-        private BindingList<Item> _items = new BindingList<Item>();
+        private List<Item> _items = new List<Item>();
 
         private Item _currentItem;
 
@@ -63,9 +64,7 @@ namespace ObjectOrientedPractics.View.Tabs
             //    _items.Add(tempItem);
             //}
             //reader.Close();
-            ItemsListBox.DataSource = _items;
             ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
-            CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Category)));
         }
 
         /// <summary>
@@ -93,7 +92,6 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.BackColor = Color.White;
             InfoTextBox.Clear();
             InfoTextBox.BackColor = Color.White;
-            CategoryComboBox.Text = "";
         }
 
         /// <summary>
@@ -105,11 +103,16 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (ItemsListBox.SelectedIndex != -1)
             {
+                if (CategoryComboBox.Items.Count == 0)
+                {
+                    CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Category)));
+                }
                 _currentItem = _items[ItemsListBox.SelectedIndex];
                 UpdateItemInfo(_currentItem);
             }
             else
             {
+                CategoryComboBox.Items.Clear();
                 ClearItemInfo();
             }
         }
@@ -121,14 +124,16 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
+            var addedItemId = _items.Count;
             _items.Add(ItemFactory.Randomize());
+            ItemsListBox.Items.Add(_items[addedItemId]);
             //ItemsEditForm editForm = new ItemsEditForm(new Item());
             //editForm.ShowDialog();
             //if (editForm.DialogResult == DialogResult.OK)
             //{
             //    _items.Add(editForm.CurrentItem);
             //}
-            ItemsListBox.SelectedIndex = -1;
+            //ItemsListBox.SelectedIndex = -1;
             //File.WriteAllText(_jsonPath, string.Empty);
             //for (int i = 0; i < _items.Count; i++)
             //{
@@ -146,7 +151,8 @@ namespace ObjectOrientedPractics.View.Tabs
             if (selectedIndex != -1)
             {
                 _items.RemoveAt(selectedIndex);
-                ItemsListBox.SelectedIndex = -1;
+                ItemsListBox.Items.RemoveAt(selectedIndex);
+                //ItemsListBox.SelectedIndex = -1;
                 //File.WriteAllText(_jsonPath, string.Empty);
                 //for (int i = 0; i < _items.Count; i++)
                 //{
@@ -157,6 +163,10 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (ItemsListBox.SelectedIndex == -1)
+            {
+                return;
+            }
             try
             {
                 CostTextBox.BackColor = Color.White;
@@ -170,10 +180,18 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (ItemsListBox.SelectedIndex == -1)
+            {
+                return;
+            }
             try
             {
                 NameTextBox.BackColor = Color.White;
                 _currentItem.Name = NameTextBox.Text;
+                ItemsListBox.SelectedIndexChanged -= ItemsListBox_SelectedIndexChanged;
+                ItemsListBox.Items[ItemsListBox.SelectedIndex] =
+                    _items[ItemsListBox.SelectedIndex];
+                ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             }
             catch
             {
@@ -183,6 +201,10 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void InfoTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (ItemsListBox.SelectedIndex == -1)
+            {
+                return;
+            }
             try
             {
                 InfoTextBox.BackColor = Color.White;
@@ -196,6 +218,10 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ItemsListBox.SelectedIndex == -1)
+            {
+                return;
+            }
             _currentItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
         }
     }
