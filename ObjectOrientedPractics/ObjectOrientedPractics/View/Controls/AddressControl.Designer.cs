@@ -129,7 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StreetTextBox.Location = new System.Drawing.Point(69, 70);
             this.StreetTextBox.Name = "StreetTextBox";
-            this.StreetTextBox.Size = new System.Drawing.Size(499, 20);
+            this.StreetTextBox.Size = new System.Drawing.Size(495, 20);
             this.StreetTextBox.TabIndex = 9;
             this.StreetTextBox.TextChanged += new System.EventHandler(this.StreetTextBox_TextChanged);
             // 
@@ -155,7 +155,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CityTextBox.Location = new System.Drawing.Point(322, 42);
             this.CityTextBox.Name = "CityTextBox";
-            this.CityTextBox.Size = new System.Drawing.Size(246, 20);
+            this.CityTextBox.Size = new System.Drawing.Size(242, 20);
             this.CityTextBox.TabIndex = 12;
             this.CityTextBox.TextChanged += new System.EventHandler(this.CityTextBox_TextChanged);
             // 
@@ -177,7 +177,7 @@
             this.Controls.Add(this.IndexLabel);
             this.Controls.Add(this.DeliveryAddressLabel);
             this.Name = "AddressControl";
-            this.Size = new System.Drawing.Size(571, 123);
+            this.Size = new System.Drawing.Size(567, 123);
             this.ResumeLayout(false);
             this.PerformLayout();
 
