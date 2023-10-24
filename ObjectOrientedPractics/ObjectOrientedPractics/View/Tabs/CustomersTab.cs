@@ -13,11 +13,6 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class CustomersTab : UserControl
     {
         /// <summary>
-        /// Список элементов класса Customer.
-        /// </summary>
-        private List<Customer> _customers;
-
-        /// <summary>
         /// Выбранный покупатель.
         /// </summary>
         private Customer _currentCustomer;

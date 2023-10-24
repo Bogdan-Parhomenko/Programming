@@ -11,12 +11,7 @@ namespace ObjectOrientedPractics.View.Tabs
     /// Содержит логику вкладки товаров.
     /// </summary>
     public partial class ItemsTab : UserControl
-    {
-        /// <summary>
-        /// Список элементов класса Item.
-        /// </summary>
-        private List<Item> _items;
-        
+    {      
         /// <summary>
         /// Выбранный товар.
         /// </summary>

@@ -13,11 +13,6 @@ namespace ObjectOrientedPractics.Model
         private string _fullName;
 
         /// <summary>
-        /// Адрес доставки для покупателя.
-        /// </summary>
-        private Address _address;
-
-        /// <summary>
         /// Возвращает и задает внутри класса уникальный идентификатор покупателя.
         /// </summary>
         public int Id { get; private set; }
@@ -39,6 +34,11 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает или задает адрес доставки для покупателя.
         /// </summary>
         public Address Address { get; set; } = new Address();
+
+        /// <summary>
+        /// Возвращает и задает корзину покупателя.
+        /// </summary>
+        public Cart Cart { get; set; } = new Cart();
 
         /// <summary>
         /// Возвращает строку, отражающую информацию о покупателе.
