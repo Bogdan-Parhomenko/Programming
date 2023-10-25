@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список элементов класса Customer.
         /// </summary>
-        public List<Customer> Customers;
+        public List<Customer> Customers {  get; set; }
 
         /// <summary>
         /// Создает объект типа <see cref="CustomersTab"/>.

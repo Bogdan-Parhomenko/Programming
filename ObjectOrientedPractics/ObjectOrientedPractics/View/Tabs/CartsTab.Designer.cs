@@ -87,11 +87,13 @@
             // 
             this.CustomerComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CustomerComboBox.FormattingEnabled = true;
             this.CustomerComboBox.Location = new System.Drawing.Point(419, 17);
             this.CustomerComboBox.Name = "CustomerComboBox";
             this.CustomerComboBox.Size = new System.Drawing.Size(671, 21);
             this.CustomerComboBox.TabIndex = 4;
+            this.CustomerComboBox.SelectedIndexChanged += new System.EventHandler(this.CustomerComboBox_SelectedIndexChanged);
             // 
             // CartLabel
             // 
@@ -182,6 +184,7 @@
             this.Controls.Add(this.ItemsLabel);
             this.Name = "CartsTab";
             this.Size = new System.Drawing.Size(1093, 681);
+            this.Enter += new System.EventHandler(this.CartsTab_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

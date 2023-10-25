@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список элементов класса Item.
         /// </summary>
-        public List<Item> Items;
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Создает объект типа <see cref="ItemsTab"/>.
