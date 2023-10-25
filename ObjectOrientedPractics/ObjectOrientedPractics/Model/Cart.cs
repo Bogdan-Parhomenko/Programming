@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -15,7 +15,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает список товаров в корзине.
         /// </summary>
-        public List<Item> Items { get; set; }
+        public BindingList<Item> Items { get; set; } = new BindingList<Item>(); //???
 
         /// <summary>
         /// Возвращает общую стоимость товаров в корзине.

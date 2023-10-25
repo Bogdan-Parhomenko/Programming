@@ -82,6 +82,7 @@
             this.AddToCartButton.TabIndex = 3;
             this.AddToCartButton.Text = "Add To Cart";
             this.AddToCartButton.UseVisualStyleBackColor = true;
+            this.AddToCartButton.Click += new System.EventHandler(this.AddToCartButton_Click);
             // 
             // CustomerComboBox
             // 
@@ -133,6 +134,7 @@
             this.RemoveItemButton.TabIndex = 8;
             this.RemoveItemButton.Text = "Remove Item";
             this.RemoveItemButton.UseVisualStyleBackColor = true;
+            this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
             // ClearCartButton
             // 
@@ -143,6 +145,7 @@
             this.ClearCartButton.TabIndex = 9;
             this.ClearCartButton.Text = "Clear Cart";
             this.ClearCartButton.UseVisualStyleBackColor = true;
+            this.ClearCartButton.Click += new System.EventHandler(this.ClearCartButton_Click);
             // 
             // AmountLabel
             // 
@@ -162,6 +165,7 @@
             this.TotalAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TotalAmountLabel.Location = new System.Drawing.Point(993, 266);
             this.TotalAmountLabel.Name = "TotalAmountLabel";
+            this.TotalAmountLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TotalAmountLabel.Size = new System.Drawing.Size(97, 25);
             this.TotalAmountLabel.TabIndex = 11;
             this.TotalAmountLabel.Text = "4999,90";
@@ -184,7 +188,6 @@
             this.Controls.Add(this.ItemsLabel);
             this.Name = "CartsTab";
             this.Size = new System.Drawing.Size(1093, 681);
-            this.Enter += new System.EventHandler(this.CartsTab_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,7 +1,7 @@
 ﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список элементов класса Customer.
         /// </summary>
-        public List<Customer> Customers {  get; set; }
+        public BindingList<Customer> Customers {  get; set; }
 
         /// <summary>
         /// Создает объект типа <see cref="CustomersTab"/>.
@@ -30,6 +30,15 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             CustomersListBox.DisplayMember = nameof(Customer.DisplayInfo);
+        }
+
+        /// <summary>
+        /// Моментально отображает изменения в ListBox.
+        /// </summary>
+        private void UpdateDisplayMember()
+        {
+            CustomersListBox.DisplayMember = null;
+            CustomersListBox.DisplayMember = nameof(Item.DisplayInfo);
         }
 
         /// <summary>
@@ -79,9 +88,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addedCustomerId = Customers.Count;
+            if (CustomersListBox.DataSource == null)
+            {
+                CustomersListBox.DataSource = Customers;
+            }
             Customers.Add(CustomerFactory.Randomize());
-            CustomersListBox.Items.Add(Customers[addedCustomerId]);
+            CustomersListBox.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -93,7 +105,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (selectedIndex != -1)
             {
                 Customers.RemoveAt(selectedIndex);
-                CustomersListBox.Items.RemoveAt(selectedIndex);
+                CustomersListBox.SelectedIndex = -1;
             }
         }
 
@@ -111,10 +123,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 FullNameTextBox.BackColor = Color.White;
                 _currentCustomer.FullName = FullNameTextBox.Text;
-                CustomersListBox.SelectedIndexChanged -= CustomersListBox_SelectedIndexChanged;
-                CustomersListBox.Items[CustomersListBox.SelectedIndex] =
-                    Customers[CustomersListBox.SelectedIndex];
-                CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
+                UpdateDisplayMember();
             }
             catch
             {

@@ -21,5 +21,13 @@ namespace ObjectOrientedPractics
             CartsTab.Items = _store.Items;
             CartsTab.Customers = _store.Customers;
         }
+
+        private void TabControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (TabControl.SelectedIndex == 2)
+            {
+                CartsTab.RefreshData();
+            }
+        }
     }
 }

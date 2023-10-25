@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -10,34 +10,34 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private List<Item> _items;
+        private BindingList<Item> _items;
 
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Customer> _customers;
+        private BindingList<Customer> _customers;
 
         /// <summary>
         /// Возвращает и задает список товаров. Не может быть равен null.
         /// </summary>
-        public List<Item> Items
+        public BindingList<Item> Items
         {
             get => _items;
             set
             {
-                _items = value ?? new List<Item>();
+                _items = value ?? new BindingList<Item>();
             }
         }
 
         /// <summary>
         /// Возвращает и задает список покупателей. Не может быть равен null.
         /// </summary>
-        public List<Customer> Customers
+        public BindingList<Customer> Customers
         {
             get => _customers;
             set
             {
-                _customers = value ?? new List<Customer>();
+                _customers = value ?? new BindingList<Customer>();
             }
         }
 
@@ -46,8 +46,8 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Store()
         {
-            Items = new List<Item>();
-            Customers = new List<Customer>();
+            Items = new BindingList<Item>();
+            Customers = new BindingList<Customer>();
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Services;
-using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список элементов класса Item.
         /// </summary>
-        public List<Item> Items { get; set; }
+        public BindingList<Item> Items { get; set; }
 
         /// <summary>
         /// Создает объект типа <see cref="ItemsTab"/>.
@@ -29,6 +29,15 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+            ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
+        }
+
+        /// <summary>
+        /// Моментально отображает изменения в ListBox.
+        /// </summary>
+        private void UpdateDisplayMember()
+        {
+            ItemsListBox.DisplayMember = null;
             ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
         }
 
@@ -89,9 +98,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addedItemId = Items.Count;
+            if (ItemsListBox.DataSource == null)
+            {
+                ItemsListBox.DataSource = Items;
+            }
             Items.Add(ItemFactory.Randomize());
-            ItemsListBox.Items.Add(Items[addedItemId]);
+            ItemsListBox.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -103,7 +115,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (selectedIndex != -1)
             {
                 Items.RemoveAt(selectedIndex);
-                ItemsListBox.Items.RemoveAt(selectedIndex);
+                ItemsListBox.SelectedIndex = -1;
             }
         }
 
@@ -142,10 +154,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 NameTextBox.BackColor = Color.White;
                 _currentItem.Name = NameTextBox.Text;
-                ItemsListBox.SelectedIndexChanged -= ItemsListBox_SelectedIndexChanged;
-                ItemsListBox.Items[ItemsListBox.SelectedIndex] =
-                    Items[ItemsListBox.SelectedIndex];
-                ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
+                UpdateDisplayMember();
             }
             catch
             {

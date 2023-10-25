@@ -53,6 +53,7 @@
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(819, 585);
             this.TabControl.TabIndex = 0;
+            this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // ItemsTabPage
             // 
@@ -68,6 +69,7 @@
             // ItemsTab
             // 
             this.ItemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemsTab.Items = null;
             this.ItemsTab.Location = new System.Drawing.Point(3, 3);
             this.ItemsTab.Name = "ItemsTab";
             this.ItemsTab.Size = new System.Drawing.Size(805, 553);
@@ -86,6 +88,7 @@
             // 
             // CustomersTab
             // 
+            this.CustomersTab.Customers = null;
             this.CustomersTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersTab.Location = new System.Drawing.Point(3, 3);
             this.CustomersTab.Name = "CustomersTab";
@@ -105,7 +108,9 @@
             // 
             // CartsTab
             // 
+            this.CartsTab.Customers = null;
             this.CartsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CartsTab.Items = null;
             this.CartsTab.Location = new System.Drawing.Point(3, 3);
             this.CartsTab.Name = "CartsTab";
             this.CartsTab.Size = new System.Drawing.Size(805, 553);

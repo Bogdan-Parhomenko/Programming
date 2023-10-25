@@ -1,5 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
-using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -31,12 +31,12 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает адрес доставки.
         /// </summary>
-        public Address Address { get; set; } // new Address(); ???
+        public Address Address { get; set; }
 
         /// <summary>
         /// Возвращает и задает список товаров в заказе.
         /// </summary>
-        public List<Item> Items { get; set; }
+        public BindingList<Item> Items { get; set; }
 
         /// <summary>
         /// Возвращает общую стоимость товаров в заказе.

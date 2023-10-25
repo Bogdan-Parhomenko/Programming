@@ -1,5 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
-using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -44,7 +44,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает список заказов покупателя.
         /// </summary>
-        public List<Order> Order { get; set; } = new List<Order>();
+        public BindingList<Order> Order { get; set; } = new BindingList<Order>();
 
         /// <summary>
         /// Возвращает строку, отражающую информацию о покупателе.
