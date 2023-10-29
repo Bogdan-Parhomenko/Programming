@@ -43,6 +43,11 @@ namespace ObjectOrientedPractics.View.Tabs
             CustomerComboBox.SelectedIndex = -1;
         }
 
+        private void RefreshAmount()
+        {
+            TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
+        }
+
         private void CustomerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = CustomerComboBox.SelectedIndex;
@@ -51,7 +56,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 CurrentCustomer = Customers[selectedIndex];
                 CartListBox.DataSource = CurrentCustomer.Cart.Items;
                 CartListBox.DisplayMember = nameof(Item.DisplayInfo);
-                TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
+                RefreshAmount();
             }
             else
             {
@@ -66,7 +71,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedIndex != -1 && CurrentCustomer != null)
             {
                 CurrentCustomer.Cart.Items.Add(Items[ItemsListBox.SelectedIndex]);
-                TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
+                RefreshAmount();
             }
             else
             {
@@ -79,7 +84,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CartListBox.SelectedIndex != -1)
             {
                 CurrentCustomer.Cart.Items.RemoveAt(CartListBox.SelectedIndex);
-                TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
+                RefreshAmount();
             }
             else
             {
@@ -92,8 +97,15 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CurrentCustomer != null)
             {
                 CurrentCustomer.Cart.Items.Clear();
-                TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
+                RefreshAmount();
             }
+        }
+
+        private void CreateOrderButton_Click(object sender, EventArgs e)
+        {
+            CurrentCustomer.Order.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items));
+            CurrentCustomer.Cart.Items.Clear();
+            RefreshAmount();
         }
     }
 }

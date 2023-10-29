@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
+using System;
 using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
@@ -66,6 +67,15 @@ namespace ObjectOrientedPractics.Model
         public Order()
         {
             Id = IdGenerator.GetNextId();
+        }
+
+        public Order(Address address, BindingList<Item> items)
+        {
+            Id = IdGenerator.GetNextId();
+            Date = DateTime.Now.ToString();
+            OrderStatus = OrderStatus.New;
+            Address = address;
+            Items = items;
         }
     }
 }

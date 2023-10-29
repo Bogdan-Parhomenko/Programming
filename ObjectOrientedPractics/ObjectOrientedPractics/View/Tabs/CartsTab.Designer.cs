@@ -124,6 +124,7 @@
             this.CreateOrderButton.TabIndex = 7;
             this.CreateOrderButton.Text = "Create Order";
             this.CreateOrderButton.UseVisualStyleBackColor = true;
+            this.CreateOrderButton.Click += new System.EventHandler(this.CreateOrderButton_Click);
             // 
             // RemoveItemButton
             // 
@@ -163,12 +164,13 @@
             this.TotalAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalAmountLabel.AutoSize = true;
             this.TotalAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TotalAmountLabel.Location = new System.Drawing.Point(993, 266);
+            this.TotalAmountLabel.Location = new System.Drawing.Point(977, 266);
+            this.TotalAmountLabel.MaximumSize = new System.Drawing.Size(200, 25);
             this.TotalAmountLabel.Name = "TotalAmountLabel";
             this.TotalAmountLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TotalAmountLabel.Size = new System.Drawing.Size(97, 25);
+            this.TotalAmountLabel.Size = new System.Drawing.Size(25, 25);
             this.TotalAmountLabel.TabIndex = 11;
-            this.TotalAmountLabel.Text = "4999,90";
+            this.TotalAmountLabel.Text = "0";
             // 
             // CartsTab
             // 
