@@ -15,7 +15,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает список товаров в корзине.
         /// </summary>
-        public BindingList<Item> Items { get; set; } = new BindingList<Item>(); //???
+        public BindingList<Item> Items { get; set; } = new BindingList<Item>();
 
         /// <summary>
         /// Возвращает общую стоимость товаров в корзине.

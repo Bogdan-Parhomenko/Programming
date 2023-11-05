@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Tabs;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics
@@ -20,6 +21,7 @@ namespace ObjectOrientedPractics
             CustomersTab.Customers = _store.Customers;
             CartsTab.Items = _store.Items;
             CartsTab.Customers = _store.Customers;
+            OrdersTab.Customers = _store.Customers;
         }
 
         private void TabControl_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -27,6 +29,10 @@ namespace ObjectOrientedPractics
             if (TabControl.SelectedIndex == 2)
             {
                 CartsTab.RefreshData();
+            }
+            else if (TabControl.SelectedIndex == 3)
+            {
+                OrdersTab.RefreshData();
             }
         }
     }

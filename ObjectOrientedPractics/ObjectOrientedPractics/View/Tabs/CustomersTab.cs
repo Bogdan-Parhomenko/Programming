@@ -49,6 +49,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Text = customer.Id.ToString();
             FullNameTextBox.Text = customer.FullName;
+            AddressControl.Address = customer.Address;
         }
 
         /// <summary>
@@ -73,7 +74,6 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer = Customers[CustomersListBox.SelectedIndex];
                 UpdateCustomerInfo(_currentCustomer);
-                AddressControl.Address = _currentCustomer.Address;
             }
             else
             {

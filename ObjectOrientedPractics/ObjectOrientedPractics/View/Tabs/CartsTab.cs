@@ -31,12 +31,14 @@ namespace ObjectOrientedPractics.View.Tabs
         public CartsTab()
         {
             InitializeComponent();
-            ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
-            CustomerComboBox.DisplayMember = nameof(Customer.DisplayInfo);
         }
 
         public void RefreshData()
         {
+            ItemsListBox.DataSource = null;
+            CustomerComboBox.DataSource = null;
+            ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
+            CustomerComboBox.DisplayMember = nameof(Customer.DisplayInfo);
             ItemsListBox.DataSource = Items;
             ItemsListBox.SelectedIndex = -1;
             CustomerComboBox.DataSource = Customers;

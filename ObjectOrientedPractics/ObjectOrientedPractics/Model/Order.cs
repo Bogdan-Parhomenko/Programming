@@ -37,7 +37,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает список товаров в заказе.
         /// </summary>
-        public BindingList<Item> Items { get; set; }
+        public BindingList<Item> Items { get; set; } = new BindingList<Item>();
 
         /// <summary>
         /// Возвращает общую стоимость товаров в заказе.
@@ -75,7 +75,10 @@ namespace ObjectOrientedPractics.Model
             Date = DateTime.Now.ToString();
             OrderStatus = OrderStatus.New;
             Address = address;
-            Items = items;
+            for (int i = 0; i < items.Count; i++)
+            {
+                Items.Add(items[i]);
+            }
         }
     }
 }
