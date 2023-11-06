@@ -24,6 +24,9 @@ namespace ObjectOrientedPractics
             OrdersTab.Customers = _store.Customers;
         }
 
+        /// <summary>
+        /// При переходе на вкладку обновляет ее актуальными данными.
+        /// </summary>
         private void TabControl_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (TabControl.SelectedIndex == 2)

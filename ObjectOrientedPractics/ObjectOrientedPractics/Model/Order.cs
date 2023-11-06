@@ -69,6 +69,11 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetNextId();
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Order"/>.
+        /// </summary>
+        /// <param name="address">Адрес доставки.</param>
+        /// <param name="items">Список товаров в заказе.</param>
         public Order(Address address, BindingList<Item> items)
         {
             Id = IdGenerator.GetNextId();

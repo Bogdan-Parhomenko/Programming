@@ -6,14 +6,29 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Содержит логику вкладки заказов.
+    /// </summary>
     public partial class OrdersTab : UserControl
     {
+        /// <summary>
+        /// Возвращает и задает список объектов класса <see cref="Customer"/>.
+        /// </summary>
         public BindingList<Customer> Customers { get; set; }
 
+        /// <summary>
+        /// Возвращает и задает выбранный объект класса <see cref="Order"/>.
+        /// </summary>
         private Order CurrentOrder { get; set; }
 
+        /// <summary>
+        /// Возвращает и задает список объектов класса <see cref="Order"/>.
+        /// </summary>
         private BindingList<Order> Orders { get; set; } = new BindingList<Order>();
 
+        /// <summary>
+        /// Создает объект типа <see cref="OrdersTab"/> и инициализирует столбцы таблицы.
+        /// </summary>
         public OrdersTab()
         {
             InitializeComponent();
@@ -30,6 +45,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При переходе на эту вкладку заполняет таблицу актуальными знавениями.
+        /// </summary>
         public void RefreshData()
         {
             Orders.Clear();
@@ -37,6 +55,9 @@ namespace ObjectOrientedPractics.View.Tabs
             UpdateOrders();
         }
 
+        /// <summary>
+        /// Инициализирует список заказов Orders и заполняет таблицу OrdersDataGridView.
+        /// </summary>
         private void UpdateOrders()
         {
             for (int i = 0; i < Customers.Count; i++)
@@ -56,11 +77,20 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Конвертирует экземпляр класса <see cref="Address"/> в строку.
+        /// </summary>
+        /// <param name="address">Конвертируемый адрес.</param>
+        /// <returns></returns>
         private string AddressToString(Address address)
         {
             return $"{address.Index} {address.Country} {address.City} {address.Street} {address.Building} {address.Apartment}";
         }
 
+        /// <summary>
+        /// Инициализирует все элементы управления данными выбранного заказа.
+        /// </summary>
+        /// <param name="order">Выбранный заказ.</param>
         private void UpdateOrderInfo(Order order)
         {
             IdTextBox.Text = order.Id.ToString();
@@ -72,6 +102,9 @@ namespace ObjectOrientedPractics.View.Tabs
             RefreshAmount();
         }
 
+        /// <summary>
+        /// Очищает элементы управления.
+        /// </summary>
         private void ClearOrderInfo()
         {
             IdTextBox.Clear();
@@ -79,11 +112,17 @@ namespace ObjectOrientedPractics.View.Tabs
             OrderItemsListBox.DataSource = null;
         }
 
+        /// <summary>
+        /// Высчитывает актуальную стоимость товаров в корзине.
+        /// </summary>
         private void RefreshAmount()
         {
             TotalAmountLabel.Text = CurrentOrder.Amount.ToString();
         }
 
+        /// <summary>
+        /// При выборе заказа инициализирует все элементы управления.
+        /// </summary>
         private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (OrdersDataGridView.SelectedRows.Count != 0)
@@ -105,6 +144,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// При изменении значения StatusComboBox обновляет статус заказа выбранного покупателя.
+        /// </summary>
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             CurrentOrder.OrderStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), StatusComboBox.Text);
