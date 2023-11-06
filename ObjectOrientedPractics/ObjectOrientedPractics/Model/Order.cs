@@ -32,7 +32,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает адрес доставки.
         /// </summary>
-        public Address Address { get; set; }
+        public Address Address { get; set; } = new Address();
 
         /// <summary>
         /// Возвращает и задает список товаров в заказе.
@@ -79,7 +79,12 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetNextId();
             Date = DateTime.Now.ToString();
             OrderStatus = OrderStatus.New;
-            Address = address;
+            Address.Index = address.Index;
+            Address.Country = address.Country;
+            Address.City = address.City;
+            Address.Street = address.Street;
+            Address.Building = address.Building;
+            Address.Apartment = address.Apartment;
             for (int i = 0; i < items.Count; i++)
             {
                 Items.Add(items[i]);
