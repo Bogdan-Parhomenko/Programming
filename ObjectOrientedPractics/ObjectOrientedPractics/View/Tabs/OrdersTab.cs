@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Controls;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -16,11 +17,6 @@ namespace ObjectOrientedPractics.View.Tabs
         public OrdersTab()
         {
             InitializeComponent();
-        }
-
-        public void RefreshData()
-        {
-            Orders.Clear();
             OrdersDataGridView.ColumnCount = 6;
             OrdersDataGridView.Columns[0].Name = "Id";
             OrdersDataGridView.Columns[1].Name = "Created";
@@ -28,6 +24,15 @@ namespace ObjectOrientedPractics.View.Tabs
             OrdersDataGridView.Columns[3].Name = "Customer Full Name";
             OrdersDataGridView.Columns[4].Name = "Delivery Address";
             OrdersDataGridView.Columns[5].Name = "Amount";
+            foreach (DataGridViewColumn column in OrdersDataGridView.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+
+        public void RefreshData()
+        {
+            Orders.Clear();
             OrdersDataGridView.Rows.Clear();
             UpdateOrders();
         }
@@ -93,8 +98,8 @@ namespace ObjectOrientedPractics.View.Tabs
             else
             {
                 StatusComboBox.Items.Clear();
-                AddressControl.ClearAllTextBoxes(true);
                 ClearOrderInfo();
+                AddressControl.ClearAllTextBoxes(true);
                 CurrentOrder = null;
                 TotalAmountLabel.Text = "0";
             }
@@ -102,7 +107,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CurrentOrder.OrderStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), StatusComboBox.Text);
         }
     }
 }

@@ -39,11 +39,26 @@ namespace ObjectOrientedPractics.View.Controls
                 IndexTextBox.TextChanged -= IndexTextBox_TextChanged;
                 IndexTextBox.Clear();
                 IndexTextBox.TextChanged += IndexTextBox_TextChanged;
+
+                CountryTextBox.TextChanged -= CountryTextBox_TextChanged;
                 CountryTextBox.Clear();
+                CountryTextBox.TextChanged += CountryTextBox_TextChanged;
+
+                CityTextBox.TextChanged -= CityTextBox_TextChanged;
                 CityTextBox.Clear();
+                CityTextBox.TextChanged += CityTextBox_TextChanged;
+
+                StreetTextBox.TextChanged -= StreetTextBox_TextChanged;
                 StreetTextBox.Clear();
+                StreetTextBox.TextChanged += StreetTextBox_TextChanged;
+
+                BuildingTextBox.TextChanged -= BuildingTextBox_TextChanged;
                 BuildingTextBox.Clear();
+                BuildingTextBox.TextChanged += BuildingTextBox_TextChanged;
+
+                ApartmentTextBox.TextChanged -= ApartmentTextBox_TextChanged;
                 ApartmentTextBox.Clear();
+                ApartmentTextBox.TextChanged += ApartmentTextBox_TextChanged;
             }
             else
             {
