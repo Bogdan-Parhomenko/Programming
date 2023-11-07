@@ -127,6 +127,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         /// <summary>
         /// При выборе заказа инициализирует все элементы управления.
+        /// Работает с приоритетными и не приоритетными заказами по разному.
         /// </summary>
         private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
         {
@@ -166,11 +167,19 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// При изменении значения StatusComboBox обновляет статус заказа выбранного покупателя.
+        /// При изменении значения StatusComboBox обновляет статус заказа.
         /// </summary>
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             CurrentOrder.OrderStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), StatusComboBox.Text);
+        }
+
+        /// <summary>
+        /// При изменении значения DeliveryTimeComboBox обновляет желаемое время доставки заказа.
+        /// </summary>
+        public void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CurrentPriorityOrder.DesiredDeliveryTime = DeliveryTimeComboBox.Text;
         }
     }
 }

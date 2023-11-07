@@ -70,7 +70,7 @@
             this.OrdersDataGridView.Location = new System.Drawing.Point(3, 20);
             this.OrdersDataGridView.MultiSelect = false;
             this.OrdersDataGridView.Name = "OrdersDataGridView";
-            this.OrdersDataGridView.Size = new System.Drawing.Size(500, 658);
+            this.OrdersDataGridView.Size = new System.Drawing.Size(532, 658);
             this.OrdersDataGridView.TabIndex = 1;
             this.OrdersDataGridView.SelectionChanged += new System.EventHandler(this.OrdersDataGridView_SelectionChanged);
             // 
@@ -79,7 +79,7 @@
             this.SelectedOrderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedOrderLabel.AutoSize = true;
             this.SelectedOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SelectedOrderLabel.Location = new System.Drawing.Point(509, 4);
+            this.SelectedOrderLabel.Location = new System.Drawing.Point(541, 4);
             this.SelectedOrderLabel.Name = "SelectedOrderLabel";
             this.SelectedOrderLabel.Size = new System.Drawing.Size(88, 13);
             this.SelectedOrderLabel.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             this.IdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.IdLabel.AutoSize = true;
-            this.IdLabel.Location = new System.Drawing.Point(509, 29);
+            this.IdLabel.Location = new System.Drawing.Point(541, 29);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(21, 13);
             this.IdLabel.TabIndex = 3;
@@ -99,7 +99,7 @@
             // 
             this.DataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DataLabel.AutoSize = true;
-            this.DataLabel.Location = new System.Drawing.Point(509, 55);
+            this.DataLabel.Location = new System.Drawing.Point(541, 55);
             this.DataLabel.Name = "DataLabel";
             this.DataLabel.Size = new System.Drawing.Size(47, 13);
             this.DataLabel.TabIndex = 4;
@@ -109,7 +109,7 @@
             // 
             this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(509, 81);
+            this.StatusLabel.Location = new System.Drawing.Point(541, 81);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(40, 13);
             this.StatusLabel.TabIndex = 5;
@@ -120,7 +120,7 @@
             this.OrderItemsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OrderItemsLabel.AutoSize = true;
             this.OrderItemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OrderItemsLabel.Location = new System.Drawing.Point(509, 249);
+            this.OrderItemsLabel.Location = new System.Drawing.Point(541, 249);
             this.OrderItemsLabel.Name = "OrderItemsLabel";
             this.OrderItemsLabel.Size = new System.Drawing.Size(72, 13);
             this.OrderItemsLabel.TabIndex = 6;
@@ -131,7 +131,7 @@
             this.AmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountLabel.AutoSize = true;
             this.AmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountLabel.Location = new System.Drawing.Point(1037, 476);
+            this.AmountLabel.Location = new System.Drawing.Point(1069, 476);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(53, 13);
             this.AmountLabel.TabIndex = 7;
@@ -142,7 +142,7 @@
             this.TotalAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalAmountLabel.AutoSize = true;
             this.TotalAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TotalAmountLabel.Location = new System.Drawing.Point(960, 489);
+            this.TotalAmountLabel.Location = new System.Drawing.Point(992, 489);
             this.TotalAmountLabel.Name = "TotalAmountLabel";
             this.TotalAmountLabel.Size = new System.Drawing.Size(25, 25);
             this.TotalAmountLabel.TabIndex = 8;
@@ -151,7 +151,7 @@
             // IdTextBox
             // 
             this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IdTextBox.Location = new System.Drawing.Point(575, 26);
+            this.IdTextBox.Location = new System.Drawing.Point(607, 26);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.ReadOnly = true;
             this.IdTextBox.Size = new System.Drawing.Size(121, 20);
@@ -160,7 +160,7 @@
             // DataTextBox
             // 
             this.DataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataTextBox.Location = new System.Drawing.Point(575, 52);
+            this.DataTextBox.Location = new System.Drawing.Point(607, 52);
             this.DataTextBox.Name = "DataTextBox";
             this.DataTextBox.ReadOnly = true;
             this.DataTextBox.Size = new System.Drawing.Size(121, 20);
@@ -171,7 +171,7 @@
             this.StatusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatusComboBox.FormattingEnabled = true;
-            this.StatusComboBox.Location = new System.Drawing.Point(575, 78);
+            this.StatusComboBox.Location = new System.Drawing.Point(607, 78);
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(121, 21);
             this.StatusComboBox.TabIndex = 11;
@@ -183,16 +183,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.OrderItemsListBox.FormattingEnabled = true;
             this.OrderItemsListBox.IntegralHeight = false;
-            this.OrderItemsListBox.Location = new System.Drawing.Point(512, 265);
+            this.OrderItemsListBox.Location = new System.Drawing.Point(544, 265);
             this.OrderItemsListBox.Name = "OrderItemsListBox";
             this.OrderItemsListBox.Size = new System.Drawing.Size(578, 208);
             this.OrderItemsListBox.TabIndex = 12;
             // 
             // PriorityOptionsLabel
             // 
+            this.PriorityOptionsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PriorityOptionsLabel.AutoSize = true;
             this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PriorityOptionsLabel.Location = new System.Drawing.Point(817, 4);
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(849, 4);
             this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
             this.PriorityOptionsLabel.Size = new System.Drawing.Size(93, 13);
             this.PriorityOptionsLabel.TabIndex = 14;
@@ -201,8 +202,9 @@
             // 
             // DeliveryTimeLabel
             // 
+            this.DeliveryTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeliveryTimeLabel.AutoSize = true;
-            this.DeliveryTimeLabel.Location = new System.Drawing.Point(820, 29);
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(852, 29);
             this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
             this.DeliveryTimeLabel.Size = new System.Drawing.Size(74, 13);
             this.DeliveryTimeLabel.TabIndex = 15;
@@ -211,6 +213,7 @@
             // 
             // DeliveryTimeComboBox
             // 
+            this.DeliveryTimeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeliveryTimeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DeliveryTimeComboBox.FormattingEnabled = true;
             this.DeliveryTimeComboBox.Items.AddRange(new object[] {
@@ -220,18 +223,19 @@
             "15:00 – 17:00",
             "17:00 – 19:00",
             "19:00 – 21:00"});
-            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(900, 25);
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(932, 25);
             this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
             this.DeliveryTimeComboBox.Size = new System.Drawing.Size(121, 21);
             this.DeliveryTimeComboBox.TabIndex = 16;
             this.DeliveryTimeComboBox.Visible = false;
+            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
             // 
             // AddressControl
             // 
             this.AddressControl.Address = null;
             this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressControl.Enabled = false;
-            this.AddressControl.Location = new System.Drawing.Point(506, 114);
+            this.AddressControl.Location = new System.Drawing.Point(538, 114);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(584, 123);
             this.AddressControl.TabIndex = 13;
@@ -258,7 +262,7 @@
             this.Controls.Add(this.OrdersDataGridView);
             this.Controls.Add(this.OrdersLabel);
             this.Name = "OrdersTab";
-            this.Size = new System.Drawing.Size(1093, 681);
+            this.Size = new System.Drawing.Size(1125, 681);
             ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
