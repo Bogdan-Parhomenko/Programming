@@ -3,10 +3,19 @@ using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class PointsDiscount
+    /// <summary>
+    /// Хранит данные о накопительно-бальной скидке.
+    /// </summary>
+    public class PointsDiscount : IDiscount
     {
+        /// <summary>
+        /// Количество накопленных баллов.
+        /// </summary>
         private int _accumulatedPoints;
 
+        /// <summary>
+        /// Возвращает и задает количество накопленных баллов. Не может быть меньше 0.
+        /// </summary>
         public int AccumulatedPoints
         {
             get => _accumulatedPoints;
@@ -20,6 +29,22 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает строку информации о баллах.
+        /// </summary>
+        public string Info
+        {
+            get
+            {
+                return $"Накопительная – {AccumulatedPoints} баллов";
+            }
+        }
+
+        /// <summary>
+        /// Расчитывает размер скидки для товаров.
+        /// </summary>
+        /// <param name="items">Список товаров, которые подлежат скидке.</param>
+        /// <returns>Возвращает размер скидки.</returns>
         public double Calculate(List<Item> items)
         {
             var totalCost = 0.0;
@@ -38,6 +63,11 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Применяет скидку к товарам.
+        /// </summary>
+        /// <param name="items">Список товаров, которые подлежат скидке.</param>
+        /// <returns>Возвращает размер скидки.</returns>
         public double Apply(List<Item> items)
         {
             var discount = Calculate(items);
@@ -49,6 +79,10 @@ namespace ObjectOrientedPractics.Model
             return (int)discount;
         }
 
+        /// <summary>
+        /// Добавляет скидочные баллы.
+        /// </summary>
+        /// <param name="items">Список товаров за которые начисляется скидка.</param>
         public void Update(List<Item> items)
         {
             var totalCost = 0.0;
@@ -59,11 +93,9 @@ namespace ObjectOrientedPractics.Model
             AccumulatedPoints += (int)(totalCost * 0.1);
         }
 
-        public string Info()
-        {
-            return $"Накопительная – {AccumulatedPoints} баллов";
-        }
-
+        /// <summary>
+        /// Создает экземпляр класса <see cref="PointsDiscount"/>.
+        /// </summary>
         public PointsDiscount()
         {
 

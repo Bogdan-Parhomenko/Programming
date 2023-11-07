@@ -2,14 +2,29 @@
 using System.Collections.Generic;
 namespace ObjectOrientedPractics.Model
 {
-    public class PercentDiscount
+    /// <summary>
+    /// Хранит данные о процентной скидке.
+    /// </summary>
+    public class PercentDiscount : IDiscount
     {
+        /// <summary>
+        /// Количество накопленных процентов.
+        /// </summary>
         private int _accumulatedPercents;
 
+        /// <summary>
+        /// Категория товаров, на которые начислена скидка.
+        /// </summary>
         public Category Category { get; set; }
 
+        /// <summary>
+        /// Сумма, на которую покупатель уже сделал покупки определенной категории.
+        /// </summary>
         public double TotalAmount { get; set; }
 
+        /// <summary>
+        /// Возвращает и задает количество накопленных процентов. Не может быть меньше 1 и больше 10 процентов.
+        /// </summary>
         public int AccumulatedPercents
         {
             get => _accumulatedPercents;
@@ -23,6 +38,22 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает строку информации о процентной скидке.
+        /// </summary>
+        public string Info
+        {
+            get
+            {
+                return ($"Процентная «{Category}» - {AccumulatedPercents}%");
+            }
+        }
+
+        /// <summary>
+        /// Расчитывает размер скидки для товаров.
+        /// </summary>
+        /// <param name="items">Список товаров, которые подлежат скидке.</param>
+        /// <returns>Возвращает размер скидки.</returns>
         public double Calculate(List<Item> items)
         {
             var totalCost = 0.0;
@@ -36,6 +67,11 @@ namespace ObjectOrientedPractics.Model
             return totalCost * (AccumulatedPercents / 100);
         }
 
+        /// <summary>
+        /// Применяет скидку к товарам.
+        /// </summary>
+        /// <param name="items">Список товаров, которые подлежат скидке.</param>
+        /// <returns>Возвращает размер скидки.</returns>
         public double Apply(List<Item> items)
         {
             var discount = Calculate(items);
@@ -49,6 +85,10 @@ namespace ObjectOrientedPractics.Model
             return (int)discount;
         }
 
+        /// <summary>
+        /// Добавляет скидочные проценты.
+        /// </summary>
+        /// <param name="items">Список товаров за которые начисляется скидка.</param>
         public void Update(List<Item> items)
         {
             var totalCost = 0.0;
@@ -63,13 +103,12 @@ namespace ObjectOrientedPractics.Model
             {
                 AccumulatedPercents += 1;
             }
+            TotalAmount += totalCost;
         }
 
-        public string Info()
-        {
-            return($"Процентная «{Category}» - {AccumulatedPercents}%");
-        }
-
+        /// <summary>
+        /// Создает экземпляр класса <see cref="PercentDiscount"/>.
+        /// </summary>
         public PercentDiscount()
         {
             AccumulatedPercents = 1;
