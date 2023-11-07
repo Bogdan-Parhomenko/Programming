@@ -197,6 +197,7 @@
             this.PriorityOptionsLabel.Size = new System.Drawing.Size(93, 13);
             this.PriorityOptionsLabel.TabIndex = 14;
             this.PriorityOptionsLabel.Text = "Priority Options";
+            this.PriorityOptionsLabel.Visible = false;
             // 
             // DeliveryTimeLabel
             // 
@@ -206,6 +207,7 @@
             this.DeliveryTimeLabel.Size = new System.Drawing.Size(74, 13);
             this.DeliveryTimeLabel.TabIndex = 15;
             this.DeliveryTimeLabel.Text = "Delivery Time:";
+            this.DeliveryTimeLabel.Visible = false;
             // 
             // DeliveryTimeComboBox
             // 
@@ -222,6 +224,7 @@
             this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
             this.DeliveryTimeComboBox.Size = new System.Drawing.Size(121, 21);
             this.DeliveryTimeComboBox.TabIndex = 16;
+            this.DeliveryTimeComboBox.Visible = false;
             // 
             // AddressControl
             // 

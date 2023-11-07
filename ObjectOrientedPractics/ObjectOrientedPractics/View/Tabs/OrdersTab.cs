@@ -22,6 +22,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private Order CurrentOrder { get; set; }
 
         /// <summary>
+        /// Возвращает и задает выбранный объект класса <see cref="PriorityOrder"/>.
+        /// </summary>
+        private PriorityOrder CurrentPriorityOrder { get; set; }
+
+        /// <summary>
         /// Возвращает и задает список объектов класса <see cref="Order"/>.
         /// </summary>
         private BindingList<Order> Orders { get; set; } = new BindingList<Order>();
@@ -127,11 +132,27 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (OrdersDataGridView.SelectedRows.Count != 0)
             {
+                if (Orders[OrdersDataGridView.SelectedRows[0].Index] is PriorityOrder priorityOrder)
+                {
+                    CurrentOrder = priorityOrder;
+                    CurrentPriorityOrder = priorityOrder;
+                    PriorityOptionsLabel.Visible = true;
+                    DeliveryTimeLabel.Visible = true;
+                    DeliveryTimeComboBox.Visible = true;
+                    DeliveryTimeComboBox.Text = CurrentPriorityOrder.DesiredDeliveryTime;
+                }
+                else
+                {
+                    CurrentOrder = Orders[OrdersDataGridView.SelectedRows[0].Index];
+                    CurrentPriorityOrder = null;
+                    PriorityOptionsLabel.Visible = false;
+                    DeliveryTimeLabel.Visible = false;
+                    DeliveryTimeComboBox.Visible = false;
+                }
                 if (StatusComboBox.Items.Count == 0)
                 {
                     StatusComboBox.Items.AddRange(Enum.GetNames(typeof(OrderStatus)));
                 }
-                CurrentOrder = Orders[OrdersDataGridView.SelectedRows[0].Index];
                 UpdateOrderInfo(CurrentOrder);
             }
             else
