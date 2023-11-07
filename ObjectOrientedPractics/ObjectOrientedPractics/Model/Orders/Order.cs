@@ -1,8 +1,9 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 using System;
 using System.ComponentModel;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Хранит данные о заказе.
@@ -58,6 +59,22 @@ namespace ObjectOrientedPractics.Model
                     _amount += Items[i].Cost;
                 }
                 return _amount;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает размер примененной скидки.
+        /// </summary>
+        public double DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Возвращает конечную стоимость заказа.
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return Amount - DiscountAmount;
             }
         }
 

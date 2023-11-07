@@ -1,4 +1,6 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Services;
 using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
@@ -52,6 +54,11 @@ namespace ObjectOrientedPractics.Model
         public bool IsPriority { get; set; } = false;
 
         /// <summary>
+        /// ВОзвращает и задает списко скидок покупателя.
+        /// </summary>
+        public BindingList<IDiscount> Discount { get; set; } = new BindingList<IDiscount>();
+
+        /// <summary>
         /// Возвращает строку, отражающую информацию о покупателе.
         /// </summary>
         public string DisplayInfo
@@ -68,6 +75,7 @@ namespace ObjectOrientedPractics.Model
         public Customer()
         {
             Id = IdGenerator.GetNextId();
+            Discount.Add(new PointsDiscount());
         }
 
         /// <summary>
@@ -78,6 +86,7 @@ namespace ObjectOrientedPractics.Model
         public Customer(string fullName, Address address)
         {
             Id = IdGenerator.GetNextId();
+            Discount.Add(new PointsDiscount());
             FullName = fullName;
             Address = address;
         }

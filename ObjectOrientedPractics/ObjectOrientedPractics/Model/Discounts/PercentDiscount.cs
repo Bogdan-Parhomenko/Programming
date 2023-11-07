@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model.Enums;
+using System;
 using System.Collections.Generic;
-namespace ObjectOrientedPractics.Model
+
+namespace ObjectOrientedPractics.Model.Discounts
 {
     /// <summary>
     /// Хранит данные о процентной скидке.
