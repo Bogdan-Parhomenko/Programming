@@ -57,6 +57,20 @@ namespace ObjectOrientedPractics.View.Tabs
             TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
         }
 
+        private void RefreshDiscount()
+        {
+            var totalDiscount = 0.0;
+            for (int i = 0; i < DiscountsСheckedListBox.Items.Count; i++)
+            {
+                if (DiscountsСheckedListBox.GetItemChecked(i))
+                {
+                    totalDiscount += CurrentCustomer.Discount[i].Calculate(CurrentCustomer.Cart.Items);
+                }
+            }
+            TotalDiscountLabel.Text = totalDiscount.ToString();
+            TotalTotalLabel.Text = (CurrentCustomer.Cart.Amount - totalDiscount).ToString();
+        }
+
         /// <summary>
         /// При выборе покупателя заполняет CartListBox товарами корзины покупателя и обновляет их стоимость.
         /// </summary>
@@ -69,12 +83,21 @@ namespace ObjectOrientedPractics.View.Tabs
                 CartListBox.DataSource = CurrentCustomer.Cart.Items;
                 CartListBox.DisplayMember = nameof(Item.DisplayInfo);
                 RefreshAmount();
+                DiscountsСheckedListBox.Items.Clear();
+                for (int i = 0; i < CurrentCustomer.Discount.Count; i++)
+                {
+                    DiscountsСheckedListBox.Items.Add(CurrentCustomer.Discount[i].Info, CheckState.Checked);
+                }
+                RefreshDiscount();
             }
             else
             {
                 CurrentCustomer = null;
                 CartListBox.DataSource = null;
                 TotalAmountLabel.Text = "0";
+                DiscountsСheckedListBox.Items.Clear();
+                TotalDiscountLabel.Text = "0";
+                TotalTotalLabel.Text = "0";
             }
         }
 
@@ -87,6 +110,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Cart.Items.Add(Items[ItemsListBox.SelectedIndex]);
                 RefreshAmount();
+                RefreshDiscount();
             }
             else
             {
@@ -103,6 +127,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Cart.Items.RemoveAt(CartListBox.SelectedIndex);
                 RefreshAmount();
+                RefreshDiscount();
             }
             else
             {
@@ -119,6 +144,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Cart.Items.Clear();
                 RefreshAmount();
+                RefreshDiscount();
             }
         }
 
@@ -137,6 +163,12 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             CurrentCustomer.Cart.Items.Clear();
             RefreshAmount();
+            RefreshDiscount();
+        }
+
+        private void DiscountsСheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshDiscount();
         }
     }
 }

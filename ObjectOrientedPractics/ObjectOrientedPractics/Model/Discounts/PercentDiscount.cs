@@ -1,6 +1,6 @@
 ﻿using ObjectOrientedPractics.Model.Enums;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model.Discounts
 {
@@ -56,7 +56,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// </summary>
         /// <param name="items">Список товаров, которые подлежат скидке.</param>
         /// <returns>Возвращает размер скидки.</returns>
-        public double Calculate(List<Item> items)
+        public double Calculate(BindingList<Item> items)
         {
             var totalCost = 0.0;
             foreach (var item in items)
@@ -66,7 +66,7 @@ namespace ObjectOrientedPractics.Model.Discounts
                     totalCost += item.Cost;
                 }
             }
-            return totalCost * (AccumulatedPercents / 100);
+            return totalCost * AccumulatedPercents / 100.0;
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// </summary>
         /// <param name="items">Список товаров, которые подлежат скидке.</param>
         /// <returns>Возвращает размер скидки.</returns>
-        public double Apply(List<Item> items)
+        public double Apply(BindingList<Item> items)
         {
             var discount = Calculate(items);
             foreach (var item in items)
@@ -91,7 +91,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// Добавляет скидочные проценты.
         /// </summary>
         /// <param name="items">Список товаров за которые начисляется скидка.</param>
-        public void Update(List<Item> items)
+        public void Update(BindingList<Item> items)
         {
             var totalCost = 0.0;
             foreach (var item in items)

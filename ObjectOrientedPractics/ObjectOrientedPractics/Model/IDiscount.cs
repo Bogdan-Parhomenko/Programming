@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -17,19 +17,19 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="items">Список товаров, которые подлежат скидке.</param>
         /// <returns>Возвращает размер скидки.</returns>
-        double Calculate(List<Item> items);
+        double Calculate(BindingList<Item> items);
 
         /// <summary>
         /// Применяет скидку к товарам.
         /// </summary>
         /// <param name="items">Список товаров, которые подлежат скидке.</param>
         /// <returns>Возвращает размер скидки.</returns>
-        double Apply(List<Item> items);
+        double Apply(BindingList<Item> items);
 
         /// <summary>
         /// Добавляет скидочные баллы.
         /// </summary>
         /// <param name="items">Список товаров за которые начисляется скидка.</param>
-        void Update(List<Item> items);
+        void Update(BindingList<Item> items);
     }
 }
