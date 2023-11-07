@@ -1,5 +1,6 @@
 ﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Forms;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -30,6 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             CustomersListBox.DisplayMember = nameof(Customer.DisplayInfo);
+            DiscountsListBox.DisplayMember = nameof(IDiscount.Info);
         }
 
         /// <summary>
@@ -51,6 +53,7 @@ namespace ObjectOrientedPractics.View.Tabs
             FullNameTextBox.Text = customer.FullName;
             AddressControl.Address = customer.Address;
             IsPriorityCheckBox.Checked = customer.IsPriority;
+            DiscountsListBox.DataSource = customer.Discount;
         }
 
         /// <summary>
@@ -61,6 +64,7 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Clear();
             FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
+            DiscountsListBox.DataSource = null;
         }
 
         /// <summary>
@@ -145,6 +149,27 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer.IsPriority = false;
             }
+        }
+
+        private void AddDiscountButton_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex != -1)
+            {
+                AddDiscountForm addDiscountForm = new AddDiscountForm();
+                if (addDiscountForm.ShowDialog() == DialogResult.OK)
+                {
+                    _currentCustomer.Discount.Add(addDiscountForm.PercentDiscount);
+                }
+            }
+        }
+
+        private void RemoveDiscountButton_Click(object sender, EventArgs e)
+        {
+            if (DiscountsListBox.SelectedIndex == 0 || CustomersListBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            _currentCustomer.Discount.RemoveAt(DiscountsListBox.SelectedIndex);
         }
     }
 }

@@ -98,7 +98,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// </summary>
         public PointsDiscount()
         {
-
+            AccumulatedPoints = 0;
         }
     }
 }
