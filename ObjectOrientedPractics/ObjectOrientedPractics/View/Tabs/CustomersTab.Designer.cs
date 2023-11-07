@@ -38,6 +38,7 @@
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
+            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // IdTextBox
@@ -135,15 +136,27 @@
             this.AddressControl.Address = null;
             this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressControl.Location = new System.Drawing.Point(342, 83);
+            this.AddressControl.Location = new System.Drawing.Point(342, 109);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(855, 133);
             this.AddressControl.TabIndex = 26;
+            // 
+            // IsPriorityCheckBox
+            // 
+            this.IsPriorityCheckBox.AutoSize = true;
+            this.IsPriorityCheckBox.Location = new System.Drawing.Point(407, 83);
+            this.IsPriorityCheckBox.Name = "IsPriorityCheckBox";
+            this.IsPriorityCheckBox.Size = new System.Drawing.Size(68, 17);
+            this.IsPriorityCheckBox.TabIndex = 27;
+            this.IsPriorityCheckBox.Text = "Is Priority";
+            this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
+            this.IsPriorityCheckBox.CheckedChanged += new System.EventHandler(this.IsPriorityCheckBox_CheckedChanged);
             // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.IsPriorityCheckBox);
             this.Controls.Add(this.AddressControl);
             this.Controls.Add(this.FullNameTextBox);
             this.Controls.Add(this.FullNameLabel);
@@ -172,5 +185,6 @@
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.TextBox FullNameTextBox;
         private Controls.AddressControl AddressControl;
+        private System.Windows.Forms.CheckBox IsPriorityCheckBox;
     }
 }

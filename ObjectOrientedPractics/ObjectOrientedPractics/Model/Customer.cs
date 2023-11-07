@@ -47,6 +47,11 @@ namespace ObjectOrientedPractics.Model
         public BindingList<Order> Order { get; set; } = new BindingList<Order>();
 
         /// <summary>
+        /// Возвращает и задает свойство покупателя, определяющее его как приоритетного.
+        /// </summary>
+        public bool IsPriority { get; set; } = false;
+
+        /// <summary>
         /// Возвращает строку, отражающую информацию о покупателе.
         /// </summary>
         public string DisplayInfo

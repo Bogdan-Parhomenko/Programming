@@ -50,6 +50,7 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Text = customer.Id.ToString();
             FullNameTextBox.Text = customer.FullName;
             AddressControl.Address = customer.Address;
+            IsPriorityCheckBox.Checked = customer.IsPriority;
         }
 
         /// <summary>
@@ -128,6 +129,21 @@ namespace ObjectOrientedPractics.View.Tabs
             catch
             {
                 FullNameTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        /// <summary>
+        /// Задает свойство IsPriority объекта класса <see cref="Customer"/>.
+        /// </summary>
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (IsPriorityCheckBox.Checked)
+            {
+                _currentCustomer.IsPriority = true;
+            }
+            else
+            {
+                _currentCustomer.IsPriority = false;
             }
         }
     }

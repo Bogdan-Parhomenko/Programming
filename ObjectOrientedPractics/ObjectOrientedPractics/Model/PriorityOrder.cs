@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -8,12 +9,12 @@ namespace ObjectOrientedPractics.Model
 
         public string  DesiredDeliveryTime { get; set; }
 
-        public PriorityOrder()
+        public PriorityOrder(Address address, BindingList<Item> items) : base(address, items)
         {
 
         }
 
-        public PriorityOrder(DateTime desiredDeliveryDate, string desiredDeliveryTime)
+        public PriorityOrder(Address address, BindingList<Item> items, DateTime desiredDeliveryDate, string desiredDeliveryTime) : base(address, items)
         {
             DesiredDeliveryDate = desiredDeliveryDate;
             DesiredDeliveryTime = desiredDeliveryTime;

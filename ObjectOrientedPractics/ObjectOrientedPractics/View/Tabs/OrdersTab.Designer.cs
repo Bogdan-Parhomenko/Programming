@@ -41,6 +41,9 @@
             this.DataTextBox = new System.Windows.Forms.TextBox();
             this.StatusComboBox = new System.Windows.Forms.ComboBox();
             this.OrderItemsListBox = new System.Windows.Forms.ListBox();
+            this.PriorityOptionsLabel = new System.Windows.Forms.Label();
+            this.DeliveryTimeLabel = new System.Windows.Forms.Label();
+            this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
             this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -185,6 +188,41 @@
             this.OrderItemsListBox.Size = new System.Drawing.Size(578, 208);
             this.OrderItemsListBox.TabIndex = 12;
             // 
+            // PriorityOptionsLabel
+            // 
+            this.PriorityOptionsLabel.AutoSize = true;
+            this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(817, 4);
+            this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            this.PriorityOptionsLabel.Size = new System.Drawing.Size(93, 13);
+            this.PriorityOptionsLabel.TabIndex = 14;
+            this.PriorityOptionsLabel.Text = "Priority Options";
+            // 
+            // DeliveryTimeLabel
+            // 
+            this.DeliveryTimeLabel.AutoSize = true;
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(820, 29);
+            this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            this.DeliveryTimeLabel.Size = new System.Drawing.Size(74, 13);
+            this.DeliveryTimeLabel.TabIndex = 15;
+            this.DeliveryTimeLabel.Text = "Delivery Time:";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            this.DeliveryTimeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DeliveryTimeComboBox.FormattingEnabled = true;
+            this.DeliveryTimeComboBox.Items.AddRange(new object[] {
+            "9:00 – 11:00",
+            "11:00 – 13:00",
+            "13:00 – 15:00",
+            "15:00 – 17:00",
+            "17:00 – 19:00",
+            "19:00 – 21:00"});
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(900, 25);
+            this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            this.DeliveryTimeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DeliveryTimeComboBox.TabIndex = 16;
+            // 
             // AddressControl
             // 
             this.AddressControl.Address = null;
@@ -199,6 +237,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DeliveryTimeComboBox);
+            this.Controls.Add(this.DeliveryTimeLabel);
+            this.Controls.Add(this.PriorityOptionsLabel);
             this.Controls.Add(this.AddressControl);
             this.Controls.Add(this.OrderItemsListBox);
             this.Controls.Add(this.StatusComboBox);
@@ -237,5 +278,8 @@
         private System.Windows.Forms.ComboBox StatusComboBox;
         private System.Windows.Forms.ListBox OrderItemsListBox;
         private Controls.AddressControl AddressControl;
+        private System.Windows.Forms.Label PriorityOptionsLabel;
+        private System.Windows.Forms.Label DeliveryTimeLabel;
+        private System.Windows.Forms.ComboBox DeliveryTimeComboBox;
     }
 }
