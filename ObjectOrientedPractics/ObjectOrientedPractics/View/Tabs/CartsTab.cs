@@ -57,7 +57,10 @@ namespace ObjectOrientedPractics.View.Tabs
             TotalAmountLabel.Text = CurrentCustomer.Cart.Amount.ToString();
         }
 
-        private void RefreshDiscount()
+        /// <summary>
+        /// Вычисляет возможную скидку на товары и выводит ее.
+        /// </summary>
+        private void CalculateDiscount()
         {
             var totalDiscount = 0.0;
             for (int i = 0; i < DiscountsСheckedListBox.Items.Count; i++)
@@ -69,6 +72,54 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             TotalDiscountLabel.Text = totalDiscount.ToString();
             TotalTotalLabel.Text = (CurrentCustomer.Cart.Amount - totalDiscount).ToString();
+        }
+
+        /// <summary>
+        /// Применяет скидку, списывая баллы.
+        /// </summary>
+        /// <returns>Общую скидку.</returns>
+        private double ApplyDiscount()
+        {
+            var totalDiscount = 0.0;
+            for (int i = 0; i < DiscountsСheckedListBox.Items.Count; i++)
+            {
+                if (DiscountsСheckedListBox.GetItemChecked(i))
+                {
+                    totalDiscount += CurrentCustomer.Discount[i].Apply(CurrentCustomer.Order[CurrentCustomer.Order.Count - 1].Items);
+                }
+            }
+            return totalDiscount;
+        }
+
+        /// <summary>
+        /// Начисляет скидочные баллы за товары.
+        /// </summary>
+        private void UpdateDiscount()
+        {
+            for (int i = 0; i < DiscountsСheckedListBox.Items.Count; i++)
+            {
+                CurrentCustomer.Discount[i].Update(CurrentCustomer.Order[CurrentCustomer.Order.Count - 1].Items);
+            }
+        }
+
+        /// <summary>
+        /// Обновляет DiscountsСheckedListBox новыми значениями баллов.
+        /// </summary>
+        private void UpdateDiscountsСheckedListBox()
+        {
+            for (int i = 0; i < CurrentCustomer.Discount.Count; i++)
+            {
+                DiscountsСheckedListBox.Items.Insert(i, CurrentCustomer.Discount[i].Info);
+                if (DiscountsСheckedListBox.GetItemChecked(i + 1))
+                {
+                    DiscountsСheckedListBox.SetItemCheckState(i, CheckState.Checked);
+                }
+                else
+                {
+                    DiscountsСheckedListBox.SetItemCheckState(i, CheckState.Unchecked);
+                }
+                DiscountsСheckedListBox.Items.RemoveAt(i + 1);
+            }
         }
 
         /// <summary>
@@ -88,7 +139,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     DiscountsСheckedListBox.Items.Add(CurrentCustomer.Discount[i].Info, CheckState.Checked);
                 }
-                RefreshDiscount();
+                CalculateDiscount();
             }
             else
             {
@@ -110,7 +161,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Cart.Items.Add(Items[ItemsListBox.SelectedIndex]);
                 RefreshAmount();
-                RefreshDiscount();
+                CalculateDiscount();
             }
             else
             {
@@ -127,7 +178,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Cart.Items.RemoveAt(CartListBox.SelectedIndex);
                 RefreshAmount();
-                RefreshDiscount();
+                CalculateDiscount();
             }
             else
             {
@@ -144,12 +195,13 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Cart.Items.Clear();
                 RefreshAmount();
-                RefreshDiscount();
+                CalculateDiscount();
             }
         }
 
         /// <summary>
         /// Создает заказ <see cref="Order"/>, очищает корзину покупателя и обновляет ее стоимость.
+        /// Высчитывает и применяет скидки.
         /// </summary>
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
@@ -161,14 +213,20 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer.Order.Add(new Order(CurrentCustomer.Address, CurrentCustomer.Cart.Items));
             }
+            CurrentCustomer.Order[CurrentCustomer.Order.Count - 1].DiscountAmount = ApplyDiscount();
+            UpdateDiscount();
+            UpdateDiscountsСheckedListBox();
             CurrentCustomer.Cart.Items.Clear();
             RefreshAmount();
-            RefreshDiscount();
+            CalculateDiscount();
         }
 
+        /// <summary>
+        /// Выводит обновляенную сумму скидок.
+        /// </summary>
         private void DiscountsСheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RefreshDiscount();
+            CalculateDiscount();
         }
     }
 }

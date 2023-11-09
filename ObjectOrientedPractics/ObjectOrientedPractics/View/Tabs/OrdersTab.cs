@@ -39,13 +39,14 @@ namespace ObjectOrientedPractics.View.Tabs
         public OrdersTab()
         {
             InitializeComponent();
-            OrdersDataGridView.ColumnCount = 6;
+            OrdersDataGridView.ColumnCount = 7;
             OrdersDataGridView.Columns[0].Name = "Id";
             OrdersDataGridView.Columns[1].Name = "Created";
             OrdersDataGridView.Columns[2].Name = "Order Status";
             OrdersDataGridView.Columns[3].Name = "Customer Full Name";
             OrdersDataGridView.Columns[4].Name = "Delivery Address";
             OrdersDataGridView.Columns[5].Name = "Amount";
+            OrdersDataGridView.Columns[6].Name = "Total";
             foreach (DataGridViewColumn column in OrdersDataGridView.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -78,7 +79,8 @@ namespace ObjectOrientedPractics.View.Tabs
                         Customers[i].Order[j].OrderStatus.ToString(),
                         Customers[i].FullName,
                         AddressToString(Customers[i].Order[j].Address),
-                        Customers[i].Order[j].Amount.ToString()};
+                        Customers[i].Order[j].Amount.ToString(),
+                        Customers[i].Order[j].Total.ToString()};
                     OrdersDataGridView.Rows.Add(row);
                 }
             }
@@ -125,6 +127,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void RefreshAmount()
         {
             TotalAmountLabel.Text = CurrentOrder.Amount.ToString();
+            TotalTotalLabel.Text = CurrentOrder.Total.ToString();
         }
 
         /// <summary>
@@ -165,6 +168,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 AddressControl.ClearAllTextBoxes(true);
                 CurrentOrder = null;
                 TotalAmountLabel.Text = "0";
+                TotalTotalLabel.Text = "0";
             }
         }
 

@@ -70,13 +70,9 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// <returns>Возвращает размер скидки.</returns>
         public double Apply(BindingList<Item> items)
         {
-            var discount = Calculate(items);
-            foreach (var item in items)
-            {
-                item.Cost -= discount / items.Count;
-            }
-            AccumulatedPoints -= (int)discount;
-            return (int)discount;
+            int discount = (int)Calculate(items);
+            AccumulatedPoints -= discount;
+            return discount;
         }
 
         /// <summary>

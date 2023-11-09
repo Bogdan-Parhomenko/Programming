@@ -9,7 +9,11 @@ namespace ObjectOrientedPractics
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Хранит информацию о товарах и покупателях.
+        /// </summary>
         private Store _store = new Store();
+
         /// <summary>
         /// Создает объект типа <see cref="MainForm"/>.
         /// Передает списки товаров и покупателей из Store в Items и Customers.
@@ -29,7 +33,11 @@ namespace ObjectOrientedPractics
         /// </summary>
         private void TabControl_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (TabControl.SelectedIndex == 2)
+            if (TabControl.SelectedIndex == 1)
+            {
+                CustomersTab.RefreshData();
+            }
+            else if (TabControl.SelectedIndex == 2)
             {
                 CartsTab.RefreshData();
             }

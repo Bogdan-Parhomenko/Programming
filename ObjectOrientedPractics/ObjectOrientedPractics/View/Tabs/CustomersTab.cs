@@ -31,6 +31,14 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             CustomersListBox.DisplayMember = nameof(Customer.DisplayInfo);
+        }
+
+        /// <summary>
+        /// При переходе на эту вкладку обновляет все элементы управления актуальными значениями.
+        /// </summary>
+        public void RefreshData()
+        {
+            DiscountsListBox.DisplayMember = null;
             DiscountsListBox.DisplayMember = nameof(IDiscount.Info);
         }
 
@@ -54,6 +62,8 @@ namespace ObjectOrientedPractics.View.Tabs
             AddressControl.Address = customer.Address;
             IsPriorityCheckBox.Checked = customer.IsPriority;
             DiscountsListBox.DataSource = customer.Discount;
+            DiscountsListBox.DisplayMember = nameof(IDiscount.Info);
+
         }
 
         /// <summary>
@@ -141,16 +151,22 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (IsPriorityCheckBox.Checked)
+            if (CustomersListBox.SelectedIndex != -1)
             {
-                _currentCustomer.IsPriority = true;
-            }
-            else
-            {
-                _currentCustomer.IsPriority = false;
+                if (IsPriorityCheckBox.Checked)
+                {
+                    _currentCustomer.IsPriority = true;
+                }
+                else
+                {
+                    _currentCustomer.IsPriority = false;
+                }
             }
         }
 
+        /// <summary>
+        /// Добавляет новую скидку.
+        /// </summary>
         private void AddDiscountButton_Click(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedIndex != -1)
@@ -163,6 +179,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Удаляет скидку.
+        /// </summary>
         private void RemoveDiscountButton_Click(object sender, EventArgs e)
         {
             if (DiscountsListBox.SelectedIndex == 0 || CustomersListBox.SelectedIndex == -1)

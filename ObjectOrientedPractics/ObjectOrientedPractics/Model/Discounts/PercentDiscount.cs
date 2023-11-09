@@ -76,15 +76,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// <returns>Возвращает размер скидки.</returns>
         public double Apply(BindingList<Item> items)
         {
-            var discount = Calculate(items);
-            foreach (var item in items)
-            {
-                if (item.Category == Category)
-                {
-                    item.Cost -= discount / items.Count;
-                }
-            }
-            return (int)discount;
+            return Calculate(items);
         }
 
         /// <summary>

@@ -45,6 +45,8 @@
             this.DeliveryTimeLabel = new System.Windows.Forms.Label();
             this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
             this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.TotalTotalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +144,7 @@
             this.TotalAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalAmountLabel.AutoSize = true;
             this.TotalAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TotalAmountLabel.Location = new System.Drawing.Point(992, 489);
+            this.TotalAmountLabel.Location = new System.Drawing.Point(955, 489);
             this.TotalAmountLabel.Name = "TotalAmountLabel";
             this.TotalAmountLabel.Size = new System.Drawing.Size(25, 25);
             this.TotalAmountLabel.TabIndex = 8;
@@ -240,10 +242,34 @@
             this.AddressControl.Size = new System.Drawing.Size(584, 123);
             this.AddressControl.TabIndex = 13;
             // 
+            // TotalLabel
+            // 
+            this.TotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TotalLabel.Location = new System.Drawing.Point(1069, 623);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(51, 13);
+            this.TotalLabel.TabIndex = 17;
+            this.TotalLabel.Text = "TOTAL:";
+            // 
+            // TotalTotalLabel
+            // 
+            this.TotalTotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalTotalLabel.AutoSize = true;
+            this.TotalTotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TotalTotalLabel.Location = new System.Drawing.Point(955, 636);
+            this.TotalTotalLabel.Name = "TotalTotalLabel";
+            this.TotalTotalLabel.Size = new System.Drawing.Size(25, 25);
+            this.TotalTotalLabel.TabIndex = 18;
+            this.TotalTotalLabel.Text = "0";
+            // 
             // OrdersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TotalTotalLabel);
+            this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.DeliveryTimeComboBox);
             this.Controls.Add(this.DeliveryTimeLabel);
             this.Controls.Add(this.PriorityOptionsLabel);
@@ -288,5 +314,7 @@
         private System.Windows.Forms.Label PriorityOptionsLabel;
         private System.Windows.Forms.Label DeliveryTimeLabel;
         private System.Windows.Forms.ComboBox DeliveryTimeComboBox;
+        private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.Label TotalTotalLabel;
     }
 }
