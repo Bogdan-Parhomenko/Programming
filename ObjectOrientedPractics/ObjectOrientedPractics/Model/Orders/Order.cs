@@ -2,8 +2,6 @@
 using ObjectOrientedPractics.Services;
 using System;
 using System.ComponentModel;
-using System.Reflection;
-using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model.Orders
 {

@@ -1,7 +1,5 @@
-﻿using ObjectOrientedPractics.Model.Enums;
-using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Services;
 using System;
-using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
