@@ -7,7 +7,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Хранит данные о процентной скидке.
     /// </summary>
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<PercentDiscount>
     {
         /// <summary>
         /// Количество накопленных процентов.
@@ -106,6 +106,24 @@ namespace ObjectOrientedPractics.Model.Discounts
         public PercentDiscount()
         {
             AccumulatedPercents = 1;
+        }
+
+        /// <inheritdoc/>
+        public int CompareTo(PercentDiscount other)
+        {
+            if (AccumulatedPercents == other.AccumulatedPercents)
+            {
+                return 0;
+            }
+            else if (AccumulatedPercents < other.AccumulatedPercents)
+            {
+                return -1;
+            }
+            else if (AccumulatedPercents > other.AccumulatedPercents)
+            {
+                return 1;
+            }
+            return 1;
         }
     }
 }

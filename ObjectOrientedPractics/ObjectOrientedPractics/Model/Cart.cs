@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Хранит данные о корзине товаров.
     /// </summary>
-    public class Cart
+    public class Cart : ICloneable
     {
         /// <summary>
         /// Общая стоимость всех товаров в корзине.
@@ -45,6 +46,21 @@ namespace ObjectOrientedPractics.Model
         public Cart()
         {
 
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Cart"/>.
+        /// </summary>
+        /// <param name="items">Cписок товаров в корзине.</param>
+        public Cart(BindingList<Item> items)
+        {
+            Items = items;
+        }
+
+        /// <inheritdoc/>
+        public object Clone()
+        {
+            return new Cart(Items);
         }
     }
 }

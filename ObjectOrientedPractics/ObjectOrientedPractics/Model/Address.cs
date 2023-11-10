@@ -1,12 +1,14 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 using System;
+using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Хранит данные об адресе.
     /// </summary>
-    public class Address
+    public class Address : ICloneable, IEquatable<Address>
     {
         /// <summary>
         /// Почтовый индекс.
@@ -144,6 +146,33 @@ namespace ObjectOrientedPractics.Model
             Street = street;
             Building = building;
             Apartment = apartment;
+        }
+
+        /// <inheritdoc/>
+        public object Clone()
+        {
+            return new Address(
+                Index,
+                Country,
+                City,
+                Street,
+                Building,
+                Apartment);
+        }
+
+        /// <inheritdoc/>
+        public bool Equals(Address other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Index == other.Index && Country == other.Country && City == other.City 
+                && Street == other.Street && Building == other.Building && Apartment == other.Apartment;
         }
     }
 }

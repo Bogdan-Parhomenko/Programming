@@ -2,13 +2,15 @@
 using ObjectOrientedPractics.Services;
 using System;
 using System.ComponentModel;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Хранит данные о заказе.
     /// </summary>
-    public class Order
+    public class Order : IEquatable<Order>
     {
         /// <summary>
         /// Общая стоимость всех товаров в заказе.
@@ -96,16 +98,26 @@ namespace ObjectOrientedPractics.Model.Orders
             Id = IdGenerator.GetNextId();
             Date = DateTime.Now.ToString();
             OrderStatus = OrderStatus.New;
-            Address.Index = address.Index;
-            Address.Country = address.Country;
-            Address.City = address.City;
-            Address.Street = address.Street;
-            Address.Building = address.Building;
-            Address.Apartment = address.Apartment;
+            Address = address;
             for (int i = 0; i < items.Count; i++)
             {
                 Items.Add(items[i]);
             }
+        }
+
+        /// <inheritdoc/>
+        public bool Equals(Order other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Date == other.Date && OrderStatus == other.OrderStatus 
+                && Address == other.Address && Items == other.Items && DiscountAmount == other.DiscountAmount;
         }
     }
 }

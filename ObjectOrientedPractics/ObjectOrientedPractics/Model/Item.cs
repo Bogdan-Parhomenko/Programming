@@ -1,12 +1,13 @@
 ﻿using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.Services;
+using System;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Хранит данные о товаре.
     /// </summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
         /// <summary>
         /// Название товара.
@@ -105,6 +106,48 @@ namespace ObjectOrientedPractics.Model
             Info = info;
             Cost = cost;
             Category = category;
+        }
+
+        /// <inheritdoc/>
+        public object Clone()
+        {
+            return new Item(
+                Name,
+                Info,
+                Cost,
+                Category);
+        }
+
+        /// <inheritdoc/>
+        public bool Equals(Item other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Name == other.Name && Info == other.Info && Cost == other.Cost && Category == other.Category;
+        }
+
+        /// <inheritdoc/>
+        public int CompareTo(Item other)
+        {
+            if (Cost == other.Cost)
+            {
+                return 0;
+            }
+            else if (Cost < other.Cost)
+            {
+                return -1;
+            }
+            else if (Cost > other.Cost)
+            {
+                return 1;
+            }
+            return 1;
         }
     }
 }

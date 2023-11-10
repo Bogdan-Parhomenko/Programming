@@ -6,7 +6,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Хранит данные о накопительно-бальной скидке.
     /// </summary>
-    public class PointsDiscount : IDiscount
+    public class PointsDiscount : IDiscount, IComparable<PointsDiscount>
     {
         /// <summary>
         /// Количество накопленных баллов.
@@ -95,6 +95,24 @@ namespace ObjectOrientedPractics.Model.Discounts
         public PointsDiscount()
         {
             AccumulatedPoints = 0;
+        }
+
+        /// <inheritdoc/>
+        public int CompareTo(PointsDiscount other)
+        {
+            if (AccumulatedPoints == other.AccumulatedPoints)
+            {
+                return 0;
+            }
+            else if (AccumulatedPoints < other.AccumulatedPoints)
+            {
+                return -1;
+            }
+            else if (AccumulatedPoints > other.AccumulatedPoints)
+            {
+                return 1;
+            }
+            return 1;
         }
     }
 }
