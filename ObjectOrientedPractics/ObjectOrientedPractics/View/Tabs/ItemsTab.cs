@@ -51,6 +51,7 @@ namespace ObjectOrientedPractics.View.Tabs
             DisplayedItems = null;
             ItemsListBox.DataSource = null;
             ItemsListBox.DataSource = Items;
+            ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
             OrderByComboBox.SelectedIndex = 0;
         }
 
