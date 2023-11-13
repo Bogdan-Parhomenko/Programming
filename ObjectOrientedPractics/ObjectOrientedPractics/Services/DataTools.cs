@@ -77,12 +77,7 @@ namespace ObjectOrientedPractics.Services
         /// <returns>Новый список с отфильтованными элементами.</returns>
         public static void SortItems(BindingList<Item> items, Func<Item, Item, bool> compare)
         {
-            //var newItems = new BindingList<Item>();
             var length = items.Count;
-            //for (int i = 0; i < length; i++)
-            //{
-            //    newItems.Add(items[i]);
-            //}
             for (int i = 0; i < length; i++)
             {
                 for (int j = 1; j < length; j++)
