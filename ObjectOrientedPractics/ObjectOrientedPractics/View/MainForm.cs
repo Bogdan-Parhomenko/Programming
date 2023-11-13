@@ -33,7 +33,11 @@ namespace ObjectOrientedPractics
         /// </summary>
         private void TabControl_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (TabControl.SelectedIndex == 1)
+            if (TabControl.SelectedIndex == 0)
+            {
+                ItemsTab.RefreshData();
+            }
+            else if (TabControl.SelectedIndex == 1)
             {
                 CustomersTab.RefreshData();
             }

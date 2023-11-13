@@ -36,6 +36,55 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
             ItemsListBox.DisplayMember = nameof(Item.DisplayInfo);
+            OrderByComboBox.Items.Add("Name");
+            OrderByComboBox.Items.Add("Cost (Ascending)");
+            OrderByComboBox.Items.Add("Cost (Descending)");
+            OrderByComboBox.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// При переходе на эту вкладку обновляет все элементы управления актуальными значениями.
+        /// </summary>
+        public void RefreshData()
+        {
+            FindTextBox.Clear();
+            DisplayedItems = null;
+            ItemsListBox.DataSource = null;
+            ItemsListBox.DataSource = Items;
+            OrderByComboBox.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// Обновляет данные ListBox в зависимости от фильтрации.
+        /// </summary>
+        public void UpdateDisplayedItems()
+        {
+            DisplayedItems = DataTools.ItemsFiltering(Items, FindTextBox.Text, (x1, x2) => { return x1.Name.Contains(x2); });
+            var selectedIndex = DisplayedItems.IndexOf(_currentItem);
+            ItemsListBox.DataSource = null;
+            ItemsListBox.DataSource = DisplayedItems;
+            ItemsListBox.SelectedIndex = selectedIndex;
+            UpdateDisplayMember();
+        }
+
+        /// <summary>
+        /// Сортирует список товаров.
+        /// </summary>
+        public void UpdateOrderItems()
+        {
+            if (OrderByComboBox.SelectedIndex == 0)
+            {
+                Items = DataTools.SortItems(Items, DataTools.CompareName);
+            }
+            else if (OrderByComboBox.SelectedIndex == 1)
+            {
+                Items = DataTools.SortItems(Items, DataTools.CompareAscendingCost);
+            }
+            else if (OrderByComboBox.SelectedIndex == 2)
+            {
+                Items = DataTools.SortItems(Items, DataTools.CompareDescendingCost);
+            }
+            UpdateDisplayedItems();
         }
 
         /// <summary>
@@ -88,7 +137,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Category)));
                 }
-                _currentItem = Items[ItemsListBox.SelectedIndex];
+                if (DisplayedItems == null)
+                {
+                    _currentItem = Items[ItemsListBox.SelectedIndex];
+                }
+                else
+                {
+                    _currentItem = Items[Items.IndexOf(DisplayedItems[ItemsListBox.SelectedIndex])];
+                }
                 UpdateItemInfo(_currentItem);
             }
             else
@@ -109,6 +165,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemsListBox.DataSource = Items;
             }
             Items.Add(ItemFactory.Randomize());
+            UpdateOrderItems();
             ItemsListBox.SelectedIndex = -1;
         }
 
@@ -117,10 +174,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            var selectedIndex = ItemsListBox.SelectedIndex;
+            var selectedIndex = Items.IndexOf(DisplayedItems[ItemsListBox.SelectedIndex]);
             if (selectedIndex != -1)
             {
                 Items.RemoveAt(selectedIndex);
+                UpdateOrderItems();
                 ItemsListBox.SelectedIndex = -1;
             }
         }
@@ -206,8 +264,23 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            DisplayedItems = DataTools.SortItems(Items, FindTextBox.Text, (x1, x2) => { return x1.Name.Contains(x2); });
-            DisplayedItems.IndexOf()
+            UpdateDisplayedItems();
+            if (DisplayedItems.Count == 0)
+            {
+                ClearItemInfo();
+            }
+        }
+
+        /// <summary>
+        /// Сортирует список товаров.
+        /// </summary>
+        private void OrderByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Items == null)
+            {
+                return;
+            }
+            UpdateOrderItems();
         }
     }
 }

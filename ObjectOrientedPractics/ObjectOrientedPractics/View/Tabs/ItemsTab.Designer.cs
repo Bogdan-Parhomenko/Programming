@@ -45,6 +45,8 @@
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.FindLabel = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
+            this.OrderByLabel = new System.Windows.Forms.Label();
+            this.OrderByComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // ItemsLabel
@@ -65,7 +67,7 @@
             this.ItemsListBox.IntegralHeight = false;
             this.ItemsListBox.Location = new System.Drawing.Point(3, 57);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(336, 575);
+            this.ItemsListBox.Size = new System.Drawing.Size(336, 548);
             this.ItemsListBox.TabIndex = 1;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -211,10 +213,33 @@
             this.FindTextBox.TabIndex = 17;
             this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
+            // OrderByLabel
+            // 
+            this.OrderByLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.OrderByLabel.AutoSize = true;
+            this.OrderByLabel.Location = new System.Drawing.Point(3, 614);
+            this.OrderByLabel.Name = "OrderByLabel";
+            this.OrderByLabel.Size = new System.Drawing.Size(50, 13);
+            this.OrderByLabel.TabIndex = 18;
+            this.OrderByLabel.Text = "Order by:";
+            // 
+            // OrderByComboBox
+            // 
+            this.OrderByComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.OrderByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OrderByComboBox.FormattingEnabled = true;
+            this.OrderByComboBox.Location = new System.Drawing.Point(59, 611);
+            this.OrderByComboBox.Name = "OrderByComboBox";
+            this.OrderByComboBox.Size = new System.Drawing.Size(280, 21);
+            this.OrderByComboBox.TabIndex = 19;
+            this.OrderByComboBox.SelectedIndexChanged += new System.EventHandler(this.OrderByComboBox_SelectedIndexChanged);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.OrderByComboBox);
+            this.Controls.Add(this.OrderByLabel);
             this.Controls.Add(this.FindTextBox);
             this.Controls.Add(this.FindLabel);
             this.Controls.Add(this.CategoryComboBox);
@@ -258,5 +283,7 @@
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label FindLabel;
         private System.Windows.Forms.TextBox FindTextBox;
+        private System.Windows.Forms.Label OrderByLabel;
+        private System.Windows.Forms.ComboBox OrderByComboBox;
     }
 }
