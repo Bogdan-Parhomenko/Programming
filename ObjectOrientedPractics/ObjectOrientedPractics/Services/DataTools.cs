@@ -10,21 +10,33 @@ namespace ObjectOrientedPractics.Services
     public static class DataTools
     {
         /// <summary>
-        /// Сравнение двух  для сортировки по возрастанию.
+        /// Сравнение двух товаров для сортировки по возрастанию цены.
         /// </summary>
-        /// <param name="x1"></param>
-        /// <param name="x2"></param>
-        /// <returns></returns>
+        /// <param name="x1">Первый товар.</param>
+        /// <param name="x2">Второй товар.</param>
+        /// <returns>True если цена первого меньше второго.</returns>
         public static bool CompareAscendingCost(Item x1, Item x2)
         {
             return x1.Cost < x2.Cost;
         }
-        // Сравнение двух чисел для сортировки по убыванию
+
+        /// <summary>
+        /// Сравнение двух товаров для сортировки по убыванию цены.
+        /// </summary>
+        /// <param name="x1">Первый товар.</param>
+        /// <param name="x2">Второй товар.</param>
+        /// <returns>True если цена второго меньше первого.</returns>
         public static bool CompareDescendingCost(Item x1, Item x2)
         {
             return x1.Cost > x2.Cost;
         }
 
+        /// <summary>
+        /// Сравнение двух товаров для сортировки по названию.
+        /// </summary>
+        /// <param name="x1">Первый товар.</param>
+        /// <param name="x2">Второй товар.</param>
+        /// <returns>True если название первого меньше второго.</returns>
         public static bool CompareName(Item x1, Item x2)
         {
             if (x1.Name.CompareTo(x2.Name) == -1)
@@ -38,7 +50,7 @@ namespace ObjectOrientedPractics.Services
         }
 
         /// <summary>
-        /// Сравнивает значения и создавет новый список, с удовлетворяющими элементами.
+        /// Сравнивает значения и создает новый список, с удовлетворяющими элементами.
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <param name="value">Значение, с которым сравнивается значение товара.</param>
@@ -57,6 +69,12 @@ namespace ObjectOrientedPractics.Services
             return newItems;
         }
 
+        /// <summary>
+        /// Создает новый список и заполняет его отфильтованными элементами.
+        /// </summary>
+        /// <param name="items">Список товаров.</param>
+        /// <param name="compare">Метод сортировки.</param>
+        /// <returns>Новый список с отфильтованными элементами.</returns>
         public static BindingList<Item> SortItems(BindingList<Item> items, Func<Item, Item, bool> compare)
         {
             var newItems = new BindingList<Item>();
