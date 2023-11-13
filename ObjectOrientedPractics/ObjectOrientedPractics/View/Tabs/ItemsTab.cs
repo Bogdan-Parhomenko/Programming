@@ -24,6 +24,11 @@ namespace ObjectOrientedPractics.View.Tabs
         public BindingList<Item> Items { get; set; }
 
         /// <summary>
+        /// Возвращает и задает список элементов класса Item при поиске подстроки.
+        /// </summary>
+        public BindingList<Item> DisplayedItems { get; set; }
+
+        /// <summary>
         /// Создает объект типа <see cref="ItemsTab"/>.
         /// Выводит в ItemsListBox только название товара.
         /// </summary>
@@ -196,9 +201,13 @@ namespace ObjectOrientedPractics.View.Tabs
             _currentItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
         }
 
+        /// <summary>
+        /// Фильтрует список товаров по строке.
+        /// </summary>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            DataTools.SortItems(Items, (x1, x2) => { return ; });
+            DisplayedItems = DataTools.SortItems(Items, FindTextBox.Text, (x1, x2) => { return x1.Name.Contains(x2); });
+            DisplayedItems.IndexOf()
         }
     }
 }
