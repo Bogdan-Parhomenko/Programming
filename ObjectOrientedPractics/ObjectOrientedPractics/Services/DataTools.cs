@@ -75,28 +75,27 @@ namespace ObjectOrientedPractics.Services
         /// <param name="items">Список товаров.</param>
         /// <param name="compare">Метод сортировки.</param>
         /// <returns>Новый список с отфильтованными элементами.</returns>
-        public static BindingList<Item> SortItems(BindingList<Item> items, Func<Item, Item, bool> compare)
+        public static void SortItems(BindingList<Item> items, Func<Item, Item, bool> compare)
         {
-            var newItems = new BindingList<Item>();
+            //var newItems = new BindingList<Item>();
             var length = items.Count;
-            for (int i = 0; i < length; i++)
-            {
-                newItems.Add(items[i]);
-            }
+            //for (int i = 0; i < length; i++)
+            //{
+            //    newItems.Add(items[i]);
+            //}
             for (int i = 0; i < length; i++)
             {
                 for (int j = 1; j < length; j++)
                 {
-                    if (compare(newItems[j], newItems[j - 1]))
+                    if (compare(items[j], items[j - 1]))
                     {
-                        var tempVar = newItems[j];
-                        newItems[j] = newItems[j - 1];
-                        newItems[j - 1] = tempVar;
+                        var tempVar = items[j];
+                        items[j] = items[j - 1];
+                        items[j - 1] = tempVar;
                     }
                 }
                     
             }
-            return newItems;
         }
     }
 }

@@ -75,15 +75,15 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (OrderByComboBox.SelectedIndex == 0)
             {
-                Items = DataTools.SortItems(Items, DataTools.CompareName);
+                DataTools.SortItems(Items, DataTools.CompareName);
             }
             else if (OrderByComboBox.SelectedIndex == 1)
             {
-                Items = DataTools.SortItems(Items, DataTools.CompareAscendingCost);
+                DataTools.SortItems(Items, DataTools.CompareAscendingCost);
             }
             else if (OrderByComboBox.SelectedIndex == 2)
             {
-                Items = DataTools.SortItems(Items, DataTools.CompareDescendingCost);
+                DataTools.SortItems(Items, DataTools.CompareDescendingCost);
             }
             UpdateDisplayedItems();
         }
