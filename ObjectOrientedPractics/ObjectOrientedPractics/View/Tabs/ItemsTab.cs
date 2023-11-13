@@ -12,7 +12,12 @@ namespace ObjectOrientedPractics.View.Tabs
     /// Содержит логику вкладки товаров.
     /// </summary>
     public partial class ItemsTab : UserControl
-    {      
+    {
+        /// <summary>
+        /// Событие изменения списка товаров.
+        /// </summary>
+        public event EventHandler<EventArgs> ItemsChanged;
+
         /// <summary>
         /// Выбранный товар.
         /// </summary>
@@ -166,6 +171,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemsListBox.DataSource = Items;
             }
             Items.Add(ItemFactory.Randomize());
+            var args = new EventArgs();
+            ItemsChanged?.Invoke(this, args);
             UpdateOrderItems();
             ItemsListBox.SelectedIndex = -1;
         }
@@ -179,6 +186,8 @@ namespace ObjectOrientedPractics.View.Tabs
             if (selectedIndex != -1)
             {
                 Items.RemoveAt(selectedIndex);
+                var args = new EventArgs();
+                ItemsChanged?.Invoke(this, args);
                 UpdateOrderItems();
                 ItemsListBox.SelectedIndex = -1;
             }
@@ -197,7 +206,12 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 CostTextBox.BackColor = Color.White;
-                _currentItem.Cost = Double.Parse(CostTextBox.Text);
+                if (_currentItem.Cost != Double.Parse(CostTextBox.Text))
+                {
+                    _currentItem.Cost = Double.Parse(CostTextBox.Text);
+                    var args = new EventArgs();
+                    ItemsChanged?.Invoke(this, args);
+                }
             }
             catch
             {
@@ -218,7 +232,12 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 NameTextBox.BackColor = Color.White;
-                _currentItem.Name = NameTextBox.Text;
+                if (_currentItem.Name != NameTextBox.Text)
+                {
+                    _currentItem.Name = NameTextBox.Text;
+                    var args = new EventArgs();
+                    ItemsChanged?.Invoke(this, args);
+                }
                 UpdateDisplayMember();
             }
             catch
@@ -240,7 +259,12 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 InfoTextBox.BackColor = Color.White;
-                _currentItem.Info = InfoTextBox.Text;
+                if (_currentItem.Info != InfoTextBox.Text)
+                {
+                    _currentItem.Info = InfoTextBox.Text;
+                    var args = new EventArgs();
+                    ItemsChanged?.Invoke(this, args);
+                }
             }
             catch
             {
@@ -257,7 +281,12 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 return;
             }
-            _currentItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
+            if (_currentItem.Category != (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text))
+            {
+                _currentItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
+                var args = new EventArgs();
+                ItemsChanged?.Invoke(this, args);
+            }
         }
 
         /// <summary>

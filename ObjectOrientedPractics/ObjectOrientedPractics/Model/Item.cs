@@ -10,6 +10,21 @@ namespace ObjectOrientedPractics.Model
     public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
         /// <summary>
+        /// Событие изменения имени товара.
+        /// </summary>
+        public event EventHandler<EventArgs> NameChanged;
+
+        /// <summary>
+        /// Событие изменения цены товара.
+        /// </summary>
+        public event EventHandler<EventArgs> CostChanged;
+
+        /// <summary>
+        /// Событие изменения описания товара.
+        /// </summary>
+        public event EventHandler<EventArgs> InfoChanged;
+
+        /// <summary>
         /// Название товара.
         /// </summary>
         private string _name;
@@ -38,7 +53,12 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLength(value, 200);
-                _name = value;
+                if (_name != value)
+                {
+                    var args = new EventArgs();
+                    _name = value;
+                    NameChanged?.Invoke(this, args);
+                }
             }
         }
 
@@ -51,7 +71,12 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLength(value, 1000);
-                _info = value;
+                if (_info != value)
+                {
+                    var args = new EventArgs();
+                    _info = value;
+                    InfoChanged?.Invoke(this, args);
+                }
             }
         }
 
@@ -64,7 +89,12 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertValueInRange(value, 0, 100000);
-                _cost = value;
+                if (_cost != value)
+                {
+                    var args = new EventArgs();
+                    _cost = value;
+                    CostChanged?.Invoke(this, args);
+                }
             }
         }
 
