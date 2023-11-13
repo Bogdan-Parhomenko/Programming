@@ -43,6 +43,8 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.FindLabel = new System.Windows.Forms.Label();
+            this.FindTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ItemsLabel
@@ -61,9 +63,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ItemsListBox.FormattingEnabled = true;
             this.ItemsListBox.IntegralHeight = false;
-            this.ItemsListBox.Location = new System.Drawing.Point(3, 20);
+            this.ItemsListBox.Location = new System.Drawing.Point(3, 57);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(336, 612);
+            this.ItemsListBox.Size = new System.Drawing.Size(336, 575);
             this.ItemsListBox.TabIndex = 1;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -192,10 +194,29 @@
             this.CategoryComboBox.TabIndex = 15;
             this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
+            // FindLabel
+            // 
+            this.FindLabel.AutoSize = true;
+            this.FindLabel.Location = new System.Drawing.Point(6, 30);
+            this.FindLabel.Name = "FindLabel";
+            this.FindLabel.Size = new System.Drawing.Size(30, 13);
+            this.FindLabel.TabIndex = 16;
+            this.FindLabel.Text = "Find:";
+            // 
+            // FindTextBox
+            // 
+            this.FindTextBox.Location = new System.Drawing.Point(42, 28);
+            this.FindTextBox.Name = "FindTextBox";
+            this.FindTextBox.Size = new System.Drawing.Size(297, 20);
+            this.FindTextBox.TabIndex = 17;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.FindTextBox);
+            this.Controls.Add(this.FindLabel);
             this.Controls.Add(this.CategoryComboBox);
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.NameTextBox);
@@ -235,5 +256,7 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.ComboBox CategoryComboBox;
+        private System.Windows.Forms.Label FindLabel;
+        private System.Windows.Forms.TextBox FindTextBox;
     }
 }

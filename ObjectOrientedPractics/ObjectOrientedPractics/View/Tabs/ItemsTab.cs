@@ -195,5 +195,10 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             _currentItem.Category = (Category)Enum.Parse(typeof(Category), CategoryComboBox.Text);
         }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            DataTools.SortItems(Items, (x1, x2) => { return ; });
+        }
     }
 }
