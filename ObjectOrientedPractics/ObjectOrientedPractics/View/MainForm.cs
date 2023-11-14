@@ -35,7 +35,11 @@ namespace ObjectOrientedPractics
         /// </summary>
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TabControl.SelectedIndex == 1)
+            if (TabControl.SelectedIndex == 0)
+            {
+                ItemsTab.RefreshData();
+            }
+            else if (TabControl.SelectedIndex == 1)
             {
                 CustomersTab.RefreshData();
             }
@@ -49,9 +53,11 @@ namespace ObjectOrientedPractics
             }
         }
 
+        /// <summary>
+        /// При изменении списка товаров вызываются методв обновляющие данные вкладок.
+        /// </summary>
         private void ItemsTab_ItemsChanged(object sender, EventArgs e)
         {
-            ItemsTab.RefreshData();
             CustomersTab.RefreshData();
             CartsTab.RefreshData();
             OrdersTab.RefreshData();
