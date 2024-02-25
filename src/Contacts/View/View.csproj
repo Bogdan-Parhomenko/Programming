@@ -15,8 +15,4 @@
     <Resource Include="contacts_96x96.ico" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-
 </Project>
