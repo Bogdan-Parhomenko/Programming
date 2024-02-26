@@ -4,6 +4,9 @@ using System.IO;
 
 namespace View.Model.Services
 {
+    /// <summary>
+    /// Сервисный класс для сохранения и загрузки контактов.
+    /// </summary>
     static class ContactSerializer
     {
         /// <summary>
@@ -18,7 +21,11 @@ namespace View.Model.Services
         private static string _jsonPath =
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Contacts\\contacts.json";
 
-        public static void SaveContact(Contact contact)
+        /// <summary>
+        /// Сохраняет контакт в json.
+        /// </summary>
+        /// <param name="contact">Сохраняемый контакт.</param>
+        public static void SaveContact(Contact? contact)
         {
             if (!Directory.Exists(_pathToJson))
             {
@@ -28,7 +35,11 @@ namespace View.Model.Services
             File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(contact));
         }
 
-        public static Contact LoadContact()
+        /// <summary>
+        /// Загружает контакт из json.
+        /// </summary>
+        /// <returns>Возвращает загруженный контакт.</returns>
+        public static Contact? LoadContact()
         {
             if (!Directory.Exists(_pathToJson))
             {
@@ -42,8 +53,7 @@ namespace View.Model.Services
             JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
             reader.SupportMultipleContent = true;
             JsonSerializer serializer = new JsonSerializer();
-            Contact tempContact = serializer.Deserialize<Contact>(reader);
-            reader.Close();
+            Contact? tempContact = serializer.Deserialize<Contact>(reader);
             return tempContact;
         }
     }

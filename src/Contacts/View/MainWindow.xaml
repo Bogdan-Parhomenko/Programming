@@ -36,8 +36,8 @@
             </StackPanel>
         </GroupBox>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Height="25" Width="75" Margin="3" Content="Load" Command="{Binding}"></Button>
-            <Button Height="25" Width="75" Margin="3" Content="Save" Command="{Binding}"></Button>
+            <Button Height="25" Width="75" Margin="3" Content="Load" Command="{Binding LoadCommand}"></Button>
+            <Button Height="25" Width="75" Margin="3" Content="Save" Command="{Binding SaveCommand}"></Button>
         </StackPanel>
     </Grid>
 </Window>

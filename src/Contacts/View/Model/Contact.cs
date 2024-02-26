@@ -1,50 +1,40 @@
 ﻿namespace View.Model
 {
+    /// <summary>
+    /// Хранит информацию о контакте.
+    /// </summary>
     public class Contact
     {
-        private string _name;
-        private string _phone;
-        private string _email;
+        /// <summary>
+        /// Возвращает и задает имя контакта.
+        /// </summary>
+        public string? Name { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-        public string Phone
-        {
-            get
-            {
-                return _phone;
-            }
-            set
-            {
-                _phone = value;
-            }
-        }
-        public string Email
-        {
-            get
-            {
-                return _email;
-            }
-            set
-            {
-                _email = value;
-            }
-        }
+        /// <summary>
+        /// Возвращает и задает телефон контакта.
+        /// </summary>
+        public string? Phone { get; set; }
 
+        /// <summary>
+        /// Возвращает и задает почту контакта.
+        /// </summary>
+        public string? Email { get; set; }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Contact"/>.
+        /// </summary>
         public Contact()
         {
 
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Contact"/>.
+        /// Инициализирует поля объекта.
+        /// </summary>
+        /// <param name="name">Имя контакта.</param>
+        /// <param name="phone">Телефон контакта.</param>
+        /// <param name="email">Почта контакта.</param>
         public Contact(string name, string phone, string email)
         {
             Name = name;
