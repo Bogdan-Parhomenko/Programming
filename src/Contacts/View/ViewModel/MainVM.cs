@@ -71,7 +71,7 @@ namespace View.ViewModel
                     return;
                 }
                 _contact.Name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged(nameof(Name));
             }
         }
 
@@ -88,7 +88,7 @@ namespace View.ViewModel
                     return;
                 }
                 _contact.Phone = value;
-                OnPropertyChanged("Phone");
+                OnPropertyChanged(nameof(Phone));
             }
         }
 
@@ -105,7 +105,7 @@ namespace View.ViewModel
                     return;
                 }
                 _contact.Email = value;
-                OnPropertyChanged("Email");
+                OnPropertyChanged(nameof(Email));
             }
         }
 
