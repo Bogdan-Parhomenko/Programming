@@ -6,38 +6,68 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="800" Icon="/contacts_96x96.ico">
-    <Grid Margin="15">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <GroupBox Header="Edit Contact" Grid.Column="0" Grid.Row="0" Margin="3">
-            <StackPanel>
-                <TextBlock Margin="3" Text="Name:"></TextBlock>
-                <TextBox Margin="3" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <TextBlock Margin="3" Text="Phone Number:"></TextBlock>
-                <TextBox Margin="3" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <TextBlock Margin="3" Text="Email:"></TextBlock>
-                <TextBox Margin="3" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        
+        <Border Grid.Column="0" Background="#f8f8f8"/>
+        
+        <Grid Grid.Column="0" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <DockPanel Grid.Row="0" LastChildFill="True">
+                <TextBlock DockPanel.Dock="Left" Text="Find:"/>
+                <TextBox/>
+            </DockPanel>
+            
+            <ListBox Grid.Row="1" Margin="3"/>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Width="auto" Content="Add"/>
+                <Button Grid.Column="1" Width="auto" Content="Edit"/>
+                <Button Grid.Column="2" Width="auto" Content="Remove"/>
+            </Grid>
+        </Grid>
+
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#ffffff"/>
+
+        <DockPanel Grid.Column="2" Margin="8">
+            <Image Source="photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
+            <StackPanel Width="auto">
+                <TextBlock Text="Name:"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Phone Number:"/>
+                <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Email:"/>
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button HorizontalAlignment="Left" Margin="0 50 0 0" Content="Apply"/>
             </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Read Contact" Grid.Column="1" Grid.Row="0" Margin="3">
-            <StackPanel>
-                <TextBlock Margin="3" Text="Name:"></TextBlock>
-                <TextBlock Margin="3" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
-                <TextBlock Margin="3" Text="Phone Number:"></TextBlock>
-                <TextBlock Margin="3" FontWeight="Bold" Text="{Binding Phone}"></TextBlock>
-                <TextBlock Margin="3" Text="Email:"></TextBlock>
-                <TextBlock Margin="3" FontWeight="Bold" Text="{Binding Email}"></TextBlock>
-            </StackPanel>
-        </GroupBox>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Height="25" Width="75" Margin="3" Content="Load" Command="{Binding LoadCommand}"></Button>
-            <Button Height="25" Width="75" Margin="3" Content="Save" Command="{Binding SaveCommand}"></Button>
-        </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>
