@@ -7,18 +7,18 @@ namespace View.Model.Services
     /// <summary>
     /// Сервисный класс для сохранения и загрузки контактов.
     /// </summary>
-    static class ContactSerializer
+    public static class ContactSerializer
     {
         /// <summary>
         /// Относительный путь к папке, где должен лежать файл json.
         /// </summary>
-        private static string _pathToJson =
+        private static readonly string _pathToJson =
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Contacts";
 
         /// <summary>
         /// Относительный путь к файлу json.
         /// </summary>
-        private static string _jsonPath =
+        private static readonly string _jsonPath =
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Contacts\\contacts.json";
 
         /// <summary>
@@ -47,12 +47,14 @@ namespace View.Model.Services
             }
             if (!File.Exists(_jsonPath))
             {
-                FileStream fileStream = new FileStream(_jsonPath, FileMode.CreateNew);
+                FileStream fileStream = new(_jsonPath, FileMode.CreateNew);
                 fileStream.Close();
             }
-            JsonTextReader reader = new JsonTextReader(new StreamReader(_jsonPath));
-            reader.SupportMultipleContent = true;
-            JsonSerializer serializer = new JsonSerializer();
+            JsonTextReader reader = new(new StreamReader(_jsonPath))
+            {
+                SupportMultipleContent = true
+            };
+            JsonSerializer serializer = new();
             Contact? tempContact = serializer.Deserialize<Contact>(reader);
             return tempContact;
         }

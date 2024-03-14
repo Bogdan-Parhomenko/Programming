@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:View"
+        xmlns:local="clr-namespace:View.Model.Services"
+        xmlns:viewmodel="clr-namespace:View.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainVM}"
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="800" Icon="/contacts_96x96.ico">
     <Window.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <Style TargetType="Button">
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="75"/>
@@ -18,6 +20,7 @@
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
         </Style>
+        
     </Window.Resources>
     
     <Grid>
@@ -40,8 +43,14 @@
                 <TextBlock DockPanel.Dock="Left" Text="Find:"/>
                 <TextBox/>
             </DockPanel>
-            
-            <ListBox Grid.Row="1" Margin="3"/>
+
+            <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" Margin="3">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -49,9 +58,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="auto" Content="Add"/>
-                <Button Grid.Column="1" Width="auto" Content="Edit"/>
-                <Button Grid.Column="2" Width="auto" Content="Remove"/>
+                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}"/>
+                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}"/>
+                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}"/>
             </Grid>
         </Grid>
 
@@ -59,15 +68,17 @@
 
         <DockPanel Grid.Column="2" Margin="8">
             <Image Source="photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
-            <StackPanel Width="auto">
-                <TextBlock Text="Name:"/>
-                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Phone Number:"/>
-                <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Email:"/>
-                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button HorizontalAlignment="Left" Margin="0 50 0 0" Content="Apply"/>
-            </StackPanel>
-        </DockPanel>
+            <StackPanel>
+                <StackPanel DataContext="{Binding SelectedContact}">
+                    <TextBlock Text="Name:"/>
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Phone Number:"/>
+                    <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Email:"/>
+                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <Button HorizontalAlignment="Left" Margin="0 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>   
+        </DockPanel>    
     </Grid>
 </Window>

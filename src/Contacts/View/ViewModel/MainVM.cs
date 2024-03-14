@@ -1,5 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Data;
 using View.Model;
 using View.Model.Services;
 
@@ -13,99 +19,164 @@ namespace View.ViewModel
         /// <summary>
         /// Изменяемый контакт.
         /// </summary>
-        private Contact? _contact;
+        private Contact? _selectedContact;
+
+        public Contact? ChangedContact { get; set; }
+
+        public ObservableCollection<Contact>? Contacts { get; set; }
 
         /// <summary>
         /// Команда сохранения контакта.
         /// </summary>
-        private RelayCommand? _saveCommand;
+        private RelayCommand? _addCommand;
 
         /// <summary>
         /// Возвращает способ сохранения контакта.
         /// </summary>
-        public RelayCommand? SaveCommand
+        public RelayCommand? AddCommand
         {
             get
             {
-                return _saveCommand ??=
-                  (_saveCommand = new RelayCommand(obj =>
+                return _addCommand ??=
+                  (_addCommand = new RelayCommand(obj =>
                   {
-                      ContactSerializer.SaveContact(_contact);
+                      Contact? contact = new ();
+                      SelectedContact = contact;
+                      ChangedContact = null;
+                      //OnPropertyChanged(nameof(Visibility));
                   }));
+            }
+        }
+
+        private RelayCommand? _applyCommand;
+
+        
+        public RelayCommand? ApplyCommand
+        {
+            get
+            {
+                return _applyCommand ??=
+                  (_applyCommand = new RelayCommand(obj =>
+                  {
+                      if (ChangedContact != null)
+                      {
+                          Contacts.Insert(Contacts.IndexOf(ChangedContact), SelectedContact);
+                          Contacts.Remove(ChangedContact);
+                      }
+                      else
+                      {
+                          Contacts?.Insert(0, SelectedContact);
+                      }
+                  }));
+            }
+        }
+
+        private RelayCommand? _editCommand;
+
+
+        public RelayCommand? EditCommand
+        {
+            get
+            {
+                return _editCommand ??=
+                  (_editCommand = new RelayCommand(obj =>
+                  {
+                      ChangedContact = SelectedContact;
+                      SelectedContact = (Contact)SelectedContact.Clone();
+                  },
+                  (obj) => SelectedContact != null));
             }
         }
 
         /// <summary>
         /// Команда загрузки контакта.
         /// </summary>
-        private RelayCommand? _loadCommand;
+        private RelayCommand? _removeCommand;
 
         /// <summary>
-        /// Возвразает способ загрузки контакта.
+        /// Возвращает способ загрузки контакта.
         /// </summary>
-        public RelayCommand? LoadCommand
+        public RelayCommand? RemoveCommand
         {
             get
             {
-                return _loadCommand ??=
-                    (_loadCommand = new RelayCommand(obj =>
+                return _removeCommand ??=
+                    (_removeCommand = new RelayCommand(obj =>
                     {
-                        Contact? contact = ContactSerializer.LoadContact();
-                        Name = contact?.Name;
-                        Phone = contact?.Phone;
-                        Email = contact?.Email;
-                    }));
+                        if (obj is Contact contact)
+                        {
+                            if (Contacts?.Count == 1)
+                            {
+                                SelectedContact = null;
+                            }
+                            else if (Contacts?.IndexOf(contact) + 1 == Contacts?.Count)
+                            {
+                                SelectedContact = Contacts?[Contacts.IndexOf(contact) - 1];
+                            }
+                            else
+                            {
+                                SelectedContact = Contacts?[Contacts.IndexOf(contact) + 1];
+                            }
+                            Contacts?.Remove(contact);
+                        }
+                    },
+                    (obj) => Contacts?.Count > 0));
             }
         }
 
-        /// <summary>
-        /// Возвращает и задает имя контакта.
-        /// </summary>
-        public string? Name
+
+        public bool IsReadOnly
         {
-            get => _contact?.Name;
-            set
+            get
             {
-                if (_contact == null)
+                if (Visibility == false)
                 {
-                    return;
+                    return true;
                 }
-                _contact.Name = value;
-                OnPropertyChanged(nameof(Name));
+                else
+                {
+                    return false;
+                }
             }
         }
 
-        /// <summary>
-        /// Возвращает и задает телефон контакта.
-        /// </summary>
-        public string? Phone
+
+        public bool IsEnable
         {
-            get => _contact?.Phone;
-            set
+            get
             {
-                if (_contact == null)
-                {
-                    return;
-                }
-                _contact.Phone = value;
-                OnPropertyChanged(nameof(Phone));
+                return true;
             }
         }
 
-        /// <summary>
-        /// Возвращает и задает почту контакта.
-        /// </summary>
-        public string? Email
+
+        public bool Visibility
         {
-            get => _contact?.Email;
+            get
+            {
+                if (SelectedContact == null)
+                {
+                    return false;
+                }
+                else if (Contacts.Contains(SelectedContact))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+
+        public Contact? SelectedContact
+        {
+            get => _selectedContact;
             set
             {
-                if (_contact == null)
-                {
-                    return;
-                }
-                _contact.Email = value;
-                OnPropertyChanged(nameof(Email));
+                _selectedContact = value;
+                OnPropertyChanged(nameof(SelectedContact));
             }
         }
 
@@ -114,7 +185,7 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            _contact = new Contact { Name = "Bob", Phone = "89", Email = "@" };
+            Contacts = new ObservableCollection<Contact>();
         }
 
         /// <summary>
