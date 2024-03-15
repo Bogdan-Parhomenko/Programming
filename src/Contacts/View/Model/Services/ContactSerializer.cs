@@ -23,7 +23,7 @@ namespace View.Model.Services
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Contacts\\contacts.json";
 
         /// <summary>
-        /// Сохраняет контакт в json.
+        /// Сохраняет коллекцию контактов в json.
         /// </summary>
         /// <param name="contact">Сохраняемый контакт.</param>
         public static void SaveContacts(ObservableCollection<Contact> contacts)
@@ -37,7 +37,7 @@ namespace View.Model.Services
         }
 
         /// <summary>
-        /// Загружает контакт из json.
+        /// Загружает коллекцию контактов из json.
         /// </summary>
         /// <returns>Возвращает загруженный контакт.</returns>
         public static ObservableCollection<Contact> LoadContacts()

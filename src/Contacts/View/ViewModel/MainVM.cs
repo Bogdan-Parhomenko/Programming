@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Data;
 using View.Model;
 using View.Model.Services;
 
@@ -21,17 +16,23 @@ namespace View.ViewModel
         /// </summary>
         private Contact? _selectedContact;
 
+        /// <summary>
+        /// Возвращает и задает копию изменяемого контакта.
+        /// </summary>
         public Contact? ChangedContact { get; set; }
 
+        /// <summary>
+        /// Коллекция контактов.
+        /// </summary>
         public ObservableCollection<Contact>? Contacts { get; set; }
 
         /// <summary>
-        /// Команда сохранения контакта.
+        /// Команда добавления контакта.
         /// </summary>
         private RelayCommand? _addCommand;
 
         /// <summary>
-        /// Возвращает способ сохранения контакта.
+        /// Возвращает способ добавления контакта.
         /// </summary>
         public RelayCommand? AddCommand
         {
@@ -48,9 +49,14 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Команда принятия изменений.
+        /// </summary>
         private RelayCommand? _applyCommand;
 
-
+        /// <summary>
+        /// Возвращает способ принятия изменений.
+        /// </summary>
         public RelayCommand? ApplyCommand
         {
             get
@@ -73,9 +79,14 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Команда изменения контакта.
+        /// </summary>
         private RelayCommand? _editCommand;
 
-
+        /// <summary>
+        /// Возвращает способ изменения контакта.
+        /// </summary>
         public RelayCommand? EditCommand
         {
             get
@@ -92,12 +103,12 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Команда загрузки контакта.
+        /// Команда удаления контакта.
         /// </summary>
         private RelayCommand? _removeCommand;
 
         /// <summary>
-        /// Возвращает способ загрузки контакта.
+        /// Возвращает способ удаления контакта.
         /// </summary>
         public RelayCommand? RemoveCommand
         {
@@ -127,6 +138,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возвращает свойство IsReadOnly графического интерфейса.
+        /// </summary>
         public bool IsReadOnly
         {
             get
@@ -142,7 +156,9 @@ namespace View.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// Возвращает свойство IsEnable графического интерфейса.
+        /// </summary>
         public bool IsEnable
         {
             get
@@ -158,7 +174,9 @@ namespace View.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// Возвращает свойство Visibility графического интерфейса.
+        /// </summary>
         public bool Visibility
         {
             get
@@ -174,6 +192,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Обновляет свойства интерфейса.
+        /// </summary>
         private void RefreshProperties()
         {
             OnPropertyChanged(nameof(Visibility));
@@ -181,6 +202,9 @@ namespace View.ViewModel
             OnPropertyChanged(nameof(IsEnable));
         }
 
+        /// <summary>
+        /// Возвращает и задает выбранный контакт.
+        /// </summary>
         public Contact? SelectedContact
         {
             get => _selectedContact;
@@ -206,7 +230,7 @@ namespace View.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
-        /// Событие, оповещающее систему об изменении свойств.
+        /// Оповещает систему об изменении свойств.
         /// </summary>
         /// <param name="prop">Свойство, которое изменилось.</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")

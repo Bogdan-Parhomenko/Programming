@@ -19,7 +19,7 @@ namespace View.ViewModel
         private Func<object?, bool>? _canExecute;
 
         /// <summary>
-        /// <inheritdoc/>.
+        /// <inheritdoc/>
         /// </summary>
         public event EventHandler? CanExecuteChanged
         {
@@ -39,19 +39,19 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// <inheritdoc/>.
+        /// <inheritdoc/>
         /// </summary>
-        /// <param name="parameter"><inheritdoc/>.</param>
-        /// <returns><inheritdoc/>.</returns>
+        /// <param name="parameter"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
         public bool CanExecute(object? parameter)
         {
             return this._canExecute == null || this._canExecute(parameter);
         }
 
         /// <summary>
-        /// <inheritdoc/>.
+        /// <inheritdoc/>
         /// </summary>
-        /// <param name="parameter"><inheritdoc/>.</param>
+        /// <param name="parameter"><inheritdoc/></param>
         public void Execute(object? parameter)
         {
             this._execute(parameter);
