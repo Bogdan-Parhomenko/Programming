@@ -145,14 +145,7 @@ namespace View.ViewModel
         {
             get
             {
-                if (Visibility == false)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return !Visibility;
             }
         }
 
@@ -163,14 +156,7 @@ namespace View.ViewModel
         {
             get
             {
-                if (Visibility == true)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return !Visibility;
             }
         }
 
@@ -181,14 +167,7 @@ namespace View.ViewModel
         {
             get
             {
-                if (SelectedContact == null || Contacts.Contains(SelectedContact))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return !(SelectedContact == null || Contacts.Contains(SelectedContact));
             }
         }
 

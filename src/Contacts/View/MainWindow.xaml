@@ -25,9 +25,9 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition MinWidth="300"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition MinWidth="300"/>
         </Grid.ColumnDefinitions>
         
         <Border Grid.Column="0" Background="#f8f8f8"/>
