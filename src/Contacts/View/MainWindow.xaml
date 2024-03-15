@@ -3,41 +3,82 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:View"
+        xmlns:local="clr-namespace:View.Model.Services"
+        xmlns:viewmodel="clr-namespace:View.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainVM}"
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="800" Icon="/contacts_96x96.ico">
-    <Grid Margin="15">
+    <Window.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        
+    </Window.Resources>
+    
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition MinWidth="300"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition MinWidth="300"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <GroupBox Header="Edit Contact" Grid.Column="0" Grid.Row="0" Margin="3">
+        
+        <Border Grid.Column="0" Background="#f8f8f8"/>
+        
+        <Grid Grid.Column="0" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <DockPanel Grid.Row="0" LastChildFill="True">
+                <TextBlock DockPanel.Dock="Left" Text="Find:"/>
+                <TextBox/>
+            </DockPanel>
+
+            <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" Margin="3">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}" IsEnabled="{Binding IsEnable}"/>
+                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}" IsEnabled="{Binding IsEnable}"/>
+                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding IsEnable}"/>
+            </Grid>
+        </Grid>
+
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#ffffff"/>
+
+        <DockPanel Grid.Column="2" Margin="8">
+            <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
             <StackPanel>
-                <TextBlock Margin="3" Text="Name:"></TextBlock>
-                <TextBox Margin="3" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <TextBlock Margin="3" Text="Phone Number:"></TextBlock>
-                <TextBox Margin="3" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <TextBlock Margin="3" Text="Email:"></TextBlock>
-                <TextBox Margin="3" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Read Contact" Grid.Column="1" Grid.Row="0" Margin="3">
-            <StackPanel>
-                <TextBlock Margin="3" Text="Name:"></TextBlock>
-                <TextBlock Margin="3" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
-                <TextBlock Margin="3" Text="Phone Number:"></TextBlock>
-                <TextBlock Margin="3" FontWeight="Bold" Text="{Binding Phone}"></TextBlock>
-                <TextBlock Margin="3" Text="Email:"></TextBlock>
-                <TextBlock Margin="3" FontWeight="Bold" Text="{Binding Email}"></TextBlock>
-            </StackPanel>
-        </GroupBox>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Height="25" Width="75" Margin="3" Content="Load" Command="{Binding LoadCommand}"></Button>
-            <Button Height="25" Width="75" Margin="3" Content="Save" Command="{Binding SaveCommand}"></Button>
-        </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Name:"/>
+                    <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+                    <TextBlock Text="Phone Number:"/>
+                    <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+                    <TextBlock Text="Email:"/>
+                    <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+                </StackPanel>
+                <Button HorizontalAlignment="Left" Margin="0 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>   
+        </DockPanel>    
     </Grid>
 </Window>

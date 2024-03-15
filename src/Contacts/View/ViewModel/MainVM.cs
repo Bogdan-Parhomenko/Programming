@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using View.Model;
 using View.Model.Services;
@@ -13,99 +14,184 @@ namespace View.ViewModel
         /// <summary>
         /// Изменяемый контакт.
         /// </summary>
-        private Contact? _contact;
+        private Contact? _selectedContact;
 
         /// <summary>
-        /// Команда сохранения контакта.
+        /// Возвращает и задает копию изменяемого контакта.
         /// </summary>
-        private RelayCommand? _saveCommand;
+        public Contact? ChangedContact { get; set; }
 
         /// <summary>
-        /// Возвращает способ сохранения контакта.
+        /// Коллекция контактов.
         /// </summary>
-        public RelayCommand? SaveCommand
+        public ObservableCollection<Contact>? Contacts { get; set; }
+
+        /// <summary>
+        /// Команда добавления контакта.
+        /// </summary>
+        private RelayCommand? _addCommand;
+
+        /// <summary>
+        /// Возвращает способ добавления контакта.
+        /// </summary>
+        public RelayCommand? AddCommand
         {
             get
             {
-                return _saveCommand ??=
-                  (_saveCommand = new RelayCommand(obj =>
+                return _addCommand ??=
+                  (_addCommand = new RelayCommand(obj =>
                   {
-                      ContactSerializer.SaveContact(_contact);
+                      Contact? contact = new();
+                      SelectedContact = contact;
+                      ChangedContact = null;
+                      RefreshProperties();
                   }));
             }
         }
 
         /// <summary>
-        /// Команда загрузки контакта.
+        /// Команда принятия изменений.
         /// </summary>
-        private RelayCommand? _loadCommand;
+        private RelayCommand? _applyCommand;
 
         /// <summary>
-        /// Возвразает способ загрузки контакта.
+        /// Возвращает способ принятия изменений.
         /// </summary>
-        public RelayCommand? LoadCommand
+        public RelayCommand? ApplyCommand
         {
             get
             {
-                return _loadCommand ??=
-                    (_loadCommand = new RelayCommand(obj =>
+                return _applyCommand ??=
+                  (_applyCommand = new RelayCommand(obj =>
+                  {
+                      if (ChangedContact != null)
+                      {
+                          Contacts.Insert(Contacts.IndexOf(ChangedContact), SelectedContact);
+                          Contacts.Remove(ChangedContact);
+                      }
+                      else
+                      {
+                          Contacts?.Insert(0, SelectedContact);
+                      }
+                      RefreshProperties();
+                      ContactSerializer.SaveContacts(Contacts);
+                  }));
+            }
+        }
+
+        /// <summary>
+        /// Команда изменения контакта.
+        /// </summary>
+        private RelayCommand? _editCommand;
+
+        /// <summary>
+        /// Возвращает способ изменения контакта.
+        /// </summary>
+        public RelayCommand? EditCommand
+        {
+            get
+            {
+                return _editCommand ??=
+                  (_editCommand = new RelayCommand(obj =>
+                  {
+                      ChangedContact = SelectedContact;
+                      SelectedContact = (Contact)SelectedContact.Clone();
+                      RefreshProperties();
+                  },
+                  (obj) => SelectedContact != null && Contacts.Contains(SelectedContact)));
+            }
+        }
+
+        /// <summary>
+        /// Команда удаления контакта.
+        /// </summary>
+        private RelayCommand? _removeCommand;
+
+        /// <summary>
+        /// Возвращает способ удаления контакта.
+        /// </summary>
+        public RelayCommand? RemoveCommand
+        {
+            get
+            {
+                return _removeCommand ??=
+                    (_removeCommand = new RelayCommand(obj =>
                     {
-                        Contact? contact = ContactSerializer.LoadContact();
-                        Name = contact?.Name;
-                        Phone = contact?.Phone;
-                        Email = contact?.Email;
-                    }));
+                        if (obj is Contact contact)
+                        {
+                            if (Contacts?.Count == 1)
+                            {
+                                SelectedContact = null;
+                            }
+                            else if (Contacts?.IndexOf(contact) + 1 == Contacts?.Count)
+                            {
+                                SelectedContact = Contacts?[Contacts.IndexOf(contact) - 1];
+                            }
+                            else
+                            {
+                                SelectedContact = Contacts?[Contacts.IndexOf(contact) + 1];
+                            }
+                            Contacts?.Remove(contact);
+                        }
+                    },
+                    (obj) => Contacts?.Count > 0 && Contacts.Contains(SelectedContact)));
             }
         }
 
         /// <summary>
-        /// Возвращает и задает имя контакта.
+        /// Возвращает свойство IsReadOnly графического интерфейса.
         /// </summary>
-        public string? Name
+        public bool IsReadOnly
         {
-            get => _contact?.Name;
-            set
+            get
             {
-                if (_contact == null)
-                {
-                    return;
-                }
-                _contact.Name = value;
-                OnPropertyChanged(nameof(Name));
+                return !Visibility;
             }
         }
 
         /// <summary>
-        /// Возвращает и задает телефон контакта.
+        /// Возвращает свойство IsEnable графического интерфейса.
         /// </summary>
-        public string? Phone
+        public bool IsEnable
         {
-            get => _contact?.Phone;
-            set
+            get
             {
-                if (_contact == null)
-                {
-                    return;
-                }
-                _contact.Phone = value;
-                OnPropertyChanged(nameof(Phone));
+                return !Visibility;
             }
         }
 
         /// <summary>
-        /// Возвращает и задает почту контакта.
+        /// Возвращает свойство Visibility графического интерфейса.
         /// </summary>
-        public string? Email
+        public bool Visibility
         {
-            get => _contact?.Email;
+            get
+            {
+                return !(SelectedContact == null || Contacts.Contains(SelectedContact));
+            }
+        }
+
+        /// <summary>
+        /// Обновляет свойства интерфейса.
+        /// </summary>
+        private void RefreshProperties()
+        {
+            OnPropertyChanged(nameof(Visibility));
+            OnPropertyChanged(nameof(IsReadOnly));
+            OnPropertyChanged(nameof(IsEnable));
+        }
+
+        /// <summary>
+        /// Возвращает и задает выбранный контакт.
+        /// </summary>
+        public Contact? SelectedContact
+        {
+            get => _selectedContact;
             set
             {
-                if (_contact == null)
-                {
-                    return;
-                }
-                _contact.Email = value;
-                OnPropertyChanged(nameof(Email));
+                _selectedContact = value;
+                OnPropertyChanged(nameof(SelectedContact));
+                RefreshProperties();
             }
         }
 
@@ -114,7 +200,7 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            _contact = new Contact { Name = "Bob", Phone = "89", Email = "@" };
+            Contacts = ContactSerializer.LoadContacts();
         }
 
         /// <summary>
@@ -123,7 +209,7 @@ namespace View.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
-        /// Событие, оповещающее систему об изменении свойств.
+        /// Оповещает систему об изменении свойств.
         /// </summary>
         /// <param name="prop">Свойство, которое изменилось.</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
