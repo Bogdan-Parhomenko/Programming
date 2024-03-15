@@ -47,7 +47,7 @@
             <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" Margin="3">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=Name}"/>
+                        <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -58,24 +58,24 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}"/>
-                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}"/>
-                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}"/>
+                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}" IsEnabled="{Binding IsEnable}"/>
+                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}" IsEnabled="{Binding IsEnable}"/>
+                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding IsEnable}"/>
             </Grid>
         </Grid>
 
         <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#ffffff"/>
 
         <DockPanel Grid.Column="2" Margin="8">
-            <Image Source="photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
+            <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
             <StackPanel>
-                <StackPanel DataContext="{Binding SelectedContact}">
+                <StackPanel>
                     <TextBlock Text="Name:"/>
-                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
                     <TextBlock Text="Phone Number:"/>
-                    <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
                     <TextBlock Text="Email:"/>
-                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
                 </StackPanel>
                 <Button HorizontalAlignment="Left" Margin="0 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StackPanel>   

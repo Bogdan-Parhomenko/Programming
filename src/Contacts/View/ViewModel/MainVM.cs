@@ -40,17 +40,17 @@ namespace View.ViewModel
                 return _addCommand ??=
                   (_addCommand = new RelayCommand(obj =>
                   {
-                      Contact? contact = new ();
+                      Contact? contact = new();
                       SelectedContact = contact;
                       ChangedContact = null;
-                      //OnPropertyChanged(nameof(Visibility));
+                      RefreshProperties();
                   }));
             }
         }
 
         private RelayCommand? _applyCommand;
 
-        
+
         public RelayCommand? ApplyCommand
         {
             get
@@ -67,6 +67,8 @@ namespace View.ViewModel
                       {
                           Contacts?.Insert(0, SelectedContact);
                       }
+                      RefreshProperties();
+                      ContactSerializer.SaveContacts(Contacts);
                   }));
             }
         }
@@ -83,8 +85,9 @@ namespace View.ViewModel
                   {
                       ChangedContact = SelectedContact;
                       SelectedContact = (Contact)SelectedContact.Clone();
+                      RefreshProperties();
                   },
-                  (obj) => SelectedContact != null));
+                  (obj) => SelectedContact != null && Contacts.Contains(SelectedContact)));
             }
         }
 
@@ -120,10 +123,9 @@ namespace View.ViewModel
                             Contacts?.Remove(contact);
                         }
                     },
-                    (obj) => Contacts?.Count > 0));
+                    (obj) => Contacts?.Count > 0 && Contacts.Contains(SelectedContact)));
             }
         }
-
 
         public bool IsReadOnly
         {
@@ -145,20 +147,7 @@ namespace View.ViewModel
         {
             get
             {
-                return true;
-            }
-        }
-
-
-        public bool Visibility
-        {
-            get
-            {
-                if (SelectedContact == null)
-                {
-                    return false;
-                }
-                else if (Contacts.Contains(SelectedContact))
+                if (Visibility == true)
                 {
                     return false;
                 }
@@ -170,6 +159,28 @@ namespace View.ViewModel
         }
 
 
+        public bool Visibility
+        {
+            get
+            {
+                if (SelectedContact == null || Contacts.Contains(SelectedContact))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        private void RefreshProperties()
+        {
+            OnPropertyChanged(nameof(Visibility));
+            OnPropertyChanged(nameof(IsReadOnly));
+            OnPropertyChanged(nameof(IsEnable));
+        }
+
         public Contact? SelectedContact
         {
             get => _selectedContact;
@@ -177,6 +188,7 @@ namespace View.ViewModel
             {
                 _selectedContact = value;
                 OnPropertyChanged(nameof(SelectedContact));
+                RefreshProperties();
             }
         }
 
@@ -185,7 +197,7 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            Contacts = new ObservableCollection<Contact>();
+            Contacts = ContactSerializer.LoadContacts();
         }
 
         /// <summary>

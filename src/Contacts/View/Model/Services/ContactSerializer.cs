@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace View.Model.Services
@@ -25,21 +26,21 @@ namespace View.Model.Services
         /// Сохраняет контакт в json.
         /// </summary>
         /// <param name="contact">Сохраняемый контакт.</param>
-        public static void SaveContact(Contact? contact)
+        public static void SaveContacts(ObservableCollection<Contact> contacts)
         {
             if (!Directory.Exists(_pathToJson))
             {
                 Directory.CreateDirectory(_pathToJson);
             }
             File.WriteAllText(_jsonPath, string.Empty);
-            File.AppendAllText(_jsonPath, JsonConvert.SerializeObject(contact));
+            File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(contacts, Formatting.Indented));
         }
 
         /// <summary>
         /// Загружает контакт из json.
         /// </summary>
         /// <returns>Возвращает загруженный контакт.</returns>
-        public static Contact? LoadContact()
+        public static ObservableCollection<Contact> LoadContacts()
         {
             if (!Directory.Exists(_pathToJson))
             {
@@ -50,13 +51,13 @@ namespace View.Model.Services
                 FileStream fileStream = new(_jsonPath, FileMode.CreateNew);
                 fileStream.Close();
             }
-            JsonTextReader reader = new(new StreamReader(_jsonPath))
+            ObservableCollection<Contact> contacts =
+                JsonConvert.DeserializeObject<ObservableCollection<Contact>>(File.ReadAllText(_jsonPath));
+            if (contacts == null)
             {
-                SupportMultipleContent = true
-            };
-            JsonSerializer serializer = new();
-            Contact? tempContact = serializer.Deserialize<Contact>(reader);
-            return tempContact;
+                return new ObservableCollection<Contact>();
+            }
+            return contacts;
         }
     }
 }
