@@ -74,7 +74,6 @@ namespace View.ViewModel
                           Contacts?.Insert(0, SelectedContact);
                       }
                       RefreshProperties();
-                      с
                   }));
             }
         }
