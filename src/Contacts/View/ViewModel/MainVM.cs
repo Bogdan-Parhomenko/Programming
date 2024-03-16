@@ -74,7 +74,7 @@ namespace View.ViewModel
                           Contacts?.Insert(0, SelectedContact);
                       }
                       RefreshProperties();
-                      ContactSerializer.SaveContacts(Contacts);
+                      с
                   }));
             }
         }
@@ -133,6 +133,7 @@ namespace View.ViewModel
                             }
                             Contacts?.Remove(contact);
                         }
+                        ContactSerializer.SaveContacts(Contacts);
                     },
                     (obj) => Contacts?.Count > 0 && Contacts.Contains(SelectedContact)));
             }
