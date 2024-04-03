@@ -20,7 +20,15 @@
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
         </Style>
-        
+        <DataTemplate x:Key="contactTemplate">
+            <DockPanel>
+                <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left" Width="40" Height="40"/>
+                <StackPanel Margin="3">
+                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Phone}"/>
+                </StackPanel>
+            </DockPanel>
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>
@@ -44,14 +52,9 @@
                 <TextBox/>
             </DockPanel>
 
-            <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" Margin="3">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            
+            <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}"
+                     Margin="3" ItemTemplate="{StaticResource contactTemplate}"/>
+
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
