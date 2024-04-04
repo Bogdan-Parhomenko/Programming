@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.ComponentModel;
-using System.Linq;
 
-namespace View.Model.Services
+namespace Model.Services
 {
     /// <summary>
     /// Сервисный класс, предоставляющий возможность выводить ошибки.

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace View.Model.Services
+namespace View.Services
 {
     /// <summary>
     /// Сервисный класс для конвертации свойства visibility.
