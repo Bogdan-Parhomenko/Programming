@@ -1,12 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
+using Model.Services;
 using System.Collections;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using View.Model.Services;
 
-namespace View.Model
+namespace Model
 {
     /// <summary>
     /// Хранит информацию о контакте.

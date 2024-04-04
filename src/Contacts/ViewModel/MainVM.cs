@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using View.Model;
-using View.Model.Services;
+using Model;
+using Model.Services;
 
-namespace View.ViewModel
+namespace ViewModel
 {
     /// <summary>
     /// ViewModel главного окна.
@@ -35,7 +35,7 @@ namespace View.ViewModel
         /// Возвращает способ добавления контакта.
         /// </summary>
         public RelayCommand? AddCommand => _addCommand ??=
-                  new RelayCommand(()  =>
+                  new RelayCommand(() =>
                   {
                       Contact? contact = new();
                       SelectedContact = contact;
@@ -52,7 +52,7 @@ namespace View.ViewModel
         /// Возвращает способ принятия изменений.
         /// </summary>
         public RelayCommand? ApplyCommand => _applyCommand ??=
-                  (_applyCommand = new RelayCommand(() =>
+                  new RelayCommand(() =>
                   {
                       if (ChangedContact != null)
                       {
@@ -66,7 +66,7 @@ namespace View.ViewModel
                       RefreshProperties();
                       ContactSerializer.SaveContacts(Contacts);
                   },
-                  () => SelectedContact != null && !SelectedContact.HasErrors));
+                  () => SelectedContact != null && !SelectedContact.HasErrors);
 
         /// <summary>
         /// Команда изменения контакта.
@@ -77,13 +77,13 @@ namespace View.ViewModel
         /// Возвращает способ изменения контакта.
         /// </summary>
         public RelayCommand? EditCommand => _editCommand ??=
-                  (_editCommand = new RelayCommand(() =>
+                  new RelayCommand(() =>
                   {
                       ChangedContact = SelectedContact;
                       SelectedContact = (Contact)SelectedContact.Clone();
                       RefreshProperties();
                   },
-                  () => SelectedContact != null && Contacts.Contains(SelectedContact)));
+                  () => SelectedContact != null && Contacts.Contains(SelectedContact));
 
         /// <summary>
         /// Команда удаления контакта.
@@ -94,9 +94,9 @@ namespace View.ViewModel
         /// Возвращает способ удаления контакта.
         /// </summary>
         public RelayCommand? RemoveCommand => _removeCommand ??=
-                    (_removeCommand = new RelayCommand(() =>
+                    new RelayCommand(() =>
                     {
-                        var removedContact = SelectedContact; 
+                        var removedContact = SelectedContact;
                         if (Contacts?.Count == 1)
                         {
                             SelectedContact = null;
@@ -112,7 +112,7 @@ namespace View.ViewModel
                         Contacts?.Remove(removedContact);
                         ContactSerializer.SaveContacts(Contacts);
                     },
-                    () => Contacts?.Count > 0 && Contacts.Contains(SelectedContact)));
+                    () => Contacts?.Count > 0 && Contacts.Contains(SelectedContact));
 
         /// <summary>
         /// Возвращает свойство IsReadOnly графического интерфейса.
