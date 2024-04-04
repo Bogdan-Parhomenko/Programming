@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -10,7 +11,7 @@ namespace View.Model
     /// <summary>
     /// Хранит информацию о контакте.
     /// </summary>
-    public class Contact : INotifyPropertyChanged, ICloneable, INotifyDataErrorInfo
+    public class Contact : ObservableObject, ICloneable, INotifyDataErrorInfo
     {
         /// <summary>
         /// Имя контакта.
@@ -30,7 +31,7 @@ namespace View.Model
         /// <summary>
         /// Экземпляр сервисного класса для вывода ошибок.
         /// </summary>
-        private readonly ErrorsValidator _errorsValidator = new ErrorsValidator();
+        private readonly ErrorsValidator _errorsValidator = new();
 
         /// <summary>
         /// Возвращает и задает имя контакта.
@@ -136,21 +137,7 @@ namespace View.Model
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-
-        /// <summary>
-        /// Оповещает систему об изменении свойств.
-        /// </summary>
-        /// <param name="prop">Свойство, которое изменилось.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
 
         /// <summary>
         /// <inheritdoc/>

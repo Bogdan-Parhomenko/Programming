@@ -1,6 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using View.Model;
 using View.Model.Services;
 
@@ -9,7 +9,7 @@ namespace View.ViewModel
     /// <summary>
     /// ViewModel главного окна.
     /// </summary>
-    public class MainVM : INotifyPropertyChanged
+    public class MainVM : ObservableObject
     {
         /// <summary>
         /// Изменяемый контакт.
@@ -34,20 +34,14 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает способ добавления контакта.
         /// </summary>
-        public RelayCommand? AddCommand
-        {
-            get
-            {
-                return _addCommand ??=
-                  (_addCommand = new RelayCommand(obj =>
+        public RelayCommand? AddCommand => _addCommand ??=
+                  new RelayCommand(()  =>
                   {
                       Contact? contact = new();
                       SelectedContact = contact;
                       ChangedContact = null;
                       RefreshProperties();
-                  }));
-            }
-        }
+                  });
 
         /// <summary>
         /// Команда принятия изменений.
@@ -57,12 +51,8 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает способ принятия изменений.
         /// </summary>
-        public RelayCommand? ApplyCommand
-        {
-            get
-            {
-                return _applyCommand ??=
-                  (_applyCommand = new RelayCommand(obj =>
+        public RelayCommand? ApplyCommand => _applyCommand ??=
+                  (_applyCommand = new RelayCommand(() =>
                   {
                       if (ChangedContact != null)
                       {
@@ -76,9 +66,7 @@ namespace View.ViewModel
                       RefreshProperties();
                       ContactSerializer.SaveContacts(Contacts);
                   },
-                  (obj) => SelectedContact != null && !SelectedContact.HasErrors));
-            }
-        }
+                  () => SelectedContact != null && !SelectedContact.HasErrors));
 
         /// <summary>
         /// Команда изменения контакта.
@@ -88,20 +76,14 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает способ изменения контакта.
         /// </summary>
-        public RelayCommand? EditCommand
-        {
-            get
-            {
-                return _editCommand ??=
-                  (_editCommand = new RelayCommand(obj =>
+        public RelayCommand? EditCommand => _editCommand ??=
+                  (_editCommand = new RelayCommand(() =>
                   {
                       ChangedContact = SelectedContact;
                       SelectedContact = (Contact)SelectedContact.Clone();
                       RefreshProperties();
                   },
-                  (obj) => SelectedContact != null && Contacts.Contains(SelectedContact)));
-            }
-        }
+                  () => SelectedContact != null && Contacts.Contains(SelectedContact)));
 
         /// <summary>
         /// Команда удаления контакта.
@@ -111,34 +93,26 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает способ удаления контакта.
         /// </summary>
-        public RelayCommand? RemoveCommand
-        {
-            get
-            {
-                return _removeCommand ??=
-                    (_removeCommand = new RelayCommand(obj =>
+        public RelayCommand? RemoveCommand => _removeCommand ??=
+                    (_removeCommand = new RelayCommand(() =>
                     {
-                        if (obj is Contact contact)
+                        var removedContact = SelectedContact; 
+                        if (Contacts?.Count == 1)
                         {
-                            if (Contacts?.Count == 1)
-                            {
-                                SelectedContact = null;
-                            }
-                            else if (Contacts?.IndexOf(contact) + 1 == Contacts?.Count)
-                            {
-                                SelectedContact = Contacts?[Contacts.IndexOf(contact) - 1];
-                            }
-                            else
-                            {
-                                SelectedContact = Contacts?[Contacts.IndexOf(contact) + 1];
-                            }
-                            Contacts?.Remove(contact);
+                            SelectedContact = null;
                         }
+                        else if (Contacts?.IndexOf(removedContact) + 1 == Contacts?.Count)
+                        {
+                            SelectedContact = Contacts?[Contacts.IndexOf(removedContact) - 1];
+                        }
+                        else
+                        {
+                            SelectedContact = Contacts?[Contacts.IndexOf(removedContact) + 1];
+                        }
+                        Contacts?.Remove(removedContact);
                         ContactSerializer.SaveContacts(Contacts);
                     },
-                    (obj) => Contacts?.Count > 0 && Contacts.Contains(SelectedContact)));
-            }
-        }
+                    () => Contacts?.Count > 0 && Contacts.Contains(SelectedContact)));
 
         /// <summary>
         /// Возвращает свойство IsReadOnly графического интерфейса.
@@ -203,20 +177,6 @@ namespace View.ViewModel
         public MainVM()
         {
             Contacts = ContactSerializer.LoadContacts();
-        }
-
-        /// <summary>
-        /// <inheritdoc/>.
-        /// </summary>
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        /// <summary>
-        /// Оповещает систему об изменении свойств.
-        /// </summary>
-        /// <param name="prop">Свойство, которое изменилось.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
