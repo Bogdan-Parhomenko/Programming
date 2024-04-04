@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using View.Model.Services;
 
 namespace View.Model
 {
@@ -13,7 +12,6 @@ namespace View.Model
     /// </summary>
     public class Contact : INotifyPropertyChanged, ICloneable, INotifyDataErrorInfo
     {
-        private readonly Dictionary<string, List<string>> _propertyErrors = new();
         /// <summary>
         /// Имя контакта.
         /// </summary>
@@ -30,17 +28,23 @@ namespace View.Model
         private string? _email;
 
         /// <summary>
+        /// Экземпляр сервисного класса для вывода ошибок.
+        /// </summary>
+        private readonly ErrorsValidator _errorsValidator = new ErrorsValidator();
+
+        /// <summary>
         /// Возвращает и задает имя контакта.
+        /// Свойство Name должно быть не длиннее 100 символов.
         /// </summary>
         public string? Name
         {
             get => _name;
             set
             {
-                CleanErrors(nameof(Name));
+                _errorsValidator.CleanErrors(nameof(Name));
                 if (value.Length > 100)
                 {
-                    AddError(nameof(Name), "Свойство Name должно быть не длиннее 100 символов.");
+                    _errorsValidator.AddError(nameof(Name), "Свойство Name должно быть не длиннее 100 символов.");
                 }
                 _name = value;
                 OnPropertyChanged(nameof(Name));
@@ -49,18 +53,19 @@ namespace View.Model
 
         /// <summary>
         /// Возвращает и задает телефон контакта.
+        /// Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-(). Пример: +7 (999) 111-22-33.
         /// </summary>
         public string? Phone
         {
             get => _phone;
             set
             {
-                CleanErrors(nameof(Phone));
+                _errorsValidator.CleanErrors(nameof(Phone));
                 if (value.Length > 100 || !Regex.IsMatch(value,
                     "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"))
                 {
-                    AddError(nameof(Phone),
-                        "Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-(). Пример: +7 (999) 111-22-33.");
+                    _errorsValidator.AddError(nameof(Phone),
+                        "Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-().\nПример: +7 (999) 111-22-33.");
                 }
                 _phone = value;
                 OnPropertyChanged(nameof(Phone));
@@ -69,17 +74,18 @@ namespace View.Model
 
         /// <summary>
         /// Возвращает и задает почту контакта.
+        /// Свойство Email должно быть не длиннее 100 символов и должно содержать символ @.
         /// </summary>
         public string? Email
         {
             get => _email;
             set
             {
-                CleanErrors(nameof(Email));
+                _errorsValidator.CleanErrors(nameof(Email));
                 if (value.Length > 100 || !Regex.IsMatch(value,
                     "^\\S+@\\S+\\.\\S+$"))
                 {
-                    AddError(nameof(Email),
+                    _errorsValidator.AddError(nameof(Email),
                         "Свойство Email должно быть не длиннее 100 символов и должно содержать символ @.");
                 }
 
@@ -87,8 +93,6 @@ namespace View.Model
                 OnPropertyChanged(nameof(Email));
             }
         }
-
-        public bool HasErrors => _propertyErrors.Any();
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Contact"/>.
@@ -115,7 +119,20 @@ namespace View.Model
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new Contact(Name, Phone, Email);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
         /// <summary>
@@ -130,39 +147,16 @@ namespace View.Model
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        /// <returns><inheritdoc/></returns>
-        public object Clone()
-        {
-            return new Contact(Name, Phone, Email);
-        }
+        public bool HasErrors => _errorsValidator.HasErrors;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="propertyName"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
         public IEnumerable GetErrors(string? propertyName)
         {
-            return _propertyErrors.GetValueOrDefault(propertyName, null);
-        }
-
-        private void AddError(string propertyName, string errorMessage)
-        {
-            if(!_propertyErrors.ContainsKey(propertyName))
-            {
-                _propertyErrors.Add(propertyName, new List<string>());
-            }
-
-            _propertyErrors[propertyName].Add(errorMessage);
-            OnErrorsChanged(propertyName);
-        }
-
-        private void CleanErrors(string propertyName)
-        {
-            if (_propertyErrors.Remove(propertyName))
-            {
-                OnErrorsChanged(propertyName);
-            }
-        }
-
-        private void OnErrorsChanged(string propertyName)
-        {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            return _errorsValidator.GetErrors(propertyName);
         }
     }
 }

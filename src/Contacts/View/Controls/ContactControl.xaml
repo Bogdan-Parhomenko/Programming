@@ -42,7 +42,7 @@
             <TextBlock Text="Name:"/>
             <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
             <TextBlock Text="Phone Number:"/>
-            <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+            <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting="TextBox_Pasting" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
             <TextBlock Text="Email:"/>
             <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
             </StackPanel>

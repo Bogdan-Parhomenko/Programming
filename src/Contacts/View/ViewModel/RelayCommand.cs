@@ -34,8 +34,8 @@ namespace View.ViewModel
         /// <param name="canExecute">Условие, определяющая можно ли выполнить метод.</param>
         public RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
         {
-            this._execute = execute;
-            this._canExecute = canExecute;
+            _execute = execute;
+            _canExecute = canExecute;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace View.ViewModel
         /// <returns><inheritdoc/></returns>
         public bool CanExecute(object? parameter)
         {
-            return this._canExecute == null || this._canExecute(parameter);
+            return _canExecute == null || _canExecute(parameter);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace View.ViewModel
         /// <param name="parameter"><inheritdoc/></param>
         public void Execute(object? parameter)
         {
-            this._execute(parameter);
+            _execute(parameter);
         }
     }
 }
