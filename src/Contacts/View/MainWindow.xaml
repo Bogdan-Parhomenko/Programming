@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.Model.Services"
-        xmlns:viewmodel="clr-namespace:View.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainVM}"
+        xmlns:uc="clr-namespace:View.Controls"
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="800" Icon="/contacts_96x96.ico">
     <Window.Resources>
@@ -69,19 +69,9 @@
 
         <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#ffffff"/>
 
-        <DockPanel Grid.Column="2" Margin="8">
-            <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
-            <StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Name:"/>
-                    <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
-                    <TextBlock Text="Phone Number:"/>
-                    <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
-                    <TextBlock Text="Email:"/>
-                    <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
-                </StackPanel>
-                <Button HorizontalAlignment="Left" Margin="0 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
-            </StackPanel>   
-        </DockPanel>    
+        <StackPanel Grid.Column="2">
+            <uc:ContactControl/>
+            <Button HorizontalAlignment="Left" Margin="111 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        </StackPanel>
     </Grid>
 </Window>
