@@ -11,29 +11,23 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="ToolTip" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                            Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="Background" Value="LightPink"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <ControlTemplate x:Key="ValidationErrorTemplate">
-            <StackPanel>
-                <Border BorderBrush="Red" 
-                        BorderThickness="1">
-                    <AdornedElementPlaceholder/>
-                </Border>
-
-                <Border Background="#f8f8f8"
-                        BorderBrush="Gray"
-                        Padding="4"
-                        BorderThickness="1,0,1,1" 
-                        HorizontalAlignment="Left"
-                        Margin="100 0 0 0">
-                    <ItemsControl ItemsSource="{Binding}" HorizontalAlignment="Left">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding ErrorContent}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </Border>
-            </StackPanel>
+            <Border>
+                <AdornedElementPlaceholder/>
+            </Border>
         </ControlTemplate>
     </UserControl.Resources>
     <DockPanel Grid.Column="2" Margin="8">
@@ -43,17 +37,17 @@
             <TextBlock Text="Name:"/>
             <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}"
                      IsReadOnly="{Binding ReadMode}"
-                     Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
             <TextBlock Text="Phone Number:"/>
             <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}"
                      PreviewTextInput="TextBox_PreviewTextInput" 
                      DataObject.Pasting="TextBox_Pasting"
                      IsReadOnly="{Binding ReadMode}"
-                     Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
             <TextBlock Text="Email:"/>
             <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}"
                      IsReadOnly="{Binding ReadMode}"
-                     Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
             </StackPanel>
     </DockPanel>
 </UserControl>
