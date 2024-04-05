@@ -61,9 +61,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}" IsEnabled="{Binding IsEnable}"/>
-                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding IsEnable}"/>
-                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding IsEnable}"/>
+                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}" IsEnabled="{Binding ReadMode}"/>
+                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding ReadMode}"/>
+                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding ReadMode}"/>
             </Grid>
         </Grid>
 
@@ -71,7 +71,7 @@
 
         <StackPanel Grid.Column="2">
             <uc:ContactControl/>
-            <Button HorizontalAlignment="Left" Margin="111 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" CommandParameter="{Binding SelectedContact}" Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <Button HorizontalAlignment="Left" Margin="111 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" CommandParameter="{Binding SelectedContact}" Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
 </Window>

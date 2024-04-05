@@ -34,11 +34,11 @@
         <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left" VerticalAlignment="Top" Width="100" Height="100" Margin="0 25 0 0"/>
         <StackPanel>
             <TextBlock Text="Name:"/>
-            <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
+            <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding ReadMode}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
             <TextBlock Text="Phone Number:"/>
-            <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting="TextBox_Pasting" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
+            <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting="TextBox_Pasting" IsReadOnly="{Binding ReadMode}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
             <TextBlock Text="Email:"/>
-            <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
+            <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding ReadMode}" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
             </StackPanel>
     </DockPanel>
 </UserControl>

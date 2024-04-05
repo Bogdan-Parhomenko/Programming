@@ -114,31 +114,20 @@ namespace ViewModel
                     () => Contacts?.Count > 0 && Contacts.Contains(SelectedContact));
 
         /// <summary>
-        /// Возвращает свойство IsReadOnly графического интерфейса.
+        /// Возвращает состояние графического интерфейса.
         /// </summary>
-        public bool IsReadOnly
+        public bool ReadMode
         {
             get
             {
-                return !Visibility;
+                return !EditMode;
             }
         }
 
         /// <summary>
-        /// Возвращает свойство IsEnable графического интерфейса.
+        /// Возвращает состояние графического интерфейса.
         /// </summary>
-        public bool IsEnable
-        {
-            get
-            {
-                return !Visibility;
-            }
-        }
-
-        /// <summary>
-        /// Возвращает свойство Visibility графического интерфейса.
-        /// </summary>
-        public bool Visibility
+        public bool EditMode
         {
             get
             {
@@ -151,9 +140,8 @@ namespace ViewModel
         /// </summary>
         private void RefreshProperties()
         {
-            OnPropertyChanged(nameof(Visibility));
-            OnPropertyChanged(nameof(IsReadOnly));
-            OnPropertyChanged(nameof(IsEnable));
+            OnPropertyChanged(nameof(EditMode));
+            OnPropertyChanged(nameof(ReadMode));;
         }
 
         /// <summary>
