@@ -41,10 +41,13 @@ namespace View.Model
             get => _name;
             set
             {
-                _errorsValidator.CleanErrors(nameof(Name));
-                if (value.Length > 100)
+                if (_name != value)
                 {
-                    _errorsValidator.AddError(nameof(Name), "Свойство Name должно быть не длиннее 100 символов.");
+                    _errorsValidator.CleanErrors(nameof(Name));
+                    if (value.Length > 100)
+                    {
+                        _errorsValidator.AddError(nameof(Name), "Свойство Name должно быть не длиннее 100 символов.");
+                    }
                 }
                 _name = value;
                 OnPropertyChanged(nameof(Name));
@@ -60,12 +63,15 @@ namespace View.Model
             get => _phone;
             set
             {
-                _errorsValidator.CleanErrors(nameof(Phone));
-                if (value.Length > 100 || !Regex.IsMatch(value,
-                    "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"))
+                if (value != null)
                 {
-                    _errorsValidator.AddError(nameof(Phone),
-                        "Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-().\nПример: +7 (999) 111-22-33.");
+                    _errorsValidator.CleanErrors(nameof(Phone));
+                    if (value.Length > 100 || !Regex.IsMatch(value,
+                        "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"))
+                    {
+                        _errorsValidator.AddError(nameof(Phone),
+                            "Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-().\nПример: +7 (999) 111-22-33.");
+                    }
                 }
                 _phone = value;
                 OnPropertyChanged(nameof(Phone));
@@ -81,14 +87,16 @@ namespace View.Model
             get => _email;
             set
             {
-                _errorsValidator.CleanErrors(nameof(Email));
-                if (value.Length > 100 || !Regex.IsMatch(value,
-                    "^\\S+@\\S+\\.\\S+$"))
+                if (value != null)
                 {
-                    _errorsValidator.AddError(nameof(Email),
-                        "Свойство Email должно быть не длиннее 100 символов и должно содержать символ @.");
+                    _errorsValidator.CleanErrors(nameof(Email));
+                    if (value.Length > 100 || !Regex.IsMatch(value,
+                        "^\\S+@\\S+\\.\\S+$"))
+                    {
+                        _errorsValidator.AddError(nameof(Email),
+                            "Свойство Email должно быть не длиннее 100 символов и должно содержать символ @.");
+                    }
                 }
-
                 _email = value;
                 OnPropertyChanged(nameof(Email));
             }
