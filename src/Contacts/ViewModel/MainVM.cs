@@ -37,8 +37,7 @@ namespace ViewModel
         public RelayCommand? AddCommand => _addCommand ??=
                   new RelayCommand(() =>
                   {
-                      Contact? contact = new();
-                      SelectedContact = contact;
+                      SelectedContact = new Contact();
                       ChangedContact = null;
                       RefreshProperties();
                   });
