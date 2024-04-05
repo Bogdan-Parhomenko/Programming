@@ -74,7 +74,9 @@ namespace View.ViewModel
                           Contacts?.Insert(0, SelectedContact);
                       }
                       RefreshProperties();
-                  }));
+                      ContactSerializer.SaveContacts(Contacts);
+                  },
+                  (obj) => SelectedContact != null && !SelectedContact.HasErrors));
             }
         }
 
