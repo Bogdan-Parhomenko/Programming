@@ -40,9 +40,9 @@ namespace Model
             get => _name;
             set
             {
-                if (_name != value)
+                _errorsValidator.CleanErrors(nameof(Name));
+                if (value != null)
                 {
-                    _errorsValidator.CleanErrors(nameof(Name));
                     if (value.Length > 100)
                     {
                         _errorsValidator.AddError(nameof(Name), "Свойство Name должно быть не длиннее 100 символов.");
@@ -62,11 +62,11 @@ namespace Model
             get => _phone;
             set
             {
+                _errorsValidator.CleanErrors(nameof(Phone));
                 if (value != null)
                 {
-                    _errorsValidator.CleanErrors(nameof(Phone));
                     if (value.Length > 100 || !Regex.IsMatch(value,
-                        "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"))
+                    "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"))
                     {
                         _errorsValidator.AddError(nameof(Phone),
                             "Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-().\nПример: +7 (999) 111-22-33.");
@@ -86,11 +86,11 @@ namespace Model
             get => _email;
             set
             {
+                _errorsValidator.CleanErrors(nameof(Email));
                 if (value != null)
                 {
-                    _errorsValidator.CleanErrors(nameof(Email));
                     if (value.Length > 100 || !Regex.IsMatch(value,
-                        "^\\S+@\\S+\\.\\S+$"))
+                    "^\\S+@\\S+\\.\\S+$"))
                     {
                         _errorsValidator.AddError(nameof(Email),
                             "Свойство Email должно быть не длиннее 100 символов и должно содержать символ @.");
