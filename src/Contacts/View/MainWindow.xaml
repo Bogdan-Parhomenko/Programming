@@ -22,7 +22,8 @@
         </Style>
         <DataTemplate x:Key="contactTemplate">
             <DockPanel>
-                <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left" Width="40" Height="40"/>
+                <Image Source="/photo_placeholder_100x100.png" DockPanel.Dock="Left"
+                       Width="40" Height="40"/>
                 <StackPanel Margin="3">
                     <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
                     <TextBlock Text="{Binding Phone}"/>
@@ -52,7 +53,8 @@
                 <TextBox/>
             </DockPanel>
 
-            <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}"
+            <ListBox Grid.Row="1" ItemsSource="{Binding Contacts}"
+                     SelectedItem="{Binding SelectedContact}"
                      Margin="3" ItemTemplate="{StaticResource contactTemplate}"/>
 
             <Grid Grid.Row="2">
@@ -61,17 +63,25 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="auto" Content="Add" Command="{Binding AddCommand}" IsEnabled="{Binding ReadMode}"/>
-                <Button Grid.Column="1" Width="auto" Content="Edit" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding ReadMode}"/>
-                <Button Grid.Column="2" Width="auto" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}" IsEnabled="{Binding ReadMode}"/>
+                <Button Grid.Column="0" Width="auto" Content="Add"
+                        Command="{Binding AddCommand}" IsEnabled="{Binding ReadMode}"/>
+                <Button Grid.Column="1" Width="auto" Content="Edit"
+                        Command="{Binding EditCommand}" CommandParameter="{Binding SelectedContact}"
+                        IsEnabled="{Binding ReadMode}"/>
+                <Button Grid.Column="2" Width="auto" Content="Remove"
+                        Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedContact}"
+                        IsEnabled="{Binding ReadMode}"/>
             </Grid>
         </Grid>
 
-        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#ffffff"/>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+                      HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#ffffff"/>
 
         <StackPanel Grid.Column="2">
             <uc:ContactControl/>
-            <Button HorizontalAlignment="Left" Margin="111 50 0 0" Content="Apply" Command="{Binding ApplyCommand}" CommandParameter="{Binding SelectedContact}" Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <Button HorizontalAlignment="Left" Margin="111 50 0 0" Content="Apply"
+                    Command="{Binding ApplyCommand}" CommandParameter="{Binding SelectedContact}"
+                    Visibility="{Binding EditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
 </Window>
