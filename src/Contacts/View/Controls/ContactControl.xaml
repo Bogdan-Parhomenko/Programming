@@ -37,17 +37,17 @@
             <TextBlock Text="Name:"/>
             <TextBox Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged}"
                      IsReadOnly="{Binding ReadMode}"
-                     Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
             <TextBlock Text="Phone Number:"/>
             <TextBox Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged}"
                      PreviewTextInput="TextBox_PreviewTextInput" 
                      DataObject.Pasting="TextBox_Pasting"
                      IsReadOnly="{Binding ReadMode}"
-                     Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
             <TextBlock Text="Email:"/>
             <TextBox Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged}"
                      IsReadOnly="{Binding ReadMode}"
-                     Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"/>
             </StackPanel>
     </DockPanel>
 </UserControl>
