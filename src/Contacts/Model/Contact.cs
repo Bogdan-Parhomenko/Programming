@@ -12,6 +12,17 @@ namespace Model
     public class Contact : ObservableObject, ICloneable, INotifyDataErrorInfo
     {
         /// <summary>
+        /// Паттерн для проверки.
+        /// </summary>
+        private const string _PhonePattern = 
+            "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$";
+
+        /// <summary>
+        /// Паттерн для проверки почты.
+        /// </summary>
+        private const string _EmailPattern = "^\\S+@\\S+\\.\\S+$";
+
+        /// <summary>
         /// Имя контакта.
         /// </summary>
         private string? _name;
@@ -45,7 +56,8 @@ namespace Model
                 {
                     if (value.Length > 100)
                     {
-                        _errorsValidator.AddError(nameof(Name), "Свойство Name должно быть не длиннее 100 символов.");
+                        _errorsValidator.AddError(nameof(Name),
+                            "Свойство Name должно быть не длиннее 100 символов.");
                     }
                 }
                 _name = value;
@@ -55,7 +67,8 @@ namespace Model
 
         /// <summary>
         /// Возвращает и задает телефон контакта.
-        /// Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-(). Пример: +7 (999) 111-22-33.
+        /// Свойство Phone должно быть не длиннее 100 символов\n
+        /// и может содержать только цифры или символы +-(). Пример: +7 (999) 111-22-33.
         /// </summary>
         public string? Phone
         {
@@ -65,11 +78,12 @@ namespace Model
                 _errorsValidator.CleanErrors(nameof(Phone));
                 if (value != null)
                 {
-                    if (value.Length > 100 || !Regex.IsMatch(value,
-                    "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"))
+                    if (value.Length > 100 || !Regex.IsMatch(value, _PhonePattern))
                     {
                         _errorsValidator.AddError(nameof(Phone),
-                            "Свойство Phone должно быть не длиннее 100 символов\nи может содержать только цифры или символы +-().\nПример: +7 (999) 111-22-33.");
+                            "Свойство Phone должно быть не длиннее 100 символов\n" +
+                            "и может содержать только цифры или символы +-().\n" +
+                            "Пример: +7 (999) 111-22-33.");
                     }
                 }
                 _phone = value;
@@ -89,11 +103,11 @@ namespace Model
                 _errorsValidator.CleanErrors(nameof(Email));
                 if (value != null)
                 {
-                    if (value.Length > 100 || !Regex.IsMatch(value,
-                    "^\\S+@\\S+\\.\\S+$"))
+                    if (value.Length > 100 || !Regex.IsMatch(value, _EmailPattern))
                     {
                         _errorsValidator.AddError(nameof(Email),
-                            "Свойство Email должно быть не длиннее 100 символов и должно содержать символ @.");
+                            "Свойство Email должно быть не длиннее 100 символов" +
+                            " и должно содержать символ @.");
                     }
                 }
                 _email = value;
